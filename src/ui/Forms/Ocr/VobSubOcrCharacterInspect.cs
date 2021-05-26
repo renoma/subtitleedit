@@ -25,7 +25,6 @@ namespace Nikse.SubtitleEdit.Forms.Ocr
         private BinaryOcrBitmap _selectedCompareBinaryOcrBitmap;
         private VobSubOcr.CompareMatch _selectedMatch;
         private BinaryOcrDb _binOcrDb;
-        public ReceiveCharacterInspectListIndexHandler SendCharacterInspectListIndex;
 
         public VobSubOcrCharacterInspect()
         {
@@ -527,21 +526,6 @@ namespace Nikse.SubtitleEdit.Forms.Ocr
             {
                 DialogResult = DialogResult.Cancel;
             }
-            else if ((e.Modifiers == Keys.Alt || e.Modifiers == Keys.Control) && e.KeyCode == Keys.Right)
-            {
-                ActiveControl = textBoxText;
-            }
-            else if ((e.Modifiers == Keys.Alt || e.Modifiers == Keys.Control) && e.KeyCode == Keys.Left)
-            {
-                ActiveControl = listBoxInspectItems;
-            }
-            else if (e.Modifiers == Keys.None && e.KeyCode == Keys.Tab)
-            {
-                if (ActiveControl == listBoxInspectItems)
-                {
-                    ActiveControl = textBoxText;
-                }
-            }
         }
 
         private void contextMenuStripAddBetterMultiMatch_Opening(object sender, System.ComponentModel.CancelEventArgs e)
@@ -587,11 +571,9 @@ namespace Nikse.SubtitleEdit.Forms.Ocr
                 if (form.ShowDialog(this) == DialogResult.OK)
                 {
                     _binOcrDb.Add(form.ExpandedMatch);
-                    SendCharacterInspectListIndex(listBoxInspectItems.SelectedIndex.ToString());
-                    DialogResult = DialogResult.Retry;
+                    DialogResult = DialogResult.OK;
                 }
             }
-            
         }
 
         private void InsertLanguageCharacter(object sender, EventArgs e)
@@ -640,71 +622,6 @@ namespace Nikse.SubtitleEdit.Forms.Ocr
                 labelTextAssociatedWithImage.Font = new Font(labelTextAssociatedWithImage.Font.FontFamily, labelTextAssociatedWithImage.Font.Size);
                 textBoxText.Font = new Font(textBoxText.Font.FontFamily, textBoxText.Font.Size, FontStyle.Bold);
             }
-        }
-
-        private void textBoxText_KeyDown(object sender, KeyEventArgs e)
-        {
-            int selectedIndex = listBoxInspectItems.SelectedIndex;
-            if(e.Modifiers == Keys.Alt && e.KeyCode == Keys.E)
-            {
-                addBetterMultiMatchToolStripMenuItem_Click(sender, e);
-            }
-            else if (e.KeyCode == Keys.Enter)
-            {
-                if(buttonAddBetterMatch.Enabled == true)
-                {
-                    buttonAddBetterMatch_Click(sender, e);
-                }
-                else if (buttonUpdate.Enabled == true)
-                {
-                    buttonUpdate_Click(sender, e);
-                }
-                if (selectedIndex < listBoxInspectItems.Items.Count - 1) selectedIndex++;
-                listBoxInspectItems.SelectedIndex = selectedIndex;
-                ActiveControl = textBoxText;
-            }
-            else if (e.KeyCode == Keys.Down)
-            {
-                if (selectedIndex < listBoxInspectItems.Items.Count - 1) selectedIndex++;
-                listBoxInspectItems.SelectedIndex = selectedIndex;
-                ActiveControl = textBoxText;
-            }
-            else if (e.KeyCode == Keys.Up)
-            {
-                if (selectedIndex > 0) selectedIndex--;
-                listBoxInspectItems.SelectedIndex = selectedIndex;
-                ActiveControl = textBoxText;
-            }
-        }
-
-        private void listBoxInspectItems_KeyDown(object sender, KeyEventArgs e)
-        {
-            if ((e.KeyCode == Keys.Enter) || (e.Modifiers == Keys.Alt && e.KeyCode == Keys.E))
-            {
-                addBetterMultiMatchToolStripMenuItem_Click(sender, e);
-            }
-        }
-
-        private void VobSubOcrCharacterInspect_Load(object sender, EventArgs e)
-        {
-            ActiveControl = textBoxText;
-        }
-        public void setListBoxIndexItemsIndex(String index)
-        {
-            int intIndex = Int16.Parse(index);
-            if(intIndex < 0)
-            {
-                listBoxInspectItems.SelectedIndex = 0;
-            }
-            else if(intIndex > listBoxInspectItems.Items.Count - 1)
-            {
-                listBoxInspectItems.SelectedIndex = listBoxInspectItems.Items.Count - 1;
-            }
-            else
-            {
-                listBoxInspectItems.SelectedIndex = intIndex;
-            }
-            //this.ActiveControl = this.textBoxText;
         }
     }
 }
