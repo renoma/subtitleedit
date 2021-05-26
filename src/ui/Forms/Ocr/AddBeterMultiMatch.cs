@@ -133,6 +133,15 @@ namespace Nikse.SubtitleEdit.Forms.Ocr
             {
                 DialogResult = DialogResult.Cancel;
             }
+            else if (e.KeyCode == Keys.Enter)
+            {
+                buttonOK_Click(sender, e);
+            }
+        }
+
+        private void AddBeterMultiMatch_Load(object sender, System.EventArgs e)
+        {
+            ActiveControl = textBoxText;
         }
     }
 }

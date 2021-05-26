@@ -294,6 +294,10 @@ namespace Nikse.SubtitleEdit.Forms.Ocr
                 DialogResult = DialogResult.Cancel;
                 e.SuppressKeyPress = true;
             }
+            else if (e.Modifiers == Keys.Alt && e.KeyCode == Keys.Enter)
+            {
+                //VobSubOcr.InspectImageCompareMatchesForCurrentImageToolStripMenuItem_Click(null, null);
+            }
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
