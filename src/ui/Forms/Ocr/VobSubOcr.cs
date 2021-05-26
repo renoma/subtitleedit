@@ -30,16 +30,12 @@ using System.Xml;
 namespace Nikse.SubtitleEdit.Forms.Ocr
 {
     using LogItem = OcrFixEngine.LogItem;
-    public delegate void SendCharacterInspectListIndexHandler(string listIndex);
-    public delegate void ReceiveCharacterInspectListIndexHandler(string listIndex);
+
     public sealed partial class VobSubOcr : PositionAndSizeForm, IBinaryParagraphList
     {
         private static readonly Color _listViewGreen = Configuration.Settings.General.UseDarkTheme ? Color.Green : Color.LightGreen;
         private static readonly Color _listViewYellow = Configuration.Settings.General.UseDarkTheme ? Color.FromArgb(218, 135, 32) : Color.Yellow;
         private static readonly Color _listViewOrange = Configuration.Settings.General.UseDarkTheme ? Color.OrangeRed : Color.Orange;
-
-        public SendCharacterInspectListIndexHandler SendCharacterInspectListIndex;
-        public string listIndex;
 
         internal class CompareItem
         {
@@ -257,7 +253,6 @@ namespace Nikse.SubtitleEdit.Forms.Ocr
 
         public delegate void ProgressCallbackDelegate(string progress);
         public ProgressCallbackDelegate ProgressCallback { get; set; }
-
 
         private Main _main;
         public string FileName { get; set; }
@@ -6911,12 +6906,6 @@ namespace Nikse.SubtitleEdit.Forms.Ocr
                 UiUtil.ShowHelp("#importvobsub");
                 e.SuppressKeyPress = true;
             }
-            else if (e.KeyCode == Keys.Enter)
-            {
-                e.SuppressKeyPress = true;
-                subtitleListView1_DoubleClick(sender, e);
-            }
-            // Alt + ↓
             else if (e.KeyCode == Keys.Down && e.Modifiers == Keys.Alt)
             {
                 int selectedIndex = 0;
@@ -6927,9 +6916,7 @@ namespace Nikse.SubtitleEdit.Forms.Ocr
                 }
 
                 subtitleListView1.SelectIndexAndEnsureVisible(selectedIndex);
-                ActiveControl = subtitleListView1;
             }
-            // Alt + ↑
             else if (e.KeyCode == Keys.Up && e.Modifiers == Keys.Alt)
             {
                 int selectedIndex = 0;
@@ -6940,9 +6927,7 @@ namespace Nikse.SubtitleEdit.Forms.Ocr
                 }
 
                 subtitleListView1.SelectIndexAndEnsureVisible(selectedIndex);
-                ActiveControl = subtitleListView1;
             }
-            // Ctrl + G
             else if (e.Modifiers == Keys.Control && e.KeyCode == Keys.G)
             {
                 using (var goToLine = new GoToLine())
@@ -6956,7 +6941,6 @@ namespace Nikse.SubtitleEdit.Forms.Ocr
                         subtitleListView1.Items[goToLine.LineNumber - 1].Focused = true;
                     }
                 }
-                ActiveControl = subtitleListView1;
             }
             else if (_mainGeneralGoToNextSubtitle == e.KeyData)
             {
@@ -6982,55 +6966,36 @@ namespace Nikse.SubtitleEdit.Forms.Ocr
                 subtitleListView1.SelectIndexAndEnsureVisible(selectedIndex);
                 e.SuppressKeyPress = true;
             }
-            // Ctrl + R
             else if (e.Modifiers == Keys.Control && e.KeyCode == Keys.R)
             {
                 e.SuppressKeyPress = true;
                 SelectBestImageCompareDatabase();
             }
-            // Ctrl + T
             else if (e.Modifiers == Keys.Control && e.KeyCode == Keys.T)
             {
                 e.SuppressKeyPress = true;
                 OcrTrainingToolStripMenuItem_Click(null, null);
             }
-            // Ctrl + P (Preview)
             else if (e.Modifiers == Keys.Control && e.KeyCode == Keys.P)
             {
                 e.SuppressKeyPress = true;
                 previewToolStripMenuItem_Click(null, null);
             }
-            // Ctrl + F
             else if (e.Modifiers == Keys.Control && e.KeyCode == Keys.F)
             {
                 e.SuppressKeyPress = true;
                 Find();
             }
-            // F3
             else if (e.Modifiers == Keys.None && e.KeyCode == Keys.F3)
             {
                 e.SuppressKeyPress = true;
                 FindNext();
             }
-            // F5
-            else if (e.Modifiers == Keys.None && e.KeyCode == Keys.F5)
-            {
-                e.SuppressKeyPress = true;
-                ButtonStartOcrClick(sender, e);
-            }
-            // F6
-            else if (e.Modifiers == Keys.None && e.KeyCode == Keys.F6)
-            {
-                e.SuppressKeyPress = true;
-                ButtonStopClick(sender, e);
-            }
-            // Ctrl + P || Shift + P
             else if (e.Modifiers == (Keys.Control | Keys.Shift) && e.KeyCode == Keys.P)
             {
                 e.SuppressKeyPress = true;
                 ImagePreProcessingToolStripMenuItem_Click(null, null);
             }
-            // Ctrl + I || Shift + I (이탤릭 처리)
             else if (e.Modifiers == (Keys.Control | Keys.Shift) && e.KeyCode == Keys.I && (_ocrMethodIndex == _ocrMethodBinaryImageCompare || _ocrMethodIndex == _ocrMethodNocr))
             {
                 e.SuppressKeyPress = true;
@@ -7057,7 +7022,6 @@ namespace Nikse.SubtitleEdit.Forms.Ocr
                     pictureBoxSubtitleImage.Image = nBmp.GetBitmap();
                 }
             }
-            // Ctrl + H || Shift + H
             else if (e.Modifiers == (Keys.Control | Keys.Shift) && e.KeyCode == Keys.H && (_ocrMethodIndex == _ocrMethodBinaryImageCompare || _ocrMethodIndex == _ocrMethodNocr))
             {
                 e.SuppressKeyPress = true;
@@ -7077,7 +7041,6 @@ namespace Nikse.SubtitleEdit.Forms.Ocr
                     pictureBoxSubtitleImage.Image = nBmp.GetBitmap();
                 }
             }
-            // Ctrl + H ( 미리보기)
             else if (e.Modifiers == Keys.Control && e.KeyCode == Keys.H && (_ocrMethodIndex == _ocrMethodBinaryImageCompare || _ocrMethodIndex == _ocrMethodNocr))
             {
                 e.SuppressKeyPress = true;
@@ -8024,7 +7987,6 @@ namespace Nikse.SubtitleEdit.Forms.Ocr
             var parentBitmap = new NikseBitmap(bitmap);
             int minLineHeight = GetMinLineHeight();
             Cursor = Cursors.Default;
-            Boolean isReOpen = false;
             using (var inspect = new VobSubOcrCharacterInspect())
             {
                 do
@@ -8033,16 +7995,8 @@ namespace Nikse.SubtitleEdit.Forms.Ocr
                     var sourceList = NikseBitmapImageSplitter.SplitBitmapToLettersNew(parentBitmap, (int)numericUpDownPixelsIsSpace.Value, checkBoxRightToLeft.Checked, Configuration.Settings.VobSubOcr.TopToBottom, minLineHeight, _autoLineHeight);
                     var imageSources = CalcInspectMatches(sourceList, matches, parentBitmap);
                     inspect.Initialize(comboBoxCharacterDatabase.SelectedItem.ToString(), matches, imageSources, _binaryOcrDb, sourceList);
-                    this.SendCharacterInspectListIndex += new SendCharacterInspectListIndexHandler(inspect.setListBoxIndexItemsIndex);
-                    inspect.SendCharacterInspectListIndex += new ReceiveCharacterInspectListIndexHandler(this.setCharacterInspectListIndex);
-                    String listIndex = textBoxInspectLine.Text;
-                    if(listIndex == null || "".Equals(listIndex))
-                    {
-                        listIndex = "0";
-                    }
-                    SendCharacterInspectListIndex(listIndex);
                     var result = inspect.ShowDialog(this);
-                    if (result == DialogResult.OK || result == DialogResult.Retry)
+                    if (result == DialogResult.OK)
                     {
                         Cursor = Cursors.WaitCursor;
                         if (_binaryOcrDb != null)
@@ -8058,29 +8012,14 @@ namespace Nikse.SubtitleEdit.Forms.Ocr
                             LoadImageCompareBitmaps();
                             Cursor = Cursors.Default;
                         }
-                        if(result == DialogResult.Retry)
-                        {
-                            isReOpen = true;
-                        }
-                        else
-                        {
-                            textBoxInspectLine.Text = 0;
-                        }
                     }
                 } while (inspect.DeleteMultiMatch);
             }
 
             _binaryOcrDb?.LoadCompareImages();
             Cursor = Cursors.Default;
-            if(isReOpen)
-            {
-                InspectImageCompareMatchesForCurrentImageToolStripMenuItem_Click(null, null);
-            }
         }
-        private void setCharacterInspectListIndex(String listIndex)
-        {
-            textBoxInspectLine.Text = listIndex;
-        }
+
         private List<Bitmap> CalcInspectMatches(List<ImageSplitterItem> sourceList, List<CompareMatch> matches, NikseBitmap parentBitmap)
         {
             int index = 0;
@@ -8412,10 +8351,6 @@ namespace Nikse.SubtitleEdit.Forms.Ocr
                 DeleteToolStripMenuItemClick(sender, e);
                 e.SuppressKeyPress = true;
                 subtitleListView1.Focus();
-            }
-            else if (e.KeyCode == Keys.Enter)
-            {
-                subtitleListView1_DoubleClick(sender, e);
             }
         }
 
