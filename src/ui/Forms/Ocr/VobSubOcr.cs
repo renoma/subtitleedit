@@ -8064,7 +8064,7 @@ namespace Nikse.SubtitleEdit.Forms.Ocr
                         }
                         else
                         {
-                            textBoxInspectLine.Text = 0;
+                            textBoxInspectLine.Text = "0";
                         }
                     }
                 } while (inspect.DeleteMultiMatch);

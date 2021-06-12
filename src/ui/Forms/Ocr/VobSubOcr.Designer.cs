@@ -138,6 +138,7 @@ namespace Nikse.SubtitleEdit.Forms.Ocr
             this.groupBoxTransportStream = new System.Windows.Forms.GroupBox();
             this.checkBoxTransportStreamGetColorAndSplit = new System.Windows.Forms.CheckBox();
             this.checkBoxTransportStreamGrayscale = new System.Windows.Forms.CheckBox();
+            this.textBoxInspectLine = new System.Windows.Forms.TextBox();
             this.pictureBoxSubtitleImage = new System.Windows.Forms.PictureBox();
             this.contextMenuStripImage = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.autoTransparentBackgroundToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -167,7 +168,6 @@ namespace Nikse.SubtitleEdit.Forms.Ocr
             this.underlineToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.subtitleListView1 = new Nikse.SubtitleEdit.Controls.SubtitleListView();
             this.timerHideStatus = new System.Windows.Forms.Timer(this.components);
-            this.textBoxInspectLine = new System.Windows.Forms.TextBox();
             this.contextMenuStripListview.SuspendLayout();
             this.groupBoxOcrMethod.SuspendLayout();
             this.groupBoxNOCR.SuspendLayout();
@@ -1647,6 +1647,15 @@ namespace Nikse.SubtitleEdit.Forms.Ocr
             this.checkBoxTransportStreamGrayscale.UseVisualStyleBackColor = true;
             this.checkBoxTransportStreamGrayscale.CheckedChanged += new System.EventHandler(this.checkBoxTransportStreamGrayscale_CheckedChanged);
             // 
+            // textBoxInspectLine
+            // 
+            this.textBoxInspectLine.Location = new System.Drawing.Point(539, 0);
+            this.textBoxInspectLine.Name = "textBoxInspectLine";
+            this.textBoxInspectLine.ReadOnly = true;
+            this.textBoxInspectLine.Size = new System.Drawing.Size(24, 24);
+            this.textBoxInspectLine.TabIndex = 999;
+            this.textBoxInspectLine.Visible = false;
+            // 
             // pictureBoxSubtitleImage
             // 
             this.pictureBoxSubtitleImage.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -1938,14 +1947,6 @@ namespace Nikse.SubtitleEdit.Forms.Ocr
             // 
             this.timerHideStatus.Interval = 2000;
             this.timerHideStatus.Tick += new System.EventHandler(this.timerHideStatus_Tick);
-            // 
-            // textBoxInspectLine
-            // 
-            this.textBoxInspectLine.Location = new System.Drawing.Point(539, 0);
-            this.textBoxInspectLine.Name = "textBoxInspectLine";
-            this.textBoxInspectLine.ReadOnly = true;
-            this.textBoxInspectLine.Size = new System.Drawing.Size(24, 24);
-            this.textBoxInspectLine.TabIndex = 999;
             // 
             // VobSubOcr
             // 

@@ -704,7 +704,6 @@ namespace Nikse.SubtitleEdit.Forms.Ocr
             {
                 listBoxInspectItems.SelectedIndex = intIndex;
             }
-            //this.ActiveControl = this.textBoxText;
         }
     }
 }
