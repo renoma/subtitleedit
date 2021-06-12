@@ -4923,7 +4923,10 @@ namespace Nikse.SubtitleEdit.Forms.Ocr
             {
                 MergeDvbForEachSubImage();
             }
-
+            String dbFileName = "Latin.db";
+            string dbSourceFile = System.IO.Path.Combine(Configuration.OcrDirectory, dbFileName);
+            string dbBackupFile = System.IO.Path.Combine(Configuration.OcrDBBackupDirectory, dbFileName);
+            System.IO.File.Copy(dbSourceFile, dbBackupFile, true);
             DialogResult = DialogResult.OK;
         }
 

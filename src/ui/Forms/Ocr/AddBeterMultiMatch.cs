@@ -137,20 +137,18 @@ namespace Nikse.SubtitleEdit.Forms.Ocr
             {
                 buttonOK_Click(sender, e);
             }
-            else if (e.Modifiers == Keys.Control && e.KeyCode == Keys.Up)
+            else if ((e.Modifiers == Keys.Control || e.Modifiers == Keys.Alt) && e.KeyCode == Keys.Up)
             {
-                if (numericUpDownExpandCount.Value > listBoxInspectItems.Items.Count)
+                if (numericUpDownExpandCount.Value < listBoxInspectItems.Items.Count)
                 {
                     numericUpDownExpandCount.Value++;
-                    NumericUpDownExpandCountValueChanged(null, null);
                 }
             }
-            else if (e.Modifiers == Keys.Control && e.KeyCode == Keys.Down)
+            else if ((e.Modifiers == Keys.Control || e.Modifiers == Keys.Alt) && e.KeyCode == Keys.Down)
             {
                 if (numericUpDownExpandCount.Value > 2)
                 {
                     numericUpDownExpandCount.Value--;
-                    NumericUpDownExpandCountValueChanged(null, null);
                 }
             }
         }
@@ -163,26 +161,6 @@ namespace Nikse.SubtitleEdit.Forms.Ocr
         private void checkBoxItalic_CheckedChanged(object sender, System.EventArgs e)
         {
             ActiveControl = textBoxText;
-        }
-
-        private void textBoxText_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.Modifiers == Keys.Control && e.KeyCode == Keys.Up)
-            {
-                if (numericUpDownExpandCount.Value > listBoxInspectItems.Items.Count)
-                {
-                    numericUpDownExpandCount.Value++;
-                    NumericUpDownExpandCountValueChanged(null, null);
-                }
-            }
-            else if (e.Modifiers == Keys.Control && e.KeyCode == Keys.Down)
-            {
-                if (numericUpDownExpandCount.Value > 2)
-                {
-                    numericUpDownExpandCount.Value--;
-                    NumericUpDownExpandCountValueChanged(null, null);
-                }
-            }
         }
     }
 }

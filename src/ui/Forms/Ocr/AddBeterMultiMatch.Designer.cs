@@ -105,7 +105,6 @@
             this.textBoxText.Name = "textBoxText";
             this.textBoxText.Size = new System.Drawing.Size(132, 27);
             this.textBoxText.TabIndex = 1;
-            this.textBoxText.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBoxText_KeyDown);
             // 
             // numericUpDownExpandCount
             // 
