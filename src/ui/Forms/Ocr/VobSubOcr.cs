@@ -4925,7 +4925,7 @@ namespace Nikse.SubtitleEdit.Forms.Ocr
             }
             String dbFileName = "Latin.db";
             string dbSourceFile = System.IO.Path.Combine(Configuration.OcrDirectory, dbFileName);
-            string dbBackupFile = System.IO.Path.Combine(Configuration.OcrDBBackupDirectory, dbFileName);
+            string dbBackupFile = System.IO.Path.Combine(Configuration.OcrDBBackupDirectory, "Latin_" + @DateTime.Now.ToString("yyyyMMdd") + ".db");
             System.IO.File.Copy(dbSourceFile, dbBackupFile, true);
             DialogResult = DialogResult.OK;
         }
@@ -8045,7 +8045,7 @@ namespace Nikse.SubtitleEdit.Forms.Ocr
                     }
                     SendCharacterInspectListIndex(listIndex);
                     var result = inspect.ShowDialog(this);
-                    if (result == DialogResult.OK || result == DialogResult.Retry)
+                    if (result == DialogResult.OK || result == DialogResult.Retry || result == DialogResult.Yes || result == DialogResult.Ignore)
                     {
                         Cursor = Cursors.WaitCursor;
                         if (_binaryOcrDb != null)
@@ -8061,9 +8061,27 @@ namespace Nikse.SubtitleEdit.Forms.Ocr
                             LoadImageCompareBitmaps();
                             Cursor = Cursors.Default;
                         }
-                        if(result == DialogResult.Retry)
+                        if(result == DialogResult.Retry || result == DialogResult.Yes || result == DialogResult.Ignore)
                         {
                             isReOpen = true;
+                            if(result == DialogResult.Yes)
+                            {
+                                int selectedIndex = subtitleListView1.SelectedItems[0].Index;
+                                if (selectedIndex < subtitleListView1.Items.Count - 1)
+                                {
+                                    selectedIndex++;
+                                }
+                                subtitleListView1.SelectIndexAndEnsureVisible(selectedIndex);
+                            }
+                            else if(result == DialogResult.Ignore)
+                            {
+                                int selectedIndex = subtitleListView1.SelectedItems[0].Index;
+                                if (selectedIndex > 0)
+                                {
+                                    selectedIndex--;
+                                }
+                                subtitleListView1.SelectIndexAndEnsureVisible(selectedIndex);
+                            }
                         }
                         else
                         {

@@ -535,6 +535,14 @@ namespace Nikse.SubtitleEdit.Forms.Ocr
             {
                 ActiveControl = listBoxInspectItems;
             }
+            else if (e.KeyCode == Keys.PageDown)
+            {
+                DialogResult = DialogResult.Yes;
+            }
+            else if (e.KeyCode == Keys.PageUp)
+            {
+                DialogResult = DialogResult.Ignore;
+            }
             else if (e.Modifiers == Keys.None && e.KeyCode == Keys.Tab)
             {
                 if (ActiveControl == listBoxInspectItems)
