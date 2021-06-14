@@ -28,7 +28,7 @@ namespace Nikse.SubtitleEdit.Forms.Ocr
         private int _startIndex;
         int _extraCount;
 
-        internal void Initialize(int selectedIndex, List<VobSubOcr.CompareMatch> matches, List<ImageSplitterItem> splitterItems)
+        internal void Initialize(int selectedIndex, List<VobSubOcr.CompareMatch> matches, List<ImageSplitterItem> splitterItems, bool isItalic)
         {
             _startIndex = selectedIndex;
             for (int i = 0; i < selectedIndex; i++)
@@ -38,7 +38,7 @@ namespace Nikse.SubtitleEdit.Forms.Ocr
                     _extraCount += matches[i].Extra.Count - 1;
                 }
             }
-
+            checkBoxItalic.Checked = isItalic;
             _matches = matches;
             _splitterItems = splitterItems;
             int count = 0;

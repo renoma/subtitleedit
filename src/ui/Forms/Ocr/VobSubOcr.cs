@@ -4925,8 +4925,10 @@ namespace Nikse.SubtitleEdit.Forms.Ocr
             }
             String dbFileName = "Latin.db";
             string dbSourceFile = System.IO.Path.Combine(Configuration.OcrDirectory, dbFileName);
-            string dbBackupFile = System.IO.Path.Combine(Configuration.OcrDBBackupDirectory, "Latin_" + @DateTime.Now.ToString("yyyyMMdd") + ".db");
+            string dbBackupFile = System.IO.Path.Combine(Configuration.OcrDBBackupDirectory, dbFileName);
+            string dbBackupFileByDaily = System.IO.Path.Combine(Configuration.OcrDBBackupDirectory, "Latin_" + @DateTime.Now.ToString("yyyyMMdd") + ".db");
             System.IO.File.Copy(dbSourceFile, dbBackupFile, true);
+            System.IO.File.Copy(dbSourceFile, dbBackupFileByDaily, true);
             DialogResult = DialogResult.OK;
         }
 
@@ -8072,6 +8074,7 @@ namespace Nikse.SubtitleEdit.Forms.Ocr
                                     selectedIndex++;
                                 }
                                 subtitleListView1.SelectIndexAndEnsureVisible(selectedIndex);
+                                textBoxInspectLine.Text = "0";
                             }
                             else if(result == DialogResult.Ignore)
                             {
@@ -8081,6 +8084,7 @@ namespace Nikse.SubtitleEdit.Forms.Ocr
                                     selectedIndex--;
                                 }
                                 subtitleListView1.SelectIndexAndEnsureVisible(selectedIndex);
+                                textBoxInspectLine.Text = "0";
                             }
                         }
                         else

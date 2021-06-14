@@ -591,11 +591,16 @@ namespace Nikse.SubtitleEdit.Forms.Ocr
         {
             using (var form = new AddBeterMultiMatch())
             {
-                form.Initialize(listBoxInspectItems.SelectedIndex, _matches, _splitterItems);
+                form.Initialize(listBoxInspectItems.SelectedIndex, _matches, _splitterItems, checkBoxItalic.Checked);
                 if (form.ShowDialog(this) == DialogResult.OK)
                 {
                     _binOcrDb.Add(form.ExpandedMatch);
-                    SendCharacterInspectListIndex(listBoxInspectItems.SelectedIndex.ToString());
+                    int sendIndex = listBoxInspectItems.SelectedIndex + 1;
+                    if(sendIndex > listBoxInspectItems.Items.Count - 1)
+                    {
+                        sendIndex = listBoxInspectItems.Items.Count - 1;
+                    }
+                    SendCharacterInspectListIndex(sendIndex.ToString());
                     DialogResult = DialogResult.Retry;
                 }
             }
@@ -648,6 +653,15 @@ namespace Nikse.SubtitleEdit.Forms.Ocr
                 labelTextAssociatedWithImage.Font = new Font(labelTextAssociatedWithImage.Font.FontFamily, labelTextAssociatedWithImage.Font.Size);
                 textBoxText.Font = new Font(textBoxText.Font.FontFamily, textBoxText.Font.Size, FontStyle.Bold);
             }
+            try
+            {
+                ActiveControl = textBoxText;
+            }
+            catch (Exception ex)
+            {
+                
+            }
+            
         }
 
         private void textBoxText_KeyDown(object sender, KeyEventArgs e)
@@ -659,13 +673,16 @@ namespace Nikse.SubtitleEdit.Forms.Ocr
             }
             else if (e.KeyCode == Keys.Enter)
             {
-                if(buttonAddBetterMatch.Enabled == true)
+                if (!String.IsNullOrWhiteSpace(textBoxText.Text))
                 {
-                    buttonAddBetterMatch_Click(sender, e);
-                }
-                else if (buttonUpdate.Enabled == true)
-                {
-                    buttonUpdate_Click(sender, e);
+                    if (buttonAddBetterMatch.Enabled == true)
+                    {
+                        buttonAddBetterMatch_Click(sender, e);
+                    }
+                    else if (buttonUpdate.Enabled == true)
+                    {
+                        buttonUpdate_Click(sender, e);
+                    }
                 }
                 if (selectedIndex < listBoxInspectItems.Items.Count - 1) selectedIndex++;
                 listBoxInspectItems.SelectedIndex = selectedIndex;
@@ -681,6 +698,16 @@ namespace Nikse.SubtitleEdit.Forms.Ocr
             {
                 if (selectedIndex > 0) selectedIndex--;
                 listBoxInspectItems.SelectedIndex = selectedIndex;
+                ActiveControl = textBoxText;
+            }
+            else if (e.KeyCode == Keys.Home)
+            {
+                listBoxInspectItems.SelectedIndex = 0;
+                ActiveControl = textBoxText;
+            }
+            else if (e.KeyCode == Keys.End)
+            {
+                listBoxInspectItems.SelectedIndex = listBoxInspectItems.Items.Count - 1;
                 ActiveControl = textBoxText;
             }
         }
