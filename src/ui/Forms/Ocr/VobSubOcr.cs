@@ -8094,8 +8094,14 @@ namespace Nikse.SubtitleEdit.Forms.Ocr
                     }
                 } while (inspect.DeleteMultiMatch);
             }
-
-            _binaryOcrDb?.LoadCompareImages();
+            try
+            {
+                _binaryOcrDb?.LoadCompareImages();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
             Cursor = Cursors.Default;
             if(isReOpen)
             {

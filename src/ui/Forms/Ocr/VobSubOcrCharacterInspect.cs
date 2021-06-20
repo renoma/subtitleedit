@@ -428,10 +428,15 @@ namespace Nikse.SubtitleEdit.Forms.Ocr
                     }
                     bob = new BinaryOcrBitmap(nbmp, checkBoxItalic.Checked, 0, textBoxText.Text, x, y);
                 }
+                try
+                {
+                    _binOcrDb.Add(bob);
+                } catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                }
 
-                _binOcrDb.Add(bob);
-
-                int index = listBoxInspectItems.SelectedIndex;
+            int index = listBoxInspectItems.SelectedIndex;
                 _matches[index].Name = bob.Key;
                 _matches[index].ExpandCount = expandCount;
                 _matches[index].Italic = checkBoxItalic.Checked;
@@ -594,7 +599,13 @@ namespace Nikse.SubtitleEdit.Forms.Ocr
                 form.Initialize(listBoxInspectItems.SelectedIndex, _matches, _splitterItems, checkBoxItalic.Checked);
                 if (form.ShowDialog(this) == DialogResult.OK)
                 {
-                    _binOcrDb.Add(form.ExpandedMatch);
+                    try
+                    {
+                        _binOcrDb.Add(form.ExpandedMatch);
+                    } catch(Exception ex)
+                    {
+                        Console.WriteLine(ex.Message);
+                    }
                     int sendIndex = listBoxInspectItems.SelectedIndex + 1;
                     if(sendIndex > listBoxInspectItems.Items.Count - 1)
                     {
@@ -656,13 +667,12 @@ namespace Nikse.SubtitleEdit.Forms.Ocr
             try
             {
                 ActiveControl = textBoxText;
-            }
-            catch (Exception ex)
+            } catch(Exception ex)
             {
-                
+                Console.WriteLine(ex.Message);
             }
-            
-        }
+
+}
 
         private void textBoxText_KeyDown(object sender, KeyEventArgs e)
         {
