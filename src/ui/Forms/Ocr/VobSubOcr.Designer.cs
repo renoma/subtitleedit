@@ -153,6 +153,7 @@ namespace Nikse.SubtitleEdit.Forms.Ocr
             this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.splitContainerBottom = new System.Windows.Forms.SplitContainer();
+            this.checkBoxSkipOCRCharacter = new System.Windows.Forms.CheckBox();
             this.textBoxCurrentText = new Nikse.SubtitleEdit.Controls.SETextBox();
             this.contextMenuStripTextBox = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.cutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -1774,6 +1775,7 @@ namespace Nikse.SubtitleEdit.Forms.Ocr
             // 
             // splitContainerBottom.Panel1
             // 
+            this.splitContainerBottom.Panel1.Controls.Add(this.checkBoxSkipOCRCharacter);
             this.splitContainerBottom.Panel1.Controls.Add(this.checkBoxShowOnlyForced);
             this.splitContainerBottom.Panel1.Controls.Add(this.textBoxCurrentText);
             this.splitContainerBottom.Panel1.Controls.Add(this.groupBoxOCRControls);
@@ -1789,6 +1791,17 @@ namespace Nikse.SubtitleEdit.Forms.Ocr
             this.splitContainerBottom.Size = new System.Drawing.Size(1062, 333);
             this.splitContainerBottom.SplitterDistance = 658;
             this.splitContainerBottom.TabIndex = 39;
+            // 
+            // checkBoxSkipOCRCharacter
+            // 
+            this.checkBoxSkipOCRCharacter.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.checkBoxSkipOCRCharacter.AutoSize = true;
+            this.checkBoxSkipOCRCharacter.Location = new System.Drawing.Point(8, 291);
+            this.checkBoxSkipOCRCharacter.Name = "checkBoxSkipOCRCharacter";
+            this.checkBoxSkipOCRCharacter.Size = new System.Drawing.Size(252, 21);
+            this.checkBoxSkipOCRCharacter.TabIndex = 8;
+            this.checkBoxSkipOCRCharacter.Text = "Skip OCR Character and Only Check";
+            this.checkBoxSkipOCRCharacter.UseVisualStyleBackColor = true;
             // 
             // textBoxCurrentText
             // 
@@ -2174,5 +2187,6 @@ namespace Nikse.SubtitleEdit.Forms.Ocr
         private System.Windows.Forms.ToolStripMenuItem italicToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem underlineToolStripMenuItem1;
         private System.Windows.Forms.TextBox textBoxInspectLine;
+        private System.Windows.Forms.CheckBox checkBoxSkipOCRCharacter;
     }
 }

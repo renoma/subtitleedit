@@ -37,6 +37,7 @@ namespace Nikse.SubtitleEdit.Forms.Ocr
         private static readonly Color _listViewGreen = Configuration.Settings.General.UseDarkTheme ? Color.Green : Color.LightGreen;
         private static readonly Color _listViewYellow = Configuration.Settings.General.UseDarkTheme ? Color.FromArgb(218, 135, 32) : Color.Yellow;
         private static readonly Color _listViewOrange = Configuration.Settings.General.UseDarkTheme ? Color.OrangeRed : Color.Orange;
+        private static readonly Color _listViewRed = Color.IndianRed;
 
         public SendCharacterInspectListIndexHandler SendCharacterInspectListIndex;
         public string listIndex;
@@ -3800,6 +3801,7 @@ namespace Nikse.SubtitleEdit.Forms.Ocr
             bool expandSelection = false;
             bool shrinkSelection = false;
             var expandSelectionList = new List<ImageSplitterItem>();
+            bool isExistsUnknownCharacter = false;
             while (index < list.Count)
             {
                 var item = list[index];
@@ -3868,52 +3870,60 @@ namespace Nikse.SubtitleEdit.Forms.Ocr
                     _ocrCount++;
                     _ocrHeight += (item.NikseBitmap.Height - _ocrHeight) / _ocrCount;
                     var match = GetCompareMatchNew(item, out var bestGuess, list, index, _binaryOcrDb);
-                    if (match == null) // Try nOCR (line OCR) if no image compare match
+                    // 매칭되는 건이 없으면 nOCR 로 처리해보고 안되면 Inspect를 한다.
+/*                    if (match == null) // Try nOCR (line OCR) if no image compare match
                     {
                         if (_nOcrDb != null && _nOcrDb.OcrCharacters.Count > 0)
                         {
                             match = GetNOcrCompareMatchNew(item, parentBitmap, _nOcrDb, true, true, index, list);
                         }
                     }
-
+*/
+                    // 매칭되는 글자가 없으면 Inspect 창을 띄운다.
                     if (match == null)
                     {
-                        int nextIndex = index + 1;
-                        var allowExpand = nextIndex < list.Count && (list[nextIndex].SpecialCharacter != Environment.NewLine && list[nextIndex].SpecialCharacter != " ");
+                        if (!checkBoxSkipOCRCharacter.Checked)
+                        {
+                            int nextIndex = index + 1;
+                            var allowExpand = nextIndex < list.Count && (list[nextIndex].SpecialCharacter != Environment.NewLine && list[nextIndex].SpecialCharacter != " ");
 
-                        _vobSubOcrCharacter.Initialize(bitmap, item, _manualOcrDialogPosition, _italicCheckedLast, false, bestGuess, _lastAdditions, this, allowExpand);
-                        DialogResult result = _vobSubOcrCharacter.ShowDialog(this);
-                        _manualOcrDialogPosition = _vobSubOcrCharacter.FormPosition;
+                            _vobSubOcrCharacter.Initialize(bitmap, item, _manualOcrDialogPosition, _italicCheckedLast, false, bestGuess, _lastAdditions, this, allowExpand);
+                            DialogResult result = _vobSubOcrCharacter.ShowDialog(this);
+                            _manualOcrDialogPosition = _vobSubOcrCharacter.FormPosition;
 
-                        if (result == DialogResult.Cancel && _vobSubOcrCharacter.SkipImage)
-                        {
-                            break;
-                        }
+                            if (result == DialogResult.Cancel && _vobSubOcrCharacter.SkipImage)
+                            {
+                                break;
+                            }
 
-                        if (result == DialogResult.OK && _vobSubOcrCharacter.ExpandSelection)
-                        {
-                            expandSelectionList.Add(item);
-                            expandSelection = true;
-                        }
-                        else if (result == DialogResult.OK)
-                        {
-                            string text = _vobSubOcrCharacter.ManualRecognizedCharacters;
-                            string name = SaveCompareItemNew(item, text, _vobSubOcrCharacter.IsItalic, null);
-                            var addition = new ImageCompareAddition(name, text, item.NikseBitmap, _vobSubOcrCharacter.IsItalic, listViewIndex);
-                            _lastAdditions.Add(addition);
-                            matches.Add(new CompareMatch(text, _vobSubOcrCharacter.IsItalic, 0, null, item));
-                            SetBinOcrLowercaseUppercase(item.NikseBitmap.Height, text);
-                        }
-                        else if (result == DialogResult.Abort)
-                        {
-                            _abort = true;
-                        }
-                        else
-                        {
-                            matches.Add(new CompareMatch("*", false, 0, null, item));
-                        }
+                            if (result == DialogResult.OK && _vobSubOcrCharacter.ExpandSelection)
+                            {
+                                expandSelectionList.Add(item);
+                                expandSelection = true;
+                            }
+                            else if (result == DialogResult.OK)
+                            {
+                                string text = _vobSubOcrCharacter.ManualRecognizedCharacters;
+                                string name = SaveCompareItemNew(item, text, _vobSubOcrCharacter.IsItalic, null);
+                                var addition = new ImageCompareAddition(name, text, item.NikseBitmap, _vobSubOcrCharacter.IsItalic, listViewIndex);
+                                _lastAdditions.Add(addition);
+                                matches.Add(new CompareMatch(text, _vobSubOcrCharacter.IsItalic, 0, null, item));
+                                SetBinOcrLowercaseUppercase(item.NikseBitmap.Height, text);
+                            }
+                            else if (result == DialogResult.Abort)
+                            {
+                                _abort = true;
+                            }
+                            else
+                            {
+                                matches.Add(new CompareMatch("*", false, 0, null, item));
+                            }
 
-                        _italicCheckedLast = _vobSubOcrCharacter.IsItalic;
+                            _italicCheckedLast = _vobSubOcrCharacter.IsItalic;
+                        } else
+                        {
+                            isExistsUnknownCharacter = true;
+                        }
                     }
                     else // found image match
                     {
@@ -3941,7 +3951,6 @@ namespace Nikse.SubtitleEdit.Forms.Ocr
                     expandSelectionList = new List<ImageSplitterItem>();
                 }
             }
-
             string line = MatchesToItalicStringConverter.GetStringWithItalicTags(matches);
 
             if (checkBoxAutoFixCommonErrors.Checked && _ocrFixEngine != null)
@@ -4059,7 +4068,15 @@ namespace Nikse.SubtitleEdit.Forms.Ocr
                 labelFixesMade.Text = $" - {_tesseractOcrAutoFixes}";
                 LogOcrFix(listViewIndex, textWithOutFixes, line);
             }
-
+            if (isExistsUnknownCharacter)
+            {
+                line = "<Unknown Character Exists>" + line;
+                subtitleListView1.SetBackgroundColor(listViewIndex, _listViewRed);
+            }
+            else
+            {
+                subtitleListView1.SetBackgroundColor(listViewIndex, _listViewGreen);
+            }
             return line;
         }
 
@@ -5010,7 +5027,7 @@ namespace Nikse.SubtitleEdit.Forms.Ocr
             CleanLogsGreaterThanOrEqualTo(numericUpDownStartNumber.Value);
 
             int max = GetSubtitleCount();
-
+            // OCR 방법이 테서랙트일 때
             if ((_ocrMethodIndex == _ocrMethodTesseract4 || _ocrMethodIndex == _ocrMethodTesseract302) &&
                 _tesseractAsyncStrings == null)
             {
@@ -5018,6 +5035,7 @@ namespace Nikse.SubtitleEdit.Forms.Ocr
                 _tesseractAsyncStrings = new string[max];
                 _tesseractAsyncIndex = (int)numericUpDownStartNumber.Value + 5;
             }
+            // OCR 방법이 NOCR
             else if (_ocrMethodIndex == _ocrMethodNocr)
             {
                 if (_nOcrDb == null)
@@ -5045,6 +5063,7 @@ namespace Nikse.SubtitleEdit.Forms.Ocr
 
                 InitializeNOcrThreads(max);
             }
+            // OCR 방법이 바이너리 이미지 비교
             else if (_ocrMethodIndex == _ocrMethodBinaryImageCompare)
             {
                 if (_binaryOcrDb == null)
@@ -5396,14 +5415,17 @@ namespace Nikse.SubtitleEdit.Forms.Ocr
             }
 
             string text = string.Empty;
+            // 바이너리 이미지 비교
             if (_ocrMethodIndex == _ocrMethodBinaryImageCompare)
             {
                 text = SplitAndOcrBinaryImageCompare(bmp, i);
             }
+            // NOCR
             else if (_ocrMethodIndex == _ocrMethodNocr)
             {
                 text = OcrViaNOCR(bmp, i);
             }
+            // 
             else if (_ocrMethodIndex == _ocrMethodModi)
             {
                 text = CallModi(i);
