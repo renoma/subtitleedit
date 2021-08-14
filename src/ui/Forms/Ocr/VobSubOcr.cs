@@ -41,6 +41,7 @@ namespace Nikse.SubtitleEdit.Forms.Ocr
 
         public SendCharacterInspectListIndexHandler SendCharacterInspectListIndex;
         public string listIndex;
+        private int _binaryOcrDbAddCount = 0;
 
         internal class CompareItem
         {
@@ -3722,14 +3723,20 @@ namespace Nikse.SubtitleEdit.Forms.Ocr
                 }
 
                 _binaryOcrDb.Add(bob);
-                _binaryOcrDb.Save();
+                _binaryOcrDbAddCount++;
+                /*
+                saveBinaryOcrDb();
+                */
                 return bob.Key;
             }
             else
             {
                 var bob = new BinaryOcrBitmap(newTarget.NikseBitmap, isItalic, expandCount, text, newTarget.X, newTarget.Top);
                 _binaryOcrDb.Add(bob);
-                _binaryOcrDb.Save();
+                _binaryOcrDbAddCount++;
+                /*
+                saveBinaryOcrDb();
+                */
                 return bob.Key;
             }
         }
@@ -3801,7 +3808,7 @@ namespace Nikse.SubtitleEdit.Forms.Ocr
             bool expandSelection = false;
             bool shrinkSelection = false;
             var expandSelectionList = new List<ImageSplitterItem>();
-            bool isExistsUnknownCharacter = false;
+            int cntExistsUnknownCharacters = 0;
             while (index < list.Count)
             {
                 var item = list[index];
@@ -3922,7 +3929,7 @@ namespace Nikse.SubtitleEdit.Forms.Ocr
                             _italicCheckedLast = _vobSubOcrCharacter.IsItalic;
                         } else
                         {
-                            isExistsUnknownCharacter = true;
+                            cntExistsUnknownCharacters++;
                         }
                     }
                     else // found image match
@@ -3949,6 +3956,10 @@ namespace Nikse.SubtitleEdit.Forms.Ocr
                 {
                     shrinkSelection = false;
                     expandSelectionList = new List<ImageSplitterItem>();
+                }
+                if (_binaryOcrDbAddCount > ((int)numericUpDownNumberOfOcrDbAddCount.Value))
+                {
+                    saveBinaryOcrDb();
                 }
             }
             string line = MatchesToItalicStringConverter.GetStringWithItalicTags(matches);
@@ -4068,9 +4079,9 @@ namespace Nikse.SubtitleEdit.Forms.Ocr
                 labelFixesMade.Text = $" - {_tesseractOcrAutoFixes}";
                 LogOcrFix(listViewIndex, textWithOutFixes, line);
             }
-            if (isExistsUnknownCharacter)
+            if (cntExistsUnknownCharacters > 0)
             {
-                line = "<Unknown Character Exists>" + line;
+                line = "<" + cntExistsUnknownCharacters + " Unknown Character Exists>" + line;
                 subtitleListView1.SetBackgroundColor(listViewIndex, _listViewRed);
             }
             else
@@ -4935,6 +4946,7 @@ namespace Nikse.SubtitleEdit.Forms.Ocr
 
         private void ButtonOkClick(object sender, EventArgs e)
         {
+            saveBinaryOcrDb();
             _okClicked = true; // don't ask about discard changes
             if (_dvbSubtitles != null && _transportStreamUseColor)
             {
@@ -5371,6 +5383,7 @@ namespace Nikse.SubtitleEdit.Forms.Ocr
         {
             if (i >= max)
             {
+                saveBinaryOcrDb();
                 SetButtonsEnabledAfterOcrDone();
                 _mainOcrRunning = false;
                 return true;
@@ -6914,7 +6927,7 @@ namespace Nikse.SubtitleEdit.Forms.Ocr
                 {
                     if (_binaryOcrDb != null)
                     {
-                        _binaryOcrDb.Save();
+                        saveBinaryOcrDb();
                     }
 
                     return result;
@@ -7015,6 +7028,11 @@ namespace Nikse.SubtitleEdit.Forms.Ocr
                 e.SuppressKeyPress = true;
                 SelectBestImageCompareDatabase();
             }
+            // Ctrl + S
+            else if (e.Modifiers == Keys.Control && e.KeyCode == Keys.S)
+            {
+                saveBinaryOcrDb();
+            }
             // Ctrl + T
             else if (e.Modifiers == Keys.Control && e.KeyCode == Keys.T)
             {
@@ -7038,6 +7056,12 @@ namespace Nikse.SubtitleEdit.Forms.Ocr
             {
                 e.SuppressKeyPress = true;
                 FindNext();
+            }
+            // F4
+            else if (e.Modifiers == Keys.None && e.KeyCode == Keys.F4)
+            {
+                e.SuppressKeyPress = true;
+                FindUnknownCharcter();
             }
             // F5
             else if (e.Modifiers == Keys.None && e.KeyCode == Keys.F5)
@@ -7186,7 +7210,21 @@ namespace Nikse.SubtitleEdit.Forms.Ocr
                 subtitleListView1.SelectIndexAndEnsureVisible(_findHelper.SelectedIndex, true);
             }
         }
+        private void FindUnknownCharcter()
+        {
+            using (var findDialog = new FindDialog(_subtitle))
+            {
+                var idx = _selectedIndex + 1;
 
+                findDialog.Initialize("Unknown Character Exists", _findHelper);
+                //findDialog.ShowDialog(this);
+                _findHelper = findDialog.GetFindDialogHelper(idx);
+                if (_findHelper.Find(_subtitle, null, idx + 1))
+                {
+                    subtitleListView1.SelectIndexAndEnsureVisible(_findHelper.SelectedIndex, true);
+                }
+            }
+        }
         private void ComboBoxTesseractLanguagesSelectedIndexChanged(object sender, EventArgs e)
         {
             var l = (comboBoxTesseractLanguages.SelectedItem as TesseractLanguage).Id;
@@ -8074,7 +8112,7 @@ namespace Nikse.SubtitleEdit.Forms.Ocr
                         Cursor = Cursors.WaitCursor;
                         if (_binaryOcrDb != null)
                         {
-                            _binaryOcrDb.Save();
+                            saveBinaryOcrDb();
                             Cursor = Cursors.Default;
                         }
                         else
@@ -8200,7 +8238,7 @@ namespace Nikse.SubtitleEdit.Forms.Ocr
                     _lastAdditions = formVobSubEditCharacters.Additions;
                     if (_binaryOcrDb != null)
                     {
-                        _binaryOcrDb.Save();
+                        saveBinaryOcrDb();
                     }
                 }
             }
@@ -9773,7 +9811,18 @@ namespace Nikse.SubtitleEdit.Forms.Ocr
                 tb.SelectionLength = text.Length;
             }
         }
-
+        private void saveBinaryOcrDb ()
+        {
+            try
+            {
+                _binaryOcrDb.Save();
+                _binaryOcrDbAddCount = 0;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+        }
         private void boldToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             TextBoxListViewToggleTag(HtmlUtil.TagBold);
