@@ -3944,6 +3944,10 @@ namespace Nikse.SubtitleEdit.Forms.Ocr
 
                 if (_abort)
                 {
+                    if (cntExistsUnknownCharacters > 0)
+                    {
+                        saveBinaryOcrDb();
+                    }
                     return MatchesToItalicStringConverter.GetStringWithItalicTags(matches);
                 }
 
