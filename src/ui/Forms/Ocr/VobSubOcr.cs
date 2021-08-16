@@ -3944,7 +3944,7 @@ namespace Nikse.SubtitleEdit.Forms.Ocr
 
                 if (_abort)
                 {
-                    if (cntExistsUnknownCharacters > 0)
+                    if (_binaryOcrDbAddCount > 0)
                     {
                         saveBinaryOcrDb();
                     }
@@ -5387,7 +5387,10 @@ namespace Nikse.SubtitleEdit.Forms.Ocr
         {
             if (i >= max)
             {
-                saveBinaryOcrDb();
+                if(_binaryOcrDbAddCount > 0)
+                {
+                    saveBinaryOcrDb();
+                }
                 SetButtonsEnabledAfterOcrDone();
                 _mainOcrRunning = false;
                 return true;

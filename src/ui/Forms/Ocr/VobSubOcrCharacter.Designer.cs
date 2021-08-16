@@ -29,21 +29,24 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle145 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle161 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle162 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle146 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle147 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle148 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle149 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle150 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle151 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle152 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle153 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle154 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle155 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle156 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle157 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle158 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle159 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle160 = new System.Windows.Forms.DataGridViewCellStyle();
             this.buttonOK = new System.Windows.Forms.Button();
             this.buttonSkip = new System.Windows.Forms.Button();
             this.pictureBoxSubtitleImage = new System.Windows.Forms.PictureBox();
@@ -89,7 +92,7 @@
             // 
             this.buttonOK.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.buttonOK.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.buttonOK.Location = new System.Drawing.Point(329, 373);
+            this.buttonOK.Location = new System.Drawing.Point(758, 698);
             this.buttonOK.Name = "buttonOK";
             this.buttonOK.Size = new System.Drawing.Size(75, 23);
             this.buttonOK.TabIndex = 2;
@@ -102,7 +105,7 @@
             this.buttonSkip.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.buttonSkip.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.buttonSkip.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.buttonSkip.Location = new System.Drawing.Point(410, 373);
+            this.buttonSkip.Location = new System.Drawing.Point(839, 698);
             this.buttonSkip.Name = "buttonSkip";
             this.buttonSkip.Size = new System.Drawing.Size(75, 23);
             this.buttonSkip.TabIndex = 3;
@@ -116,9 +119,9 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBoxSubtitleImage.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBoxSubtitleImage.Location = new System.Drawing.Point(12, 35);
+            this.pictureBoxSubtitleImage.Location = new System.Drawing.Point(12, 50);
             this.pictureBoxSubtitleImage.Name = "pictureBoxSubtitleImage";
-            this.pictureBoxSubtitleImage.Size = new System.Drawing.Size(554, 164);
+            this.pictureBoxSubtitleImage.Size = new System.Drawing.Size(983, 200);
             this.pictureBoxSubtitleImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBoxSubtitleImage.TabIndex = 12;
             this.pictureBoxSubtitleImage.TabStop = false;
@@ -128,9 +131,9 @@
             this.labelCharactersAsText.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.labelCharactersAsText.AutoSize = true;
             this.labelCharactersAsText.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelCharactersAsText.Location = new System.Drawing.Point(10, 323);
+            this.labelCharactersAsText.Location = new System.Drawing.Point(8, 326);
             this.labelCharactersAsText.Name = "labelCharactersAsText";
-            this.labelCharactersAsText.Size = new System.Drawing.Size(122, 13);
+            this.labelCharactersAsText.Size = new System.Drawing.Size(146, 17);
             this.labelCharactersAsText.TabIndex = 17;
             this.labelCharactersAsText.Text = "Character(s) as text";
             // 
@@ -138,26 +141,28 @@
             // 
             this.textBoxCharacters.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.textBoxCharacters.ContextMenuStrip = this.contextMenuStripLetters;
-            this.textBoxCharacters.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxCharacters.Location = new System.Drawing.Point(10, 341);
+            this.textBoxCharacters.Font = new System.Drawing.Font("Tahoma", 160.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBoxCharacters.Location = new System.Drawing.Point(11, 357);
             this.textBoxCharacters.Name = "textBoxCharacters";
-            this.textBoxCharacters.Size = new System.Drawing.Size(225, 27);
+            this.textBoxCharacters.Size = new System.Drawing.Size(462, 330);
             this.textBoxCharacters.TabIndex = 0;
+            this.textBoxCharacters.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.textBoxCharacters.TextChanged += new System.EventHandler(this.textBoxCharacters_TextChanged);
             this.textBoxCharacters.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TextBoxCharactersKeyDown);
             // 
             // contextMenuStripLetters
             // 
+            this.contextMenuStripLetters.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.contextMenuStripLetters.Name = "contextMenuStripLetters";
-            this.contextMenuStripLetters.Size = new System.Drawing.Size(181, 26);
+            this.contextMenuStripLetters.Size = new System.Drawing.Size(61, 4);
             // 
             // pictureBoxCharacter
             // 
-            this.pictureBoxCharacter.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.pictureBoxCharacter.Location = new System.Drawing.Point(12, 271);
+            this.pictureBoxCharacter.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.pictureBoxCharacter.Location = new System.Drawing.Point(497, 422);
             this.pictureBoxCharacter.Name = "pictureBoxCharacter";
-            this.pictureBoxCharacter.Size = new System.Drawing.Size(99, 47);
-            this.pictureBoxCharacter.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.pictureBoxCharacter.Size = new System.Drawing.Size(497, 200);
+            this.pictureBoxCharacter.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBoxCharacter.TabIndex = 18;
             this.pictureBoxCharacter.TabStop = false;
             // 
@@ -166,9 +171,9 @@
             this.labelCharacters.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.labelCharacters.AutoSize = true;
             this.labelCharacters.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelCharacters.Location = new System.Drawing.Point(10, 250);
+            this.labelCharacters.Location = new System.Drawing.Point(568, 326);
             this.labelCharacters.Name = "labelCharacters";
-            this.labelCharacters.Size = new System.Drawing.Size(79, 13);
+            this.labelCharacters.Size = new System.Drawing.Size(95, 17);
             this.labelCharacters.TabIndex = 19;
             this.labelCharacters.Text = "Character(s)";
             // 
@@ -177,7 +182,7 @@
             this.buttonAbort.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.buttonAbort.DialogResult = System.Windows.Forms.DialogResult.Abort;
             this.buttonAbort.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.buttonAbort.Location = new System.Drawing.Point(491, 373);
+            this.buttonAbort.Location = new System.Drawing.Point(920, 698);
             this.buttonAbort.Name = "buttonAbort";
             this.buttonAbort.Size = new System.Drawing.Size(75, 23);
             this.buttonAbort.TabIndex = 4;
@@ -189,9 +194,9 @@
             this.checkBoxItalic.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.checkBoxItalic.AutoSize = true;
             this.checkBoxItalic.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkBoxItalic.Location = new System.Drawing.Point(243, 349);
+            this.checkBoxItalic.Location = new System.Drawing.Point(409, 326);
             this.checkBoxItalic.Name = "checkBoxItalic";
-            this.checkBoxItalic.Size = new System.Drawing.Size(55, 17);
+            this.checkBoxItalic.Size = new System.Drawing.Size(64, 21);
             this.checkBoxItalic.TabIndex = 1;
             this.checkBoxItalic.Text = "&Italic";
             this.checkBoxItalic.UseVisualStyleBackColor = true;
@@ -201,7 +206,7 @@
             // 
             this.buttonExpandSelection.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.buttonExpandSelection.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.buttonExpandSelection.Location = new System.Drawing.Point(453, 4);
+            this.buttonExpandSelection.Location = new System.Drawing.Point(882, 4);
             this.buttonExpandSelection.Name = "buttonExpandSelection";
             this.buttonExpandSelection.Size = new System.Drawing.Size(112, 23);
             this.buttonExpandSelection.TabIndex = 20;
@@ -213,7 +218,7 @@
             // 
             this.buttonShrinkSelection.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.buttonShrinkSelection.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.buttonShrinkSelection.Location = new System.Drawing.Point(335, 4);
+            this.buttonShrinkSelection.Location = new System.Drawing.Point(764, 4);
             this.buttonShrinkSelection.Name = "buttonShrinkSelection";
             this.buttonShrinkSelection.Size = new System.Drawing.Size(112, 23);
             this.buttonShrinkSelection.TabIndex = 21;
@@ -225,7 +230,7 @@
             // 
             this.buttonLastEdit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.buttonLastEdit.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.buttonLastEdit.Location = new System.Drawing.Point(329, 345);
+            this.buttonLastEdit.Location = new System.Drawing.Point(758, 670);
             this.buttonLastEdit.Name = "buttonLastEdit";
             this.buttonLastEdit.Size = new System.Drawing.Size(156, 23);
             this.buttonLastEdit.TabIndex = 22;
@@ -236,7 +241,7 @@
             // pictureBoxLastEdit
             // 
             this.pictureBoxLastEdit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.pictureBoxLastEdit.Location = new System.Drawing.Point(491, 345);
+            this.pictureBoxLastEdit.Location = new System.Drawing.Point(920, 670);
             this.pictureBoxLastEdit.Name = "pictureBoxLastEdit";
             this.pictureBoxLastEdit.Size = new System.Drawing.Size(39, 21);
             this.pictureBoxLastEdit.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
@@ -247,7 +252,7 @@
             // 
             this.buttonGuess.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.buttonGuess.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.buttonGuess.Location = new System.Drawing.Point(211, 373);
+            this.buttonGuess.Location = new System.Drawing.Point(211, 698);
             this.buttonGuess.Name = "buttonGuess";
             this.buttonGuess.Size = new System.Drawing.Size(112, 23);
             this.buttonGuess.TabIndex = 24;
@@ -260,9 +265,9 @@
             this.checkBoxAutoSubmitOfFirstChar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.checkBoxAutoSubmitOfFirstChar.AutoSize = true;
             this.checkBoxAutoSubmitOfFirstChar.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkBoxAutoSubmitOfFirstChar.Location = new System.Drawing.Point(12, 380);
+            this.checkBoxAutoSubmitOfFirstChar.Location = new System.Drawing.Point(12, 701);
             this.checkBoxAutoSubmitOfFirstChar.Name = "checkBoxAutoSubmitOfFirstChar";
-            this.checkBoxAutoSubmitOfFirstChar.Size = new System.Drawing.Size(166, 17);
+            this.checkBoxAutoSubmitOfFirstChar.Size = new System.Drawing.Size(202, 21);
             this.checkBoxAutoSubmitOfFirstChar.TabIndex = 25;
             this.checkBoxAutoSubmitOfFirstChar.Text = "A&uto submit on first char";
             this.checkBoxAutoSubmitOfFirstChar.UseVisualStyleBackColor = true;
@@ -274,9 +279,9 @@
             this.labelItalicOn.AutoSize = true;
             this.labelItalicOn.Font = new System.Drawing.Font("Tahoma", 24F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelItalicOn.ForeColor = System.Drawing.Color.Red;
-            this.labelItalicOn.Location = new System.Drawing.Point(193, -1);
+            this.labelItalicOn.Location = new System.Drawing.Point(408, -1);
             this.labelItalicOn.Name = "labelItalicOn";
-            this.labelItalicOn.Size = new System.Drawing.Size(101, 39);
+            this.labelItalicOn.Size = new System.Drawing.Size(125, 48);
             this.labelItalicOn.TabIndex = 26;
             this.labelItalicOn.Text = "Italic";
             // 
@@ -290,6 +295,14 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dataGridView1.BackgroundColor = System.Drawing.Color.DimGray;
             this.dataGridView1.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            dataGridViewCellStyle145.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle145.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle145.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle145.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle145.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle145.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle145.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle145;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.ColumnHeadersVisible = false;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -308,24 +321,42 @@
             this.Column13,
             this.Column14,
             this.Column15});
+            dataGridViewCellStyle161.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle161.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle161.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle161.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle161.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle161.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle161.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle161;
             this.dataGridView1.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
-            this.dataGridView1.Location = new System.Drawing.Point(12, 199);
+            this.dataGridView1.Location = new System.Drawing.Point(10, 266);
             this.dataGridView1.MultiSelect = false;
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
+            dataGridViewCellStyle162.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle162.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle162.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle162.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle162.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle162.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle162.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle162;
             this.dataGridView1.RowHeadersVisible = false;
+            this.dataGridView1.RowHeadersWidth = 51;
             this.dataGridView1.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.dataGridView1.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(553, 49);
+            this.dataGridView1.Size = new System.Drawing.Size(666, 49);
             this.dataGridView1.TabIndex = 27;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
             // Column1
             // 
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.Column1.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle146.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.Column1.DefaultCellStyle = dataGridViewCellStyle146;
             this.Column1.HeaderText = "Column1";
+            this.Column1.MinimumWidth = 6;
             this.Column1.Name = "Column1";
             this.Column1.ReadOnly = true;
             this.Column1.Resizable = System.Windows.Forms.DataGridViewTriState.False;
@@ -333,9 +364,10 @@
             // 
             // Column2
             // 
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.Column2.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle147.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.Column2.DefaultCellStyle = dataGridViewCellStyle147;
             this.Column2.HeaderText = "Column2";
+            this.Column2.MinimumWidth = 6;
             this.Column2.Name = "Column2";
             this.Column2.ReadOnly = true;
             this.Column2.Resizable = System.Windows.Forms.DataGridViewTriState.False;
@@ -343,9 +375,10 @@
             // 
             // Column3
             // 
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.Column3.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle148.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.Column3.DefaultCellStyle = dataGridViewCellStyle148;
             this.Column3.HeaderText = "Column3";
+            this.Column3.MinimumWidth = 6;
             this.Column3.Name = "Column3";
             this.Column3.ReadOnly = true;
             this.Column3.Resizable = System.Windows.Forms.DataGridViewTriState.False;
@@ -353,9 +386,10 @@
             // 
             // Column4
             // 
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.Column4.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle149.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.Column4.DefaultCellStyle = dataGridViewCellStyle149;
             this.Column4.HeaderText = "Column4";
+            this.Column4.MinimumWidth = 6;
             this.Column4.Name = "Column4";
             this.Column4.ReadOnly = true;
             this.Column4.Resizable = System.Windows.Forms.DataGridViewTriState.False;
@@ -363,9 +397,10 @@
             // 
             // Column5
             // 
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.Column5.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle150.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.Column5.DefaultCellStyle = dataGridViewCellStyle150;
             this.Column5.HeaderText = "Column5";
+            this.Column5.MinimumWidth = 6;
             this.Column5.Name = "Column5";
             this.Column5.ReadOnly = true;
             this.Column5.Resizable = System.Windows.Forms.DataGridViewTriState.False;
@@ -373,9 +408,10 @@
             // 
             // Column6
             // 
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.Column6.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle151.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.Column6.DefaultCellStyle = dataGridViewCellStyle151;
             this.Column6.HeaderText = "Column6";
+            this.Column6.MinimumWidth = 6;
             this.Column6.Name = "Column6";
             this.Column6.ReadOnly = true;
             this.Column6.Resizable = System.Windows.Forms.DataGridViewTriState.False;
@@ -383,9 +419,10 @@
             // 
             // Column7
             // 
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.Column7.DefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle152.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.Column7.DefaultCellStyle = dataGridViewCellStyle152;
             this.Column7.HeaderText = "Column7";
+            this.Column7.MinimumWidth = 6;
             this.Column7.Name = "Column7";
             this.Column7.ReadOnly = true;
             this.Column7.Resizable = System.Windows.Forms.DataGridViewTriState.False;
@@ -393,9 +430,10 @@
             // 
             // Column8
             // 
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.Column8.DefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle153.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.Column8.DefaultCellStyle = dataGridViewCellStyle153;
             this.Column8.HeaderText = "Column8";
+            this.Column8.MinimumWidth = 6;
             this.Column8.Name = "Column8";
             this.Column8.ReadOnly = true;
             this.Column8.Resizable = System.Windows.Forms.DataGridViewTriState.False;
@@ -403,9 +441,10 @@
             // 
             // Column9
             // 
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.Column9.DefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle154.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.Column9.DefaultCellStyle = dataGridViewCellStyle154;
             this.Column9.HeaderText = "Column9";
+            this.Column9.MinimumWidth = 6;
             this.Column9.Name = "Column9";
             this.Column9.ReadOnly = true;
             this.Column9.Resizable = System.Windows.Forms.DataGridViewTriState.False;
@@ -413,9 +452,10 @@
             // 
             // Column10
             // 
-            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.Column10.DefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle155.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.Column10.DefaultCellStyle = dataGridViewCellStyle155;
             this.Column10.HeaderText = "Column10";
+            this.Column10.MinimumWidth = 6;
             this.Column10.Name = "Column10";
             this.Column10.ReadOnly = true;
             this.Column10.Resizable = System.Windows.Forms.DataGridViewTriState.False;
@@ -423,9 +463,10 @@
             // 
             // Column11
             // 
-            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.Column11.DefaultCellStyle = dataGridViewCellStyle11;
+            dataGridViewCellStyle156.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.Column11.DefaultCellStyle = dataGridViewCellStyle156;
             this.Column11.HeaderText = "Column11";
+            this.Column11.MinimumWidth = 6;
             this.Column11.Name = "Column11";
             this.Column11.ReadOnly = true;
             this.Column11.Resizable = System.Windows.Forms.DataGridViewTriState.False;
@@ -433,9 +474,10 @@
             // 
             // Column12
             // 
-            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.Column12.DefaultCellStyle = dataGridViewCellStyle12;
+            dataGridViewCellStyle157.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.Column12.DefaultCellStyle = dataGridViewCellStyle157;
             this.Column12.HeaderText = "Column12";
+            this.Column12.MinimumWidth = 6;
             this.Column12.Name = "Column12";
             this.Column12.ReadOnly = true;
             this.Column12.Resizable = System.Windows.Forms.DataGridViewTriState.False;
@@ -443,9 +485,10 @@
             // 
             // Column13
             // 
-            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.Column13.DefaultCellStyle = dataGridViewCellStyle13;
+            dataGridViewCellStyle158.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.Column13.DefaultCellStyle = dataGridViewCellStyle158;
             this.Column13.HeaderText = "Column13";
+            this.Column13.MinimumWidth = 6;
             this.Column13.Name = "Column13";
             this.Column13.ReadOnly = true;
             this.Column13.Resizable = System.Windows.Forms.DataGridViewTriState.False;
@@ -453,9 +496,10 @@
             // 
             // Column14
             // 
-            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.Column14.DefaultCellStyle = dataGridViewCellStyle14;
+            dataGridViewCellStyle159.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.Column14.DefaultCellStyle = dataGridViewCellStyle159;
             this.Column14.HeaderText = "Column14";
+            this.Column14.MinimumWidth = 6;
             this.Column14.Name = "Column14";
             this.Column14.ReadOnly = true;
             this.Column14.Resizable = System.Windows.Forms.DataGridViewTriState.False;
@@ -463,9 +507,10 @@
             // 
             // Column15
             // 
-            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.Column15.DefaultCellStyle = dataGridViewCellStyle15;
+            dataGridViewCellStyle160.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.Column15.DefaultCellStyle = dataGridViewCellStyle160;
             this.Column15.HeaderText = "Column15";
+            this.Column15.MinimumWidth = 6;
             this.Column15.Name = "Column15";
             this.Column15.ReadOnly = true;
             this.Column15.Resizable = System.Windows.Forms.DataGridViewTriState.False;
@@ -477,9 +522,9 @@
             this.labelItalicOn2.AutoSize = true;
             this.labelItalicOn2.Font = new System.Drawing.Font("Tahoma", 24F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelItalicOn2.ForeColor = System.Drawing.Color.Red;
-            this.labelItalicOn2.Location = new System.Drawing.Point(117, 271);
+            this.labelItalicOn2.Location = new System.Drawing.Point(489, 350);
             this.labelItalicOn2.Name = "labelItalicOn2";
-            this.labelItalicOn2.Size = new System.Drawing.Size(101, 39);
+            this.labelItalicOn2.Size = new System.Drawing.Size(125, 48);
             this.labelItalicOn2.TabIndex = 28;
             this.labelItalicOn2.Text = "Italic";
             // 
@@ -489,16 +534,16 @@
             this.labelSubtitleImage.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelSubtitleImage.Location = new System.Drawing.Point(14, 12);
             this.labelSubtitleImage.Name = "labelSubtitleImage";
-            this.labelSubtitleImage.Size = new System.Drawing.Size(88, 13);
+            this.labelSubtitleImage.Size = new System.Drawing.Size(104, 17);
             this.labelSubtitleImage.TabIndex = 29;
             this.labelSubtitleImage.Text = "subtitle image";
             // 
             // VobSubOcrCharacter
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.DimGray;
-            this.ClientSize = new System.Drawing.Size(577, 404);
+            this.ClientSize = new System.Drawing.Size(1006, 729);
             this.Controls.Add(this.labelSubtitleImage);
             this.Controls.Add(this.labelItalicOn2);
             this.Controls.Add(this.dataGridView1);

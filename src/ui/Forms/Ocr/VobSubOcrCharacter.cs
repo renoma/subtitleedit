@@ -176,6 +176,7 @@ namespace Nikse.SubtitleEdit.Forms.Ocr
                 labelItalicOn2.Visible = true;
                 checkBoxItalic.Font = new Font(checkBoxItalic.Font.FontFamily, checkBoxItalic.Font.Size, FontStyle.Italic | FontStyle.Bold);
                 checkBoxItalic.ForeColor = Color.Red;
+                textBoxCharacters.ForeColor = Color.Red; ;
             }
             else
             {
@@ -186,6 +187,7 @@ namespace Nikse.SubtitleEdit.Forms.Ocr
                 labelItalicOn2.Visible = false;
                 checkBoxItalic.Font = new Font(checkBoxItalic.Font.FontFamily, checkBoxItalic.Font.Size);
                 checkBoxItalic.ForeColor = DefaultForeColor;
+                textBoxCharacters.ForeColor = DefaultForeColor;
             }
         }
 
@@ -243,6 +245,8 @@ namespace Nikse.SubtitleEdit.Forms.Ocr
 
         private void VobSubOcrCharacter_Shown(object sender, EventArgs e)
         {
+            int pictureBoxCharacterTop = (textBoxCharacters.Top + ((int)textBoxCharacters.Height / 2)) - ((int)pictureBoxCharacter.Height / 2);
+            pictureBoxCharacter.Top = pictureBoxCharacterTop;
             textBoxCharacters.Focus();
 
             if (ActiveForm == null)

@@ -1825,7 +1825,7 @@ namespace Nikse.SubtitleEdit.Forms.Ocr
             this.numericUpDownNumberOfOcrDbAddCount.Size = new System.Drawing.Size(50, 24);
             this.numericUpDownNumberOfOcrDbAddCount.TabIndex = 9;
             this.numericUpDownNumberOfOcrDbAddCount.Value = new decimal(new int[] {
-            100,
+            300,
             0,
             0,
             0});
