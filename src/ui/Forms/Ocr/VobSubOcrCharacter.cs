@@ -57,6 +57,7 @@ namespace Nikse.SubtitleEdit.Forms.Ocr
             dataGridView1.Rows[0].Height = dataGridView1.Height / 2;
             dataGridView1.Rows[1].Height = dataGridView1.Height / 2;
             UiUtil.FixLargeFonts(this, buttonSkip);
+            checkBoxShowImage.Checked = true;
         }
 
         public string ManualRecognizedCharacters => textBoxCharacters.Text;
@@ -298,6 +299,12 @@ namespace Nikse.SubtitleEdit.Forms.Ocr
                 DialogResult = DialogResult.Cancel;
                 e.SuppressKeyPress = true;
             }
+            else if (e.Modifiers == Keys.Alt && e.KeyCode == Keys.H)
+            {
+                Boolean isChecked = checkBoxShowImage.Checked;
+                checkBoxShowImage.ThreeState = !isChecked;
+                Console.WriteLine(checkBoxShowImage.CheckState);
+            }
             else if (e.Modifiers == Keys.Alt && e.KeyCode == Keys.Enter)
             {
                 //VobSubOcr.InspectImageCompareMatchesForCurrentImageToolStripMenuItem_Click(null, null);
@@ -317,6 +324,11 @@ namespace Nikse.SubtitleEdit.Forms.Ocr
         private void buttonSkip_Click(object sender, EventArgs e)
         {
             DialogResult = DialogResult.Cancel;
+        }
+
+        private void checkBoxShowImage_CheckedChanged(object sender, EventArgs e)
+        {
+            pictureBoxSubtitleImage.Visible = checkBoxShowImage.Checked;
         }
     }
 }
