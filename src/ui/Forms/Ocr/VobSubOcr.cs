@@ -3828,6 +3828,7 @@ namespace Nikse.SubtitleEdit.Forms.Ocr
                     item = GetExpandedSelectionNew(parentBitmap, expandSelectionList);
 
                     _vobSubOcrCharacter.Initialize(bitmap, item, _manualOcrDialogPosition, _italicCheckedLast, expandSelectionList.Count > 1, null, _lastAdditions, this);
+                    pictureBoxSubtitleImage.Visible = false;
                     DialogResult result = _vobSubOcrCharacter.ShowDialog(this);
                     _manualOcrDialogPosition = _vobSubOcrCharacter.FormPosition;
                     if (result == DialogResult.Cancel && _vobSubOcrCharacter.SkipImage)
@@ -3867,6 +3868,7 @@ namespace Nikse.SubtitleEdit.Forms.Ocr
                     }
 
                     _italicCheckedLast = _vobSubOcrCharacter.IsItalic;
+                    pictureBoxSubtitleImage.Visible = true;
                 }
                 else if (item.NikseBitmap == null)
                 {
@@ -3895,6 +3897,7 @@ namespace Nikse.SubtitleEdit.Forms.Ocr
                             var allowExpand = nextIndex < list.Count && (list[nextIndex].SpecialCharacter != Environment.NewLine && list[nextIndex].SpecialCharacter != " ");
 
                             _vobSubOcrCharacter.Initialize(bitmap, item, _manualOcrDialogPosition, _italicCheckedLast, false, bestGuess, _lastAdditions, this, allowExpand);
+                            pictureBoxSubtitleImage.Visible = false;
                             DialogResult result = _vobSubOcrCharacter.ShowDialog(this);
                             _manualOcrDialogPosition = _vobSubOcrCharacter.FormPosition;
 
@@ -3927,6 +3930,7 @@ namespace Nikse.SubtitleEdit.Forms.Ocr
                             }
 
                             _italicCheckedLast = _vobSubOcrCharacter.IsItalic;
+                            pictureBoxSubtitleImage.Visible = true;
                         } else
                         {
                             cntExistsUnknownCharacters++;
@@ -6789,6 +6793,10 @@ namespace Nikse.SubtitleEdit.Forms.Ocr
             buttonStop.Enabled = false;
             progressBar1.Visible = false;
             labelStatus.Text = string.Empty;
+            if (_binaryOcrDbAddCount > 0)
+            {
+                saveBinaryOcrDb();
+            }
             SetButtonsEnabledAfterOcrDone();
         }
 
