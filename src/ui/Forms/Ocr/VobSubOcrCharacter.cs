@@ -303,7 +303,6 @@ namespace Nikse.SubtitleEdit.Forms.Ocr
             {
                 Boolean isChecked = checkBoxShowImage.Checked;
                 checkBoxShowImage.ThreeState = !isChecked;
-                Console.WriteLine(checkBoxShowImage.CheckState);
             }
             else if (e.Modifiers == Keys.Alt && e.KeyCode == Keys.Enter)
             {
@@ -329,6 +328,7 @@ namespace Nikse.SubtitleEdit.Forms.Ocr
         private void checkBoxShowImage_CheckedChanged(object sender, EventArgs e)
         {
             pictureBoxSubtitleImage.Visible = checkBoxShowImage.Checked;
+            textBoxCharacters.Focus();
         }
     }
 }
