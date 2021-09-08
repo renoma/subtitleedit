@@ -1,5 +1,4 @@
-﻿using Nikse.SubtitleEdit.Core;
-using Nikse.SubtitleEdit.Core.Common;
+﻿using Nikse.SubtitleEdit.Core.Common;
 using Nikse.SubtitleEdit.Core.ContainerFormats.Matroska;
 using Nikse.SubtitleEdit.Core.SubtitleFormats;
 using Nikse.SubtitleEdit.Logic;
@@ -125,7 +124,7 @@ namespace Nikse.SubtitleEdit.Controls
         private readonly ToolTip _currentPositionToolTip = new ToolTip();
         private int _lastCurrentPositionToolTipX;
         private int _lastCurrentPositionToolTipY;
-        private List<MatroskaChapter> _chapters = null;
+        private List<MatroskaChapter> _chapters = new List<MatroskaChapter>();
 
         public List<MatroskaChapter> Chapters
         {
@@ -375,7 +374,7 @@ namespace Nikse.SubtitleEdit.Controls
         {
             var mpv = VideoPlayer as LibMpvDynamic;
             LastParagraph = p;
-            if (mpv != null && Configuration.Settings.General.MpvHandlesPreviewText)
+            if (mpv != null && Configuration.Settings.General.MpvHandlesPreviewText && VideoHeight > 0 && VideoWidth > 0)
             {
                 if (_subtitlesHeight > 0)
                 {
@@ -439,7 +438,7 @@ namespace Nikse.SubtitleEdit.Controls
 
         private Subtitle _subtitlePrev;
         private string _mpvTextOld = string.Empty;
-        private int _mpvSubOldHash = -1; 
+        private int _mpvSubOldHash = -1;
         private string _mpvTextFileName;
         private int _retryCount = 3;
         private void RefreshMpv(LibMpvDynamic mpv, Subtitle subtitle)
@@ -451,6 +450,16 @@ namespace Nikse.SubtitleEdit.Controls
 
             try
             {
+                if (SmpteMode)
+                {
+                    subtitle = new Subtitle(subtitle, false);
+                    foreach (var paragraph in subtitle.Paragraphs)
+                    {
+                        paragraph.StartTime.TotalMilliseconds *= 1.001;
+                        paragraph.EndTime.TotalMilliseconds *= 1.001;
+                    }
+                }
+
                 var format = new AdvancedSubStationAlpha();
                 string text;
 
@@ -1762,7 +1771,7 @@ namespace Nikse.SubtitleEdit.Controls
                     }
                 }
             }
-            catch (Exception)
+            catch
             {
                 // ignore
             }
@@ -1782,7 +1791,7 @@ namespace Nikse.SubtitleEdit.Controls
 
         private void PictureBoxProgressbarBackgroundPaint(object sender, PaintEventArgs e)
         {
-            if (_chapters != null)
+            if (_chapters?.Count > 0)
             {
                 DrawChapters(e.Graphics, 3, _pictureBoxProgressBar.Location.Y, _pictureBoxProgressBar.Location.Y + 3);
             }
@@ -1790,7 +1799,7 @@ namespace Nikse.SubtitleEdit.Controls
 
         private void PictureBoxProgressBarPaint(object sender, PaintEventArgs e)
         {
-            if (_chapters != null)
+            if (_chapters?.Count > 0)
             {
                 DrawChapters(e.Graphics, -1, 1, _pictureBoxProgressBar.Height);
             }
@@ -2039,10 +2048,8 @@ namespace Nikse.SubtitleEdit.Controls
                     {
                         return VideoPlayer.CurrentPosition / 1.001;
                     }
-                    else
-                    {
-                        return VideoPlayer.CurrentPosition;
-                    }
+
+                    return VideoPlayer.CurrentPosition;
                 }
                 return 0;
             }

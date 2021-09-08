@@ -15,15 +15,15 @@
 ;* GNU General Public License for more details.
 ;*
 ;* You should have received a copy of the GNU General Public License
-;* along with Subtitle Edit.  If not, see <http://www.gnu.org/licenses/>.
+;* along with Subtitle Edit.  If not, see <https://www.gnu.org/licenses/>.
 
 ; Requirements:
-; Inno Setup Unicode: http://www.jrsoftware.org/isdl.php
+; Inno Setup Unicode: https://jrsoftware.org/isdl.php
 
 
 ; preprocessor checks
-#if VER < EncodeVer(5,6,0)
-  #error Update your Inno Setup version (5.6.0 or newer)
+#if VER < EncodeVer(6,0,0)
+  #error Update your Inno Setup version (6.0.0 or newer)
 #endif
 
 #ifndef UNICODE
@@ -90,7 +90,7 @@ UninstallDisplayIcon={app}\SubtitleEdit.exe
 DefaultDirName={pf}\Subtitle Edit
 DefaultGroupName=Subtitle Edit
 VersionInfoVersion={#app_ver_full}
-MinVersion=5.6
+MinVersion=6.0
 LicenseFile=..\LICENSE.txt
 InfoAfterFile=..\Changelog.txt
 SetupIconFile=..\src\ui\Icons\SE.ico
@@ -112,6 +112,7 @@ DisableProgramGroupPage=auto
 CloseApplications=true
 SetupMutex='subtitle_edit_setup_mutex'
 ArchitecturesInstallIn64BitMode=x64
+WizardStyle=modern
 
 [Languages]
 Name: "en"; MessagesFile: "compiler:Default.isl"
@@ -122,14 +123,12 @@ Name: "ca"; MessagesFile: "compiler:Languages\Catalan.isl"
 Name: "cs"; MessagesFile: "compiler:Languages\Czech.isl"
 Name: "da"; MessagesFile: "compiler:Languages\Danish.isl"
 Name: "de"; MessagesFile: "compiler:Languages\German.isl"
-Name: "el"; MessagesFile: "compiler:Languages\Greek.isl"
 Name: "es"; MessagesFile: "compiler:Languages\Spanish.isl"
 Name: "eu"; MessagesFile: "Languages\Basque.isl"
 Name: "fa"; MessagesFile: "Languages\Farsi.isl"
 Name: "fi"; MessagesFile: "compiler:Languages\Finnish.isl"
 Name: "fr"; MessagesFile: "compiler:Languages\French.isl"
 Name: "hr"; MessagesFile: "Languages\Croatian.isl"
-Name: "hu"; MessagesFile: "compiler:Languages\Hungarian.isl"
 Name: "it"; MessagesFile: "compiler:Languages\Italian.isl"
 Name: "ja"; MessagesFile: "compiler:Languages\Japanese.isl"
 Name: "ko"; MessagesFile: "Languages\Korean.isl"
@@ -142,8 +141,6 @@ Name: "ptBR"; MessagesFile: "compiler:Languages\BrazilianPortuguese.isl"
 Name: "ro"; MessagesFile: "Languages\Romanian.isl"
 Name: "ru"; MessagesFile: "compiler:Languages\Russian.isl"
 Name: "sl"; MessagesFile: "compiler:Languages\Slovenian.isl"
-Name: "srC"; MessagesFile: "compiler:Languages\SerbianCyrillic.isl"
-Name: "srL"; MessagesFile: "compiler:Languages\SerbianLatin.isl"
 Name: "sv"; MessagesFile: "Languages\Swedish.isl"
 Name: "th"; MessagesFile: "Languages\Thai.isl"
 Name: "tr"; MessagesFile: "compiler:Languages\Turkish.isl"
@@ -157,9 +154,9 @@ Name: "zhTW"; MessagesFile: "Languages\ChineseTraditional.isl"
 #include "Custom_Messages.iss"
 
 [Messages]
-BeveledLabel=Subtitle Edit {#app_ver} by Nikse
+;BeveledLabel=Subtitle Edit {#app_ver} by Nikse
 SetupAppTitle=Setup - Subtitle Edit
-SetupWindowTitle=Setup - Subtitle Edit
+SetupWindowTitle=Setup - Subtitle Edit {#app_ver}
 
 
 [Types]
@@ -239,6 +236,9 @@ Source: ..\Dictionaries\en_US.dic;                 DestDir: {userappdata}\Subtit
 Source: ..\Ocr\Latin.db;                           DestDir: {userappdata}\Subtitle Edit\Ocr;          Flags: ignoreversion uninsneveruninstall onlyifdoesntexist; Components: main
 Source: ..\Ocr\Latin.nocr;                         DestDir: {userappdata}\Subtitle Edit\Ocr;          Flags: ignoreversion uninsneveruninstall onlyifdoesntexist; Components: main
 
+Source: ..\preview.mkv;                            DestDir: {userappdata}\Subtitle Edit;              Flags: ignoreversion uninsneveruninstall onlyifdoesntexist; Components: main
+
+
 #ifdef localize
 Source: {#bindir}\Languages\ar-EG.xml;             DestDir: {app}\Languages;                          Flags: ignoreversion; Components: translations
 Source: {#bindir}\Languages\bg-BG.xml;             DestDir: {app}\Languages;                          Flags: ignoreversion; Components: translations
@@ -282,7 +282,7 @@ Source: {#bindir}\Languages\zh-TW.xml;             DestDir: {app}\Languages;    
 #endif
 
 Source: {#bindir}\SubtitleEdit.exe;                DestDir: {app};                                    Flags: ignoreversion; Components: main
-Source: {#bindirres}\SubtitleEdit.resources.dll;      DestDir: {app};                                    Flags: ignoreversion; Components: main; AfterInstall: ClearMUICache
+Source: {#bindirres}\SubtitleEdit.resources.dll;   DestDir: {app};                                    Flags: ignoreversion; Components: main; AfterInstall: ClearMUICache
 Source: {#bindir}\Hunspellx64.dll;                 DestDir: {app};                                    Flags: ignoreversion; Components: main
 Source: {#bindir}\Hunspellx86.dll;                 DestDir: {app};                                    Flags: ignoreversion; Components: main
 Source: ..\Changelog.txt;                          DestDir: {app};                                    Flags: ignoreversion; Components: main
@@ -405,19 +405,22 @@ Type: dirifempty; Name: {app}\Languages;                Check: not IsComponentSe
 
 
 [Run]
-Filename: {win}\Microsoft.NET\Framework\v4.0.30319\ngen.exe; Parameters: "install ""{app}\SubtitleEdit.exe"""; StatusMsg: {cm:msg_OptimizingPerformance}; Flags: runhidden runascurrentuser skipifdoesntexist
-Filename: {app}\SubtitleEdit.exe;            Description: {cm:LaunchProgram,Subtitle Edit}; WorkingDir: {app}; Flags: nowait postinstall skipifsilent unchecked
+Filename: {win}\Microsoft.NET\Framework\v4.0.30319\ngen.exe;   Parameters: "install ""{app}\SubtitleEdit.exe"""; StatusMsg: {cm:msg_OptimizingPerformance}; Flags: runhidden runascurrentuser skipifdoesntexist; Check: not IsWin64
+Filename: {win}\Microsoft.NET\Framework64\v4.0.30319\ngen.exe; Parameters: "install ""{app}\SubtitleEdit.exe"""; StatusMsg: {cm:msg_OptimizingPerformance}; Flags: runhidden runascurrentuser skipifdoesntexist; Check: IsWin64
+Filename: {app}\SubtitleEdit.exe;             Description: {cm:LaunchProgram,Subtitle Edit}; WorkingDir: {app}; Flags: nowait postinstall skipifsilent unchecked
 Filename: https://www.nikse.dk/SubtitleEdit/; Description: {cm:run_VisitWebsite};                               Flags: nowait postinstall skipifsilent unchecked shellexec
 
 
 [UninstallRun]
-Filename: {win}\Microsoft.NET\Framework\v4.0.30319\ngen.exe; Parameters: "uninstall ""{app}\SubtitleEdit.exe"""; Flags: runhidden runascurrentuser skipifdoesntexist
+Filename: {win}\Microsoft.NET\Framework\v4.0.30319\ngen.exe;   Parameters: "uninstall ""{app}\SubtitleEdit.exe"""; Flags: runhidden runascurrentuser skipifdoesntexist; Check: not IsWin64
+Filename: {win}\Microsoft.NET\Framework64\v4.0.30319\ngen.exe; Parameters: "uninstall ""{app}\SubtitleEdit.exe"""; Flags: runhidden runascurrentuser skipifdoesntexist; Check: IsWin64
 
 
 [Registry]
 #include bindirres + "\Resources.h"
 #define rcicon(id) "{app}\SubtitleEdit.resources.dll,-" + Str(id)
 #define rctext(id) "@{app}\SubtitleEdit.resources.dll,-" + Str(id)
+
 Root: HKLM; Subkey: "{#keyAppPaths}\SubtitleEdit.exe"; ValueType: string; ValueName: ""; ValueData: "{app}\SubtitleEdit.exe"; Flags: deletekey uninsdeletekey; Check: HklmKeyExists('{#keyAppPaths}')
 Root: HKLM; Subkey: "{#keyApps}\SubtitleEdit.exe"; ValueType: string; ValueName: ""; ValueData: "{#SetupSetting('AppName')} {#app_ver_full}"; Flags: deletekey uninsdeletekey; Check: HklmKeyExists('{#keyApps}')
 Root: HKLM; Subkey: "{#keyApps}\SubtitleEdit.exe\shell\open\command"; ValueType: string; ValueName: ""; ValueData: """{app}\SubtitleEdit.exe"" ""%1"""; Check: HklmKeyExists('{#keyApps}')
@@ -619,6 +622,7 @@ begin
   RemoveDir(ExpandConstant('{userappdata}\Subtitle Edit\Dictionaries'));
   DeleteFile(ExpandConstant('{userappdata}\Subtitle Edit\Ocr\Latin.db'));
   DeleteFile(ExpandConstant('{userappdata}\Subtitle Edit\Ocr\Latin.nocr'));
+  DeleteFile(ExpandConstant('{userappdata}\Subtitle Edit\preview.mkv'));
   DelTree(ExpandConstant('{userappdata}\Subtitle Edit\Ocr\*.*'), False, True, False);
   RemoveDir(ExpandConstant('{userappdata}\Subtitle Edit\Ocr'));
   DelTree(ExpandConstant('{userappdata}\Subtitle Edit\Plugins\*.*'), False, True, False);
@@ -759,19 +763,19 @@ begin
       DeleteFile(ExpandConstant('{userappdata}\Subtitle Edit\Tesseract500.Alpha.20210506\tessdata\tessconfigs\nobatch'));
       DeleteFile(ExpandConstant('{userappdata}\Subtitle Edit\Tesseract500.Alpha.20210506\tessdata\tessconfigs\segdemo'));
       DelTree(ExpandConstant('{userappdata}\Subtitle Edit\Tesseract500.Alpha.20210506\tessdata\*.traineddata'), False, True, False);
-      
+
       DeleteFile(ExpandConstant('{userappdata}\Subtitle Edit\Tesseract411\tesseract.exe'));
       DeleteFile(ExpandConstant('{userappdata}\Subtitle Edit\Tesseract411\tessdata\configs\hocr'));
       DelTree(ExpandConstant('{userappdata}\Subtitle Edit\Tesseract411\tessdata\*.traineddata'), False, True, False);
-      
+
       DeleteFile(ExpandConstant('{userappdata}\Subtitle Edit\Tesseract410\tesseract.exe'));
       DeleteFile(ExpandConstant('{userappdata}\Subtitle Edit\Tesseract410\tessdata\configs\hocr'));
       DelTree(ExpandConstant('{userappdata}\Subtitle Edit\Tesseract410\tessdata\*.traineddata'), False, True, False);
-      
+
       DeleteFile(ExpandConstant('{userappdata}\Subtitle Edit\Tesseract4\tesseract.exe'));
       DeleteFile(ExpandConstant('{userappdata}\Subtitle Edit\Tesseract4\tessdata\configs\hocr'));
       DelTree(ExpandConstant('{userappdata}\Subtitle Edit\Tesseract4\tessdata\*.traineddata'), False, True, False);
-      
+
       DeleteFile(ExpandConstant('{userappdata}\Subtitle Edit\Tesseract302\msvcp90.dll'));
       DeleteFile(ExpandConstant('{userappdata}\Subtitle Edit\Tesseract302\msvcr90.dll'));
       DeleteFile(ExpandConstant('{userappdata}\Subtitle Edit\Tesseract302\tesseract.exe'));
@@ -897,10 +901,11 @@ function InitializeSetup(): Boolean;
 var
   ErrorCode: Integer;
 begin
-  Result := IsDotNetDetected('v4.7.2', 0); //Returns True if .NET Framework version 4.7.2 is installed, or a compatible version such as 4.8
+  // Returns True if .NET Framework version 4.7.2 is installed, or a compatible version such as 4.8
+  Result := IsDotNetDetected('v4.7.2', 0);
   if not Result then
   begin
-    if not WizardSilent() then 
+    if not WizardSilent() then
     begin
       if SuppressibleMsgBox(CustomMessage('msg_AskToDownNET'), mbCriticalError, MB_YESNO or MB_DEFBUTTON1, IDNO) = IDYES then
         ShellExec('open','https://go.microsoft.com/fwlink/?LinkId=2085155','','',SW_SHOWNORMAL,ewNoWait,ErrorCode);

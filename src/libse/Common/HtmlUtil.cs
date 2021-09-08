@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -471,7 +472,9 @@ namespace Nikse.SubtitleEdit.Core.Common
                         }
                     }
                     if ((next == 'f' || next == 'F') && s.Substring(i).StartsWith("<font", StringComparison.OrdinalIgnoreCase) || // <font
-                        next == '/' && (nextNext == 'f' || nextNext == 'F') && s.Substring(i).StartsWith("</font>", StringComparison.OrdinalIgnoreCase))  // </font>
+                        next == '/' && (nextNext == 'f' || nextNext == 'F') && s.Substring(i).StartsWith("</font>", StringComparison.OrdinalIgnoreCase) ||  // </font>                        
+                        next == ' ' && nextNext == '/' && s.Substring(i).StartsWith("< /font>", StringComparison.OrdinalIgnoreCase) ||  // < /font>
+                        next == '/' && nextNext == ' ' && s.Substring(i).StartsWith("</ font>", StringComparison.OrdinalIgnoreCase))  // </ font>
                     {
                         inside = true;
                         continue;
@@ -884,9 +887,43 @@ namespace Nikse.SubtitleEdit.Core.Common
             return preTags + text;
         }
 
-        public static string ToggleTag(string input, string tag)
+        public static string ToggleTag(string input, string tag, bool wholeLine, bool assa)
         {
             var text = input;
+
+            if (assa)
+            {
+                var onOffTags = new List<string> { "i", "b", "u", "s", "be" };
+                if (onOffTags.Contains(tag))
+                {
+                    if (text.Contains($"\\{tag}1"))
+                    {
+                        text = text.Replace($"{{\\{tag}1}}", string.Empty);
+                        text = text.Replace($"{{\\{tag}0}}", string.Empty);
+                        text = text.Replace($"\\{tag}1", string.Empty);
+                        text = text.Replace($"\\{tag}0", string.Empty);
+                    }
+                    else
+                    {
+                        text = wholeLine ? $"{{\\{tag}1}}{text}" : $"{{\\{tag}1}}{text}{{\\{tag}0}}";
+                    }
+                }
+                else
+                {
+                    if (text.Contains($"\\{tag}"))
+                    {
+                        text = text.Replace($"{{\\{tag}}}", string.Empty);
+                        text = text.Replace($"\\{tag}", string.Empty);
+                    }
+                    else
+                    {
+                        text = $"{{\\{tag}}}{text}";
+                    }
+                }
+
+                return text;
+            }
+
             if (text.IndexOf("<" + tag + ">", StringComparison.OrdinalIgnoreCase) >= 0 ||
                 text.IndexOf("</" + tag + ">", StringComparison.OrdinalIgnoreCase) >= 0)
             {
