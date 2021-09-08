@@ -19,10 +19,13 @@ namespace Nikse.SubtitleEdit.Logic
         public LanguageStructure.AdjustDisplayDuration AdjustDisplayDuration;
         public LanguageStructure.ApplyDurationLimits ApplyDurationLimits;
         public LanguageStructure.AssaAttachments AssaAttachments;
+        public LanguageStructure.AssaOverrideTags AssaOverrideTags;
+        public LanguageStructure.AssaProgressBarGenerator AssaProgressBarGenerator;
+        public LanguageStructure.AssaResulationChanger AssaResulationChanger;
+        public LanguageStructure.AssaSetPosition AssaSetPosition;
         public LanguageStructure.AudioToText AudioToText;
         public LanguageStructure.AutoBreakUnbreakLines AutoBreakUnbreakLines;
         public LanguageStructure.BatchConvert BatchConvert;
-        public LanguageStructure.Beamer Beamer;
         public LanguageStructure.BinEdit BinEdit;
         public LanguageStructure.Bookmarks Bookmarks;
         public LanguageStructure.ChangeCasing ChangeCasing;
@@ -52,6 +55,8 @@ namespace Nikse.SubtitleEdit.Logic
         public LanguageStructure.FindDialog FindDialog;
         public LanguageStructure.FindSubtitleLine FindSubtitleLine;
         public LanguageStructure.FixCommonErrors FixCommonErrors;
+        public LanguageStructure.GenerateBlankVideo GenerateBlankVideo;
+        public LanguageStructure.GenerateVideoWithBurnedInSubs GenerateVideoWithBurnedInSubs;
         public LanguageStructure.GetDictionaries GetDictionaries;
         public LanguageStructure.GetTesseractDictionaries GetTesseractDictionaries;
         public LanguageStructure.GoogleTranslate GoogleTranslate;
@@ -161,6 +166,7 @@ namespace Nikse.SubtitleEdit.Logic
                 Bold = "Bold",
                 Italic = "Italic",
                 Underline = "Underline",
+                Strikeout = "Strikeout",
                 Visible = "Visible",
                 FrameRate = "Frame rate",
                 Name = "Name",
@@ -174,6 +180,7 @@ namespace Nikse.SubtitleEdit.Logic
                 FrameRateX = "Frame rate: {0:0.0###}",
                 TotalFramesX = "Total frames: {0:#,##0.##}",
                 VideoEncodingX = "Video encoding: {0}",
+                Overlap = "Overlap",
                 OverlapPreviousLineX = "Overlap prev line ({0:#,##0.###})",
                 OverlapX = "Overlap ({0:#,##0.###})",
                 OverlapNextX = "Overlap next ({0:#,##0.###})",
@@ -318,6 +325,57 @@ namespace Nikse.SubtitleEdit.Logic
                 RemoveXAttachments = "Remove {0} attachments?",
             };
 
+            AssaOverrideTags = new LanguageStructure.AssaOverrideTags
+            {
+                ApplyCustomTags = "Apply custom override tags",
+                AdvancedSelection = "Advanced selection",
+                ApplyTo = "Apply to",
+                History = "History",
+                SelectedLinesX = "Selected lines: {0}",
+                TagsToApply = "Tags to apply",
+            };
+
+            AssaProgressBarGenerator = new LanguageStructure.AssaProgressBarGenerator
+            {
+                Title = "Generate progress bar",
+                Chapters = "Chapters",
+                Progressbar = "Progress bar",
+                SplitterHeight = "Splitter height",
+                SplitterWidth = "Splitter width",
+                XAdjustment = "X adjustment",
+                YAdjustment = "Y adjustment",
+                Position = "Position",
+                TextAlignment = "Text alignment",
+                RoundedCorners = "Rounded corners",
+                SquareCorners = "Square corners",
+                Bottom = "Bottom",
+                Top = "Top",
+                TakePosFromVideo = "Take video position",
+            };
+
+            AssaResulationChanger = new LanguageStructure.AssaResulationChanger
+            {
+                Title = "Change script resolution",
+                SourceVideoRes = "Source video resolution",
+                TargetVideoRes = "Target video resolution",
+                ChangeResolutionMargins = "Change resolution for margin",
+                ChangeResolutionFontSize = "Change resolution for font size",
+                ChangeResolutionPositions = "Change resolution for position",
+                ChangeResolutionDrawing = "Change resolution for drawing",
+            };
+
+            AssaSetPosition = new LanguageStructure.AssaSetPosition
+            {
+                SetPosition = "Set position",
+                VideoResolutionX = "Video resolution: {0}",
+                StyleAlignmentX = "Style alignment: {0}",
+                CurrentMousePositionX = "Mouse position: {0}",
+                CurrentTextPositionX = "Text position: {0}",
+                SetPosInfo = "Click on video to toggle set/move position",
+                Clipboard = "Clipboard",
+                ResolutionMissing = "PlayResX/PlayResY are not set - set the resolution now?",
+            };
+
             AudioToText = new LanguageStructure.AudioToText
             {
                 Title = "Audio to text",
@@ -400,11 +458,6 @@ namespace Nikse.SubtitleEdit.Logic
                 MkvLanguageStyleTwoLetter = "Two letter language code",
                 MkvLanguageStyleThreeLetter = "Three letter language code",
                 MkvLanguageStyleEmpty = "No language code",
-            };
-
-            Beamer = new LanguageStructure.Beamer
-            {
-                Title = "Beamer",
             };
 
             BinEdit = new LanguageStructure.BinEdit
@@ -866,7 +919,7 @@ namespace Nikse.SubtitleEdit.Logic
                 BreakLongLines = "Break long lines",
                 RemoveLineBreaks = "Remove line breaks in short texts with only one sentence",
                 RemoveLineBreaksAll = "Remove line breaks in short texts (all except dialogs)",
-                FixUppercaseIInsindeLowercaseWords = "Fix uppercase 'i' inside lowercase words (OCR error)",
+                FixUppercaseIInsideLowercaseWords = "Fix uppercase 'i' inside lowercase words (OCR error)",
                 FixDoubleApostrophes = "Fix double apostrophe characters ('') to a single quote (\")",
                 AddPeriods = "Add period after lines where next line start with uppercase letter",
                 StartWithUppercaseLetterAfterParagraph = "Start with uppercase letter after paragraph",
@@ -875,6 +928,7 @@ namespace Nikse.SubtitleEdit.Logic
                 CommonOcrErrorsFixed = "Common OCR errors fixed (OcrReplaceList file used): {0}",
                 RemoveSpaceBetweenNumber = "Remove space between numbers",
                 FixDialogsOnOneLine = "Fix dialogs on one line",
+                RemoveDialogFirstInNonDialogs = "Remove start dash in first line for non dialogs",
                 NormalizeStrings = "Normalize strings",
                 FixLowercaseIToUppercaseI = "Fix alone lowercase 'i' to 'I' (English)",
                 FixTurkishAnsi = "Fix Turkish ANSI (Icelandic) letters to Unicode",
@@ -908,7 +962,7 @@ namespace Nikse.SubtitleEdit.Logic
                 RemoveUnneededSpacesExample = "Hey   you , there. -> Hey you, there.",
                 RemoveUnneededPeriodsExample = "Hey you!. -> Hey you!",
                 FixMissingSpacesExample = "Hey.You. -> Hey. You.",
-                FixUppercaseIInsindeLowercaseWordsExample = "The earth is fIat. -> The earth is flat.",
+                FixUppercaseIInsideLowercaseWordsExample = "The earth is fIat. -> The earth is flat.",
                 FixLowercaseIToUppercaseIExample = "What do i care. -> What do I care.",
                 StartTimeLaterThanEndTime = "Text number {0}: Start time is later than end time: {4}{1} -> {2} {3}",
                 UnableToFixStartTimeLaterThanEndTime = "Unable to fix text number {0}: Start time is later than end time: {1}",
@@ -939,10 +993,26 @@ namespace Nikse.SubtitleEdit.Logic
                 FixOcrErrorExample = "D0n't -> Don't",
                 FixSpaceBetweenNumbersExample = "1 100 -> 1100",
                 FixDialogsOneLineExample = "Hi John! - Hi Ida! -> Hi John!<br />- Hi Ida!",
+                RemoveDialogFirstInNonDialogsExample = "- How are you? -> How are you?",
                 SelectDefault = "Select default",
                 SetDefault = "Set current fixes as default",
                 FixContinuationStyleX = "Fix continuation style: {0}",
                 FixUnnecessaryLeadingDots = "Remove unnecessary leading dots",
+            };
+
+            GenerateBlankVideo = new LanguageStructure.GenerateBlankVideo
+            {
+                Title = "Generate blank video file",
+                CheckeredImage = "Checkered image",
+                DurationInMinutes = "Duration in minutes",
+                SolidColor = "Solid color",
+            };
+
+            GenerateVideoWithBurnedInSubs = new LanguageStructure.GenerateVideoWithBurnedInSubs
+            {
+                Title = "Generate video with burned-in subtile",
+                Info = "Will generate a video file with burned-in subtitle.\r\n\r\nNote: Advanced Substation Alpha supported.",
+                XGeneratedWithBurnedInSubs = "\"{0}\" generated with burned-in subtitle."
             };
 
             GetDictionaries = new LanguageStructure.GetDictionaries
@@ -1350,7 +1420,7 @@ namespace Nikse.SubtitleEdit.Logic
                 BeforeSpellCheck = "Before spell check",
                 SpellCheckChangedXToY = "Spell check: Changed '{0}' to '{1}'",
                 BeforeAddingTagX = "Before adding <{0}> tag",
-                TagXAdded = "<{0}> tags added",
+                TagXAdded = "{0} tag added",
                 LineXOfY = "line {0} of {1}",
                 XLinesSavedAsY = "{0} lines saved as {1}",
                 XLinesDeleted = "{0} lines deleted",
@@ -1385,6 +1455,7 @@ namespace Nikse.SubtitleEdit.Logic
                 BeforeImportFromMatroskaFile = "Before import subtitle from Matroska file",
                 SubtitleImportedFromMatroskaFile = "Subtitle imported from Matroska file",
                 DropFileXNotAccepted = "Drop file '{0}' not accepted - file is too large",
+                DropSubtitleFileXNotAccepted = "Drop file '{0}' not accepted - file is too large for a subtitle",
                 DropOnlyOneFile = "You can only drop one file",
                 OpenAnsiSubtitle = "Open subtitle...",
                 BeforeChangeCasing = "Before change casing",
@@ -1525,12 +1596,7 @@ namespace Nikse.SubtitleEdit.Logic
                         Save = "&Save",
                         SaveAs = "Save &as...",
                         RestoreAutoBackup = "Restore auto-backup...",
-                        AdvancedSubStationAlphaProperties = "Advanced Sub Station Alpha properties...",
-                        SubStationAlphaProperties = "Sub Station Alpha properties...",
-                        EbuProperties = "EBU STL properties...",
-                        DvdStuioProProperties = "DVD Studio Pro properties...",
-                        TimedTextProperties = "Timed Text properties...",
-                        PacProperties = "PAC properties...",
+                        FormatXProperties = "{0} properties...",
                         OpenOriginal = "Open original subtitle (translator mode)...",
                         SaveOriginal = "Save original subtitle",
                         CloseOriginal = "Close original subtitle",
@@ -1649,6 +1715,8 @@ namespace Nikse.SubtitleEdit.Logic
                         SetVideoOffset = "Set video offset...",
                         SmptTimeMode = "SMPTE timing (drop frame)",
                         GenerateTextFromVideo = "Generate text from video...",
+                        GenerateBlankVideo = "Generate blank video...",
+                        GenerateVideoWithBurnedInSub = "Generate video with burned-in sub...",
                         ImportChaptersFromVideo = "Import chapters from video",
                         GenerateImportSceneChanges = "Generate/import scene changes...",
                         RemoveSceneChanges = "Remove scene changes",
@@ -1734,9 +1802,9 @@ namespace Nikse.SubtitleEdit.Logic
                     ContextMenu = new LanguageStructure.Main.MainMenu.ListViewContextMenu
                     {
                         SizeAllColumnsToFit = "Size all columns to fit",
-                        AdvancedSubStationAlphaSetStyle = "Advanced Sub Station Alpha - set style",
-                        SubStationAlphaSetStyle = "Sub Station Alpha - set style",
+                        SetStyle = "Set style",
                         SetActor = "Set actor",
+                        AssaTools = "ASSA tools",
                         AdvancedSubStationAlphaStyles = "Advanced Sub Station Alpha styles...",
                         SubStationAlphaStyles = "Sub Station Alpha styles...",
                         TimedTextStyles = "Timed Text styles...",
@@ -1800,6 +1868,10 @@ namespace Nikse.SubtitleEdit.Logic
                         TranslateSelectedLines = "Translate selected lines...",
                         AdjustDisplayDurationForSelectedLines = "Adjust durations for selected lines...",
                         ApplyDurationLimitsForSelectedLines = "Apply duration limits for selected lines...",
+                        ApplyCustomOverrideTag = "Apply custom override tags...",
+                        SetPosition = "Set position...",
+                        GenerateProgressBar = "Generate progress bar...",
+                        AssaResolutionChanger = "Change script resolution...",
                         FixCommonErrorsInSelectedLines = "Fix common errors in selected lines...",
                         ChangeCasingForSelectedLines = "Change casing for selected lines...",
                         SaveSelectedLines = "Save selected lines as...",
@@ -2284,6 +2356,7 @@ can edit in same subtitle file (collaboration)",
                 GoToPreviousBookmark = "Go to previous bookmark",
                 GoToNextBookmark = "Go to next bookmark",
                 ChooseProfile = "Choose profile",
+                OpenDataFolder = "Open the Subtitle Edit data folder",
                 DuplicateLine = "Duplicate line",
                 ToggleView = "Toggle list/source view",
                 TogglePreviewOnVideo = "Toggle preview on video",
@@ -2324,6 +2397,9 @@ can edit in same subtitle file (collaboration)",
                 StartInSourceView = "Start in source view",
                 RemoveBlankLinesWhenOpening = "Remove blank lines when opening a subtitle",
                 RemoveBlankLines = "Remove blank lines",
+                ApplyAssaOverrideTags = "Apply ASSA override tags to selection",
+                SetAssaPosition = "Set/get ASSA position",
+                SetAssaResolution = "Set ASSA resolution (PlayResX/PlayResY)",
                 ShowLineBreaksAs = "Show line breaks in list view as",
                 SaveAsFileNameFrom = "\"Save as...\" uses file name from",
                 MainListViewDoubleClickAction = "Double-clicking line in main window list view will",
@@ -2464,6 +2540,7 @@ can edit in same subtitle file (collaboration)",
                 FixCommonErrorsSkipStepOne = "Skip step one (choose fix rules)",
                 DefaultFormat = "Default format",
                 DefaultSaveAsFormat = "Default save as format",
+                DefaultSaveAsFormatAuto = "- Auto -",
                 Favorites = "Favorites",
                 FavoriteFormats = "Favorite formats",
                 FavoriteSubtitleFormatsNote = "Note: favorite formats will be shown first when selecting a format, the default format will always be shown first",
@@ -2533,8 +2610,10 @@ can edit in same subtitle file (collaboration)",
                 MainCreateStartDownEndUp = "Insert new subtitle at key-down, set end time at key-up",
                 MergeDialog = "Merge dialog (insert dashes)",
                 GoToNext = "Go to next line",
+                GoToNextPlayTranslate = "Go to next line (and play in 'Translate mode')",
                 GoToNextCursorAtEnd = "Go to next line and set cursor at end",
                 GoToPrevious = "Go to previous line",
+                GoToPreviousPlayTranslate = "Go to previous line (and play in 'Translate mode')",
                 GoToCurrentSubtitleStart = "Go to current line start",
                 GoToCurrentSubtitleEnd = "Go to current line end",
                 GoToPreviousSubtitleAndFocusVideo = "Go to previous line and set video position",
@@ -2602,7 +2681,7 @@ can edit in same subtitle file (collaboration)",
                 GoBack3Second = "Three seconds back",
                 GoToStartCurrent = "Set video pos to start of current subtitle",
                 ToggleStartEndCurrent = "Toggle video pos between start/end of current subtitle",
-                PlayCurrent = "Play current subtitle",
+                PlaySelectedLines = "Play selected lines",
                 Pause = "Pause",
                 TogglePlayPause = "Toggle play/pause",
                 Fullscreen = "Fullscreen",
@@ -2655,7 +2734,6 @@ can edit in same subtitle file (collaboration)",
                 ListViewColumnTextUp = "Column, text up",
                 ListViewColumnTextDown = "Column, text down",
                 ListViewGoToNextError = "Go to next error",
-                ShowBeamer = "Start subtitle fullscreen beamer",
                 ShowStyleManager = "Show style manager",
                 MainTextBoxMoveLastWordDown = "Move last word to next subtitle",
                 MainTextBoxMoveFirstWordFromNextUp = "Fetch first word from next subtitle",
@@ -2672,6 +2750,8 @@ can edit in same subtitle file (collaboration)",
                 MainTextBoxAutoBreakFromPosAndGoToNext = "Break at first space from cursor position and go to next",
                 MainTextBoxUnbreak = "Unbreak text",
                 MainTextBoxUnbreakNoSpace = "Unbreak without space (CJK)",
+                MainTextBoxAssaIntellisense = "Show ASSA tag helper",
+                MainTextBoxAssaRemoveTag = "Remove ASSA tag at cursor",
                 MainFileSaveAll = "Save all",
                 Miscellaneous = "Misc.",
                 UseDoNotBreakAfterList = "Use do-not-break-after list",
@@ -2953,7 +3033,7 @@ can edit in same subtitle file (collaboration)",
                 Vertical = "Vertical",
                 Border = "Border",
                 PlusShadow = "+ Shadow",
-                OpaqueBox = "Opaque box (uses outline color)",
+                OpaqueBox = "Opaque box",
                 Import = "Import...",
                 Export = "Export...",
                 New = "New",
@@ -2976,7 +3056,13 @@ can edit in same subtitle file (collaboration)",
                 OverwriteX = "Overwrite {0}?",
                 CategoryNote = "Note: The styles in the default category (colored in green) will be applied to new ASSA files",
                 CategoriesManage = "Manage",
-                MoveToCategory = "Move selected styles to category..."
+                MoveToCategory = "Move selected styles to category...",
+                ScaleX = "ScaleX",
+                ScaleY = "ScaleY",
+                Spacing = "Spacing",
+                Angle = "Angle",
+                BoxPerLine = "Box per line (use outline color)",
+                BoxMultiLine = "One box (use shadow color)",
             };
 
             SubStationAlphaStylesCategoriesManager = new LanguageStructure.SubStationAlphaStylesCategoriesManager
@@ -3231,6 +3317,7 @@ Keep changes?",
                 ShowSpectrogramOnly = "Show spectrogram only",
                 AddSceneChange = "Add scene change",
                 RemoveSceneChange = "Remove scene change",
+                RemoveSceneChangesFromSelection = "Remove scene changes from selection",
                 SeekSilence = "Seek silence...",
                 InsertSubtitleHere = "Insert subtitle here...",
                 GuessTimeCodes = "Guess time codes...",

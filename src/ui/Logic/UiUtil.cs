@@ -1,5 +1,4 @@
 ﻿using Nikse.SubtitleEdit.Controls;
-using Nikse.SubtitleEdit.Core;
 using Nikse.SubtitleEdit.Core.Common;
 using Nikse.SubtitleEdit.Core.Enums;
 using Nikse.SubtitleEdit.Core.SubtitleFormats;
@@ -170,7 +169,7 @@ namespace Nikse.SubtitleEdit.Logic
             }
         }
 
-        public static bool IsMpcHcInstalled
+        public static bool IsMpcInstalled
         {
             get
             {
@@ -181,7 +180,7 @@ namespace Nikse.SubtitleEdit.Logic
 
                 try
                 {
-                    return MpcHc.GetMpcHcFileName() != null;
+                    return MpcHc.GetMpcFileName() != null;
                 }
                 catch (FileNotFoundException)
                 {

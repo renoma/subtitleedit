@@ -2,7 +2,7 @@
 <Language Name="euskara">
   <General>
     <Title>Subtitle Edit</Title>
-    <Version>3.6.1</Version>
+    <Version>3.6.2</Version>
     <TranslatedBy>Itzultzailea: Xabier Aramendi</TranslatedBy>
     <CultureName>eu-ES</CultureName>
     <HelpFile>https://www.nikse.dk/SubtitleEdit/HelpEU</HelpFile>
@@ -253,9 +253,6 @@ Oharra: Egiaztatu diskako toki askea.</WaveFileMalformed>
     <MkvLanguageStyleThreeLetter>Hiru  hizkiko hizkuntza kodea</MkvLanguageStyleThreeLetter>
     <MkvLanguageStyleEmpty>Ez dago hizkuntza koderik</MkvLanguageStyleEmpty>
   </BatchConvert>
-  <Beamer>
-    <Title>Beamer</Title>
-  </Beamer>
   <BinEdit>
     <ImportImage>Inportatu irudia...</ImportImage>
     <ExportImage>Esportatu irudia...</ExportImage>
@@ -658,7 +655,7 @@ Oharra: Egiaztatu diskako toki askea.</WaveFileMalformed>
     <BreakLongLines>Hautsi lerro luzeak</BreakLongLines>
     <RemoveLineBreaks>Kendu lerro hautsiak esaldi bakarreko idatzi laburretan</RemoveLineBreaks>
     <RemoveLineBreaksAll>Kendu lerro hautsiak idatzi laburretan (elkarrizketak izan ezik)</RemoveLineBreaksAll>
-    <FixUppercaseIInsindeLowercaseWords>Zuzendu hitz xeheen barneko hizki larriak (idaz akatsa)</FixUppercaseIInsindeLowercaseWords>
+    <FixUppercaseIInsideLowercaseWords>Zuzendu hitz xeheen barneko hizki larriak (idaz akatsa)</FixUppercaseIInsideLowercaseWords>
     <FixDoubleApostrophes>Zuzendu adartxo bikoitzak ('') aipamen bakarrera (")</FixDoubleApostrophes>
     <AddPeriods>Gehitu puntua hurrengo lerroa hizki larriz hastean lerroen ondoren</AddPeriods>
     <StartWithUppercaseLetterAfterParagraph>Hasi hizki larriz esaldi baten ondoren</StartWithUppercaseLetterAfterParagraph>
@@ -701,7 +698,7 @@ Oharra: Egiaztatu diskako toki askea.</WaveFileMalformed>
     <RemoveUnneededSpacesExample>Kaixo  Xabier , han. -&gt; Kaixo Xabier, han.</RemoveUnneededSpacesExample>
     <RemoveUnneededPeriodsExample>Kaixo Xabier!. -&gt; Kaixo Xabier!</RemoveUnneededPeriodsExample>
     <FixMissingSpacesExample>Kaixo.Xabier -&gt; Kaixo. Xabier.</FixMissingSpacesExample>
-    <FixUppercaseIInsindeLowercaseWordsExample>Zerekin joIasten duzu? -&gt; Zerekin jolasten duzu?</FixUppercaseIInsindeLowercaseWordsExample>
+    <FixUppercaseIInsideLowercaseWordsExample>Zerekin joIasten duzu? -&gt; Zerekin jolasten duzu?</FixUppercaseIInsideLowercaseWordsExample>
     <FixLowercaseIToUppercaseIExample>What do i care. -&gt; What do I care.</FixLowercaseIToUppercaseIExample>
     <StartTimeLaterThanEndTime>Idatzi zenbakia {0}: Hasiera denbora amaiera denboraren ondoren da: {4}{1} -&gt; {2} {3}</StartTimeLaterThanEndTime>
     <UnableToFixStartTimeLaterThanEndTime>Ezgaitu idatzi zenbakia zuzentzea {0}: Hasiera denbora amaiera denbora amaitu ondoren da: {1}</UnableToFixStartTimeLaterThanEndTime>
@@ -1445,8 +1442,8 @@ Jarraitu nahi duzu?</SubtitleAppendPrompt>
     <SpellCheck>Idaz-egiaztapena</SpellCheck>
     <BeforeSpellCheck>Idaz-egiaztapenaren aurretik</BeforeSpellCheck>
     <SpellCheckChangedXToY>Idaz-egiaztapena: Aldatuta '{0}' -&gt; '{1}'-ra</SpellCheckChangedXToY>
-    <BeforeAddingTagX>Gehitu aurretik &lt;{0}&gt; etiketa</BeforeAddingTagX>
-    <TagXAdded>&lt;{0}&gt; etiketa gehituta</TagXAdded>
+    <BeforeAddingTagX>Gehitu aurretik '{0}' etiketa</BeforeAddingTagX>
+    <TagXAdded>'{0}' etiketa gehituta</TagXAdded>
     <LineXOfY>{0} lerro {1}-tik</LineXOfY>
     <XLinesSavedAsY>{0} lerro gordeta honela {1}</XLinesSavedAsY>
     <XLinesDeleted>{0} lerro ezabatuta</XLinesDeleted>
@@ -2318,7 +2315,6 @@ Jarraitu horrela ere?</PromptInsertSubtitleOverlap>
     <ListViewColumnTextUp>Zutabea, idazkia gora</ListViewColumnTextUp>
     <ListViewColumnTextDown>Zutabea, idazkia behera</ListViewColumnTextDown>
     <ListViewGoToNextError>Joan hurrengo akatsera</ListViewGoToNextError>
-    <ShowBeamer>Hasi azpidatzia ikusleiho-osoko beamer</ShowBeamer>
     <ShowStyleManager>Erakutsi estilo kudeatzailea</ShowStyleManager>
     <MainTextBoxMoveLastWordDown>Mugitu azken hitza behera hurrengo azpidatzi lerrora</MainTextBoxMoveLastWordDown>
     <MainTextBoxMoveFirstWordFromNextUp>Mugitu hurrengo azpidatziko lehen hitza lerroan gora</MainTextBoxMoveFirstWordFromNextUp>
@@ -2584,7 +2580,7 @@ bezala hizkiaren argibideak barnebiltzen dituen azpidatzi heuskarri bat erabiliz
     <Vertical>Zutika</Vertical>
     <Border>Hertza</Border>
     <PlusShadow>+ Itzala</PlusShadow>
-    <OpaqueBox>Kutxa argikaitza (inguru margoa erabiliz)</OpaqueBox>
+    <OpaqueBox>Kutxa argikaitza</OpaqueBox>
     <Import>Inportatu</Import>
     <Export>Esportatu</Export>
     <Copy>Kopiatu</Copy>

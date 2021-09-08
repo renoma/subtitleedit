@@ -1,5 +1,66 @@
 ﻿Subtitle Edit Changelog
 
+3.6.2 (24th August 2021)
+* NEW:
+   * ASSA: Keep override tags (no conversion to html for italic/font etc.)
+   * ASSA: Support for ScalingX/ScalingY/Spacing/Angle/Strikeout - thx ausencia
+   * ASSA: Override tag helper (shortcut + custom templates)
+   * ASSA: Set/get position
+   * ASSA: Progress bar generator
+   * ASSA: Plugin support
+   * Allow custom shortcuts for plugins
+   * Shortcuts for video contrast/brightness (mpv only)
+   * Add shortcut for opening "Subtitle Edit data folder" (Ctrl+Alt+Shift+D)
+   * Waveform "Right-click + Ctrl" will toggle select of a subtitle
+   * Waveform "Right-click + Shift" will select a range of subtitles
+   * Add a few profiles for Amazon Prime
+   * Add new FCE rule: "Remove first dash in non-dialogs"
+   * Add "Video - Generate blank video" - thx OmrSi
+   * Add "Video - Generate video w burned-in sub"
+   * Add new sub format - thx Ricardo
+* IMPROVED:
+   * Update Bulgarian translation - thx Калин
+   * Update Chinese translation - thx nkh0472
+   * Update Polish translation - thx admas
+   * Update Portuguese translation - thx hugok79
+   * Update Hungarian translation - thx Zityi
+   * Update Brazil translation - thx Igor
+   * Update French translation - thx Pierre
+   * Update Italian translation - thx NAMP
+   * Update Korean translation - thx domddol
+   * Update Czech translation - thx Trottel
+   * MPC: Try to search for mpc-be too - thx Fábio
+   * Shortcut F5 is now "Play selected lines"
+   * Support read of time codes with format "<number>f" in TTML - thx LeonCheung
+   * Improve waveform support for SMPTE timing (drop frame) - thx Paulo
+   * Try to pick best image for bdsup with fading - thx peter-qgd
+   * Adhere to max number of lines - thx Andrebavila
+   * Optimize "modify selection - styles"
+   * Installer: Update Inno Setup from version 5 to version 6
+   * Installer: Use ngen64 on 64-bit - thx XhmikosR
+   * Keep selected line (nearest) after "Remove text for HI" - thx Atlantis
+   * Improve FPC compatibility + PAC refactor - thx ngaullier
+   * Improve auto br / French regarding "space+punctuation" - thx Norbert
+   * Make sub preview work with mpv + audio only files - thx Rabia
+   * Add "[]" characters to PAC Latin - thx Valentin
+   * Allow hide of "Start time" column - thx ThomasLeigh/darnn
+   * Make title bar only-file-name or full-path configurable - thx robena
+   * Make DVD RIP window resizable - thx freMea
+   * Update Tesseract 5 beta to version 2021-08-11
+* FIXED:
+   * Fix MergeLinesShorterThan saving/loading - thx uckthis/OmrSi
+   * Fix load/save some ASSA storage style settings - thx Andrebavila
+   * Fix for italic in DCinemaSmpte2007/2010/2014 - thx Marko
+   * Minor fix for "Remove text for HI" - thx igenaya
+   * Minor fix for split with zero time codes - thx darnn
+   * Try to fix Tools - Join... with different ASSA styles - thx Joe
+   * Fix crash in "Continuation style" - thx ivandrofly
+   * Fix export to "dvd studio stl" - thx nonofx
+   * Apply duration limit: Only fix "checked" lines - thx PM
+   * Fix crash in compare - thx Janusz
+   * Fix crash in ASSA style import - thx Isabella
+   * Fix issue with DCinema interop and missing new-lines - thx Pepo
+
 3.6.1 (20th May 2021)
 * NEW:
    * Add "Subtitle formats" settings - thx OmrSi

@@ -1,5 +1,4 @@
-﻿using Nikse.SubtitleEdit.Core;
-using Nikse.SubtitleEdit.Core.BluRaySup;
+﻿using Nikse.SubtitleEdit.Core.BluRaySup;
 using Nikse.SubtitleEdit.Core.Common;
 using Nikse.SubtitleEdit.Core.Enums;
 using Nikse.SubtitleEdit.Core.Interfaces;
@@ -630,7 +629,7 @@ namespace Nikse.SubtitleEdit.Forms
                 var sb = new StringBuilder();
                 if (_exportType == ExportFormats.Stl)
                 {
-                    sb.AppendLine("$SetFilePathToken =" + folderBrowserDialog1.SelectedPath);
+                    sb.AppendLine("$SetFilePathToken =" + Path.GetDirectoryName(saveFileDialog1.FileName));
                     sb.AppendLine();
                 }
 
@@ -751,12 +750,10 @@ namespace Nikse.SubtitleEdit.Forms
                 if (errors.Count > 0)
                 {
                     var errorSb = new StringBuilder();
-                    for (int i = 0; i < 20; i++)
+                    var maxErrorsToDisplay = Math.Min(20, errors.Count);
+                    for (var i = 0; i < maxErrorsToDisplay; i++)
                     {
-                        if (i < errors.Count)
-                        {
-                            errorSb.AppendLine(errors[i]);
-                        }
+                        errorSb.AppendLine(errors[i]);
                     }
                     if (errors.Count > 20)
                     {
@@ -797,9 +794,9 @@ namespace Nikse.SubtitleEdit.Forms
                 }
                 else if (_exportType == ExportFormats.Stl)
                 {
-                    File.WriteAllText(Path.Combine(folderBrowserDialog1.SelectedPath, "DVD_Studio_Pro_Image_script.stl"), sb.ToString());
+                    File.WriteAllText(saveFileDialog1.FileName, sb.ToString());
                     var text = string.Format(LanguageSettings.Current.ExportPngXml.XImagesSavedInY, imagesSavedCount, folderBrowserDialog1.SelectedPath);
-                    MessageBoxShowWithFolderName(text, folderBrowserDialog1.SelectedPath);
+                    MessageBoxShowWithFolderName(text, Path.GetDirectoryName(saveFileDialog1.FileName));
                 }
                 else if (_exportType == ExportFormats.Spumux)
                 {
@@ -1468,7 +1465,8 @@ $DROP=[DROPVALUE]" + Environment.NewLine + Environment.NewLine +
                     if (!param.Saved)
                     {
                         string numberString = $"IMAGE{i:000}";
-                        string fileName = Path.Combine(folderBrowserDialog1.SelectedPath, numberString + "." + comboBoxImageFormat.Text.ToLowerInvariant());
+                        var path = Path.GetDirectoryName(saveFileDialog1.FileName);
+                        string fileName = Path.Combine(path, numberString + "." + comboBoxImageFormat.Text.ToLowerInvariant());
                         SaveImage(param.Bitmap, fileName, ImageFormat);
 
                         imagesSavedCount++;

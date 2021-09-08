@@ -2,7 +2,7 @@
 <Language Name="Български">
   <General>
     <Title>Subtitle Edit</Title>
-    <Version>3.6.1</Version>
+    <Version>3.6.2</Version>
     <TranslatedBy>Превод на български: KalinM, Ivo Ivanov и JJD</TranslatedBy>
     <CultureName>bg-BG</CultureName>
     <HelpFile />
@@ -252,9 +252,6 @@ https://github.com/SubtitleEdit/subtitleedit
     <MkvLanguageStyleThreeLetter>Трибуквен код на езика</MkvLanguageStyleThreeLetter>
     <MkvLanguageStyleEmpty>Няма езиков код</MkvLanguageStyleEmpty>
   </BatchConvert>
-  <Beamer>
-    <Title>Проектор</Title>
-  </Beamer>
   <BinEdit>
     <ImportImage>Импорт на изображение...</ImportImage>
     <ExportImage>Експорт на изображение...</ExportImage>
@@ -658,7 +655,7 @@ https://github.com/SubtitleEdit/subtitleedit
     <BreakLongLines>Прекъсване на дълги редове</BreakLongLines>
     <RemoveLineBreaks>Обединяване в един ред на редове с кратък текст</RemoveLineBreaks>
     <RemoveLineBreaksAll>Обединяване на редове с кратък текст (всички освен диалозите)</RemoveLineBreaksAll>
-    <FixUppercaseIInsindeLowercaseWords>Поправяне Главните "I" букви на малки "i" в думи, които са с малки букви (на англ.)(грешка OCR)</FixUppercaseIInsindeLowercaseWords>
+    <FixUppercaseIInsideLowercaseWords>Поправяне Главните "I" букви на малки "i" в думи, които са с малки букви (на англ.)(грешка OCR)</FixUppercaseIInsideLowercaseWords>
     <FixDoubleApostrophes>Поправяне на символите за двоен апостроф (' ') с единични кавички (")</FixDoubleApostrophes>
     <AddPeriods>Добавяне на точка след редове, където следващия ред започва с Главна буква</AddPeriods>
     <StartWithUppercaseLetterAfterParagraph>Начало с Главна буква след абзац</StartWithUppercaseLetterAfterParagraph>
@@ -701,7 +698,7 @@ https://github.com/SubtitleEdit/subtitleedit
     <RemoveUnneededSpacesExample>Хей   ти , там. -&gt; Хей ти, там.</RemoveUnneededSpacesExample>
     <RemoveUnneededPeriodsExample>Хей ти!. -&gt; Хей ти!</RemoveUnneededPeriodsExample>
     <FixMissingSpacesExample>Хей.Ти. -&gt; Хей. Ти.</FixMissingSpacesExample>
-    <FixUppercaseIInsindeLowercaseWordsExample>The earth is fIat. -&gt; The earth is flat.</FixUppercaseIInsindeLowercaseWordsExample>
+    <FixUppercaseIInsideLowercaseWordsExample>The earth is fIat. -&gt; The earth is flat.</FixUppercaseIInsideLowercaseWordsExample>
     <FixLowercaseIToUppercaseIExample>What do i care. -&gt; What do I care.</FixLowercaseIToUppercaseIExample>
     <StartTimeLaterThanEndTime>Текст № {0}: Началното време е по-късно от крайното време: {4}{1} -&gt; {2} {3}</StartTimeLaterThanEndTime>
     <UnableToFixStartTimeLaterThanEndTime>Не може да се поправи текст с № {0}: Началното време е по-късно от крайното време: {1}</UnableToFixStartTimeLaterThanEndTime>
@@ -1456,8 +1453,8 @@ https://github.com/SubtitleEdit/subtitleedit
     <SpellCheck>Проверка на правопис</SpellCheck>
     <BeforeSpellCheck>Преди проверката на правопис</BeforeSpellCheck>
     <SpellCheckChangedXToY>Проверка на правопис: Променени '{0}' на '{1}'</SpellCheckChangedXToY>
-    <BeforeAddingTagX>Преди добавянето на тага &lt;{0}&gt;</BeforeAddingTagX>
-    <TagXAdded>&lt;{0}&gt; добавени тагове</TagXAdded>
+    <BeforeAddingTagX>Преди добавянето на тага '{0}'</BeforeAddingTagX>
+    <TagXAdded>'{0}' добавени тагове</TagXAdded>
     <LineXOfY>ред {0} на {1}</LineXOfY>
     <XLinesSavedAsY>{0} реда са записани като {1}</XLinesSavedAsY>
     <XLinesDeleted>{0} изтрити реда</XLinesDeleted>
@@ -2143,6 +2140,8 @@ https://github.com/SubtitleEdit/subtitleedit
     <ContinuationStyleNoneLeadingTrailingDots>Няма, точки за паузи</ContinuationStyleNoneLeadingTrailingDots>
     <ContinuationStyleOnlyTrailingDots>Точки (само за крайни)</ContinuationStyleOnlyTrailingDots>
     <ContinuationStyleLeadingTrailingDots>Точки</ContinuationStyleLeadingTrailingDots>
+    <ContinuationStyleLeadingTrailingEllipsis>Многоточие</ContinuationStyleLeadingTrailingEllipsis>
+    <ContinuationStyleNoneTrailingEllipsis>Няма, многоточие за паузи</ContinuationStyleNoneTrailingEllipsis>
     <ContinuationStyleLeadingTrailingDash>Тире</ContinuationStyleLeadingTrailingDash>
     <ContinuationStyleLeadingTrailingDashDots>Тире, освен точки за паузи</ContinuationStyleLeadingTrailingDashDots>
     <MusicSymbol>Замяна с музикален символ</MusicSymbol>
@@ -2298,6 +2297,8 @@ https://github.com/SubtitleEdit/subtitleedit
     <PlayRateFaster>По-бързо възпроизвеждане</PlayRateFaster>
     <VideoResetSpeedAndZoom>Нулиране на скорост/увеличение</VideoResetSpeedAndZoom>
     <MainToggleVideoControls>Превключване на видео контрол</MainToggleVideoControls>
+    <VideoToggleContrast>Превключване на контраста (само за mpv)</VideoToggleContrast>
+    <VideoToggleBrightness>Превключване на яркостта (само за mpv)</VideoToggleBrightness>
     <CustomSearch1>Превод, лично търсене 1</CustomSearch1>
     <CustomSearch2>Превод, лично търсене 2</CustomSearch2>
     <CustomSearch3>Превод, лично търсене 3</CustomSearch3>
@@ -2342,7 +2343,6 @@ https://github.com/SubtitleEdit/subtitleedit
     <ListViewColumnTextUp>Колона, текста нагоре</ListViewColumnTextUp>
     <ListViewColumnTextDown>Колона, текста надолу</ListViewColumnTextDown>
     <ListViewGoToNextError>Преминаване към следващата грешка</ListViewGoToNextError>
-    <ShowBeamer>Пускане на субтитрите при пълноекранен режим на проектора</ShowBeamer>
     <ShowStyleManager>Показване мениджър на стилове</ShowStyleManager>
     <MainTextBoxMoveLastWordDown>Преместване последната дума в следващия субтитърен ред</MainTextBoxMoveLastWordDown>
     <MainTextBoxMoveFirstWordFromNextUp>Преместване първата дума от следващият субтитърен ред нагоре</MainTextBoxMoveFirstWordFromNextUp>
@@ -2611,7 +2611,7 @@ https://github.com/SubtitleEdit/subtitleedit
     <Vertical>Вертикално</Vertical>
     <Border>Граница (Рамка)</Border>
     <PlusShadow>+ Сянка</PlusShadow>
-    <OpaqueBox>Непрозрачно поле (използва външния цвят)</OpaqueBox>
+    <OpaqueBox>Непрозрачно поле</OpaqueBox>
     <Import>Импорт...</Import>
     <Export>Експорт...</Export>
     <Copy>Копиране</Copy>

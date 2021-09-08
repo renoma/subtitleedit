@@ -115,6 +115,54 @@
     <Compile Include="Forms\AlignmentPickerJapanese.Designer.cs">
       <DependentUpon>AlignmentPickerJapanese.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Assa\AdvancedSelectionHelper.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Assa\AdvancedSelectionHelper.Designer.cs">
+      <DependentUpon>AdvancedSelectionHelper.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Assa\AssaProgressBar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Assa\AssaProgressBar.Designer.cs">
+      <DependentUpon>AssaProgressBar.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Assa\ResolutionResampler.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Assa\ResolutionResampler.Designer.cs">
+      <DependentUpon>ResolutionResampler.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Assa\SetPosition.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Assa\SetPosition.Designer.cs">
+      <DependentUpon>SetPosition.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Assa\ApplyCustomStyles.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Assa\ApplyCustomStyles.Designer.cs">
+      <DependentUpon>ApplyCustomStyles.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Assa\AssaTagTemplate.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Assa\AssaTagTemplate.Designer.cs">
+      <DependentUpon>AssaTagTemplate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Assa\AssaStyles.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Assa\AssaStyles.Designer.cs">
+      <DependentUpon>AssaStyles.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Assa\TagHistory.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Assa\TagHistory.Designer.cs">
+      <DependentUpon>TagHistory.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\BatchConvertMkvEnding.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -271,23 +319,41 @@
     <Compile Include="Forms\ExportPngXmlDialogOpenFolder.Designer.cs">
       <DependentUpon>ExportPngXmlDialogOpenFolder.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Styles\AttachmentPreviewText.cs">
+    <Compile Include="Forms\FormatProperties\WebVttProperties.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Styles\AttachmentPreviewText.Designer.cs">
+    <Compile Include="Forms\FormatProperties\WebVttProperties.Designer.cs">
+      <DependentUpon>WebVttProperties.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\GenerateVideo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\GenerateVideo.Designer.cs">
+      <DependentUpon>GenerateVideo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\GenerateVideoWithHardSubs.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\GenerateVideoWithHardSubs.Designer.cs">
+      <DependentUpon>GenerateVideoWithHardSubs.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Assa\AttachmentPreviewText.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Assa\AttachmentPreviewText.Designer.cs">
       <DependentUpon>AttachmentPreviewText.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Styles\Attachments.cs">
+    <Compile Include="Forms\Assa\Attachments.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Styles\Attachments.Designer.cs">
+    <Compile Include="Forms\Assa\Attachments.Designer.cs">
       <DependentUpon>Attachments.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Styles\ChooseFontName.cs">
+    <Compile Include="Forms\Assa\ChooseAssaFontName.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Styles\ChooseFontName.Designer.cs">
-      <DependentUpon>ChooseFontName.cs</DependentUpon>
+    <Compile Include="Forms\Assa\ChooseAssaFontName.Designer.cs">
+      <DependentUpon>ChooseAssaFontName.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Styles\SubStationAlphaStylesCategoriesImportExport.cs">
       <SubType>Form</SubType>
@@ -384,12 +450,6 @@
     </Compile>
     <Compile Include="Forms\BatchConvert.Designer.cs">
       <DependentUpon>BatchConvert.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\Beamer.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\Beamer.Designer.cs">
-      <DependentUpon>Beamer.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\ChangeCasing.cs">
       <SubType>Form</SubType>
@@ -685,11 +745,11 @@
     <Compile Include="Forms\Networking\NetworkStart.Designer.cs">
       <DependentUpon>NetworkStart.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Ocr\DownloadTesseract4.cs">
+    <Compile Include="Forms\Ocr\DownloadTesseract5.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Ocr\DownloadTesseract4.Designer.cs">
-      <DependentUpon>DownloadTesseract4.cs</DependentUpon>
+    <Compile Include="Forms\Ocr\DownloadTesseract5.Designer.cs">
+      <DependentUpon>DownloadTesseract5.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Ocr\DownloadTesseract302.cs">
       <SubType>Form</SubType>
@@ -1135,6 +1195,7 @@
     <Compile Include="Forms\YouTubeAnnotationsImport.Designer.cs">
       <DependentUpon>YouTubeAnnotationsImport.cs</DependentUpon>
     </Compile>
+    <Compile Include="Logic\AssaTagHelper.cs" />
     <Compile Include="Logic\ColorChooser\ColorChangedEventArgs.cs" />
     <Compile Include="Logic\ColorChooser\ColorHandler.cs" />
     <Compile Include="Logic\ColorChooser\ColorWheel.cs" />
@@ -1209,6 +1270,7 @@
     <Compile Include="Logic\VideoPlayers\MpcHC\NativeMethods.cs" />
     <Compile Include="Logic\VideoPlayers\QuartsPlayer.cs" />
     <Compile Include="Logic\VideoPlayers\VideoPlayer.cs" />
+    <Compile Include="Logic\VideoPreviewGenerator.cs" />
     <Compile Include="Logic\WordSpellChecker.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -1232,6 +1294,30 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\AlignmentPickerJapanese.resx">
       <DependentUpon>AlignmentPickerJapanese.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Assa\AdvancedSelectionHelper.resx">
+      <DependentUpon>AdvancedSelectionHelper.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Assa\AssaProgressBar.resx">
+      <DependentUpon>AssaProgressBar.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Assa\ResolutionResampler.resx">
+      <DependentUpon>ResolutionResampler.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Assa\SetPosition.resx">
+      <DependentUpon>SetPosition.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Assa\ApplyCustomStyles.resx">
+      <DependentUpon>ApplyCustomStyles.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Assa\AssaTagTemplate.resx">
+      <DependentUpon>AssaTagTemplate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Assa\AssaStyles.resx">
+      <DependentUpon>AssaStyles.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Assa\TagHistory.resx">
+      <DependentUpon>TagHistory.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\BatchConvertMkvEnding.resx">
       <DependentUpon>BatchConvertMkvEnding.cs</DependentUpon>
@@ -1312,14 +1398,23 @@
     <EmbeddedResource Include="Forms\ExportPngXmlDialogOpenFolder.resx">
       <DependentUpon>ExportPngXmlDialogOpenFolder.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Styles\AttachmentPreviewText.resx">
+    <EmbeddedResource Include="Forms\FormatProperties\WebVttProperties.resx">
+      <DependentUpon>WebVttProperties.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\GenerateVideo.resx">
+      <DependentUpon>GenerateVideo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\GenerateVideoWithHardSubs.resx">
+      <DependentUpon>GenerateVideoWithHardSubs.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Assa\AttachmentPreviewText.resx">
       <DependentUpon>AttachmentPreviewText.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Styles\Attachments.resx">
+    <EmbeddedResource Include="Forms\Assa\Attachments.resx">
       <DependentUpon>Attachments.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Styles\ChooseFontName.resx">
-      <DependentUpon>ChooseFontName.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\Assa\ChooseAssaFontName.resx">
+      <DependentUpon>ChooseAssaFontName.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Styles\SubStationAlphaStylesCategoriesImportExport.resx">
       <DependentUpon>SubStationAlphaStylesCategoriesImportExport.cs</DependentUpon>
@@ -1366,9 +1461,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\BatchConvert.resx">
       <DependentUpon>BatchConvert.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Beamer.resx">
-      <DependentUpon>Beamer.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\ChangeCasing.resx">
       <DependentUpon>ChangeCasing.cs</DependentUpon>
@@ -1518,8 +1610,8 @@
     <EmbeddedResource Include="Forms\Networking\NetworkStart.resx">
       <DependentUpon>NetworkStart.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Ocr\DownloadTesseract4.resx">
-      <DependentUpon>DownloadTesseract4.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\Ocr\DownloadTesseract5.resx">
+      <DependentUpon>DownloadTesseract5.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Ocr\DownloadTesseract302.resx">
       <DependentUpon>DownloadTesseract302.cs</DependentUpon>

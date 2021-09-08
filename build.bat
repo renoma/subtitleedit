@@ -191,6 +191,7 @@ IF NOT EXIST "temp_zip\Tesseract302"          MD "temp_zip\Tesseract302"
 ECHO.
 COPY /Y /V "..\..\..\..\LICENSE.txt"      "temp_zip\"
 COPY /Y /V "..\..\..\..\Changelog.txt"    "temp_zip\"
+COPY /Y /V "..\..\..\..\preview.mkv"    "temp_zip\"
 COPY /Y /V "Hunspellx86.dll"           "temp_zip\"
 COPY /Y /V "Hunspellx64.dll"           "temp_zip\"
 COPY /Y /V "SubtitleEdit.exe"          "temp_zip\"
@@ -241,6 +242,6 @@ FOR %%G IN (ISCC.exe) DO (SET "INNOSETUP_PATH=%%~$PATH:G")
 IF EXIST "%INNOSETUP_PATH%" (SET "INNOSETUP=%INNOSETUP_PATH%" & EXIT /B)
 
 FOR /F "tokens=5*" %%A IN (
-  'REG QUERY "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\Inno Setup 5_is1" /v "Inno Setup: App Path" 2^>NUL ^|^|
-   REG QUERY "HKLM\SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\Uninstall\Inno Setup 5_is1" /v "Inno Setup: App Path" 2^>NUL') DO IF "%%A" == "REG_SZ" SET "INNOSETUP=%%B\ISCC.exe"
+  'REG QUERY "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\Inno Setup 6_is1" /v "Inno Setup: App Path" 2^>NUL ^|^|
+   REG QUERY "HKLM\SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\Uninstall\Inno Setup 6_is1" /v "Inno Setup: App Path" 2^>NUL') DO IF "%%A" == "REG_SZ" SET "INNOSETUP=%%B\ISCC.exe"
 EXIT /B

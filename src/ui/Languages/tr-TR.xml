@@ -2,7 +2,7 @@
 <Language Name="Türkçe">
   <General>
     <Title>Subtitle Edit</Title>
-    <Version>3.6.1</Version>
+    <Version>3.6.2</Version>
     <TranslatedBy>Türkçe Çeviri: Falcon006
 Son eklemeler: ismail0100</TranslatedBy>
     <CultureName>tr-TR</CultureName>
@@ -258,9 +258,6 @@ Not: Boş disk alanını kontrol edin.</WaveFileMalformed>
     <MkvLanguageStyleThreeLetter>Üç harfli dil kodu</MkvLanguageStyleThreeLetter>
     <MkvLanguageStyleEmpty>Dil kodu yok</MkvLanguageStyleEmpty>
   </BatchConvert>
-  <Beamer>
-    <Title>Dengeleyici</Title>
-  </Beamer>
   <BinEdit>
     <ImportImage>Görüntüyü içe aktar...</ImportImage>
     <ExportImage>Görüntüyü dışa aktar...</ExportImage>
@@ -665,7 +662,7 @@ Not: Boş disk alanını kontrol edin.</WaveFileMalformed>
     <BreakLongLines>Uzun satırları böl</BreakLongLines>
     <RemoveLineBreaks>Tek cümle olan kısa metinleri, tek satırda birleştir</RemoveLineBreaks>
     <RemoveLineBreaksAll>Tüm kısa metinleri, tek satırda birleştir (diyaloglar hariç)</RemoveLineBreaksAll>
-    <FixUppercaseIInsindeLowercaseWords>Kelime içinde büyük harf, küçük harf düzeltme 'i' (OCR hatası)</FixUppercaseIInsindeLowercaseWords>
+    <FixUppercaseIInsideLowercaseWords>Kelime içinde büyük harf, küçük harf düzeltme 'i' (OCR hatası)</FixUppercaseIInsideLowercaseWords>
     <FixDoubleApostrophes>Çift tırnak (''), tek tırnak karakterini düzelt (")</FixDoubleApostrophes>
     <AddPeriods>Sonraki satır büyük harfle başlıyorsa bulunan satırın sonuna nokta ekleyin</AddPeriods>
     <StartWithUppercaseLetterAfterParagraph>Paragraftan sonra büyük harfle başlayın</StartWithUppercaseLetterAfterParagraph>
@@ -708,7 +705,7 @@ Not: Boş disk alanını kontrol edin.</WaveFileMalformed>
     <RemoveUnneededSpacesExample>Hey  sen , oradaki. -&gt; Hey sen, oradaki.</RemoveUnneededSpacesExample>
     <RemoveUnneededPeriodsExample>Hey sen!. -&gt; Hey sen!</RemoveUnneededPeriodsExample>
     <FixMissingSpacesExample>Hey.Sen. -&gt; Hey. Sen.</FixMissingSpacesExample>
-    <FixUppercaseIInsindeLowercaseWordsExample>Dünya yuvarIak. -&gt; Dünya yuvarlak.</FixUppercaseIInsindeLowercaseWordsExample>
+    <FixUppercaseIInsideLowercaseWordsExample>Dünya yuvarIak. -&gt; Dünya yuvarlak.</FixUppercaseIInsideLowercaseWordsExample>
     <FixLowercaseIToUppercaseIExample>Umrumda değil. -&gt; Umrumda değIl.</FixLowercaseIToUppercaseIExample>
     <StartTimeLaterThanEndTime>Metin numarası {0}: Başlangıç zamanı bitiş zamanından sonra: {4}{1} -&gt; {2} {3}</StartTimeLaterThanEndTime>
     <UnableToFixStartTimeLaterThanEndTime>Metin numarasını düzeltilemez {0}: Başlangıç zamanı bitiş zamanından sonra: {1}</UnableToFixStartTimeLaterThanEndTime>
@@ -1459,8 +1456,8 @@ Devam edilsin mi?</SubtitleAppendPrompt>
     <SpellCheck>Yazımı denetle</SpellCheck>
     <BeforeSpellCheck>Yazımı denetlemeden önce</BeforeSpellCheck>
     <SpellCheckChangedXToY>Yazım denetimi: değişmiş '{0}' dan '{1}'</SpellCheckChangedXToY>
-    <BeforeAddingTagX>&lt;{0}&gt; etiketi eklemeden önce</BeforeAddingTagX>
-    <TagXAdded>&lt;{0}&gt; etiket eklendi</TagXAdded>
+    <BeforeAddingTagX>'{0}' etiketi eklemeden önce</BeforeAddingTagX>
+    <TagXAdded>'{0}' etiket eklendi</TagXAdded>
     <LineXOfY>Satır {0} nin {1}</LineXOfY>
     <XLinesSavedAsY>{0} satır {1} olarak kaydedildi</XLinesSavedAsY>
     <XLinesDeleted>{0} satır silindi</XLinesDeleted>
@@ -2342,7 +2339,6 @@ Yeni oturum başlatın (işbirliği)</Information>
     <ListViewColumnTextUp>Sütun, metin yukarı</ListViewColumnTextUp>
     <ListViewColumnTextDown>Sütun, metin aşağı</ListViewColumnTextDown>
     <ListViewGoToNextError>Sonraki hataya git</ListViewGoToNextError>
-    <ShowBeamer>Altyazı tam ekran akışını başlat</ShowBeamer>
     <ShowStyleManager>Stil yöneticisini göster</ShowStyleManager>
     <MainTextBoxMoveLastWordDown>Bir sonraki altyazı satırının son kelimesini aşağı taşı</MainTextBoxMoveLastWordDown>
     <MainTextBoxMoveFirstWordFromNextUp>Bir sonraki altyazı satırından ilk kelimeyi yukarı taşı</MainTextBoxMoveFirstWordFromNextUp>

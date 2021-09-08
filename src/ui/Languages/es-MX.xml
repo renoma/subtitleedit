@@ -2,7 +2,7 @@
 <Language Name="Español (México)">
   <General>
     <Title>Subtitle Edit</Title>
-    <Version>3.6.1</Version>
+    <Version>3.6.2</Version>
     <TranslatedBy>Traducido por Francisco Naranjo (paconaranjo)</TranslatedBy>
     <CultureName>es-MX</CultureName>
     <HelpFile>https://www.nikse.dk/SubtitleEdit/HelpEs</HelpFile>
@@ -250,9 +250,6 @@ Nota: comprobar el espacio libre en disco.</WaveFileMalformed>
     <MkvLanguageStyleThreeLetter>Código lingüístico de tres letras</MkvLanguageStyleThreeLetter>
     <MkvLanguageStyleEmpty>Sin código de idioma</MkvLanguageStyleEmpty>
   </BatchConvert>
-  <Beamer>
-    <Title>Videoproyector</Title>
-  </Beamer>
   <BinEdit>
     <ImportImage>Importar imagen...</ImportImage>
     <ExportImage>Exportar imagen...</ExportImage>
@@ -656,7 +653,7 @@ Nota: comprobar el espacio libre en disco.</WaveFileMalformed>
     <BreakLongLines>Dividir líneas largas</BreakLongLines>
     <RemoveLineBreaks>Eliminar saltos de línea en textos cortos con una sola frase</RemoveLineBreaks>
     <RemoveLineBreaksAll>Eliminar saltos de línea en textos cortos (todos excepto diálogos)</RemoveLineBreaksAll>
-    <FixUppercaseIInsindeLowercaseWords>Corregir 'i' mayúscula en palabras en minúscula (error de OCR)</FixUppercaseIInsindeLowercaseWords>
+    <FixUppercaseIInsideLowercaseWords>Corregir 'i' mayúscula en palabras en minúscula (error de OCR)</FixUppercaseIInsideLowercaseWords>
     <FixDoubleApostrophes>Sustituir doble comilla simple ('') por comillas dobles (")</FixDoubleApostrophes>
     <AddPeriods>Añadir punto al final de la línea cuando la siguiente comience con mayúscula</AddPeriods>
     <StartWithUppercaseLetterAfterParagraph>Comenzar párrafo con mayúscula</StartWithUppercaseLetterAfterParagraph>
@@ -699,7 +696,7 @@ Nota: comprobar el espacio libre en disco.</WaveFileMalformed>
     <RemoveUnneededSpacesExample>Oye   tú , ¿ qué haces? -&gt; Oye tú, ¿qué haces?</RemoveUnneededSpacesExample>
     <RemoveUnneededPeriodsExample>¡Oye tú!. -&gt; ¡Oye tú!</RemoveUnneededPeriodsExample>
     <FixMissingSpacesExample>Eh.Tú. -&gt; Eh. Tú.</FixMissingSpacesExample>
-    <FixUppercaseIInsindeLowercaseWordsExample>La tIerra es plana. -&gt; La tierra es plana.</FixUppercaseIInsindeLowercaseWordsExample>
+    <FixUppercaseIInsideLowercaseWordsExample>La tIerra es plana. -&gt; La tierra es plana.</FixUppercaseIInsideLowercaseWordsExample>
     <FixLowercaseIToUppercaseIExample>What do i care. -&gt; What do I care.</FixLowercaseIToUppercaseIExample>
     <StartTimeLaterThanEndTime>Número de texto {0}: Tiempo inicial es posterior a tiempo final: {4}{1} -&gt; {2} {3}</StartTimeLaterThanEndTime>
     <UnableToFixStartTimeLaterThanEndTime>No se pudo solucionar número de texto {0}: Tiempo inicial es posterior a tiempo final: {1}</UnableToFixStartTimeLaterThanEndTime>
@@ -1449,8 +1446,8 @@ con el archivo de video, al subtítulo actual cargado.
     <SpellCheck>Revisión ortográfica</SpellCheck>
     <BeforeSpellCheck>Antes de la revisión ortográfica</BeforeSpellCheck>
     <SpellCheckChangedXToY>Revisión ortográfica: Cambiado «{0}» por «{1}»</SpellCheckChangedXToY>
-    <BeforeAddingTagX>Antes de añadir &lt;{0}&gt; etiqueta</BeforeAddingTagX>
-    <TagXAdded>&lt;{0}&gt; etiquetas añadidas</TagXAdded>
+    <BeforeAddingTagX>Antes de añadir '{0}' etiqueta</BeforeAddingTagX>
+    <TagXAdded>'{0}' etiquetas añadidas</TagXAdded>
     <LineXOfY>línea {0} de {1}</LineXOfY>
     <XLinesSavedAsY>{0} líneas guardará como {1}</XLinesSavedAsY>
     <XLinesDeleted>{0} líneas eliminadas</XLinesDeleted>
@@ -2319,7 +2316,6 @@ puedan editar el mismo archivo de subtítulo (colaboración)</Information>
     <ListViewColumnTextUp>Columna, subir texto</ListViewColumnTextUp>
     <ListViewColumnTextDown>Columna, bajar texto</ListViewColumnTextDown>
     <ListViewGoToNextError>Ir al siguiente error</ListViewGoToNextError>
-    <ShowBeamer>Inicio proyector de subtítulos en pantalla completa</ShowBeamer>
     <ShowStyleManager>Mostrar gestor de estilo</ShowStyleManager>
     <MainTextBoxMoveLastWordDown>Mover última palabra a la siguiente línea de subtítulos</MainTextBoxMoveLastWordDown>
     <MainTextBoxMoveFirstWordFromNextUp>Mover primera palabra a la anterior línea de subtítulos</MainTextBoxMoveFirstWordFromNextUp>
@@ -2588,7 +2584,7 @@ de subtítulo con información de fuente incorporada como "Advanced Sub Station 
     <Vertical>Vertical</Vertical>
     <Border>Borde</Border>
     <PlusShadow>+ Sombra</PlusShadow>
-    <OpaqueBox>Caja opaca (usa el color del contorno)</OpaqueBox>
+    <OpaqueBox>Caja opaca</OpaqueBox>
     <Import>Importar...</Import>
     <Export>Exportar...</Export>
     <Copy>Copiar</Copy>

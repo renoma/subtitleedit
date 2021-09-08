@@ -2,7 +2,7 @@
 <Language Name="Hungarian">
   <General>
     <Title>Subtitle Edit</Title>
-    <Version>3.6.1</Version>
+    <Version>3.6.2</Version>
     <TranslatedBy>Fordító: Zityi's Translator Team (http://szoftverforditasok.hu)</TranslatedBy>
     <CultureName>hu-HU</CultureName>
     <HelpFile />
@@ -256,9 +256,6 @@ Megjegyzés: Ellenőrizze a szabad merevlemez területet.</WaveFileMalformed>
     <MkvLanguageStyleThreeLetter>Hárombetűs nyelvkód</MkvLanguageStyleThreeLetter>
     <MkvLanguageStyleEmpty>Nincs nyelvkód</MkvLanguageStyleEmpty>
   </BatchConvert>
-  <Beamer>
-    <Title>Projektor</Title>
-  </Beamer>
   <BinEdit>
     <ImportImage>Kép importálása...</ImportImage>
     <ExportImage>Kép exportálása...</ExportImage>
@@ -662,7 +659,7 @@ Megjegyzés: Ellenőrizze a szabad merevlemez területet.</WaveFileMalformed>
     <BreakLongLines>Hosszú sorok tördelése</BreakLongLines>
     <RemoveLineBreaks>Sortörések eltávolítása rövid szövegekben, csak egy mondatnál</RemoveLineBreaks>
     <RemoveLineBreaksAll>Sortörések eltávolítása rövid szövegekben (a párbeszédablakok kivételével)</RemoveLineBreaksAll>
-    <FixUppercaseIInsindeLowercaseWords>Nagybetűs 'i' javítása a kisbetűs szavakban (OCR hiba)</FixUppercaseIInsindeLowercaseWords>
+    <FixUppercaseIInsideLowercaseWords>Nagybetűs 'i' javítása a kisbetűs szavakban (OCR hiba)</FixUppercaseIInsideLowercaseWords>
     <FixDoubleApostrophes>Dupla idézőjel ('') javítása (") karakterre</FixDoubleApostrophes>
     <AddPeriods>Pont hozzáadás azon sorok után, ahol a következő sor nagybetűvel indul</AddPeriods>
     <StartWithUppercaseLetterAfterParagraph>Indítás nagybetűvel a bekezdés után</StartWithUppercaseLetterAfterParagraph>
@@ -705,7 +702,7 @@ Megjegyzés: Ellenőrizze a szabad merevlemez területet.</WaveFileMalformed>
     <RemoveUnneededSpacesExample>Hey   you , there. -&gt; Hey you, there.</RemoveUnneededSpacesExample>
     <RemoveUnneededPeriodsExample>Hey you!. -&gt; Hey you!</RemoveUnneededPeriodsExample>
     <FixMissingSpacesExample>Hey.You. -&gt; Hey. You.</FixMissingSpacesExample>
-    <FixUppercaseIInsindeLowercaseWordsExample>The earth is fIat. -&gt; The earth is flat.</FixUppercaseIInsindeLowercaseWordsExample>
+    <FixUppercaseIInsideLowercaseWordsExample>The earth is fIat. -&gt; The earth is flat.</FixUppercaseIInsideLowercaseWordsExample>
     <FixLowercaseIToUppercaseIExample>What do i care. -&gt; What do I care.</FixLowercaseIToUppercaseIExample>
     <StartTimeLaterThanEndTime>{0} szövegszám: A kezdési idő későbbi a befejezési időnél: {4}{1} -&gt; {2} {3}</StartTimeLaterThanEndTime>
     <UnableToFixStartTimeLaterThanEndTime>A(z) {0} szövegszám nem javítható: A kezdési idő későbbi a befejezési időnél: {1}</UnableToFixStartTimeLaterThanEndTime>
@@ -1457,8 +1454,8 @@ Folytatja?</SubtitleAppendPrompt>
     <SpellCheck>Helyesírás-ellenőrzés</SpellCheck>
     <BeforeSpellCheck>Helyesírás-ellenőrzés előtti állapotra</BeforeSpellCheck>
     <SpellCheckChangedXToY>Helyesírás-ellenőrzés: '{0}' módosítva erre: '{1}'</SpellCheckChangedXToY>
-    <BeforeAddingTagX>A(z) &lt;{0}&gt; címke hozzáadása előtti állapotra</BeforeAddingTagX>
-    <TagXAdded>&lt;{0}&gt; címke hozzáadva</TagXAdded>
+    <BeforeAddingTagX>A(z) '{0}' címke hozzáadása előtti állapotra</BeforeAddingTagX>
+    <TagXAdded>'{0}' címke hozzáadva</TagXAdded>
     <LineXOfY>{0} - {1} sor</LineXOfY>
     <XLinesSavedAsY>{0} sor mentve {1}-ként</XLinesSavedAsY>
     <XLinesDeleted>{0} sor törölve</XLinesDeleted>
@@ -2340,7 +2337,6 @@ szerkesztheti ugyanazt a feliratfájlt</Information>
     <ListViewColumnTextUp>Oszlop, szöveg felfelé</ListViewColumnTextUp>
     <ListViewColumnTextDown>Oszlop, szöveg lefelé</ListViewColumnTextDown>
     <ListViewGoToNextError>Ugrás a következő hibára</ListViewGoToNextError>
-    <ShowBeamer>Teljes képernyős projektor felirat indítás</ShowBeamer>
     <ShowStyleManager>Stíluskezelő megjelenítése</ShowStyleManager>
     <MainTextBoxMoveLastWordDown>Utolsó szó áthelyezése a következő feliratra</MainTextBoxMoveLastWordDown>
     <MainTextBoxMoveFirstWordFromNextUp>Első szó lekérése a következő feliratból</MainTextBoxMoveFirstWordFromNextUp>
@@ -2609,7 +2605,7 @@ Folytatja?</RestoreDefaultSettingsMsg>
     <Vertical>Függőleges</Vertical>
     <Border>Keret</Border>
     <PlusShadow>+ Árnyék</PlusShadow>
-    <OpaqueBox>Átlátszatlan doboz (körvonal szín használata)</OpaqueBox>
+    <OpaqueBox>Átlátszatlan doboz</OpaqueBox>
     <Import>Importálás...</Import>
     <Export>Exportálás...</Export>
     <Copy>Másolás</Copy>

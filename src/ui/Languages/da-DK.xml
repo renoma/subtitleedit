@@ -2,7 +2,7 @@
 <Language Name="dansk">
   <General>
     <Title>Subtitle Edit</Title>
-    <Version>3.6.1</Version>
+    <Version>3.6.2</Version>
     <TranslatedBy>Oversat til dansk af Nikse (mailto:nikse.dk@gmail.com)</TranslatedBy>
     <CultureName>da-DK</CultureName>
     <HelpFile />
@@ -40,6 +40,7 @@
     <Bold>Fed</Bold>
     <Italic>Kursiv</Italic>
     <Underline>Understreg</Underline>
+    <Strikeout>Gennemstreg</Strikeout>
     <Visible>Synlig</Visible>
     <FrameRate>Billeder pr. sekund</FrameRate>
     <Name>Navn</Name>
@@ -53,6 +54,7 @@
     <TotalLengthXSplitLine>Total længde: {0} (split linje!)</TotalLengthXSplitLine>
     <SplitLine>Split linje!</SplitLine>
     <NotAvailable>Ikke tilgængelig</NotAvailable>
+    <Overlap>Overlap</Overlap>
     <OverlapPreviousLineX>Overlap forrige ({0:#,##0.###})</OverlapPreviousLineX>
     <OverlapX>Overlap ({0:#,##0.###})</OverlapX>
     <OverlapNextX>Overlap næste ({0:#,##0.###})</OverlapNextX>
@@ -175,6 +177,50 @@ Bemærk: Kontroller ledig diskplads.</WaveFileMalformed>
     <RemoveOneAttachment>Fjern en vedhæftet fil?</RemoveOneAttachment>
     <RemoveXAttachments>Fjern {0} vedhæftede filer?</RemoveXAttachments>
   </AssaAttachments>
+  <AssaOverrideTags>
+    <ApplyCustomTags>Anvend tilpassede tags</ApplyCustomTags>
+    <History>Historie</History>
+    <TagsToApply>Tags der skal anvendes</TagsToApply>
+    <ApplyTo>Anved på
+</ApplyTo>
+    <SelectedLinesX>Valgte linjer: {0}</SelectedLinesX>
+    <AdvancedSelection>Avanceret valg</AdvancedSelection>
+  </AssaOverrideTags>
+  <AssaProgressBarGenerator>
+    <Title>Generer statuslinje</Title>
+    <Progressbar>Statusslinje</Progressbar>
+    <Chapters>Kapitler</Chapters>
+    <SplitterWidth>Splitterbredde</SplitterWidth>
+    <SplitterHeight>Splitterhøjde</SplitterHeight>
+    <XAdjustment>X justering</XAdjustment>
+    <YAdjustment>Y -justering</YAdjustment>
+    <Position>Position</Position>
+    <TextAlignment>Tekstjustering</TextAlignment>
+    <SquareCorners>Firkantede hjørner</SquareCorners>
+    <RoundedCorners>Afrundede hjørner</RoundedCorners>
+    <Top>Top</Top>
+    <Bottom>Bund</Bottom>
+    <TakePosFromVideo>Tag videoposition</TakePosFromVideo>
+  </AssaProgressBarGenerator>
+  <AssaResulationChanger>
+    <Title>Skift scriptopløsning</Title>
+    <SourceVideoRes>Kilde video opløsning</SourceVideoRes>
+    <TargetVideoRes>Mål videoopløsning</TargetVideoRes>
+    <ChangeResolutionMargins>Skift opløsning for margin</ChangeResolutionMargins>
+    <ChangeResolutionFontSize>Skift opløsning for skriftstørrelse</ChangeResolutionFontSize>
+    <ChangeResolutionPositions>Skift opløsning for position</ChangeResolutionPositions>
+    <ChangeResolutionDrawing>Skift opløsning for tegninger</ChangeResolutionDrawing>
+  </AssaResulationChanger>
+  <AssaSetPosition>
+    <SetPosition>Indstil/hent position</SetPosition>
+    <VideoResolutionX>Video opløsning: {0}</VideoResolutionX>
+    <StyleAlignmentX>Stiljustering: {0}</StyleAlignmentX>
+    <CurrentMousePositionX>Musposition: {0}</CurrentMousePositionX>
+    <CurrentTextPositionX>Tekstposition: {0}</CurrentTextPositionX>
+    <SetPosInfo>Klik på video for at skifte mellem sæt/flyt position</SetPosInfo>
+    <Clipboard>Udklipsholder</Clipboard>
+    <ResolutionMissing>PlayResX/PlayResY er ikke indstillet - indstil opløsningen nu?</ResolutionMissing>
+  </AssaSetPosition>
   <AudioToText>
     <Title>Lyd til tekst</Title>
     <ExtractingAudioUsingX>Udtræk lyd ved hjælp af {0}...</ExtractingAudioUsingX>
@@ -253,9 +299,6 @@ Bemærk: Kontroller ledig diskplads.</WaveFileMalformed>
     <MkvLanguageStyleThreeLetter>Tre bogstavs sprogkode</MkvLanguageStyleThreeLetter>
     <MkvLanguageStyleEmpty>Ingen sprogkode</MkvLanguageStyleEmpty>
   </BatchConvert>
-  <Beamer>
-    <Title>Undertekst fremviser</Title>
-  </Beamer>
   <BinEdit>
     <ImportImage>Importer billede...</ImportImage>
     <ExportImage>Eksportér billede...</ExportImage>
@@ -659,7 +702,7 @@ Bemærk: Kontroller ledig diskplads.</WaveFileMalformed>
     <BreakLongLines>Ombryd lange linjer</BreakLongLines>
     <RemoveLineBreaks>Fjern linjeskift i korte afsnit med kun én sætning</RemoveLineBreaks>
     <RemoveLineBreaksAll>Fjern linjeskift i korte tekster (undtagen dialog)</RemoveLineBreaksAll>
-    <FixUppercaseIInsindeLowercaseWords>Ret store bogstaver 'i' inde i små ord (OCR-fejl)</FixUppercaseIInsindeLowercaseWords>
+    <FixUppercaseIInsideLowercaseWords>Ret store bogstaver 'i' inde i små ord (OCR-fejl)</FixUppercaseIInsideLowercaseWords>
     <FixDoubleApostrophes>Ret dobbelt apostrof tegn ('') til en enkelt qoute (")</FixDoubleApostrophes>
     <AddPeriods>Tilføj punktum efter de linjer, hvor næste linje starter med stort bogstav</AddPeriods>
     <StartWithUppercaseLetterAfterParagraph>Start nye linier med stort bogstav efter punktum</StartWithUppercaseLetterAfterParagraph>
@@ -670,6 +713,7 @@ Bemærk: Kontroller ledig diskplads.</WaveFileMalformed>
     <CommonOcrErrorsFixed>Ret OCR fejl (via OcrReplaceList fil): {0}</CommonOcrErrorsFixed>
     <RemoveSpaceBetweenNumber>Fjern mellemrum mellem tal</RemoveSpaceBetweenNumber>
     <FixDialogsOnOneLine>Fix dialoger på én linje</FixDialogsOnOneLine>
+    <RemoveDialogFirstInNonDialogs>Fjern startstreg i første linje for ikke-dialoger</RemoveDialogFirstInNonDialogs>
     <NormalizeStrings>Normaliser strenge</NormalizeStrings>
     <FixTurkishAnsi>Fix tyrkiske ANSI (islandske) bogstaver til Unicode</FixTurkishAnsi>
     <FixDanishLetterI>Ret fejl vedr. det dansk bogstav »i«</FixDanishLetterI>
@@ -702,7 +746,7 @@ Bemærk: Kontroller ledig diskplads.</WaveFileMalformed>
     <RemoveUnneededSpacesExample>Hej  du , der. -&gt; Hej du, der.</RemoveUnneededSpacesExample>
     <RemoveUnneededPeriodsExample>Hej du!. -&gt; Hej du!</RemoveUnneededPeriodsExample>
     <FixMissingSpacesExample>Hej.Du. -&gt; Hej. Du.</FixMissingSpacesExample>
-    <FixUppercaseIInsindeLowercaseWordsExample>Jorden er fIad. -&gt; Jorden er flad.</FixUppercaseIInsindeLowercaseWordsExample>
+    <FixUppercaseIInsideLowercaseWordsExample>Jorden er fIad. -&gt; Jorden er flad.</FixUppercaseIInsideLowercaseWordsExample>
     <FixLowercaseIToUppercaseIExample>What do i care. -&gt; What do I care.</FixLowercaseIToUppercaseIExample>
     <StartTimeLaterThanEndTime>Tekst nummer {0}: Start tidspunkt er senere end sluttidspunkt: {1} {1} -&gt; {2} {3}</StartTimeLaterThanEndTime>
     <UnableToFixStartTimeLaterThanEndTime>Kunne ikke rette tekst nummer {0}: Start tidspunkt er senere udgangen sluttidspunkt: {1}</UnableToFixStartTimeLaterThanEndTime>
@@ -732,11 +776,25 @@ Bemærk: Kontroller ledig diskplads.</WaveFileMalformed>
     <FixOcrErrorExample>D0n't -&gt; Don't</FixOcrErrorExample>
     <FixSpaceBetweenNumbersExample>1 100 -&gt; 1100</FixSpaceBetweenNumbersExample>
     <FixDialogsOneLineExample>Hej John! - Hej Ida! -&gt; Hej John!&lt;br /&gt;- Hej Ida!</FixDialogsOneLineExample>
+    <RemoveDialogFirstInNonDialogsExample>- Hvordan har du det?  -&gt; Hvordan har du det?</RemoveDialogFirstInNonDialogsExample>
     <SelectDefault>Vælg standard</SelectDefault>
     <SetDefault>Indstil aktuelle rettelser som standard</SetDefault>
     <FixContinuationStyleX>Fix fortsættelsestil: {0}</FixContinuationStyleX>
     <FixUnnecessaryLeadingDots>Fjern unødvendige førende punktummer</FixUnnecessaryLeadingDots>
   </FixCommonErrors>
+  <GenerateBlankVideo>
+    <Title>Generer blank videofil</Title>
+    <CheckeredImage>Ternet billede</CheckeredImage>
+    <SolidColor>Farve</SolidColor>
+    <DurationInMinutes>Varighed i minutter</DurationInMinutes>
+  </GenerateBlankVideo>
+  <GenerateVideoWithBurnedInSubs>
+    <Title>Generer video med indbrændt subtil</Title>
+    <Info>Vil generere en video fil med 'brændt i' undertekster.
+
+Note: Advanced Substation Alpha er understøttet.</Info>
+    <XGeneratedWithBurnedInSubs>"{0}" genereret med indbrændt undertekst.</XGeneratedWithBurnedInSubs>
+  </GenerateVideoWithBurnedInSubs>
   <GetDictionaries>
     <Title>Mangler ordbøger?</Title>
     <DescriptionLine1>Subtitle Edit's stavekontrol er baseret på NHunspell, der</DescriptionLine1>
@@ -1019,12 +1077,7 @@ Go to "Indstillinger -&gt; Indstillinger -&gt; Værktøj" for at indtaste din Bi
         <Save>&amp;Gem</Save>
         <SaveAs>Gem &amp;som...</SaveAs>
         <RestoreAutoBackup>Gendan fra auto-backup...</RestoreAutoBackup>
-        <AdvancedSubStationAlphaProperties>Advanced Sub Station Alpha egenskaber...</AdvancedSubStationAlphaProperties>
-        <SubStationAlphaProperties>Sub Station Alpha egenskaber...</SubStationAlphaProperties>
-        <EbuProperties>EBU egenskaber...</EbuProperties>
-        <DvdStuioProProperties>DVD Studio Pro egenskaber...</DvdStuioProProperties>
-        <TimedTextProperties>Timed Text egenskaber...</TimedTextProperties>
-        <PacProperties>PAC egenskaber...</PacProperties>
+        <FormatXProperties>{0} egenskaber...</FormatXProperties>
         <OpenOriginal>Åbn original undertekst (oversætter mode)...</OpenOriginal>
         <SaveOriginal>Gem original</SaveOriginal>
         <CloseOriginal>Luk original</CloseOriginal>
@@ -1137,6 +1190,8 @@ Go to "Indstillinger -&gt; Indstillinger -&gt; Værktøj" for at indtaste din Bi
         <SetVideoOffset>Indstil video offset...</SetVideoOffset>
         <SmptTimeMode>SMPTE timing (drop frame)</SmptTimeMode>
         <GenerateTextFromVideo>Generer tekst fra video...</GenerateTextFromVideo>
+        <GenerateBlankVideo>Generer blank video...</GenerateBlankVideo>
+        <GenerateVideoWithBurnedInSub>Generer video med indbrændt sub...</GenerateVideoWithBurnedInSub>
         <ImportChaptersFromVideo>Importer kapitler fra video</ImportChaptersFromVideo>
         <GenerateImportSceneChanges>Generer/importer sceneændringer...</GenerateImportSceneChanges>
         <RemoveSceneChanges>Fjern sceneskift</RemoveSceneChanges>
@@ -1206,9 +1261,9 @@ Go to "Indstillinger -&gt; Indstillinger -&gt; Værktøj" for at indtaste din Bi
       </ToolBar>
       <ContextMenu>
         <SizeAllColumnsToFit>Auto-tilpas kolonner</SizeAllColumnsToFit>
-        <AdvancedSubStationAlphaSetStyle>Advanced Sub Station Alpha - vælg stilart</AdvancedSubStationAlphaSetStyle>
-        <SubStationAlphaSetStyle>(Advanced) Sub Station Alpha - vælg stilart</SubStationAlphaSetStyle>
+        <SetStyle>Vælg stil</SetStyle>
         <SetActor>Vælg taler</SetActor>
+        <AssaTools>ASSA værktøjer</AssaTools>
         <SubStationAlphaStyles>Sub Station Alpha stilarter...</SubStationAlphaStyles>
         <AdvancedSubStationAlphaStyles>Advanced Sub Station Alpha stilarter...</AdvancedSubStationAlphaStyles>
         <TimedTextSetRegion>Timed Text - Sæt region</TimedTextSetRegion>
@@ -1272,6 +1327,10 @@ Go to "Indstillinger -&gt; Indstillinger -&gt; Værktøj" for at indtaste din Bi
         <TranslateSelectedLines>Oversæt valgte linjer...</TranslateSelectedLines>
         <AdjustDisplayDurationForSelectedLines>Juster visningstider for valgte linjer...</AdjustDisplayDurationForSelectedLines>
         <ApplyDurationLimitsForSelectedLines>Anvend varighedsgrænser for valgte linjer...</ApplyDurationLimitsForSelectedLines>
+        <ApplyCustomOverrideTag>Anvend override tags</ApplyCustomOverrideTag>
+        <SetPosition>Indstil position...</SetPosition>
+        <GenerateProgressBar>Generer statuslinje...</GenerateProgressBar>
+        <AssaResolutionChanger>Skift scriptopløsning...</AssaResolutionChanger>
         <FixCommonErrorsInSelectedLines>Ret almindelige fejl i valgte linjer...</FixCommonErrorsInSelectedLines>
         <ChangeCasingForSelectedLines>Skift casing (små/store/normal) for valgte linjer...</ChangeCasingForSelectedLines>
         <SaveSelectedLines>Gem valgte linjer som...</SaveSelectedLines>
@@ -1452,8 +1511,8 @@ Fortsæt?</SubtitleAppendPrompt>
     <SpellCheck>Stavekontrol</SpellCheck>
     <BeforeSpellCheck>Før stavekontrol</BeforeSpellCheck>
     <SpellCheckChangedXToY>Stavekontrol: Ændret '{0}' til '{1}'</SpellCheckChangedXToY>
-    <BeforeAddingTagX>Før du tilføjer &lt;{0}&gt; tag</BeforeAddingTagX>
-    <TagXAdded>&lt;{0}&gt; tags tilføjet</TagXAdded>
+    <BeforeAddingTagX>Før du tilføjer '{0}' tag</BeforeAddingTagX>
+    <TagXAdded>'{0}' tags tilføjet</TagXAdded>
     <LineXOfY>linje {0} af {1}</LineXOfY>
     <XLinesSavedAsY>{0} linjer gemt som {1}</XLinesSavedAsY>
     <XLinesDeleted>{0} slettet linjer</XLinesDeleted>
@@ -1488,6 +1547,7 @@ Fortsæt?</SubtitleAppendPrompt>
     <BeforeImportFromMatroskaFile>Før import af undertekst fra Matroska fil</BeforeImportFromMatroskaFile>
     <SubtitleImportedFromMatroskaFile>Undertekst importeret fra Matroska fil</SubtitleImportedFromMatroskaFile>
     <DropFileXNotAccepted>Drop fil '{0}' ikke accepteret - filen er for stor</DropFileXNotAccepted>
+    <DropSubtitleFileXNotAccepted>Drop filen "{0}" er for stor for en undertekst</DropSubtitleFileXNotAccepted>
     <DropOnlyOneFile>Du kan kun drag-n-drop en fil</DropOnlyOneFile>
     <OpenAnsiSubtitle>Åbn ANSI undertekst...</OpenAnsiSubtitle>
     <BeforeChangeCasing>Før ændring af store/små bogstaver</BeforeChangeCasing>
@@ -1965,6 +2025,7 @@ kan redigere i samme undertekst fil (fælles online projekt)</Information>
     <GoToPreviousBookmark>Gå til tidligere bogmærke</GoToPreviousBookmark>
     <GoToNextBookmark>Gå til næste bogmærke</GoToNextBookmark>
     <ChooseProfile>Vælg profil</ChooseProfile>
+    <OpenDataFolder>Åbn mappen "indstillinger"</OpenDataFolder>
     <DuplicateLine>Kopier linje</DuplicateLine>
     <ToggleView>Skift liste-/kildevisning</ToggleView>
     <ToggleMode>Skift oversæt/opret/juster tilstand</ToggleMode>
@@ -2005,6 +2066,9 @@ kan redigere i samme undertekst fil (fælles online projekt)</Information>
     <StartInSourceView>Start i kilde visning</StartInSourceView>
     <RemoveBlankLinesWhenOpening>Fjern tomme linjer, når undertekst åbnes</RemoveBlankLinesWhenOpening>
     <RemoveBlankLines>Fjern blanke linjer</RemoveBlankLines>
+    <ApplyAssaOverrideTags>Anvend ASSA override tags til valgte linjer</ApplyAssaOverrideTags>
+    <SetAssaPosition>Indstil/hent ASSA position</SetAssaPosition>
+    <SetAssaResolution>Indstil ASSA -opløsning (PlayResX/PlayResY)</SetAssaResolution>
     <ShowLineBreaksAs>Vis linjeskift i listevisning som</ShowLineBreaksAs>
     <SaveAsFileNameFrom>"Gem som..." bruger filnavn fra</SaveAsFileNameFrom>
     <MainListViewDoubleClickAction>Dobbeltklik på linje i hovedvinduet listevisning starter</MainListViewDoubleClickAction>
@@ -2136,6 +2200,8 @@ kan redigere i samme undertekst fil (fælles online projekt)</Information>
     <ContinuationStyleNoneLeadingTrailingDots>Ingen, punktummer for pauser</ContinuationStyleNoneLeadingTrailingDots>
     <ContinuationStyleOnlyTrailingDots>punktummer (kun bagest)</ContinuationStyleOnlyTrailingDots>
     <ContinuationStyleLeadingTrailingDots>Punktummer </ContinuationStyleLeadingTrailingDots>
+    <ContinuationStyleLeadingTrailingEllipsis>Ellipsis</ContinuationStyleLeadingTrailingEllipsis>
+    <ContinuationStyleNoneTrailingEllipsis>Ingen, ellipsis til pauser</ContinuationStyleNoneTrailingEllipsis>
     <ContinuationStyleLeadingTrailingDash>Bindestreg</ContinuationStyleLeadingTrailingDash>
     <ContinuationStyleLeadingTrailingDashDots>Stip, men punktummer for pauser</ContinuationStyleLeadingTrailingDashDots>
     <MusicSymbol>Musik symbol</MusicSymbol>
@@ -2145,6 +2211,7 @@ kan redigere i samme undertekst fil (fælles online projekt)</Information>
     <FixCommonErrorsSkipStepOne>Spring trin 1 over (vælg fix regler)</FixCommonErrorsSkipStepOne>
     <DefaultFormat>Standardformat</DefaultFormat>
     <DefaultSaveAsFormat>Standard gem som format</DefaultSaveAsFormat>
+    <DefaultSaveAsFormatAuto>- Auto -</DefaultSaveAsFormatAuto>
     <Favorites>Foretrukne</Favorites>
     <FavoriteFormats>Favoritformater</FavoriteFormats>
     <FavoriteSubtitleFormatsNote>Bemærk: favoritformater vises først, når du vælger et format, standardformatet vises altid først</FavoriteSubtitleFormatsNote>
@@ -2214,8 +2281,10 @@ kan redigere i samme undertekst fil (fælles online projekt)</Information>
     <MainCreateStartDownEndUp>Opret ny på tast-ned, sæt sluttid ved tast-op</MainCreateStartDownEndUp>
     <MergeDialog>Flet dialog (indsæt tankestreger)</MergeDialog>
     <GoToNext>Gå til næste linje</GoToNext>
+    <GoToNextPlayTranslate>Gå til næste linje (og spil i 'Oversæt tilstand')</GoToNextPlayTranslate>
     <GoToNextCursorAtEnd>Gå til næste linje, og indstil markøren i slutningen</GoToNextCursorAtEnd>
     <GoToPrevious>Gå til forrige line</GoToPrevious>
+    <GoToPreviousPlayTranslate>Gå til forrige linje (og spil i 'Oversæt tilstand')</GoToPreviousPlayTranslate>
     <GoToCurrentSubtitleStart>Gå til nuværende linje start</GoToCurrentSubtitleStart>
     <GoToCurrentSubtitleEnd>Gå til nuværende linje slut</GoToCurrentSubtitleEnd>
     <GoToPreviousSubtitleAndFocusVideo>Gå til foregående linje og indstil video position</GoToPreviousSubtitleAndFocusVideo>
@@ -2278,7 +2347,7 @@ kan redigere i samme undertekst fil (fælles online projekt)</Information>
     <GoBack3Second>Tre sekunder tilbage</GoBack3Second>
     <GoToStartCurrent>Indstil video pos til start af den aktuelle undertekst</GoToStartCurrent>
     <ToggleStartEndCurrent>Skift video pos mellem start/slut af aktuelle undertekst</ToggleStartEndCurrent>
-    <PlayCurrent>Afspil nuværende undertekst</PlayCurrent>
+    <PlaySelectedLines>Afspil valgte linjer</PlaySelectedLines>
     <WaveformGoToPrevSubtitle>Gå til forrige undertekst (fra video position)</WaveformGoToPrevSubtitle>
     <WaveformGoToNextSubtitle>Gå til næste undertekst (fra video position)</WaveformGoToNextSubtitle>
     <WaveformGoToPrevChapter>Gå til forrige kapitel</WaveformGoToPrevChapter>
@@ -2291,6 +2360,8 @@ kan redigere i samme undertekst fil (fælles online projekt)</Information>
     <PlayRateFaster>Afspilningshastighed hurtigere</PlayRateFaster>
     <VideoResetSpeedAndZoom>Nulstil hastighed/zoom</VideoResetSpeedAndZoom>
     <MainToggleVideoControls>Toggle videokontrol</MainToggleVideoControls>
+    <VideoToggleContrast>Skift kontrast (kun mpv)</VideoToggleContrast>
+    <VideoToggleBrightness>Skift lysstyrke (kun mpv)</VideoToggleBrightness>
     <CustomSearch1>Oversæt, brugerdefineret søgning 1</CustomSearch1>
     <CustomSearch2>Oversæt, brugerdefineret søgning 2</CustomSearch2>
     <CustomSearch3>Oversæt, brugerdefineret søgning 3</CustomSearch3>
@@ -2335,7 +2406,6 @@ kan redigere i samme undertekst fil (fælles online projekt)</Information>
     <ListViewColumnTextUp>Kolonne, tekst op</ListViewColumnTextUp>
     <ListViewColumnTextDown>Kolonne, tekst ned</ListViewColumnTextDown>
     <ListViewGoToNextError>Gå til næste fejl</ListViewGoToNextError>
-    <ShowBeamer>Start undertekst fremviser (fuldskærm)</ShowBeamer>
     <ShowStyleManager>Vis style manager</ShowStyleManager>
     <MainTextBoxMoveLastWordDown>Flyt sidste ord ned til næste linje</MainTextBoxMoveLastWordDown>
     <MainTextBoxMoveFirstWordFromNextUp>Flyt første ord fra næste linje op</MainTextBoxMoveFirstWordFromNextUp>
@@ -2352,6 +2422,8 @@ kan redigere i samme undertekst fil (fælles online projekt)</Information>
     <MainTextBoxAutoBreakFromPosAndGoToNext>Bryd i første mellemrum fra markørposition og gå til næste</MainTextBoxAutoBreakFromPosAndGoToNext>
     <MainTextBoxUnbreak>Fjern linjeskift</MainTextBoxUnbreak>
     <MainTextBoxUnbreakNoSpace>Unbreak uden plads (CJK)</MainTextBoxUnbreakNoSpace>
+    <MainTextBoxAssaIntellisense>Vis ASSA-tag-hjælper</MainTextBoxAssaIntellisense>
+    <MainTextBoxAssaRemoveTag>Fjern ASSA-tag ved markøren</MainTextBoxAssaRemoveTag>
     <MainFileSaveAll>Gem alle</MainFileSaveAll>
     <Miscellaneous>Diverse</Miscellaneous>
     <CpsIncludesSpace>Tegn/sek (CPS) inkluderer mellemrum</CpsIncludesSpace>
@@ -2603,7 +2675,7 @@ Fortsæt?</RestoreDefaultSettingsMsg>
     <Vertical>Lodret</Vertical>
     <Border>Kant</Border>
     <PlusShadow>+ Skygge</PlusShadow>
-    <OpaqueBox>Kasse (bruger konturfarve)</OpaqueBox>
+    <OpaqueBox>Kasse</OpaqueBox>
     <Import>Importer...</Import>
     <Export>Eksporter...</Export>
     <Copy>Kopi</Copy>
@@ -2627,6 +2699,12 @@ Fortsæt?</RestoreDefaultSettingsMsg>
     <CategoryNote>Bemærk: Stilarterne i standardkategorien (farvet i grønt) anvendes på nye ASSA-filer</CategoryNote>
     <CategoriesManage>Styre</CategoriesManage>
     <MoveToCategory>Flyt valgte stilarter til kategori...</MoveToCategory>
+    <ScaleX>ScaleX</ScaleX>
+    <ScaleY>ScaleY</ScaleY>
+    <Spacing>Spacing</Spacing>
+    <Angle>Angle</Angle>
+    <BoxPerLine>Boks pr. Linje (brug konturfarve)</BoxPerLine>
+    <BoxMultiLine>En boks (brug skygge farve)</BoxMultiLine>
   </SubStationAlphaStyles>
   <SubStationAlphaStylesCategoriesManager>
     <Category>Kategori</Category>
@@ -2851,6 +2929,7 @@ Fortsæt?</RestoreDefaultSettingsMsg>
     <ShowSpectrogramOnly>Vis kun spektrogram</ShowSpectrogramOnly>
     <AddSceneChange>Tilføj sceneskift</AddSceneChange>
     <RemoveSceneChange>Fjern sceneskift</RemoveSceneChange>
+    <RemoveSceneChangesFromSelection>Fjern sceneskift fra markering</RemoveSceneChangesFromSelection>
     <GuessTimeCodes>Gæt tidskoder...</GuessTimeCodes>
     <SeekSilence>Søg tavshed...</SeekSilence>
     <InsertSubtitleHere>Indsæt undertekst her...</InsertSubtitleHere>

@@ -1,5 +1,4 @@
-﻿using Nikse.SubtitleEdit.Core;
-using Nikse.SubtitleEdit.Core.Common;
+﻿using Nikse.SubtitleEdit.Core.Common;
 using Nikse.SubtitleEdit.Core.Enums;
 using Nikse.SubtitleEdit.Core.Interfaces;
 using Nikse.SubtitleEdit.Core.SpellCheck;
@@ -377,7 +376,7 @@ namespace Nikse.SubtitleEdit.Forms
             toolStripSeparator1.Visible = showAddItems;
         }
 
-        private void AddXToNamesnoiseListToolStripMenuItemClick(object sender, EventArgs e)
+        private void AddXToNamesNoiseListToolStripMenuItemClick(object sender, EventArgs e)
         {
             if (!string.IsNullOrWhiteSpace(richTextBoxParagraph.SelectedText))
             {
@@ -612,6 +611,10 @@ namespace Nikse.SubtitleEdit.Forms
                     {
                         _noOfCorrectWords++;
                     }
+                    else if (_postfix.Length > 0 && _spellCheckWordLists.HasUserWord(_currentWord + _postfix))
+                    {
+                        _noOfCorrectWords++;
+                    }
                     else if (_changeAllDictionary.ContainsKey(_currentWord))
                     {
                         _noOfChangedWords++;
@@ -731,11 +734,26 @@ namespace Nikse.SubtitleEdit.Forms
                                 }
                                 if (!correct)
                                 {
-                                    correct = _spellCheckWordLists.HasUserWord(wordWithDash);
+                                    correct = _spellCheckWordLists.HasUserWord(wordWithDash.Replace("‑", "-"));
                                 }
+                                if (!correct && _spellCheckWordLists.HasName(wordWithDash.Replace("‑", "-")))
+                                {
+                                    correct = true;
+                                    _noOfNames++;
+                                }
+                            }
+                            if (!correct && _currentWord.EndsWith('\u2014')) // em dash
+                            {
+                                var wordWithoutDash = _currentWord.TrimEnd('\u2014');
+                                correct = DoSpell(wordWithoutDash);
                                 if (!correct)
                                 {
-                                    correct = _spellCheckWordLists.HasUserWord(wordWithDash.Replace("‑", "-"));
+                                    correct = _spellCheckWordLists.HasUserWord(wordWithoutDash);
+                                }
+                                if (!correct && _spellCheckWordLists.HasName(wordWithoutDash))
+                                {
+                                    correct = true;
+                                    _noOfNames++;
                                 }
                             }
                         }

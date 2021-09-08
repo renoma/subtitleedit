@@ -1,12 +1,14 @@
-﻿using Nikse.SubtitleEdit.Core;
-using Nikse.SubtitleEdit.Core.Common;
+﻿using Nikse.SubtitleEdit.Core.Common;
 using Nikse.SubtitleEdit.Core.SubtitleFormats;
+using Nikse.SubtitleEdit.Forms.Assa;
 using Nikse.SubtitleEdit.Logic;
+using Nikse.SubtitleEdit.Logic.VideoPlayers;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Text;
 using System.Globalization;
+using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
@@ -38,14 +40,15 @@ namespace Nikse.SubtitleEdit.Forms.Styles
         private readonly SubtitleFormat _format;
         private readonly bool _isSubStationAlpha;
         private Bitmap _backgroundImage;
-        private Bitmap _fixedBackgroundImage;
         private bool _backgroundImageDark;
         private bool _fileStyleActive = true;
         private readonly List<AssaStorageCategory> _storageCategories;
         private AssaStorageCategory _currentCategory;
-        private FormWindowState _lastFormWindowState = FormWindowState.Normal;
+        private FormWindowState _lastFormWindowState;
         private readonly Main _mainForm;
         private readonly List<AssaAttachmentFont> _fontAttachments;
+        private LibMpvDynamic _mpv;
+        private string _mpvTextFileName;
 
         private ListView ActiveListView => _fileStyleActive ? listViewStyles : listViewStorage;
 
@@ -122,6 +125,7 @@ namespace Nikse.SubtitleEdit.Forms.Styles
             checkBoxFontItalic.Text = LanguageSettings.Current.General.Italic;
             checkBoxFontBold.Text = LanguageSettings.Current.General.Bold;
             checkBoxFontUnderline.Text = LanguageSettings.Current.General.Underline;
+            checkBoxStrikeout.Text = LanguageSettings.Current.General.Strikeout;
             groupBoxAlignment.Text = l.Alignment;
             groupBoxColors.Text = l.Colors;
             buttonPrimaryColor.Text = l.Primary;
@@ -143,6 +147,19 @@ namespace Nikse.SubtitleEdit.Forms.Styles
             buttonRemove.Text = l.Remove;
             buttonRemoveAll.Text = l.RemoveAll;
             groupBoxPreview.Text = LanguageSettings.Current.General.Preview;
+
+            labelScaleX.Text = l.ScaleX;
+            labelScaleY.Text = l.ScaleY;
+            labelSpacing.Text = l.Spacing;
+            labelAngle.Text = l.Angle;
+            labelScaleX.Text = l.ScaleX;
+            numericUpDownScaleX.Left = labelScaleX.Left + labelScaleX.Width + 2;
+            labelScaleY.Left = numericUpDownScaleX.Left + numericUpDownScaleX.Width + 9;
+            numericUpDownScaleY.Left = labelScaleY.Left + labelScaleY.Width + 2;
+            labelSpacing.Left = numericUpDownScaleY.Left + numericUpDownScaleY.Width + 9;
+            numericUpDownSpacing.Left = labelSpacing.Left + labelSpacing.Width + 2;
+            labelAngle.Left = numericUpDownSpacing.Left + numericUpDownSpacing.Width + 9;
+            numericUpDownAngle.Left = labelAngle.Left + labelAngle.Width + 2;
 
             groupBoxStorage.Text = l.StyleStorage;
             labelStorageCategory.Text = LanguageSettings.Current.SubStationAlphaStylesCategoriesManager.Category;
@@ -215,6 +232,15 @@ namespace Nikse.SubtitleEdit.Forms.Styles
                 buttonBackColor.Text = l.Back;
                 listViewStyles.Columns[5].Text = l.Back;
                 checkBoxFontUnderline.Visible = false;
+                checkBoxStrikeout.Visible = false;
+                labelScaleX.Visible = false;
+                labelScaleY.Visible = false;
+                labelSpacing.Visible = false;
+                labelAngle.Visible = false;
+                numericUpDownScaleX.Visible = false;
+                numericUpDownScaleY.Visible = false;
+                numericUpDownSpacing.Visible = false;
+                numericUpDownAngle.Visible = false;
                 numericUpDownOutline.Increment = 1;
                 numericUpDownOutline.DecimalPlaces = 0;
                 numericUpDownShadowWidth.Increment = 1;
@@ -264,37 +290,30 @@ namespace Nikse.SubtitleEdit.Forms.Styles
             listViewStorage_SelectedIndexChanged(this, EventArgs.Empty);
             UiUtil.FixLargeFonts(this, buttonCancel);
 
-            comboBoxFontName.Left = labelFontName.Left + labelFontName.Width + 5;
-            buttonPickAttachmentFont.Left = comboBoxFontName.Left + comboBoxFontName.Width + 3;
-            labelFontSize.Left = buttonPickAttachmentFont.Left + buttonPickAttachmentFont.Width + 17;
-            numericUpDownFontSize.Left = labelFontSize.Left + labelFontSize.Width + 5;
-
-            numericUpDownOutline.Left = radioButtonOutline.Left + radioButtonOutline.Width + 5;
-            labelShadow.Left = numericUpDownOutline.Left + numericUpDownOutline.Width + 5;
-            numericUpDownShadowWidth.Left = numericUpDownOutline.Left + numericUpDownOutline.Width + 5;
-            checkBoxFontItalic.Left = checkBoxFontBold.Left + checkBoxFontBold.Width + 12;
-            checkBoxFontUnderline.Left = checkBoxFontItalic.Left + checkBoxFontItalic.Width + 12;
-
+            comboBoxFontName.Left = labelFontName.Left + labelFontName.Width + 2;
             buttonPickAttachmentFont.Visible = subtitle.Footer != null &&
                                                subtitle.Footer.Contains("[Fonts]") &&
                                                subtitle.Footer.Contains("fontname:");
+            buttonPickAttachmentFont.Left = comboBoxFontName.Left + comboBoxFontName.Width + 3;
+            var controlLeftOfFontSize = buttonPickAttachmentFont.Visible ? buttonPickAttachmentFont : (Control)comboBoxFontName;
+            labelFontSize.Left = controlLeftOfFontSize.Left + controlLeftOfFontSize.Width + 15;
+            numericUpDownFontSize.Left = labelFontSize.Left + labelFontSize.Width + 2;
+
+            numericUpDownOutline.Left = radioButtonOutline.Left + radioButtonOutline.Width + 3;
+            labelShadow.Left = numericUpDownOutline.Left + numericUpDownOutline.Width + 3;
+            numericUpDownShadowWidth.Left = numericUpDownOutline.Left + numericUpDownOutline.Width + 3;
+            checkBoxFontItalic.Left = checkBoxFontBold.Left + checkBoxFontBold.Width + 12;
+            checkBoxFontUnderline.Left = checkBoxFontItalic.Left + checkBoxFontItalic.Width + 12;
+            checkBoxStrikeout.Left = checkBoxFontUnderline.Left + checkBoxFontUnderline.Width + 12;
         }
 
-        public override string Header => GetFileHeader();
+        public override string Header => GetFileHeader(_currentFileStyles);
 
         private void ResetHeader()
         {
-            SubtitleFormat format;
-            if (_isSubStationAlpha)
-            {
-                format = new SubStationAlpha();
-            }
-            else
-            {
-                format = new AdvancedSubStationAlpha();
-            }
+            var format = _isSubStationAlpha ? (SubtitleFormat)new SubStationAlpha() : new AdvancedSubStationAlpha();
             var sub = new Subtitle();
-            string text = format.ToText(sub, string.Empty);
+            var text = format.ToText(sub, string.Empty);
             var lines = text.SplitToLines();
             format.LoadSubtitle(sub, lines, string.Empty);
             _header = sub.Header;
@@ -318,13 +337,13 @@ namespace Nikse.SubtitleEdit.Forms.Styles
                         attachmentContent = new StringBuilder();
                         attachmentFileName = string.Empty;
                     }
-                    else if (s == string.Empty)
+                    else if (s.Length == 0)
                     {
                         SaveFontNames(attachmentFileName, attachmentContent.ToString(), category);
                         attachmentContent = new StringBuilder();
                         attachmentFileName = string.Empty;
                     }
-                    else if (s.StartsWith("filename:") || s.StartsWith("fontname:"))
+                    else if (s.StartsWith("filename:", StringComparison.Ordinal) || s.StartsWith("fontname:", StringComparison.Ordinal))
                     {
                         SaveFontNames(attachmentFileName, attachmentContent.ToString(), category);
                         attachmentContent = new StringBuilder();
@@ -350,7 +369,7 @@ namespace Nikse.SubtitleEdit.Forms.Styles
         private void SaveFontNames(string attachmentFileName, string attachmentContent, string category)
         {
             var content = attachmentContent.Trim();
-            if (string.IsNullOrEmpty(attachmentFileName) || content.Length == 0 || !attachmentFileName.ToLowerInvariant().EndsWith(".ttf"))
+            if (string.IsNullOrEmpty(attachmentFileName) || content.Length == 0 || !attachmentFileName.EndsWith(".ttf", StringComparison.InvariantCultureIgnoreCase))
             {
                 return;
             }
@@ -386,16 +405,60 @@ namespace Nikse.SubtitleEdit.Forms.Styles
             return resultList;
         }
 
+        private bool GeneratePreviewViaMpv()
+        {
+            var fileName = VideoPreviewGenerator.GetVideoPreviewFileName();
+            if (string.IsNullOrEmpty(fileName) || !LibMpvDynamic.IsInstalled)
+            {
+                return false;
+            }
+
+            if (_mpv == null)
+            {
+                _mpv = new LibMpvDynamic();
+                _mpv.Initialize(pictureBoxPreview, fileName, VideoStartLoaded, null);
+            }
+            else
+            {
+                VideoStartLoaded(null, null);
+            }
+
+            return true;
+        }
+
+        private void VideoStartLoaded(object sender, EventArgs e)
+        {
+            var format = new AdvancedSubStationAlpha();
+            var subtitle = new Subtitle();
+            var p = new Paragraph(Configuration.Settings.General.PreviewAssaText, 0, 10000);
+            subtitle.Paragraphs.Add(p);
+            try
+            {
+                p.Extra = ActiveListView.SelectedItems[0].Text;
+            }
+            catch
+            {
+                return;
+            }
+            subtitle.Header = GetFileHeader(_fileStyleActive ? _currentFileStyles : _currentCategory.Styles);
+            var text = subtitle.ToText(format);
+            _mpvTextFileName = FileUtil.GetTempFileName(format.Extension);
+            File.WriteAllText(_mpvTextFileName, text);
+            _mpv.LoadSubtitle(_mpvTextFileName);
+            _mpv.Pause();
+            _mpv.CurrentPosition = 0.5;
+        }
+
         protected override void GeneratePreviewReal()
         {
-            if (listViewStyles.SelectedItems.Count != 1 || pictureBoxPreview.Width <= 0 || pictureBoxPreview.Height <= 0)
+            if (ActiveListView.SelectedItems.Count != 1 || pictureBoxPreview.Width <= 0 || pictureBoxPreview.Height <= 0)
             {
                 return;
             }
 
-            if (_fixedBackgroundImage != null)
+            if (GeneratePreviewViaMpv())
             {
-                _backgroundImage = (Bitmap)_fixedBackgroundImage.Clone();
+                return;
             }
 
             if (_backgroundImage == null)
@@ -415,7 +478,7 @@ namespace Nikse.SubtitleEdit.Forms.Styles
                 var fontName = comboBoxFontName.Text;
 
                 // try to load font from memory
-                var fontAttachment = _fontAttachments.FirstOrDefault(p => p.FontName == fontName);
+                var fontAttachment = _fontAttachments.Find(p => p.FontName == fontName);
                 if (fontAttachment != null)
                 {
                     var handle = GCHandle.Alloc(fontAttachment.Bytes, GCHandleType.Pinned);
@@ -435,6 +498,11 @@ namespace Nikse.SubtitleEdit.Forms.Styles
                             if (checkBoxFontUnderline.Checked)
                             {
                                 font = new Font(fontFamily, (float)numericUpDownFontSize.Value * 1.1f, font.Style | FontStyle.Underline);
+                            }
+
+                            if (checkBoxStrikeout.Checked)
+                            {
+                                font = new Font(fontFamily, (float)numericUpDownFontSize.Value * 1.1f, font.Style | FontStyle.Strikeout);
                             }
                         }
                     }
@@ -458,6 +526,10 @@ namespace Nikse.SubtitleEdit.Forms.Styles
                     if (checkBoxFontUnderline.Checked)
                     {
                         font = new Font(fontName, (float)numericUpDownFontSize.Value * 1.1f, font.Style | FontStyle.Underline);
+                    }
+                    if (checkBoxStrikeout.Checked)
+                    {
+                        font = new Font(fontName, (float)numericUpDownFontSize.Value * 1.1f, font.Style | FontStyle.Strikeout);
                     }
                 }
 
@@ -662,7 +734,7 @@ namespace Nikse.SubtitleEdit.Forms.Styles
 
         private bool SetSsaStyle(string styleName, string propertyName, string propertyValue)
         {
-            var style = _fileStyleActive ? _currentFileStyles.FirstOrDefault(p => p.Name == styleName) : _currentCategory.Styles.FirstOrDefault(p => p.Name == styleName);
+            var style = _fileStyleActive ? _currentFileStyles.Find(p => p.Name == styleName) : _currentCategory.Styles.Find(p => p.Name == styleName);
             if (style == null)
             {
                 return false;
@@ -691,6 +763,10 @@ namespace Nikse.SubtitleEdit.Forms.Styles
             else if (propertyName == "underline")
             {
                 style.Underline = propertyValue != "0";
+            }
+            else if (propertyName == "strikeout")
+            {
+                style.Strikeout = propertyValue != "0";
             }
             else if (propertyName == "alignment")
             {
@@ -740,6 +816,22 @@ namespace Nikse.SubtitleEdit.Forms.Styles
             {
                 style.Background = GetColorFromSsa(propertyValue);
             }
+            else if (propertyName == "scalex")
+            {
+                style.ScaleX = decimal.Parse(propertyValue, CultureInfo.InvariantCulture);
+            }
+            else if (propertyName == "scaley")
+            {
+                style.ScaleY = decimal.Parse(propertyValue, CultureInfo.InvariantCulture);
+            }
+            else if (propertyName == "spacing")
+            {
+                style.Spacing = decimal.Parse(propertyValue, CultureInfo.InvariantCulture);
+            }
+            else if (propertyName == "angle")
+            {
+                style.Angle = decimal.Parse(propertyValue, CultureInfo.InvariantCulture);
+            }
             else
             {
                 return false;
@@ -750,9 +842,9 @@ namespace Nikse.SubtitleEdit.Forms.Styles
 
         private SsaStyle GetSsaStyle(string styleName) => _fileStyleActive ? GetSsaStyleFile(styleName) : GetSsaStyleStorage(styleName);
 
-        private SsaStyle GetSsaStyleFile(string styleName) => _currentFileStyles.FirstOrDefault(p => p.Name == styleName);
+        private SsaStyle GetSsaStyleFile(string styleName) => _currentFileStyles.Find(p => p.Name == styleName);
 
-        private SsaStyle GetSsaStyleStorage(string styleName) => _currentCategory.Styles.FirstOrDefault(p => p.Name == styleName);
+        private SsaStyle GetSsaStyleStorage(string styleName) => _currentCategory.Styles.Find(p => p.Name == styleName);
 
         private void SubStationAlphaStyles_KeyDown(object sender, KeyEventArgs e)
         {
@@ -772,14 +864,14 @@ namespace Nikse.SubtitleEdit.Forms.Styles
             if (!_isSubStationAlpha)
             {
                 Configuration.Settings.SubtitleSettings.AssaStyleStorageCategories = _storageCategories;
-                _header = GetFileHeader();
+                _header = Header;
             }
 
             LogNameChanges();
             DialogResult = DialogResult.OK;
         }
 
-        private string GetFileHeader()
+        private string GetFileHeader(List<SsaStyle> styles)
         {
             var sb = new StringBuilder();
             var format = SsaStyle.DefaultAssStyleFormat;
@@ -797,12 +889,12 @@ namespace Nikse.SubtitleEdit.Forms.Styles
                 else if (!stylesAdded && line.Trim().StartsWith("Style:", StringComparison.OrdinalIgnoreCase))
                 {
                     stylesAdded = true;
-                    foreach (var style in _currentFileStyles)
+                    foreach (var style in styles)
                     {
                         sb.AppendLine(style.ToRawAss(format));
                     }
 
-                    if (_currentFileStyles.Count == 0)
+                    if (styles.Count == 0)
                     {
                         sb.AppendLine(new SsaStyle().ToRawAss(format));
                     }
@@ -878,6 +970,8 @@ namespace Nikse.SubtitleEdit.Forms.Styles
             {
                 groupBoxProperties.Enabled = false;
                 _doUpdate = false;
+                pictureBoxPreview.Image?.Dispose();
+                pictureBoxPreview.Image = new Bitmap(1, 1);
             }
 
             UpdateCurrentFileButtonsState();
@@ -901,6 +995,11 @@ namespace Nikse.SubtitleEdit.Forms.Styles
             checkBoxFontItalic.Checked = style.Italic;
             checkBoxFontBold.Checked = style.Bold;
             checkBoxFontUnderline.Checked = style.Underline;
+            checkBoxStrikeout.Checked = style.Strikeout;
+            numericUpDownScaleX.Value = style.ScaleX;
+            numericUpDownScaleY.Value = style.ScaleY;
+            numericUpDownSpacing.Value = style.Spacing;
+            numericUpDownAngle.Value = style.Angle;
 
             if (style.FontSize > 0 && style.FontSize <= (float)numericUpDownFontSize.Maximum)
             {
@@ -1202,12 +1301,12 @@ namespace Nikse.SubtitleEdit.Forms.Styles
 
         private void RemoveStyleFromHeader(string name)
         {
-            _currentFileStyles.Remove(_currentFileStyles.FirstOrDefault(p => p.Name == name));
+            _currentFileStyles.Remove(_currentFileStyles.Find(p => p.Name == name));
         }
 
         private void ReplaceStyleInHeader(SsaStyle style)
         {
-            var hit = _currentFileStyles.FirstOrDefault(p => p.Name == style.Name);
+            var hit = _currentFileStyles.Find(p => p.Name == style.Name);
             if (hit == null)
             {
                 return;
@@ -1408,6 +1507,11 @@ namespace Nikse.SubtitleEdit.Forms.Styles
                     fontStyle |= FontStyle.Underline;
                 }
 
+                if (style.Strikeout)
+                {
+                    fontStyle |= FontStyle.Strikeout;
+                }
+
                 var subItem = ActiveListView.SelectedItems[0].SubItems[5];
                 subItem.Font = new Font(style.FontName, subItem.Font.Size, fontStyle);
             }
@@ -1445,6 +1549,17 @@ namespace Nikse.SubtitleEdit.Forms.Styles
             {
                 string name = ActiveListView.SelectedItems[0].Text;
                 SetSsaStyle(name, "underline", checkBoxFontUnderline.Checked ? "-1" : "0");
+                UpdateListViewFontStyle(GetSsaStyle(name));
+                GeneratePreview();
+            }
+        }
+
+        private void checkBoxStrikeout_CheckedChanged(object sender, EventArgs e)
+        {
+            if (ActiveListView.SelectedItems.Count == 1 && _doUpdate)
+            {
+                string name = ActiveListView.SelectedItems[0].Text;
+                SetSsaStyle(name, "strikeout", checkBoxStrikeout.Checked ? "-1" : "0");
                 UpdateListViewFontStyle(GetSsaStyle(name));
                 GeneratePreview();
             }
@@ -1840,6 +1955,8 @@ namespace Nikse.SubtitleEdit.Forms.Styles
             {
                 groupBoxProperties.Enabled = false;
                 _doUpdate = false;
+                pictureBoxPreview.Image?.Dispose();
+                pictureBoxPreview.Image = new Bitmap(1, 1);
             }
 
             UpdateStorageButtonsState();
@@ -2227,7 +2344,7 @@ namespace Nikse.SubtitleEdit.Forms.Styles
             _currentCategory = focusCategory;
 
             labelStorageCategory.ForeColor = focusCategory.IsDefault ?
-                SubStationAlphaStylesCategoriesManager._defaultCategoryColor : 
+                SubStationAlphaStylesCategoriesManager._defaultCategoryColor :
                 UiUtil.ForeColor;
 
             buttonStorageRemove.Enabled = listViewStorage.SelectedItems.Count > 0;
@@ -2337,6 +2454,12 @@ namespace Nikse.SubtitleEdit.Forms.Styles
                 _currentCategory.Styles.RemoveAt(idx);
                 _currentCategory.Styles.Insert(idx - 1, style);
             }
+            else
+            {
+                var style = _currentFileStyles[idx];
+                _currentFileStyles.RemoveAt(idx);
+                _currentFileStyles.Insert(idx - 1, style);
+            }
 
             idx--;
             listView.Items.Insert(idx, item);
@@ -2363,6 +2486,12 @@ namespace Nikse.SubtitleEdit.Forms.Styles
                 var style = _currentCategory.Styles[idx];
                 _currentCategory.Styles.RemoveAt(idx);
                 _currentCategory.Styles.Insert(idx + 1, style);
+            }
+            else
+            {
+                var style = _currentFileStyles[idx];
+                _currentFileStyles.RemoveAt(idx);
+                _currentFileStyles.Insert(idx + 1, style);
             }
 
             idx++;
@@ -2391,6 +2520,12 @@ namespace Nikse.SubtitleEdit.Forms.Styles
                 _currentCategory.Styles.RemoveAt(idx);
                 _currentCategory.Styles.Insert(0, style);
             }
+            else
+            {
+                var style = _currentFileStyles[idx];
+                _currentFileStyles.RemoveAt(idx);
+                _currentFileStyles.Insert(0, style);
+            }
 
             idx = 0;
             listView.Items.Insert(idx, item);
@@ -2417,6 +2552,12 @@ namespace Nikse.SubtitleEdit.Forms.Styles
                 var style = _currentCategory.Styles[idx];
                 _currentCategory.Styles.RemoveAt(idx);
                 _currentCategory.Styles.Add(style);
+            }
+            else
+            {
+                var style = _currentFileStyles[idx];
+                _currentFileStyles.RemoveAt(idx);
+                _currentFileStyles.Add(style);
             }
 
             listView.Items.Add(item);
@@ -2456,19 +2597,6 @@ namespace Nikse.SubtitleEdit.Forms.Styles
         private void toolStripMenuItemStorageMoveBottom_Click(object sender, EventArgs e)
         {
             MoveToBottom(listViewStorage);
-        }
-
-        private void chooseBackgroundImageToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            openFileDialogImport.Filter = "Images|*.png;*.jpg";
-            openFileDialogImport.FileName = string.Empty;
-            if (openFileDialogImport.ShowDialog(this) != DialogResult.OK)
-            {
-                return;
-            }
-
-            _fixedBackgroundImage = ExportPngXml.ResizeBitmap((Bitmap)Image.FromFile(openFileDialogImport.FileName), pictureBoxPreview.Width, pictureBoxPreview.Height);
-            GeneratePreview();
         }
 
         private void setPreviewTextToolStripMenuItem_Click(object sender, EventArgs e)
@@ -2584,21 +2712,70 @@ namespace Nikse.SubtitleEdit.Forms.Styles
             if (!_isSubStationAlpha)
             {
                 Configuration.Settings.SubtitleSettings.AssaStyleStorageCategories = _storageCategories;
-                _header = GetFileHeader();
+                _header = Header;
             }
 
             LogNameChanges();
-            _mainForm?.ApplyAssaStyles(this);
+            _mainForm?.ApplySsaStyles(this);
         }
 
         private void buttonPickAttachmentFont_Click(object sender, EventArgs e)
         {
-            using (var form = new ChooseFontName(_fontAttachments))
+            using (var form = new ChooseAssaFontName(_fontAttachments))
             {
                 if (form.ShowDialog(this) == DialogResult.OK)
                 {
                     comboBoxFontName.Text = form.FontName;
                 }
+            }
+        }
+
+        private void SubStationAlphaStyles_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            _mpv?.Dispose();
+        }
+
+        private void numericUpDownScaleX_ValueChanged(object sender, EventArgs e)
+        {
+            if (ActiveListView.SelectedItems.Count == 1 && _doUpdate)
+            {
+                var name = ActiveListView.SelectedItems[0].Text;
+                SetSsaStyle(name, "scalex", numericUpDownScaleX.Value.ToString(CultureInfo.InvariantCulture));
+                UpdateListViewFontStyle(GetSsaStyle(name));
+                GeneratePreview();
+            }
+        }
+
+        private void numericUpDownScaleY_ValueChanged(object sender, EventArgs e)
+        {
+            if (ActiveListView.SelectedItems.Count == 1 && _doUpdate)
+            {
+                var name = ActiveListView.SelectedItems[0].Text;
+                SetSsaStyle(name, "scaley", numericUpDownScaleY.Value.ToString(CultureInfo.InvariantCulture));
+                UpdateListViewFontStyle(GetSsaStyle(name));
+                GeneratePreview();
+            }
+        }
+
+        private void numericUpDownSpacing_ValueChanged(object sender, EventArgs e)
+        {
+            if (ActiveListView.SelectedItems.Count == 1 && _doUpdate)
+            {
+                var name = ActiveListView.SelectedItems[0].Text;
+                SetSsaStyle(name, "spacing", numericUpDownSpacing.Value.ToString(CultureInfo.InvariantCulture));
+                UpdateListViewFontStyle(GetSsaStyle(name));
+                GeneratePreview();
+            }
+        }
+
+        private void numericUpDownAngle_ValueChanged(object sender, EventArgs e)
+        {
+            if (ActiveListView.SelectedItems.Count == 1 && _doUpdate)
+            {
+                var name = ActiveListView.SelectedItems[0].Text;
+                SetSsaStyle(name, "angle", numericUpDownAngle.Value.ToString(CultureInfo.InvariantCulture));
+                UpdateListViewFontStyle(GetSsaStyle(name));
+                GeneratePreview();
             }
         }
     }

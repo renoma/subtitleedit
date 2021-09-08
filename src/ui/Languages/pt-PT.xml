@@ -2,8 +2,8 @@
 <Language Name="Português (Portugal)">
   <General>
     <Title>Subtitle Edit</Title>
-    <Version>3.6.1</Version>
-    <TranslatedBy>Traduzido para Português de Portugal, por hugok79
+    <Version>3.6.2</Version>
+    <TranslatedBy>Traduzido para Português de Portugal, por Hugo Carvalho(hugok79)
 Email: mailto:hugokarvalho@hotmail.com</TranslatedBy>
     <CultureName>pt-PT</CultureName>
     <HelpFile />
@@ -41,6 +41,7 @@ Email: mailto:hugokarvalho@hotmail.com</TranslatedBy>
     <Bold>Negrito</Bold>
     <Italic>Itálico</Italic>
     <Underline>Sublinhado</Underline>
+    <Strikeout>Rasurado</Strikeout>
     <Visible>Visível</Visible>
     <FrameRate>Taxa de fotogramas</FrameRate>
     <Name>Nome</Name>
@@ -54,6 +55,7 @@ Email: mailto:hugokarvalho@hotmail.com</TranslatedBy>
     <TotalLengthXSplitLine>Comprimento total: {0} (dividir linha!)</TotalLengthXSplitLine>
     <SplitLine>Dividir linha!</SplitLine>
     <NotAvailable>N/A</NotAvailable>
+    <Overlap>Sobrepor</Overlap>
     <OverlapPreviousLineX>Sobrepor a linha anterior ({0:#,##0.###})</OverlapPreviousLineX>
     <OverlapX>Sobrepor ({0:#,##0.###})</OverlapX>
     <OverlapNextX>Sobrepor a seguinte ({0:#,##0.###})</OverlapNextX>
@@ -179,6 +181,49 @@ Nota: Verifique o espaço em disco.</WaveFileMalformed>
     <RemoveOneAttachment>Eliminar um anexo?</RemoveOneAttachment>
     <RemoveXAttachments>Eliminar {0} anexos?</RemoveXAttachments>
   </AssaAttachments>
+  <AssaOverrideTags>
+    <ApplyCustomTags>Aplicar etiquetas de substituição personalizadas</ApplyCustomTags>
+    <History>Histórico</History>
+    <TagsToApply>Etiquetas a aplicar</TagsToApply>
+    <ApplyTo>Aplicar a</ApplyTo>
+    <SelectedLinesX>Linhas selecionadas: {0}</SelectedLinesX>
+    <AdvancedSelection>Selecção avançada</AdvancedSelection>
+  </AssaOverrideTags>
+  <AssaProgressBarGenerator>
+    <Title>Gerar barra de progressão</Title>
+    <Progressbar>Barra de progressão</Progressbar>
+    <Chapters>Capítulos</Chapters>
+    <SplitterWidth>Largura do divisor</SplitterWidth>
+    <SplitterHeight>Altura do divisor</SplitterHeight>
+    <XAdjustment>Ajuste X</XAdjustment>
+    <YAdjustment>Ajuste Y</YAdjustment>
+    <Position>Posição</Position>
+    <TextAlignment>Alinhamento do texto</TextAlignment>
+    <SquareCorners>Cantos quadrados</SquareCorners>
+    <RoundedCorners>Cantos arredondados</RoundedCorners>
+    <Top>Superior</Top>
+    <Bottom>Inferior</Bottom>
+    <TakePosFromVideo>Assumir a posição do vídeo</TakePosFromVideo>
+  </AssaProgressBarGenerator>
+  <AssaResulationChanger>
+    <Title>Alterar a resolução do script</Title>
+    <SourceVideoRes>Resolução do vídeo de origem</SourceVideoRes>
+    <TargetVideoRes>Resolução do vídeo de destino</TargetVideoRes>
+    <ChangeResolutionMargins>Alterar resolução para margem</ChangeResolutionMargins>
+    <ChangeResolutionFontSize>Alterar a resolução para o tamanho do tipo de letra</ChangeResolutionFontSize>
+    <ChangeResolutionPositions>Alterar a resolução para a posição</ChangeResolutionPositions>
+    <ChangeResolutionDrawing>Alterar a resolução para desenho</ChangeResolutionDrawing>
+  </AssaResulationChanger>
+  <AssaSetPosition>
+    <SetPosition>Definir posição</SetPosition>
+    <VideoResolutionX>Resolução do vídeo: {0}</VideoResolutionX>
+    <StyleAlignmentX>Alinhamento do estilo: {0}</StyleAlignmentX>
+    <CurrentMousePositionX>Posição do rato: {0}</CurrentMousePositionX>
+    <CurrentTextPositionX>Posição do texto: {0}</CurrentTextPositionX>
+    <SetPosInfo>Clique no vídeo para alternar a posição definir/mover</SetPosInfo>
+    <Clipboard>Área de transferência</Clipboard>
+    <ResolutionMissing>PlayResX/PlayResY não estão definidos - definir a resolução agora?</ResolutionMissing>
+  </AssaSetPosition>
   <AudioToText>
     <Title>Áudio para texto</Title>
     <ExtractingAudioUsingX>Extrair áudio utilizando {0}...</ExtractingAudioUsingX>
@@ -257,9 +302,6 @@ Nota: Verifique o espaço em disco.</WaveFileMalformed>
     <MkvLanguageStyleThreeLetter>Código de idioma com 3 letras</MkvLanguageStyleThreeLetter>
     <MkvLanguageStyleEmpty>Sem código de idioma</MkvLanguageStyleEmpty>
   </BatchConvert>
-  <Beamer>
-    <Title>Vídeo projector</Title>
-  </Beamer>
   <BinEdit>
     <ImportImage>Importar imagem...</ImportImage>
     <ExportImage>Exportar imagem...</ExportImage>
@@ -663,7 +705,7 @@ Nota: Verifique o espaço em disco.</WaveFileMalformed>
     <BreakLongLines>Dividir linhas longas</BreakLongLines>
     <RemoveLineBreaks>Eliminar quebras de linha em textos curtos</RemoveLineBreaks>
     <RemoveLineBreaksAll>Eliminar quebras de linha em textos curtos (todos excepto diálogos)</RemoveLineBreaksAll>
-    <FixUppercaseIInsindeLowercaseWords>Corrigir 'i' maiúscula em palavras em minúsculo (erro de OCR)</FixUppercaseIInsindeLowercaseWords>
+    <FixUppercaseIInsideLowercaseWords>Corrigir 'i' maiúscula em palavras em minúsculo (erro de OCR)</FixUppercaseIInsideLowercaseWords>
     <FixDoubleApostrophes>Substituir apóstrofe dupla ('') por aspas (")</FixDoubleApostrophes>
     <AddPeriods>Adicionar ponto final quando a linha seguinte começar com maiúscula</AddPeriods>
     <StartWithUppercaseLetterAfterParagraph>Iniciar parágrafo com maiúscula</StartWithUppercaseLetterAfterParagraph>
@@ -674,6 +716,7 @@ Nota: Verifique o espaço em disco.</WaveFileMalformed>
     <CommonOcrErrorsFixed>Erros frequentes de OCR corrigidos (ficheiro OcrReplaceList usado): {0}</CommonOcrErrorsFixed>
     <RemoveSpaceBetweenNumber>Eliminar espaços entre números</RemoveSpaceBetweenNumber>
     <FixDialogsOnOneLine>Corrigir diálogos numa linha</FixDialogsOnOneLine>
+    <RemoveDialogFirstInNonDialogs>Remover o travessão inicial na primeira linha para não diálogos</RemoveDialogFirstInNonDialogs>
     <NormalizeStrings>Normalizar linhas</NormalizeStrings>
     <FixTurkishAnsi>Corrigir ANSI turco (Islandês) caracteres para Unicode</FixTurkishAnsi>
     <FixDanishLetterI>Corrigir caractere Dinamarquês 'i'</FixDanishLetterI>
@@ -706,7 +749,7 @@ Nota: Verifique o espaço em disco.</WaveFileMalformed>
     <RemoveUnneededSpacesExample>Ei  tu , aí. -&gt; Ei tu, aí.</RemoveUnneededSpacesExample>
     <RemoveUnneededPeriodsExample>Ei tu!. -&gt; Ei tu!</RemoveUnneededPeriodsExample>
     <FixMissingSpacesExample>Ei.Tu. -&gt; Ei. Tu.</FixMissingSpacesExample>
-    <FixUppercaseIInsindeLowercaseWordsExample>AIias. -&gt; Alias.</FixUppercaseIInsindeLowercaseWordsExample>
+    <FixUppercaseIInsideLowercaseWordsExample>AIias. -&gt; Alias.</FixUppercaseIInsideLowercaseWordsExample>
     <FixLowercaseIToUppercaseIExample>Letra i pequena. -&gt; Letra I grande.</FixLowercaseIToUppercaseIExample>
     <StartTimeLaterThanEndTime>Número do texto {0}: Tempo inicial é posterior ao tempo final: {4}{1} -&gt; {2} {3}</StartTimeLaterThanEndTime>
     <UnableToFixStartTimeLaterThanEndTime>Impossível corrigir o número do texto {0}: Tempo inicial é posterior ao tempo final: {1}</UnableToFixStartTimeLaterThanEndTime>
@@ -736,11 +779,25 @@ Nota: Verifique o espaço em disco.</WaveFileMalformed>
     <FixOcrErrorExample>NÃo -&gt; Não</FixOcrErrorExample>
     <FixSpaceBetweenNumbersExample>1 100 -&gt; 1100</FixSpaceBetweenNumbersExample>
     <FixDialogsOneLineExample>Olá João! - Olá Olga! -&gt; Olá João!&lt;br /&gt;- Olá Olga!</FixDialogsOneLineExample>
+    <RemoveDialogFirstInNonDialogsExample>- Como estás? -&gt; Como estás?</RemoveDialogFirstInNonDialogsExample>
     <SelectDefault>Predefinição</SelectDefault>
     <SetDefault>Definir correcções actuais como padrão</SetDefault>
     <FixContinuationStyleX>Corrigir estilo de continuação: {0}</FixContinuationStyleX>
     <FixUnnecessaryLeadingDots>Eliminar reticências iniciais desnecessárias</FixUnnecessaryLeadingDots>
   </FixCommonErrors>
+  <GenerateBlankVideo>
+    <Title>Gerar ficheiro de vídeo em branco</Title>
+    <CheckeredImage>Imagem axadrezada</CheckeredImage>
+    <SolidColor>Cor sólida</SolidColor>
+    <DurationInMinutes>Duração em minutos</DurationInMinutes>
+  </GenerateBlankVideo>
+  <GenerateVideoWithBurnedInSubs>
+    <Title>Gerar vídeo com legenda embutida</Title>
+    <Info>Irá gerar um ficheiro de vídeo com legenda embutida.
+
+Nota: Suporte a Advanced Substation Alpha.</Info>
+    <XGeneratedWithBurnedInSubs>"{0}" gerado com legenda embutida.</XGeneratedWithBurnedInSubs>
+  </GenerateVideoWithBurnedInSubs>
   <GetDictionaries>
     <Title>Precisa de dicionários?</Title>
     <DescriptionLine1>A revisão ortográfica do Subtitle Edit é baseada no mecanismo NHunspell</DescriptionLine1>
@@ -1024,12 +1081,7 @@ Para usar a chave API, vá a "Opções -&gt; Definições -&gt; Ferramentas" par
         <Save>&amp;Guardar</Save>
         <SaveAs>Guardar &amp;como...</SaveAs>
         <RestoreAutoBackup>Restaurar cópia de segurança automática...</RestoreAutoBackup>
-        <AdvancedSubStationAlphaProperties>Advanced Sub Station Alpha propriedades...</AdvancedSubStationAlphaProperties>
-        <SubStationAlphaProperties>Sub Station Alpha propriedades...</SubStationAlphaProperties>
-        <EbuProperties>EBU STL propriedades...</EbuProperties>
-        <DvdStuioProProperties>DVD Studio Pro propriedades...</DvdStuioProProperties>
-        <TimedTextProperties>Propriedades de Timed Text...</TimedTextProperties>
-        <PacProperties>PAC propriedades...</PacProperties>
+        <FormatXProperties>{0} propriedades...</FormatXProperties>
         <OpenOriginal>Abrir legenda original (modo tradutor)...</OpenOriginal>
         <SaveOriginal>Guardar legenda original</SaveOriginal>
         <CloseOriginal>Fechar legenda original</CloseOriginal>
@@ -1142,6 +1194,8 @@ Para usar a chave API, vá a "Opções -&gt; Definições -&gt; Ferramentas" par
         <SetVideoOffset>Definir o deslocamento do vídeo...</SetVideoOffset>
         <SmptTimeMode>SMPTE temporização (drop frame)</SmptTimeMode>
         <GenerateTextFromVideo>Gerar texto a partir do vídeo...</GenerateTextFromVideo>
+        <GenerateBlankVideo>Gerar vídeo em branco...</GenerateBlankVideo>
+        <GenerateVideoWithBurnedInSub>Gerar vídeo com a legenda embutida...</GenerateVideoWithBurnedInSub>
         <ImportChaptersFromVideo>Importar capítulos do vídeo</ImportChaptersFromVideo>
         <GenerateImportSceneChanges>Gerar/Importar mudanças de cena...</GenerateImportSceneChanges>
         <RemoveSceneChanges>Eliminar mudanças de cena</RemoveSceneChanges>
@@ -1211,9 +1265,9 @@ Para usar a chave API, vá a "Opções -&gt; Definições -&gt; Ferramentas" par
       </ToolBar>
       <ContextMenu>
         <SizeAllColumnsToFit>Ajustar o tamanho das colunas para caber</SizeAllColumnsToFit>
-        <AdvancedSubStationAlphaSetStyle>Advanced Sub Station Alpha - Definir estilo</AdvancedSubStationAlphaSetStyle>
-        <SubStationAlphaSetStyle>Sub Station Alpha - Definir estilo</SubStationAlphaSetStyle>
-        <SetActor>Estipular actor</SetActor>
+        <SetStyle>Definir estilo</SetStyle>
+        <SetActor>Definir actor</SetActor>
+        <AssaTools>Ferramentas ASSA</AssaTools>
         <SubStationAlphaStyles>Estilos Sub Station Alpha...</SubStationAlphaStyles>
         <AdvancedSubStationAlphaStyles>Estilos Advanced Sub Station Alpha...</AdvancedSubStationAlphaStyles>
         <TimedTextSetRegion>Timed Text - Definir região</TimedTextSetRegion>
@@ -1262,29 +1316,33 @@ Para usar a chave API, vá a "Opções -&gt; Definições -&gt; Ferramentas" par
         <RemoveFormattingAlignment>Eliminar alinhamento</RemoveFormattingAlignment>
         <Underline>Sublinhado</Underline>
         <Box>Caixa</Box>
-        <Color>Cor</Color>
-        <FontName>Tipo de letra</FontName>
+        <Color>Cor...</Color>
+        <FontName>Tipo de letra...</FontName>
         <Superscript>Superscript</Superscript>
         <Subscript>Subscript</Subscript>
-        <Alignment>Alinhamento</Alignment>
-        <AutoBalanceSelectedLines>Auto-ajustar linhas seleccionadas</AutoBalanceSelectedLines>
-        <RemoveLineBreaksFromSelectedLines>Eliminar quebras de linha das linhas seleccionadas</RemoveLineBreaksFromSelectedLines>
-        <TypewriterEffect>Efeito máquina de escrever</TypewriterEffect>
-        <KaraokeEffect>Efeito Karaoke</KaraokeEffect>
-        <ShowSelectedLinesEarlierLater>Mostrar linhas seleccionadas antes/depois</ShowSelectedLinesEarlierLater>
-        <VisualSyncSelectedLines>Sincronia visual das linhas seleccionadas</VisualSyncSelectedLines>
+        <Alignment>Alinhamento...</Alignment>
+        <AutoBalanceSelectedLines>Auto-ajustar linhas seleccionadas...</AutoBalanceSelectedLines>
+        <RemoveLineBreaksFromSelectedLines>Eliminar quebras de linha das linhas seleccionadas...</RemoveLineBreaksFromSelectedLines>
+        <TypewriterEffect>Efeito máquina de escrever...</TypewriterEffect>
+        <KaraokeEffect>Efeito Karaoke...</KaraokeEffect>
+        <ShowSelectedLinesEarlierLater>Mostrar linhas seleccionadas antes/depois...</ShowSelectedLinesEarlierLater>
+        <VisualSyncSelectedLines>Sincronia visual das linhas seleccionadas...</VisualSyncSelectedLines>
         <GoogleAndMicrosoftTranslateSelectedLine>Google/Microsoft traduzir linha original</GoogleAndMicrosoftTranslateSelectedLine>
         <TranslateSelectedLines>Traduzir linhas seleccionadas...</TranslateSelectedLines>
-        <AdjustDisplayDurationForSelectedLines>Ajustar duração das linhas seleccionadas</AdjustDisplayDurationForSelectedLines>
+        <AdjustDisplayDurationForSelectedLines>Ajustar duração das linhas seleccionadas...</AdjustDisplayDurationForSelectedLines>
         <ApplyDurationLimitsForSelectedLines>Aplicar limites de duração às linhas seleccionadas...</ApplyDurationLimitsForSelectedLines>
-        <FixCommonErrorsInSelectedLines>Corrigir erros frequentes nas linhas seleccionadas</FixCommonErrorsInSelectedLines>
-        <ChangeCasingForSelectedLines>Alterar Maiúsculas/Minúsculas nas linhas seleccionadas</ChangeCasingForSelectedLines>
+        <ApplyCustomOverrideTag>Aplicar etiquetas de substituição personalizadas...</ApplyCustomOverrideTag>
+        <SetPosition>Definir posição...</SetPosition>
+        <GenerateProgressBar>Gerar barra de progressão...</GenerateProgressBar>
+        <AssaResolutionChanger>Alterar a resolução do script...</AssaResolutionChanger>
+        <FixCommonErrorsInSelectedLines>Corrigir erros frequentes nas linhas seleccionadas...</FixCommonErrorsInSelectedLines>
+        <ChangeCasingForSelectedLines>Alterar Maiúsculas/Minúsculas nas linhas seleccionadas...</ChangeCasingForSelectedLines>
         <SaveSelectedLines>Guardar linhas seleccionadas como...</SaveSelectedLines>
-        <WebVTTSetNewVoice>Definir nova voz</WebVTTSetNewVoice>
+        <WebVTTSetNewVoice>Definir nova voz...</WebVTTSetNewVoice>
         <WebVTTRemoveVoices>Eliminar vozes</WebVTTRemoveVoices>
         <NewActor>Novo actor...</NewActor>
         <RemoveActors>Eliminar actores</RemoveActors>
-        <EditBookmark>Editar marcador</EditBookmark>
+        <EditBookmark>Editar marcador...</EditBookmark>
         <RemoveBookmark>Eliminar marcador</RemoveBookmark>
         <GoToSourceView>Ir para a lista Original</GoToSourceView>
         <GoToListView>Ir para a Lista</GoToListView>
@@ -1458,9 +1516,9 @@ Deseja continuar?</SubtitleAppendPrompt>
     <SpellCheck>Verificação ortográfica</SpellCheck>
     <BeforeSpellCheck>Antes da verificação ortográfica</BeforeSpellCheck>
     <SpellCheckChangedXToY>Verificação ortográfica: Alterado '{0}' para '{1}'</SpellCheckChangedXToY>
-    <BeforeAddingTagX>Antes de adicionar &lt;{0}&gt; etiqueta</BeforeAddingTagX>
-    <TagXAdded>&lt;{0}&gt; etiquetas adicionadas</TagXAdded>
-    <LineXOfY>line {0} de {1}</LineXOfY>
+    <BeforeAddingTagX>Antes de adicionar '{0}' etiqueta</BeforeAddingTagX>
+    <TagXAdded>'{0}' etiqueta adicionada</TagXAdded>
+    <LineXOfY>linha {0} de {1}</LineXOfY>
     <XLinesSavedAsY>{0} linhas guardadas como {1}</XLinesSavedAsY>
     <XLinesDeleted>{0} linhas eliminadas</XLinesDeleted>
     <BeforeDeletingXLines>Antes de eliminar {0:#,##0} linhas</BeforeDeletingXLines>
@@ -1494,6 +1552,7 @@ Deseja continuar?</SubtitleAppendPrompt>
     <BeforeImportFromMatroskaFile>Antes de importar legenda do ficheiro Matroska (.mkv)</BeforeImportFromMatroskaFile>
     <SubtitleImportedFromMatroskaFile>Legenda importada do ficheiro Matroska (.mkv)</SubtitleImportedFromMatroskaFile>
     <DropFileXNotAccepted>Ficheiro '{0}' não aceite - ficheiro demasiado grande</DropFileXNotAccepted>
+    <DropSubtitleFileXNotAccepted>Ficheiro '{0}' não aceite - ficheiro demasiado grande para um legenda</DropSubtitleFileXNotAccepted>
     <DropOnlyOneFile>Só pode baixar um ficheiro</DropOnlyOneFile>
     <OpenAnsiSubtitle>Abrir legenda...</OpenAnsiSubtitle>
     <BeforeChangeCasing>Antes de alterar o formato</BeforeChangeCasing>
@@ -1972,6 +2031,7 @@ editar o mesmo ficheiro de legenda (colaboração)</Information>
     <GoToPreviousBookmark>Ir para o marcador anterior</GoToPreviousBookmark>
     <GoToNextBookmark>Ir para o marcador seguinte</GoToNextBookmark>
     <ChooseProfile>Escolher perfil</ChooseProfile>
+    <OpenDataFolder>Abrir a pasta de dados do Subtitle Edit</OpenDataFolder>
     <DuplicateLine>Duplicar linha</DuplicateLine>
     <ToggleView>Alternar lista/original</ToggleView>
     <ToggleMode>Alternar traduzir/criar/ajustar</ToggleMode>
@@ -2012,6 +2072,9 @@ editar o mesmo ficheiro de legenda (colaboração)</Information>
     <StartInSourceView>Iniciar no separador (Original) da janela principal</StartInSourceView>
     <RemoveBlankLinesWhenOpening>Eliminar linhas em branco ao abrir a legenda</RemoveBlankLinesWhenOpening>
     <RemoveBlankLines>Eliminar linhas em branco</RemoveBlankLines>
+    <ApplyAssaOverrideTags>Aplicar etiquetas de substituição ASSA à selecção</ApplyAssaOverrideTags>
+    <SetAssaPosition>Definir/obter posição ASSA</SetAssaPosition>
+    <SetAssaResolution>Definir resolução ASSA (PlayResX/PlayResY)</SetAssaResolution>
     <ShowLineBreaksAs>Ver quebras de linha na "Lista" da janela principal como:</ShowLineBreaksAs>
     <SaveAsFileNameFrom>"Guardar como..." usa o nome do ficheiro de:</SaveAsFileNameFrom>
     <MainListViewDoubleClickAction>Ao clicar duas vezes na linha de texto na janela principal irá...</MainListViewDoubleClickAction>
@@ -2139,12 +2202,14 @@ editar o mesmo ficheiro de legenda (colaboração)</Information>
     <DialogStyleDashSecondLineWithoutSpace>Travessão só na segunda linha sem espaço</DialogStyleDashSecondLineWithoutSpace>
     <ContinuationStyle>Estilo de continuação</ContinuationStyle>
     <ContinuationStyleNone>Nenhum</ContinuationStyleNone>
-    <ContinuationStyleNoneTrailingDots>Nenhum, reticências para pausas (apenas para continuação)</ContinuationStyleNoneTrailingDots>
-    <ContinuationStyleNoneLeadingTrailingDots>Nenhum, reticências para pausas</ContinuationStyleNoneLeadingTrailingDots>
-    <ContinuationStyleOnlyTrailingDots>Reticências (apenas para continuação de frases)</ContinuationStyleOnlyTrailingDots>
-    <ContinuationStyleLeadingTrailingDots>Reticências</ContinuationStyleLeadingTrailingDots>
+    <ContinuationStyleNoneTrailingDots>Nenhum, pontos para pausas (apenas para continuação)</ContinuationStyleNoneTrailingDots>
+    <ContinuationStyleNoneLeadingTrailingDots>Nenhum, pontos para pausas</ContinuationStyleNoneLeadingTrailingDots>
+    <ContinuationStyleOnlyTrailingDots>Pontos (apenas para continuação de frases)</ContinuationStyleOnlyTrailingDots>
+    <ContinuationStyleLeadingTrailingDots>Pontos</ContinuationStyleLeadingTrailingDots>
+    <ContinuationStyleLeadingTrailingEllipsis>Reticências</ContinuationStyleLeadingTrailingEllipsis>
+    <ContinuationStyleNoneTrailingEllipsis>Nenhum, reticências para pausas</ContinuationStyleNoneTrailingEllipsis>
     <ContinuationStyleLeadingTrailingDash>Travessão</ContinuationStyleLeadingTrailingDash>
-    <ContinuationStyleLeadingTrailingDashDots>Travessão, mas reticências para pausas</ContinuationStyleLeadingTrailingDashDots>
+    <ContinuationStyleLeadingTrailingDashDots>Travessão, mas pontos para pausas</ContinuationStyleLeadingTrailingDashDots>
     <MusicSymbol>Símbolo musical</MusicSymbol>
     <MusicSymbolsReplace>Símbolos musicais para substituir (separados por vírgula)</MusicSymbolsReplace>
     <FixCommonOcrErrorsUseHardcodedRules>Corrigir erros frequentes de OCR - também utilizar regras codificadas</FixCommonOcrErrorsUseHardcodedRules>
@@ -2152,6 +2217,7 @@ editar o mesmo ficheiro de legenda (colaboração)</Information>
     <FixCommonErrorsSkipStepOne>Ignorar a fase um (escolher regras de correcção)</FixCommonErrorsSkipStepOne>
     <DefaultFormat>Formato predefinido</DefaultFormat>
     <DefaultSaveAsFormat>Guardar como formato predefinido</DefaultSaveAsFormat>
+    <DefaultSaveAsFormatAuto>- Auto -</DefaultSaveAsFormatAuto>
     <Favorites>Favoritos</Favorites>
     <FavoriteFormats>Formatos favoritos</FavoriteFormats>
     <FavoriteSubtitleFormatsNote>Nota: os formatos favoritos serão mostrados primeiro ao seleccionar um formato, o formato predefinido será sempre mostrado primeiro</FavoriteSubtitleFormatsNote>
@@ -2221,8 +2287,10 @@ editar o mesmo ficheiro de legenda (colaboração)</Information>
     <MainCreateStartDownEndUp>Inserir nova linha com tecla "Page Down", definir tempo final com tecla "Page Up"</MainCreateStartDownEndUp>
     <MergeDialog>Combinar os diálogos (inserir travessões)</MergeDialog>
     <GoToNext>Ir para a linha seguinte</GoToNext>
+    <GoToNextPlayTranslate>Ir para a linha seguinte (e reproduzir no 'Modo de tradução')</GoToNextPlayTranslate>
     <GoToNextCursorAtEnd>Ir para a linha seguinte e pôr o cursor no fim</GoToNextCursorAtEnd>
     <GoToPrevious>Ir para a linha anterior</GoToPrevious>
+    <GoToPreviousPlayTranslate>Ir para a linha anterior (e reproduzir no 'Modo de tradução')</GoToPreviousPlayTranslate>
     <GoToCurrentSubtitleStart>Ir para o início da linha actual</GoToCurrentSubtitleStart>
     <GoToCurrentSubtitleEnd>Ir para o final da linha actual</GoToCurrentSubtitleEnd>
     <GoToPreviousSubtitleAndFocusVideo>Ir para a linha anterior e definir a posição do vídeo</GoToPreviousSubtitleAndFocusVideo>
@@ -2232,6 +2300,7 @@ editar o mesmo ficheiro de legenda (colaboração)</Information>
     <ToggleFocus>Alternar o enfoque entre a caixa de texto da legenda e o separador (Lista) na janela principal</ToggleFocus>
     <ToggleFocusWaveform>Alternar o enfoque entre a lista e waveform/espectrograma</ToggleFocusWaveform>
     <ToggleDialogDashes>Alternar travessões</ToggleDialogDashes>
+    <ToggleQuotes>Alternar aspas</ToggleQuotes>
     <ToggleMusicSymbols>Alternar símbolos de música</ToggleMusicSymbols>
     <Alignment>Alinhamento (linhas seleccionadas)</Alignment>
     <AlignmentN1>Alinhamento inferior esquerdo - {\an1}</AlignmentN1>
@@ -2283,19 +2352,21 @@ editar o mesmo ficheiro de legenda (colaboração)</Information>
     <GoBack3Second>Atrasar 3 segundos</GoBack3Second>
     <GoToStartCurrent>Definir posição de vídeo para o início da linha actual</GoToStartCurrent>
     <ToggleStartEndCurrent>Alternar posição do vídeo entre início/fim da linha actual</ToggleStartEndCurrent>
-    <PlayCurrent>Reproduzir linha actual</PlayCurrent>
+    <PlaySelectedLines>Reproduzir linhas selecionadas</PlaySelectedLines>
     <WaveformGoToPrevSubtitle>Ir para linha anterior (da posição do vídeo)</WaveformGoToPrevSubtitle>
     <WaveformGoToNextSubtitle>Ir para linha seguinte (da posição do vídeo)</WaveformGoToNextSubtitle>
     <WaveformGoToPrevChapter>Ir para capítulo anterior</WaveformGoToPrevChapter>
     <WaveformGoToNextChapter>Ir para capítulo seguinte</WaveformGoToNextChapter>
     <WaveformSelectNextSubtitle>Seleccionar linha seguinte (da posição de vídeo, manter posição de vídeo)</WaveformSelectNextSubtitle>
-    <TogglePlayPause>Alternar reproduzir/pausar</TogglePlayPause>
-    <Pause>Pausar</Pause>
+    <TogglePlayPause>Alternar reproduzir/pausa</TogglePlayPause>
+    <Pause>Pausa</Pause>
     <Fullscreen>Ecrã inteiro</Fullscreen>
     <PlayRateSlower>Taxa de velocidade lenta</PlayRateSlower>
     <PlayRateFaster>Taxa de velocidade rápida</PlayRateFaster>
     <VideoResetSpeedAndZoom>Repor velocidade/zoom</VideoResetSpeedAndZoom>
     <MainToggleVideoControls>Alternar controlos vídeo</MainToggleVideoControls>
+    <VideoToggleContrast>Alternar contraste (apenas mpv)</VideoToggleContrast>
+    <VideoToggleBrightness>Alternar luminosidade (apenas mpv)</VideoToggleBrightness>
     <CustomSearch1>Traduzir, pesquisa personalizada 1</CustomSearch1>
     <CustomSearch2>Traduzir, pesquisa personalizada 2</CustomSearch2>
     <CustomSearch3>Traduzir, pesquisa personalizada 3</CustomSearch3>
@@ -2339,7 +2410,6 @@ editar o mesmo ficheiro de legenda (colaboração)</Information>
     <ListViewColumnTextUp>Coluna, texto para cima</ListViewColumnTextUp>
     <ListViewColumnTextDown>Coluna, texto para baixo</ListViewColumnTextDown>
     <ListViewGoToNextError>Ir para o erro seguinte</ListViewGoToNextError>
-    <ShowBeamer>Iniciar a legenda em ecrã inteiro</ShowBeamer>
     <ShowStyleManager>Mostrar gestor de estilo</ShowStyleManager>
     <MainTextBoxMoveLastWordDown>Mover a última palavra até à próxima linha da legenda</MainTextBoxMoveLastWordDown>
     <MainTextBoxMoveFirstWordFromNextUp>Buscar a primeira palavra da próxima linha da legenda</MainTextBoxMoveFirstWordFromNextUp>
@@ -2356,6 +2426,8 @@ editar o mesmo ficheiro de legenda (colaboração)</Information>
     <MainTextBoxAutoBreakFromPosAndGoToNext>Quebrar no primeiro espaço a partir da posição do cursor e ir para o próximo</MainTextBoxAutoBreakFromPosAndGoToNext>
     <MainTextBoxUnbreak>Eliminar quebra de linha</MainTextBoxUnbreak>
     <MainTextBoxUnbreakNoSpace>Eliminar quebra sem espaço em branco (CJK)</MainTextBoxUnbreakNoSpace>
+    <MainTextBoxAssaIntellisense>Mostrar ajuda da etiqueta ASSA</MainTextBoxAssaIntellisense>
+    <MainTextBoxAssaRemoveTag>Remover a etiqueta ASSA no cursor</MainTextBoxAssaRemoveTag>
     <MainFileSaveAll>Guardar tudo</MainFileSaveAll>
     <Miscellaneous>Diversos</Miscellaneous>
     <CpsIncludesSpace>Caracteres/seg (CPS) incluindo espaços</CpsIncludesSpace>
@@ -2609,7 +2681,7 @@ Continuar?</RestoreDefaultSettingsMsg>
     <Vertical>Vertical</Vertical>
     <Border>Contorno</Border>
     <PlusShadow>+ Sombra</PlusShadow>
-    <OpaqueBox>Caixa opaca (contorno colorido)</OpaqueBox>
+    <OpaqueBox>Caixa opaca</OpaqueBox>
     <Import>Importar...</Import>
     <Export>Exportar...</Export>
     <Copy>Copiar</Copy>
@@ -2633,6 +2705,12 @@ Continuar?</RestoreDefaultSettingsMsg>
     <CategoryNote>Nota: Os estilos "Predefinidos" (a verde) serão aplicados aos novos ficheiros ASSA</CategoryNote>
     <CategoriesManage>Gerir</CategoriesManage>
     <MoveToCategory>Mover estilos seleccionados para categoria...</MoveToCategory>
+    <ScaleX>EscalaX</ScaleX>
+    <ScaleY>EscalaY</ScaleY>
+    <Spacing>Espaçamento</Spacing>
+    <Angle>Ângulo</Angle>
+    <BoxPerLine>Caixa por linha (usar cor de contorno)</BoxPerLine>
+    <BoxMultiLine>Uma caixa (usar cor de sombra)</BoxMultiLine>
   </SubStationAlphaStyles>
   <SubStationAlphaStylesCategoriesManager>
     <Category>Categoria</Category>
@@ -2858,7 +2936,8 @@ Manter as alterações?</KeepChangesMessage>
     <ShowWaveformOnly>Mostrar só "waveform"</ShowWaveformOnly>
     <ShowSpectrogramOnly>Mostrar só espectrograma</ShowSpectrogramOnly>
     <AddSceneChange>Adicionar mudança de cena</AddSceneChange>
-    <RemoveSceneChange>Eliminar mudança de cena</RemoveSceneChange>
+    <RemoveSceneChange>Remover mudança de cena</RemoveSceneChange>
+    <RemoveSceneChangesFromSelection>Remover mudanças de cena da seleção</RemoveSceneChangesFromSelection>
     <GuessTimeCodes>Adivinhar os tempos...</GuessTimeCodes>
     <SeekSilence>Localizar silêncio no áudio...</SeekSilence>
     <InsertSubtitleHere>Inserir legendagem aqui...</InsertSubtitleHere>

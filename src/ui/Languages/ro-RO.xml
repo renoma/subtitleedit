@@ -2,7 +2,7 @@
 <Language Name="română">
   <General>
     <Title>Subtitle Edit</Title>
-    <Version>3.6.1</Version>
+    <Version>3.6.2</Version>
     <TranslatedBy>Tradus de Mircea Voiculescu</TranslatedBy>
     <CultureName>ro-RO</CultureName>
     <HelpFile />
@@ -258,9 +258,6 @@ Notă: Verifică spațiul liber al discului.</WaveFileMalformed>
     <MkvLanguageStyleThreeLetter>Codul de limbă din 3 litere</MkvLanguageStyleThreeLetter>
     <MkvLanguageStyleEmpty>Niciun cod de limbă</MkvLanguageStyleEmpty>
   </BatchConvert>
-  <Beamer>
-    <Title>Proiector</Title>
-  </Beamer>
   <BinEdit>
     <ImportImage>Importare imagine...</ImportImage>
     <ExportImage>Exportare imagine...</ExportImage>
@@ -673,7 +670,7 @@ Notă: Verifică spațiul liber al discului.</WaveFileMalformed>
     <BreakLongLines>Întrerupe liniile lungi</BreakLongLines>
     <RemoveLineBreaks>Elimină întreruperile de linie scurtă cu o singură propoziție</RemoveLineBreaks>
     <RemoveLineBreaksAll>Elimină întreruperile în liniile scurte (cu excepția dialogurilor)</RemoveLineBreaksAll>
-    <FixUppercaseIInsindeLowercaseWords>Repară majuscula 'I' în cuvintele cu minusculă (eroare OCR)</FixUppercaseIInsindeLowercaseWords>
+    <FixUppercaseIInsideLowercaseWords>Repară majuscula 'I' în cuvintele cu minusculă (eroare OCR)</FixUppercaseIInsideLowercaseWords>
     <FixDoubleApostrophes>Repară apostroful dublu ('') cu ghilimele simple (")</FixDoubleApostrophes>
     <AddPeriods>Adaugă punct după linia urmată de o linie care începe cu majusculă</AddPeriods>
     <StartWithUppercaseLetterAfterParagraph>Începe cu majusculă după paragraf</StartWithUppercaseLetterAfterParagraph>
@@ -716,7 +713,7 @@ Notă: Verifică spațiul liber al discului.</WaveFileMalformed>
     <RemoveUnneededSpacesExample>Hei   tu, de colo. -&gt; Hei tu, de colo.</RemoveUnneededSpacesExample>
     <RemoveUnneededPeriodsExample>Hei tu!. -&gt; Hei tu!</RemoveUnneededPeriodsExample>
     <FixMissingSpacesExample>Hei.Tu. -&gt; Hei. Tu.</FixMissingSpacesExample>
-    <FixUppercaseIInsindeLowercaseWordsExample>Pământul este pIat. -&gt; Pământul este plat.</FixUppercaseIInsindeLowercaseWordsExample>
+    <FixUppercaseIInsideLowercaseWordsExample>Pământul este pIat. -&gt; Pământul este plat.</FixUppercaseIInsideLowercaseWordsExample>
     <FixLowercaseIToUppercaseIExample>What do i care. -&gt; What do I care.</FixLowercaseIToUppercaseIExample>
     <StartTimeLaterThanEndTime>Număr text {0}: Timpul de start depășește timpul de sfârșit: {4}{1} -&gt; {2} {3}</StartTimeLaterThanEndTime>
     <UnableToFixStartTimeLaterThanEndTime>De nereparat nr. text {0}: Timpul de start depășește timpul de sfârșit: {1}</UnableToFixStartTimeLaterThanEndTime>
@@ -1468,8 +1465,8 @@ Continui?</SubtitleAppendPrompt>
     <SpellCheck>Verificare ortografică</SpellCheck>
     <BeforeSpellCheck>Înaintea verificării ortografice</BeforeSpellCheck>
     <SpellCheckChangedXToY>Verificat ortografic: Schimbat '{0}' la '{1}'</SpellCheckChangedXToY>
-    <BeforeAddingTagX>Înaintea adăugării mărcii &lt;{0}&gt;</BeforeAddingTagX>
-    <TagXAdded>&lt;{0}&gt; mărci adăugate</TagXAdded>
+    <BeforeAddingTagX>Înaintea adăugării mărcii '{0}'</BeforeAddingTagX>
+    <TagXAdded>'{0}' mărci adăugate</TagXAdded>
     <LineXOfY>linia {0} din {1}</LineXOfY>
     <XLinesSavedAsY>{0} linii salvate ca {1}</XLinesSavedAsY>
     <XLinesDeleted>{0} linii șterse</XLinesDeleted>
@@ -2340,7 +2337,6 @@ pot edita aceeași subtitrare (colaborare)</Information>
     <ListViewColumnTextUp>Coloana „Text”, urcă textul</ListViewColumnTextUp>
     <ListViewColumnTextDown>Coloana „Text”, coboară textul</ListViewColumnTextDown>
     <ListViewGoToNextError>Accesează următoarea eroare</ListViewGoToNextError>
-    <ShowBeamer>Începe subtitrarea pe tot ecranul</ShowBeamer>
     <ShowStyleManager>Arată managerul de stiluri</ShowStyleManager>
     <MainTextBoxMoveLastWordDown>Mută ultimul cuvânt la următoarea subtitrare</MainTextBoxMoveLastWordDown>
     <MainTextBoxMoveFirstWordFromNextUp>Aduce primul cuvânt din următoarea subtitrare</MainTextBoxMoveFirstWordFromNextUp>

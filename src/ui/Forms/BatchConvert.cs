@@ -1,5 +1,4 @@
-﻿using Nikse.SubtitleEdit.Core;
-using Nikse.SubtitleEdit.Core.BluRaySup;
+﻿using Nikse.SubtitleEdit.Core.BluRaySup;
 using Nikse.SubtitleEdit.Core.Common;
 using Nikse.SubtitleEdit.Core.ContainerFormats.Matroska;
 using Nikse.SubtitleEdit.Core.ContainerFormats.TransportStream;
@@ -2321,14 +2320,16 @@ namespace Nikse.SubtitleEdit.Forms
                 return;
             }
 
-            int first = -1;
+            var first = int.MaxValue;
             for (int i = listViewInputFiles.SelectedIndices.Count - 1; i >= 0; i--)
             {
-                if (first < 0)
+                var idx = listViewInputFiles.SelectedIndices[i];
+                if (idx < first)
                 {
-                    first = listViewInputFiles.SelectedIndices[i];
+                    first = idx;
                 }
-                listViewInputFiles.Items.RemoveAt(listViewInputFiles.SelectedIndices[i]);
+
+                listViewInputFiles.Items.RemoveAt(idx);
             }
 
             // keep an item selected/focused for improved UX
@@ -2342,6 +2343,7 @@ namespace Nikse.SubtitleEdit.Forms
                 listViewInputFiles.Items[listViewInputFiles.Items.Count - 1].Selected = true;
                 listViewInputFiles.FocusedItem = listViewInputFiles.Items[listViewInputFiles.Items.Count - 1];
             }
+
             UpdateNumberOfFiles();
             UpdateTransportStreamSettings();
         }
@@ -2385,6 +2387,11 @@ namespace Nikse.SubtitleEdit.Forms
             else if (e.KeyCode == Keys.I && e.Modifiers == (Keys.Control | Keys.Shift)) //InverseSelection
             {
                 listViewInputFiles.InverseSelection();
+                e.SuppressKeyPress = true;
+            }
+            else if (e.KeyData == UiUtil.HelpKeys)
+            {
+                UiUtil.ShowHelp("#batchconvert");
                 e.SuppressKeyPress = true;
             }
         }
