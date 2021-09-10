@@ -431,12 +431,13 @@ namespace Nikse.SubtitleEdit.Forms.Ocr
                 try
                 {
                     _binOcrDb.Add(bob);
-                } catch (Exception ex)
+                }
+                catch (Exception ex)
                 {
                     Console.WriteLine(ex.Message);
                 }
 
-            int index = listBoxInspectItems.SelectedIndex;
+                int index = listBoxInspectItems.SelectedIndex;
                 _matches[index].Name = bob.Key;
                 _matches[index].ExpandCount = expandCount;
                 _matches[index].Italic = checkBoxItalic.Checked;
@@ -602,12 +603,13 @@ namespace Nikse.SubtitleEdit.Forms.Ocr
                     try
                     {
                         _binOcrDb.Add(form.ExpandedMatch);
-                    } catch(Exception ex)
+                    }
+                    catch (Exception ex)
                     {
                         Console.WriteLine(ex.Message);
                     }
                     int sendIndex = listBoxInspectItems.SelectedIndex + 1;
-                    if(sendIndex > listBoxInspectItems.Items.Count - 1)
+                    if (sendIndex > listBoxInspectItems.Items.Count - 1)
                     {
                         sendIndex = listBoxInspectItems.Items.Count - 1;
                     }
@@ -615,7 +617,7 @@ namespace Nikse.SubtitleEdit.Forms.Ocr
                     DialogResult = DialogResult.Retry;
                 }
             }
-            
+
         }
 
         private void InsertLanguageCharacter(object sender, EventArgs e)
@@ -667,17 +669,18 @@ namespace Nikse.SubtitleEdit.Forms.Ocr
             try
             {
                 ActiveControl = textBoxText;
-            } catch(Exception ex)
+            }
+            catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
             }
 
-}
+        }
 
         private void textBoxText_KeyDown(object sender, KeyEventArgs e)
         {
             int selectedIndex = listBoxInspectItems.SelectedIndex;
-            if(e.Modifiers == Keys.Alt && e.KeyCode == Keys.E)
+            if (e.Modifiers == Keys.Alt && e.KeyCode == Keys.E)
             {
                 addBetterMultiMatchToolStripMenuItem_Click(sender, e);
             }
@@ -737,11 +740,11 @@ namespace Nikse.SubtitleEdit.Forms.Ocr
         public void setListBoxIndexItemsIndex(String index)
         {
             int intIndex = Int16.Parse(index);
-            if(intIndex < 0)
+            if (intIndex < 0)
             {
                 listBoxInspectItems.SelectedIndex = 0;
             }
-            else if(intIndex > listBoxInspectItems.Items.Count - 1)
+            else if (intIndex > listBoxInspectItems.Items.Count - 1)
             {
                 listBoxInspectItems.SelectedIndex = listBoxInspectItems.Items.Count - 1;
             }

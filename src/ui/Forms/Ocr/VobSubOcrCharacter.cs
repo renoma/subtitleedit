@@ -177,7 +177,7 @@ namespace Nikse.SubtitleEdit.Forms.Ocr
                 labelItalicOn2.Visible = true;
                 checkBoxItalic.Font = new Font(checkBoxItalic.Font.FontFamily, checkBoxItalic.Font.Size, FontStyle.Italic | FontStyle.Bold);
                 checkBoxItalic.ForeColor = Color.Red;
-                textBoxCharacters.ForeColor = Color.Red; ;
+                textBoxCharacters.ForeColor = Color.Red;
             }
             else
             {
@@ -324,7 +324,6 @@ namespace Nikse.SubtitleEdit.Forms.Ocr
         {
             DialogResult = DialogResult.Cancel;
         }
-
         private void checkBoxShowImage_CheckedChanged(object sender, EventArgs e)
         {
             pictureBoxSubtitleImage.Visible = checkBoxShowImage.Checked;
