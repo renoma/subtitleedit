@@ -4961,8 +4961,10 @@ namespace Nikse.SubtitleEdit.Forms.Ocr
             string dbSourceFile = System.IO.Path.Combine(Configuration.OcrDirectory, dbFileName);
             string dbBackupFile = System.IO.Path.Combine(Configuration.OcrDBBackupDirectory, dbFileName);
             string dbBackupFileByDaily = System.IO.Path.Combine(Configuration.OcrDBBackupDirectory, "Latin_" + @DateTime.Now.ToString("yyyyMMdd") + ".db");
+            string dbGitBackupFile = System.IO.Path.Combine(Configuration.OcrDBGitBackupDirectory, dbFileName);
             System.IO.File.Copy(dbSourceFile, dbBackupFile, true);
             System.IO.File.Copy(dbSourceFile, dbBackupFileByDaily, true);
+            System.IO.File.Copy(dbSourceFile, dbGitBackupFile, true);
             DialogResult = DialogResult.OK;
         }
 

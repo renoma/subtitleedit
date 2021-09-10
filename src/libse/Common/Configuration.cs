@@ -31,6 +31,7 @@ namespace Nikse.SubtitleEdit.Core.Common
         public static readonly string IconsDirectory = DataDirectory + "Icons" + Path.DirectorySeparatorChar;
         public static readonly string OcrDirectory = DataDirectory + "Ocr" + Path.DirectorySeparatorChar;
         public static readonly string OcrDBBackupDirectory = "D:" + Path.DirectorySeparatorChar + "Backup" + Path.DirectorySeparatorChar + "INI Backup" + Path.DirectorySeparatorChar + "Subtitle Edit" + Path.DirectorySeparatorChar + "Ocr" + Path.DirectorySeparatorChar;
+        public static readonly string OcrDBGitBackupDirectory = "D:" + Path.DirectorySeparatorChar + "My Documents" + Path.DirectorySeparatorChar + "Git" + Path.DirectorySeparatorChar + "renoma" + Path.DirectorySeparatorChar + "subtitleedit" + Path.DirectorySeparatorChar + "Ocr" + Path.DirectorySeparatorChar;
         public static readonly string SettingsFileName = DataDirectory + "Settings.xml";
         public static readonly string TesseractDataDirectory = GetTesseractDataDirectory();
         public static readonly string Tesseract302DataDirectory = GetTesseract302DataDirectory();
