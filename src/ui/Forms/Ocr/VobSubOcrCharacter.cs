@@ -13,6 +13,7 @@ namespace Nikse.SubtitleEdit.Forms.Ocr
 
         private VobSubOcr _vobSubForm;
         private List<VobSubOcr.ImageCompareAddition> _additions;
+        private int autoExpandedCount = 0;
 
         public VobSubOcrCharacter()
         {
@@ -103,8 +104,14 @@ namespace Nikse.SubtitleEdit.Forms.Ocr
             }
 
             pictureBoxSubtitleImage.Image = vobSubImage;
-            pictureBoxCharacter.Image = character.NikseBitmap.GetBitmap();
+            Bitmap pictureBoxCharacterImage = character.NikseBitmap.GetBitmap();
+            pictureBoxCharacter.Image = pictureBoxCharacterImage;
+            Decimal imageWidth = Convert.ToDecimal(pictureBoxCharacter.Image.Width);
+            Decimal imageHeight = Convert.ToDecimal(pictureBoxCharacter.Image.Height);
+            Decimal imageRatio = imageWidth / imageHeight * 100m;
             labelItalicOn2.Left = Math.Max(40, pictureBoxCharacter.Left + pictureBoxCharacter.Width);
+            String imageRatioText = String.Format("{0,6:#00.00}", imageRatio) + " = " + pictureBoxCharacter.Image.Width + " ÷ " + pictureBoxCharacter.Image.Height;
+            labelCharacterSize.Text = imageRatioText;
 
             if (_additions.Count > 0)
             {
@@ -140,11 +147,37 @@ namespace Nikse.SubtitleEdit.Forms.Ocr
                 }
                 pictureBoxSubtitleImage.Image = bm;
             }
-
             pictureBoxCharacter.Top = labelCharacters.Top + 16;
             pictureBoxLastEdit.Left = buttonLastEdit.Left + buttonLastEdit.Width + 5;
 
             buttonExpandSelection.Visible = allowExpand;
+            if (imageRatio < 85m)
+            {
+                using (var org = (Bitmap)pictureBoxCharacterImage.Clone())
+                {
+                    var bm = new Bitmap(org.Width, org.Height);
+                    using (var g = Graphics.FromImage(bm))
+                    {
+                        g.DrawImage(org, 0, 0, org.Width, org.Height);
+                        g.DrawRectangle(Pens.Red, 0, 0, org.Width - 1, org.Height - 1);
+                    }
+                    pictureBoxCharacter.Image = bm;
+                }
+
+                /*
+                if (autoExpandedCount < 3)
+                {
+                    autoExpandedCount++;
+                    ButtonExpandSelectionClick(null, null);
+                    //labelCharacterSize.Text = "Expanded";
+                }
+                */
+            }
+            else
+            {
+                autoExpandedCount = 0;
+            }
+            Console.WriteLine("autoExpandedCount: [" + autoExpandedCount + "]");
         }
 
         private void ButtonOkClick(object sender, EventArgs e)
@@ -281,14 +314,19 @@ namespace Nikse.SubtitleEdit.Forms.Ocr
                 e.SuppressKeyPress = true;
             }
             else if (buttonExpandSelection.Visible &&
-                     e.Modifiers == Keys.Alt && e.KeyCode == Keys.Right ||
-                     e.Modifiers == Keys.Shift && e.KeyCode == Keys.Add ||
-                     e.Modifiers == Keys.Alt && e.KeyCode == Keys.E)
+                     (e.Modifiers == Keys.Alt && e.KeyCode == Keys.Right) ||
+                     (e.Modifiers == Keys.Shift && e.KeyCode == Keys.Add) ||
+                     (e.Modifiers == Keys.Alt && e.KeyCode == Keys.E) ||
+                     (e.Modifiers != Keys.LShiftKey && e.KeyCode == Keys.Space)
+             )
             {
                 ButtonExpandSelectionClick(null, null);
                 e.SuppressKeyPress = true;
             }
-            else if (e.Modifiers == Keys.Control && e.KeyCode == Keys.I)
+            else if(
+                (e.Modifiers == Keys.Control && e.KeyCode == Keys.I)
+            ||  (e.KeyCode == Keys.CapsLock)
+            )
             {
                 checkBoxItalic.Checked = !checkBoxItalic.Checked;
                 e.SuppressKeyPress = true;
