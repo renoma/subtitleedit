@@ -73,11 +73,13 @@ namespace Nikse.SubtitleEdit.Forms.Ocr
 
         public bool SkipImage { get; private set; }
 
-        internal void Initialize(Bitmap vobSubImage, ImageSplitterItem character, Point position, bool italicChecked, bool showShrink, VobSubOcr.CompareMatch bestGuess, List<VobSubOcr.ImageCompareAddition> additions, VobSubOcr vobSubForm, bool allowExpand = true)
+        internal void Initialize(Bitmap vobSubImage, ImageSplitterItem character, Point position, bool italicChecked, bool showShrink, VobSubOcr.CompareMatch bestGuess, List<VobSubOcr.ImageCompareAddition> additions, VobSubOcr vobSubForm, ImageSplitterItem nextCharacter, bool allowExpand = true)
         {
             ShrinkSelection = false;
             ExpandSelection = false;
             SkipImage = false;
+            pictureBoxNextCharacter.Visible = false;
+            pictureBoxNextCharacter.Top = pictureBoxCharacter.Top;
 
             textBoxCharacters.Text = string.Empty;
             if (bestGuess != null)
@@ -163,7 +165,19 @@ namespace Nikse.SubtitleEdit.Forms.Ocr
                     }
                     pictureBoxCharacter.Image = bm;
                 }
-
+                try
+                {
+                    if (character != nextCharacter)
+                    {
+                        Bitmap pictureBoxNextCharacterImage = nextCharacter.NikseBitmap.GetBitmap();
+                        pictureBoxNextCharacter.Image = pictureBoxNextCharacterImage;
+                        pictureBoxNextCharacter.Visible = true;
+                    }
+                }
+                catch(Exception ex)
+                {
+                    Console.Write(ex);
+                }
                 /*
                 if (autoExpandedCount < 3)
                 {
@@ -177,7 +191,6 @@ namespace Nikse.SubtitleEdit.Forms.Ocr
             {
                 autoExpandedCount = 0;
             }
-            Console.WriteLine("autoExpandedCount: [" + autoExpandedCount + "]");
         }
 
         private void ButtonOkClick(object sender, EventArgs e)

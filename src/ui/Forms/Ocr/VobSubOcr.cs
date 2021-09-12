@@ -3808,6 +3808,12 @@ namespace Nikse.SubtitleEdit.Forms.Ocr
             while (index < list.Count)
             {
                 var item = list[index];
+                var nextItem = list[index];
+                if (index + 1 < list.Count)
+                {
+                    nextItem = list[index + 1];
+                }
+                
                 if (expandSelection || shrinkSelection)
                 {
                     expandSelection = false;
@@ -3819,11 +3825,19 @@ namespace Nikse.SubtitleEdit.Forms.Ocr
                     {
                         index++;
                         expandSelectionList.Add(list[index]);
+                        if (index + 1 < list.Count)
+                        {
+                            nextItem = list[index + 1];
+                        }
+                        else
+                        {
+                            nextItem = item;
+                        }
                     }
 
                     item = GetExpandedSelectionNew(parentBitmap, expandSelectionList);
 
-                    _vobSubOcrCharacter.Initialize(bitmap, item, _manualOcrDialogPosition, _italicCheckedLast, expandSelectionList.Count > 1, null, _lastAdditions, this);
+                    _vobSubOcrCharacter.Initialize(bitmap, item, _manualOcrDialogPosition, _italicCheckedLast, expandSelectionList.Count > 1, null, _lastAdditions, this, nextItem);
                     pictureBoxSubtitleImage.Visible = false;
                     DialogResult result = _vobSubOcrCharacter.ShowDialog(this);
                     _manualOcrDialogPosition = _vobSubOcrCharacter.FormPosition;
@@ -3890,12 +3904,12 @@ namespace Nikse.SubtitleEdit.Forms.Ocr
                         if (!checkBoxSkipOCRCharacter.Checked)
                         {
                             int nextIndex = index + 1;
-                        var allowExpand = nextIndex < list.Count && (list[nextIndex].SpecialCharacter != Environment.NewLine && list[nextIndex].SpecialCharacter != " ");
+                            var allowExpand = nextIndex < list.Count && (list[nextIndex].SpecialCharacter != Environment.NewLine && list[nextIndex].SpecialCharacter != " ");
 
-                        _vobSubOcrCharacter.Initialize(bitmap, item, _manualOcrDialogPosition, _italicCheckedLast, false, bestGuess, _lastAdditions, this, allowExpand);
+                            _vobSubOcrCharacter.Initialize(bitmap, item, _manualOcrDialogPosition, _italicCheckedLast, false, bestGuess, _lastAdditions, this, nextItem, allowExpand);
                             pictureBoxSubtitleImage.Visible = false;
                             DialogResult result = _vobSubOcrCharacter.ShowDialog(this);
-                        _manualOcrDialogPosition = _vobSubOcrCharacter.FormPosition;
+                            _manualOcrDialogPosition = _vobSubOcrCharacter.FormPosition;
 
                         if (result == DialogResult.Cancel && _vobSubOcrCharacter.SkipImage)
                         {

@@ -81,10 +81,12 @@
             this.labelSubtitleImage = new System.Windows.Forms.Label();
             this.checkBoxShowImage = new System.Windows.Forms.CheckBox();
             this.labelCharacterSize = new System.Windows.Forms.Label();
+            this.pictureBoxNextCharacter = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxSubtitleImage)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCharacter)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLastEdit)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxNextCharacter)).BeginInit();
             this.SuspendLayout();
             // 
             // buttonOK
@@ -158,9 +160,9 @@
             // pictureBoxCharacter
             // 
             this.pictureBoxCharacter.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.pictureBoxCharacter.Location = new System.Drawing.Point(497, 608);
+            this.pictureBoxCharacter.Location = new System.Drawing.Point(491, 608);
             this.pictureBoxCharacter.Name = "pictureBoxCharacter";
-            this.pictureBoxCharacter.Size = new System.Drawing.Size(497, 200);
+            this.pictureBoxCharacter.Size = new System.Drawing.Size(300, 200);
             this.pictureBoxCharacter.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBoxCharacter.TabIndex = 18;
             this.pictureBoxCharacter.TabStop = false;
@@ -170,7 +172,7 @@
             this.labelCharacters.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.labelCharacters.AutoSize = true;
             this.labelCharacters.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelCharacters.Location = new System.Drawing.Point(568, 510);
+            this.labelCharacters.Location = new System.Drawing.Point(495, 510);
             this.labelCharacters.Name = "labelCharacters";
             this.labelCharacters.Size = new System.Drawing.Size(95, 17);
             this.labelCharacters.TabIndex = 19;
@@ -497,7 +499,7 @@
             this.labelItalicOn2.AutoSize = true;
             this.labelItalicOn2.Font = new System.Drawing.Font("Tahoma", 24F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelItalicOn2.ForeColor = System.Drawing.Color.Red;
-            this.labelItalicOn2.Location = new System.Drawing.Point(489, 541);
+            this.labelItalicOn2.Location = new System.Drawing.Point(483, 541);
             this.labelItalicOn2.Name = "labelItalicOn2";
             this.labelItalicOn2.Size = new System.Drawing.Size(125, 48);
             this.labelItalicOn2.TabIndex = 28;
@@ -530,11 +532,22 @@
             this.labelCharacterSize.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.labelCharacterSize.AutoSize = true;
             this.labelCharacterSize.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelCharacterSize.Location = new System.Drawing.Point(494, 820);
+            this.labelCharacterSize.Location = new System.Drawing.Point(487, 847);
             this.labelCharacterSize.Name = "labelCharacterSize";
             this.labelCharacterSize.Size = new System.Drawing.Size(49, 24);
             this.labelCharacterSize.TabIndex = 31;
             this.labelCharacterSize.Text = "000";
+            // 
+            // pictureBoxNextCharacter
+            // 
+            this.pictureBoxNextCharacter.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.pictureBoxNextCharacter.Location = new System.Drawing.Point(794, 608);
+            this.pictureBoxNextCharacter.Name = "pictureBoxNextCharacter";
+            this.pictureBoxNextCharacter.Size = new System.Drawing.Size(200, 200);
+            this.pictureBoxNextCharacter.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBoxNextCharacter.TabIndex = 32;
+            this.pictureBoxNextCharacter.TabStop = false;
+            this.pictureBoxNextCharacter.Visible = false;
             // 
             // VobSubOcrCharacter
             // 
@@ -542,6 +555,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.DimGray;
             this.ClientSize = new System.Drawing.Size(1006, 913);
+            this.Controls.Add(this.pictureBoxNextCharacter);
             this.Controls.Add(this.labelCharacterSize);
             this.Controls.Add(this.checkBoxShowImage);
             this.Controls.Add(this.labelSubtitleImage);
@@ -580,6 +594,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCharacter)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLastEdit)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxNextCharacter)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -624,5 +639,6 @@
         private System.Windows.Forms.Label labelSubtitleImage;
         private System.Windows.Forms.CheckBox checkBoxShowImage;
         private System.Windows.Forms.Label labelCharacterSize;
+        private System.Windows.Forms.PictureBox pictureBoxNextCharacter;
     }
 }
