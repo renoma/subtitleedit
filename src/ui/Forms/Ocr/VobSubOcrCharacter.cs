@@ -165,31 +165,30 @@ namespace Nikse.SubtitleEdit.Forms.Ocr
                     }
                     pictureBoxCharacter.Image = bm;
                 }
-                try
-                {
-                    if (character != nextCharacter)
-                    {
-                        Bitmap pictureBoxNextCharacterImage = nextCharacter.NikseBitmap.GetBitmap();
-                        pictureBoxNextCharacter.Image = pictureBoxNextCharacterImage;
-                        pictureBoxNextCharacter.Visible = true;
-                    }
-                }
-                catch(Exception ex)
-                {
-                    Console.Write(ex);
-                }
-                /*
-                if (autoExpandedCount < 3)
-                {
-                    autoExpandedCount++;
-                    ButtonExpandSelectionClick(null, null);
-                    //labelCharacterSize.Text = "Expanded";
-                }
-                */
             }
             else
             {
                 autoExpandedCount = 0;
+            }
+            try
+            {
+                Decimal nextImageRatio = 0;
+                if (character != nextCharacter)
+                {
+                    Bitmap pictureBoxNextCharacterImage = nextCharacter.NikseBitmap.GetBitmap();
+                    Decimal nextImageWidth = Convert.ToDecimal(pictureBoxNextCharacterImage.Width);
+                    Decimal nextImageHeight = Convert.ToDecimal(pictureBoxNextCharacterImage.Height);
+                    nextImageRatio = nextImageWidth / nextImageHeight * 100m;
+                    if (nextImageRatio > 0m && nextImageRatio < 70m)
+                    {
+                        pictureBoxNextCharacter.Image = pictureBoxNextCharacterImage;
+                        pictureBoxNextCharacter.Visible = true;
+                    }
+                }
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine(ex);
             }
         }
 
