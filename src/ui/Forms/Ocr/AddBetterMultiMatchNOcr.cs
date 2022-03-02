@@ -141,6 +141,16 @@ namespace Nikse.SubtitleEdit.Forms.Ocr
             {
                 DialogResult = DialogResult.Cancel;
             }
+            else if (e.Modifiers == Keys.Control && e.KeyCode == Keys.I)
+            {
+                checkBoxItalic.Checked = !checkBoxItalic.Checked;
+                e.SuppressKeyPress = true;
+            }
+            else if (e.Modifiers == Keys.Alt && e.KeyCode == Keys.I)
+            {
+                checkBoxItalic.Checked = !checkBoxItalic.Checked;
+                e.SuppressKeyPress = true;
+            }
         }
     }
 }

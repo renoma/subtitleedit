@@ -48,8 +48,10 @@ namespace Nikse.SubtitleEdit.Core.Common
         {
             return Guid.NewGuid().ToString();
         }
-
         public Paragraph() : this(new TimeCode(), new TimeCode(), string.Empty)
+        {
+        }
+        public Paragraph(string text) : this(new TimeCode(), new TimeCode(), string.Empty)
         {
         }
 

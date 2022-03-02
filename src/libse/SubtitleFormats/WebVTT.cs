@@ -134,7 +134,7 @@ namespace Nikse.SubtitleEdit.Core.SubtitleFormats
                 positionInfo = Configuration.Settings.SubtitleSettings.WebVttCueAn2;
             }
 
-            return (" " +  positionInfo).TrimEnd();
+            return (" " + positionInfo).TrimEnd();
         }
 
         internal static string FormatText(Paragraph p)
@@ -164,13 +164,16 @@ namespace Nikse.SubtitleEdit.Core.SubtitleFormats
             var header = new StringBuilder();
             header.AppendLine("WEBVTT");
             header.AppendLine();
+
             for (var index = 0; index < lines.Count; index++)
             {
-                string line = lines[index];
-                string next = string.Empty;
+                var line = lines[index];
+                var next = string.Empty;
+                var isNextTimeCode = false;
                 if (index < lines.Count - 1)
                 {
                     next = lines[index + 1];
+                    isNextTimeCode = next.Contains("-->");
                 }
 
                 if (index == 0 && line.StartsWith("WEBVTT", StringComparison.Ordinal))
@@ -248,7 +251,11 @@ namespace Nikse.SubtitleEdit.Core.SubtitleFormats
                     s = "00:" + s.Replace("--> ", "--> 00:");
                 }
 
-                if (index == 1 && s.StartsWith("X-TIMESTAMP-MAP=", StringComparison.OrdinalIgnoreCase) &&
+                if (isNextTimeCode && Utilities.IsNumber(s) && p?.Text.Length > 0)
+                {
+                    numbers++;
+                }
+                else if (index == 1 && s.StartsWith("X-TIMESTAMP-MAP=", StringComparison.OrdinalIgnoreCase) &&
                     s.IndexOf("MPEGTS:", StringComparison.OrdinalIgnoreCase) > 0)
                 {
                     addSeconds = GetXTimeStampSeconds(s);
@@ -316,7 +323,7 @@ namespace Nikse.SubtitleEdit.Core.SubtitleFormats
                 subtitle.Paragraphs.Add(p);
             }
 
-            if (subtitle.Paragraphs.Count > 5 &&
+            if (subtitle.Paragraphs.Count > 3 &&
                 numbers >= subtitle.Paragraphs.Count - 1 &&
                 lines[0] == "WEBVTT FILE")
             {
@@ -329,10 +336,15 @@ namespace Nikse.SubtitleEdit.Core.SubtitleFormats
             {
                 paragraph.Text = ColorWebVttToHtml(paragraph.Text);
                 paragraph.Text = EscapeDecodeText(paragraph.Text);
+                paragraph.Text = RemoveWeirdReatingHeader(paragraph.Text);
                 paragraph.StartTime.TotalMilliseconds += addSeconds * 1000;
                 paragraph.EndTime.TotalMilliseconds += addSeconds * 1000;
             }
-            subtitle.Renumber();
+
+            var merged = MergeLinesSameTextUtils.MergeLinesWithSameTextInSubtitle(subtitle, false, 1);
+            subtitle.Paragraphs.Clear();
+            subtitle.Paragraphs.AddRange(merged.Paragraphs);
+
             if (header.Length > 0)
             {
                 subtitle.Header = header
@@ -340,6 +352,33 @@ namespace Nikse.SubtitleEdit.Core.SubtitleFormats
                     .Replace(Environment.NewLine + Environment.NewLine, Environment.NewLine)
                     .Trim();
             }
+        }
+
+        private string RemoveWeirdReatingHeader(string input)
+        {
+            var text = input;
+            text = text.Replace(" " + Environment.NewLine, Environment.NewLine);
+            text = text.Replace(Environment.NewLine + " ", Environment.NewLine);
+            if (text.Contains(Environment.NewLine + "WEBVTT"))
+            {
+                if (text.TrimEnd().EndsWith('}') && text.Contains("STYLE"))
+                {
+                    text = text.Remove(text.IndexOf(Environment.NewLine + "WEBVTT")).Trim();
+                }
+            }
+            else if (text.TrimEnd().EndsWith(Environment.NewLine + "WEBVTT", StringComparison.Ordinal))
+            {
+                text = text.Remove(text.LastIndexOf(Environment.NewLine + "WEBVTT")).Trim();
+            }
+            else if (text.Contains(Environment.NewLine + "STYLE" + Environment.NewLine))
+            {
+                if (text.TrimEnd().EndsWith("}"))
+                {
+                    text = text.Remove(text.IndexOf(Environment.NewLine + "STYLE" + Environment.NewLine)).Trim();
+                }
+            }
+
+            return text;
         }
 
         private static double GetXTimeStampSeconds(string input)
@@ -557,7 +596,10 @@ namespace Nikse.SubtitleEdit.Core.SubtitleFormats
                         tag = FindBestColorTagOrDefault(tag);
                         if (tag == null)
                         {
-                            break;
+                            text = text.Replace(match.Value, string.Empty);
+                            text = text.Replace(match.Value.Insert(1, "/"), string.Empty);
+                            match = regexWebVttColorMulti.Match(text);
+                            continue;
                         }
                         var fontString = "<font color=\"" + tag + "\">";
                         fontString = fontString.Trim('"').Trim('\'');
@@ -566,6 +608,18 @@ namespace Nikse.SubtitleEdit.Core.SubtitleFormats
                         if (endIndex >= 0)
                         {
                             text = text.Remove(endIndex, 4).Insert(endIndex, "</font>");
+                        }
+                        else
+                        {
+                            endIndex = text.IndexOf("</c.", match.Index, StringComparison.OrdinalIgnoreCase);
+                            if (endIndex >= 0)
+                            {
+                                var endEndIndex = text.IndexOf('>', endIndex);
+                                if (endEndIndex > 0)
+                                {
+                                    text = text.Remove(endIndex, endEndIndex - endIndex).Insert(endIndex, "</font>");
+                                }
+                            }
                         }
                         match = regexWebVttColorMulti.Match(text);
                     }
@@ -633,6 +687,15 @@ namespace Nikse.SubtitleEdit.Core.SubtitleFormats
                     if (endIndex >= 0)
                     {
                         res = res.Remove(endIndex, 4).Insert(endIndex, "</font>");
+                    }
+                    else
+                    {
+                        var findString = $"</c.{value}>";
+                        endIndex = res.IndexOf(findString, match.Index, StringComparison.OrdinalIgnoreCase);
+                        if (endIndex >= 0)
+                        {
+                            res = res.Remove(endIndex, findString.Length).Insert(endIndex, "</font>");
+                        }
                     }
                 }
 

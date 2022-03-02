@@ -24,17 +24,17 @@ namespace Nikse.SubtitleEdit.Core.Common
         public static readonly string SceneChangesDirectory = DataDirectory + "SceneChanges" + Path.DirectorySeparatorChar;
         public static readonly string AutoBackupDirectory = DataDirectory + "AutoBackup" + Path.DirectorySeparatorChar;
         public static readonly string VobSubCompareDirectory = DataDirectory + "VobSub" + Path.DirectorySeparatorChar;
-        public static readonly string TesseractDirectory = DataDirectory + "Tesseract500.Alpha.20210506" + Path.DirectorySeparatorChar;
+        public static readonly string TesseractDirectory = DataDirectory + "Tesseract501" + Path.DirectorySeparatorChar;
         public static readonly string Tesseract302Directory = DataDirectory + "Tesseract302" + Path.DirectorySeparatorChar;
         public static readonly string WaveformsDirectory = DataDirectory + "Waveforms" + Path.DirectorySeparatorChar;
         public static readonly string PluginsDirectory = DataDirectory + "Plugins" + Path.DirectorySeparatorChar;
         public static readonly string IconsDirectory = DataDirectory + "Icons" + Path.DirectorySeparatorChar;
         public static readonly string OcrDirectory = DataDirectory + "Ocr" + Path.DirectorySeparatorChar;
-        public static readonly string OcrDBBackupDirectory = "D:" + Path.DirectorySeparatorChar + "Backup" + Path.DirectorySeparatorChar + "INI Backup" + Path.DirectorySeparatorChar + "Subtitle Edit" + Path.DirectorySeparatorChar + "Ocr" + Path.DirectorySeparatorChar;
-        public static readonly string OcrDBGitBackupDirectory = "D:" + Path.DirectorySeparatorChar + "My Documents" + Path.DirectorySeparatorChar + "Git" + Path.DirectorySeparatorChar + "renoma" + Path.DirectorySeparatorChar + "subtitleedit" + Path.DirectorySeparatorChar + "Ocr" + Path.DirectorySeparatorChar;
         public static readonly string SettingsFileName = DataDirectory + "Settings.xml";
         public static readonly string TesseractDataDirectory = GetTesseractDataDirectory();
         public static readonly string Tesseract302DataDirectory = GetTesseract302DataDirectory();
+        public static readonly string OcrDBBackupDirectory = "D:" + Path.DirectorySeparatorChar + "Backup" + Path.DirectorySeparatorChar + "INI Backup" + Path.DirectorySeparatorChar + "Subtitle Edit" + Path.DirectorySeparatorChar + "Ocr" + Path.DirectorySeparatorChar;
+        public static readonly string OcrDBGitBackupDirectory = "D:" + Path.DirectorySeparatorChar + "My Documents" + Path.DirectorySeparatorChar + "Git" + Path.DirectorySeparatorChar + "renoma" + Path.DirectorySeparatorChar + "subtitleedit" + Path.DirectorySeparatorChar + "Ocr" + Path.DirectorySeparatorChar;
 
         public static readonly string DefaultLinuxFontName = "DejaVu Serif";
 

@@ -826,6 +826,18 @@ namespace Nikse.SubtitleEdit.Forms
 
         private void ButtonOkClick(object sender, EventArgs e)
         {
+            buttonOK.Enabled = false;
+            Application.DoEvents();
+            System.Threading.Thread.Sleep(20);
+            for (var i = 0; i < 10; i++)
+            {
+                Application.DoEvents();
+                if (_refreshTimer.Enabled)
+                {
+                    System.Threading.Thread.Sleep(50);
+                }
+            }
+
             DialogResult = SubtitleListview1.Items.Count > 0 ? DialogResult.OK : DialogResult.Cancel;
         }
 
@@ -1150,7 +1162,7 @@ namespace Nikse.SubtitleEdit.Forms
                 VideoFileName = VideoFileName.Remove(VideoFileName.Length - 3);
             }
 
-            foreach (var ext in Utilities.VideoFileExtensions)
+            foreach (var ext in Utilities.VideoFileExtensions.Concat(Utilities.AudioFileExtensions))
             {
                 if (File.Exists(VideoFileName + ext))
                 {

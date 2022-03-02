@@ -22,7 +22,7 @@ namespace Nikse.SubtitleEdit.Core.SubtitleFormats
 
             using (var fs = new FileStream(fileName, FileMode.Open, FileAccess.Read, FileShare.ReadWrite))
             {
-                if (fs.Length > 20000000)
+                if (fs.Length > 50_000_000)
                 {
                     return false;
                 }
@@ -63,8 +63,14 @@ namespace Nikse.SubtitleEdit.Core.SubtitleFormats
                         continue;
                     }
 
+                    if (xmlAsString.IndexOf('\0') >= 0)
+                    {
+                        _errorCount++;
+                        continue;
+                    }
+
                     var sub = new Subtitle();
-                    var mdatLines = xmlAsString.SplitToLines();
+                    var mdatLines = xmlAsString.SplitToLines(25_000);
                     format = sub.ReloadLoadSubtitle(mdatLines, null, format);
                     if (sub.Paragraphs.Count == 0)
                     {

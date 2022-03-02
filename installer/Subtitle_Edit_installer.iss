@@ -45,7 +45,6 @@
 #define VerRevision
 
 #define bindir "..\src\ui\bin\Release"
-#define bindirres "..\src\Win32Resources\bin\Release"
 
 #ifnexist bindir + "\SubtitleEdit.exe"
   #error Compile Subtitle Edit first
@@ -177,8 +176,7 @@ Name: desktopicon\common; Description: {cm:tsk_AllUsers};          GroupDescript
 Name: quicklaunchicon;    Description: {cm:CreateQuickLaunchIcon}; GroupDescription: {cm:AdditionalIcons}; Flags: unchecked;             OnlyBelowVersion: 6.01
 Name: reset_dictionaries; Description: {cm:tsk_ResetDictionaries}; GroupDescription: {cm:tsk_Other};       Flags: checkedonce unchecked; Check: DictionariesExist()
 Name: reset_settings;     Description: {cm:tsk_ResetSettings};     GroupDescription: {cm:tsk_Other};       Flags: checkedonce unchecked; Check: SettingsExist()
-Name: associate_srt;      Description: {cm:tsk_SetFileTypes};      GroupDescription: {cm:tsk_Other};       Flags: unchecked
-
+Name: associate_common;   Description: {cm:tsk_SetFileTypes};      GroupDescription: {cm:tsk_Other};
 
 [Files]
 Source: ..\Dictionaries\dan_OCRFixReplaceList.xml; DestDir: {userappdata}\Subtitle Edit\Dictionaries; Flags: ignoreversion uninsneveruninstall; Components: main
@@ -232,13 +230,31 @@ Source: ..\Dictionaries\pt_PT_user.xml;            DestDir: {userappdata}\Subtit
 Source: ..\Dictionaries\ru_RU_user.xml;            DestDir: {userappdata}\Subtitle Edit\Dictionaries; Flags: ignoreversion uninsneveruninstall onlyifdoesntexist; Components: main
 Source: ..\Dictionaries\en_US.aff;                 DestDir: {userappdata}\Subtitle Edit\Dictionaries; Flags: ignoreversion uninsneveruninstall onlyifdoesntexist; Components: main
 Source: ..\Dictionaries\en_US.dic;                 DestDir: {userappdata}\Subtitle Edit\Dictionaries; Flags: ignoreversion uninsneveruninstall onlyifdoesntexist; Components: main
+Source: ..\Dictionaries\dan_WordSplitList.txt;     DestDir: {userappdata}\Subtitle Edit\Dictionaries; Flags: ignoreversion uninsneveruninstall onlyifdoesntexist; Components: main
+Source: ..\Dictionaries\eng_WordSplitList.txt;     DestDir: {userappdata}\Subtitle Edit\Dictionaries; Flags: ignoreversion uninsneveruninstall onlyifdoesntexist; Components: main
+Source: ..\Dictionaries\fra_WordSplitList.txt;     DestDir: {userappdata}\Subtitle Edit\Dictionaries; Flags: ignoreversion uninsneveruninstall onlyifdoesntexist; Components: main
+Source: ..\Dictionaries\ita_WordSplitList.txt;     DestDir: {userappdata}\Subtitle Edit\Dictionaries; Flags: ignoreversion uninsneveruninstall onlyifdoesntexist; Components: main
+Source: ..\Dictionaries\pol_WordSplitList.txt;     DestDir: {userappdata}\Subtitle Edit\Dictionaries; Flags: ignoreversion uninsneveruninstall onlyifdoesntexist; Components: main
+Source: ..\Dictionaries\spa_WordSplitList.txt;     DestDir: {userappdata}\Subtitle Edit\Dictionaries; Flags: ignoreversion uninsneveruninstall onlyifdoesntexist; Components: main
+
 
 Source: ..\Ocr\Latin.db;                           DestDir: {userappdata}\Subtitle Edit\Ocr;          Flags: ignoreversion uninsneveruninstall onlyifdoesntexist; Components: main
 Source: ..\Ocr\Latin.nocr;                         DestDir: {userappdata}\Subtitle Edit\Ocr;          Flags: ignoreversion uninsneveruninstall onlyifdoesntexist; Components: main
 
 Source: ..\preview.mkv;                            DestDir: {userappdata}\Subtitle Edit;              Flags: ignoreversion uninsneveruninstall onlyifdoesntexist; Components: main
 
-
+Source: ..\Icons\ass.ico;                          DestDir: {app}\Icons;                              Flags: ignoreversion uninsneveruninstall onlyifdoesntexist; Components: main
+Source: ..\Icons\dfxp.ico;                         DestDir: {app}\Icons;                              Flags: ignoreversion uninsneveruninstall onlyifdoesntexist; Components: main
+Source: ..\Icons\sbv.ico;                          DestDir: {app}\Icons;                              Flags: ignoreversion uninsneveruninstall onlyifdoesntexist; Components: main
+Source: ..\Icons\srt.ico;                          DestDir: {app}\Icons;                              Flags: ignoreversion uninsneveruninstall onlyifdoesntexist; Components: main
+Source: ..\Icons\ssa.ico;                          DestDir: {app}\Icons;                              Flags: ignoreversion uninsneveruninstall onlyifdoesntexist; Components: main
+Source: ..\Icons\stl.ico;                          DestDir: {app}\Icons;                              Flags: ignoreversion uninsneveruninstall onlyifdoesntexist; Components: main
+Source: ..\Icons\sub.ico;                          DestDir: {app}\Icons;                              Flags: ignoreversion uninsneveruninstall onlyifdoesntexist; Components: main
+Source: ..\Icons\sup.ico;                          DestDir: {app}\Icons;                              Flags: ignoreversion uninsneveruninstall onlyifdoesntexist; Components: main
+Source: ..\Icons\vtt.ico;                          DestDir: {app}\Icons;                              Flags: ignoreversion uninsneveruninstall onlyifdoesntexist; Components: main
+Source: ..\Icons\smi.ico;                          DestDir: {app}\Icons;                              Flags: ignoreversion uninsneveruninstall onlyifdoesntexist; Components: main
+Source: ..\Icons\itt.ico;                          DestDir: {app}\Icons;                              Flags: ignoreversion uninsneveruninstall onlyifdoesntexist; Components: main
+  
 #ifdef localize
 Source: {#bindir}\Languages\ar-EG.xml;             DestDir: {app}\Languages;                          Flags: ignoreversion; Components: translations
 Source: {#bindir}\Languages\bg-BG.xml;             DestDir: {app}\Languages;                          Flags: ignoreversion; Components: translations
@@ -282,9 +298,18 @@ Source: {#bindir}\Languages\zh-TW.xml;             DestDir: {app}\Languages;    
 #endif
 
 Source: {#bindir}\SubtitleEdit.exe;                DestDir: {app};                                    Flags: ignoreversion; Components: main
-Source: {#bindirres}\SubtitleEdit.resources.dll;   DestDir: {app};                                    Flags: ignoreversion; Components: main; AfterInstall: ClearMUICache
 Source: {#bindir}\Hunspellx64.dll;                 DestDir: {app};                                    Flags: ignoreversion; Components: main
 Source: {#bindir}\Hunspellx86.dll;                 DestDir: {app};                                    Flags: ignoreversion; Components: main
+Source: {#bindir}\libse.dll;                       DestDir: {app};                                    Flags: ignoreversion; Components: main
+Source: {#bindir}\zlib.net.dll;                    DestDir: {app};                                    Flags: ignoreversion; Components: main
+Source: {#bindir}\NHunspell.dll;                   DestDir: {app};                                    Flags: ignoreversion; Components: main
+Source: {#bindir}\UtfUnknown.dll;                  DestDir: {app};                                    Flags: ignoreversion; Components: main
+Source: {#bindir}\Vosk.dll;                        DestDir: {app};                                    Flags: ignoreversion; Components: main
+Source: {#bindir}\NCalc.dll;                       DestDir: {app};                                    Flags: ignoreversion; Components: main
+Source: ..\src\ui\DLLs\Interop.QuartzTypeLib.dll;  DestDir: {app};                                    Flags: ignoreversion; Components: main
+Source: {#bindir}\Newtonsoft.Json.dll;             DestDir: {app};                                    Flags: ignoreversion; Components: main
+Source: {#bindir}\System.Net.Http.Extensions.dll;  DestDir: {app};                                    Flags: ignoreversion; Components: main
+Source: {#bindir}\System.Net.Http.Primitives.dll;  DestDir: {app};                                    Flags: ignoreversion; Components: main
 Source: ..\Changelog.txt;                          DestDir: {app};                                    Flags: ignoreversion; Components: main
 Source: ..\LICENSE.txt;                            DestDir: {app};                                    Flags: ignoreversion; Components: main
 Source: Icons\uninstall.ico;                       DestDir: {app}\Icons;                              Flags: ignoreversion; Components: main
@@ -313,11 +338,17 @@ Name: {#quick_launch}\Subtitle Edit;        Filename: {app}\SubtitleEdit.exe; Wo
 Type: files;      Name: {userdesktop}\Subtitle Edit.lnk;   Check: not IsTaskSelected('desktopicon\user')   and IsUpgrade()
 Type: files;      Name: {commondesktop}\Subtitle Edit.lnk; Check: not IsTaskSelected('desktopicon\common') and IsUpgrade()
 Type: files;      Name: {#quick_launch}\Subtitle Edit.lnk; Check: not IsTaskSelected('quicklaunchicon')    and IsUpgrade(); OnlyBelowVersion: 6.01
-
 Type: files;      Name: {userappdata}\Subtitle Edit\Settings.xml; Tasks: reset_settings
-
-; Remove files merged from now on with ILRepack
-Type: files;      Name: {app}\Interop.QuartzTypeLib.dll;               Check: IsUpgrade()
+Type: files;      Name: {app}\libse.dll;                              Check: IsUpgrade()
+Type: files;      Name: {app}\zlib.net.dll;                           Check: IsUpgrade()
+Type: files;      Name: {app}\NHunspell.dll;                          Check: IsUpgrade()
+Type: files;      Name: {app}\UtfUnknown.dll;                         Check: IsUpgrade()
+Type: files;      Name: {app}\Vosk.dll;                               Check: IsUpgrade()
+Type: files;      Name: {app}\NCalc.dll;                              Check: IsUpgrade()
+Type: files;      Name: {app}\Interop.QuartzTypeLib.dll;              Check: IsUpgrade()
+Type: files;      Name: {app}\Newtonsoft.Json.dll;                    Check: IsUpgrade()
+Type: files;      Name: {app}\System.Net.Http.Extensions.dll;         Check: IsUpgrade()
+Type: files;      Name: {app}\System.Net.Http.Primitives.dll;         Check: IsUpgrade()
 
 ; Remove old files from the {app} dir
 Type: files;      Name: {app}\Dictionaries\da_names.xml;               Check: IsUpgrade()
@@ -330,6 +361,14 @@ Type: files;      Name: {app}\Dictionaries\en_US_user.xml;             Check: Is
 Type: files;      Name: {app}\Dictionaries\eng_OCRFixReplaceList.xml;  Check: IsUpgrade()
 Type: files;      Name: {app}\Dictionaries\names.xml;                  Check: IsUpgrade()
 Type: files;      Name: {app}\Dictionaries\no_names.xml;               Check: IsUpgrade()
+
+Type: files;      Name: {app}\Dictionaries\dan_WordSplitList.txt;      Check: IsUpgrade()
+Type: files;      Name: {app}\Dictionaries\eng_WordSplitList.txt;      Check: IsUpgrade()
+Type: files;      Name: {app}\Dictionaries\fra_WordSplitList.txt;      Check: IsUpgrade()
+Type: files;      Name: {app}\Dictionaries\ita_WordSplitList.txt;      Check: IsUpgrade()
+Type: files;      Name: {app}\Dictionaries\pol_WordSplitList.txt;      Check: IsUpgrade()
+Type: files;      Name: {app}\Dictionaries\spa_WordSplitList.txt;      Check: IsUpgrade()
+
 Type: dirifempty; Name: {app}\Dictionaries;                            Check: IsUpgrade()
 Type: files;      Name: {app}\TessData\eng.DangAmbigs;                 Check: IsUpgrade()
 Type: files;      Name: {app}\TessData\eng.freq-dawg;                  Check: IsUpgrade()
@@ -417,60 +456,91 @@ Filename: {win}\Microsoft.NET\Framework64\v4.0.30319\ngen.exe; Parameters: "unin
 
 
 [Registry]
-#include bindirres + "\Resources.h"
-#define rcicon(id) "{app}\SubtitleEdit.resources.dll,-" + Str(id)
-#define rctext(id) "@{app}\SubtitleEdit.resources.dll,-" + Str(id)
+Root: HKCU ; Subkey: "Software\Classes\{#SetupSetting('AppName')}"; ValueData: "{app}\{#SetupSetting('AppExeName')}";  Flags: uninsdeletekey; ValueType: string; ValueName: ""
+Root: HKCU ; Subkey: "Software\Classes\{#SetupSetting('AppName')}\shell\open\command"; ValueData: """{app}\SubtitleEdit.exe"" ""%1""";  ValueType: string; ValueName: ""
+Root: HKCU ; Subkey: "Software\Classes\.ass"; ValueData: "{#SetupSetting('AppName')}"; Flags: uninsdeletevalue; ValueType: string; ValueName: ""
+Root: HKCU ; Subkey: "Software\Classes\{#SetupSetting('AppName')}.ass\DefaultIcon"; ValueType: string; ValueName: ""; ValueData: "{app}\SubtitleEdit.EXE,0";
 
-Root: HKLM; Subkey: "{#keyAppPaths}\SubtitleEdit.exe"; ValueType: string; ValueName: ""; ValueData: "{app}\SubtitleEdit.exe"; Flags: deletekey uninsdeletekey; Check: HklmKeyExists('{#keyAppPaths}')
-Root: HKLM; Subkey: "{#keyApps}\SubtitleEdit.exe"; ValueType: string; ValueName: ""; ValueData: "{#SetupSetting('AppName')} {#app_ver_full}"; Flags: deletekey uninsdeletekey; Check: HklmKeyExists('{#keyApps}')
-Root: HKLM; Subkey: "{#keyApps}\SubtitleEdit.exe\shell\open\command"; ValueType: string; ValueName: ""; ValueData: """{app}\SubtitleEdit.exe"" ""%1"""; Check: HklmKeyExists('{#keyApps}')
-Root: HKLM; Subkey: "{#keyApps}\SubtitleEdit.exe\shell\open"; ValueType: string; ValueName: "FriendlyAppName"; ValueData: "{#rctext(RC_APPNAME)}"; Check: HklmKeyExists('{#keyApps}')
-Root: HKLM; Subkey: "{#keyApps}\SubtitleEdit.exe"; ValueType: string; ValueName: "FriendlyAppName"; ValueData: "{#rctext(RC_APPNAME)}"; Check: HklmKeyExists('{#keyApps}')
-Root: HKLM; Subkey: "{#keySE}"; ValueType: string; ValueName: ""; ValueData: "{#SetupSetting('AppName')}"; Flags: deletekey uninsdeletekey
-Root: HKLM; Subkey: "{#keySE}\Capabilities"; ValueType: string; ValueName: "ApplicationDescription"; ValueData: "{#rctext(RC_APPDESC)}"
-Root: HKLM; Subkey: "{#keySE}\Capabilities"; ValueType: string; ValueName: "ApplicationName"; ValueData: "{#rctext(RC_APPNAME)}"
-Root: HKLM; Subkey: "{#keyRegApps}"; ValueType: string; ValueName: "SubtitleEdit"; ValueData: "{#keySE}\Capabilities"; Flags: uninsdeletevalue; Check: HklmKeyExists('{#keyRegApps}')
-; Add .srt to the SE-supported file types
-Root: HKLM; Subkey: "{#keyCl}\SubtitleEdit.srt"; ValueType: string; ValueName: ""; ValueData: "{#RCDESC_SRT_DEFAULT}"; Flags: deletekey uninsdeletekey
-Root: HKLM; Subkey: "{#keyCl}\SubtitleEdit.srt"; ValueType: string; ValueName: "FriendlyTypeName"; ValueData: "{#rctext(RCDESC_SRT)}"
-Root: HKLM; Subkey: "{#keyCl}\SubtitleEdit.srt"; ValueType: dword; ValueName: "EditFlags"; ValueData: $00010000
-Root: HKLM; Subkey: "{#keyCl}\SubtitleEdit.srt\DefaultIcon"; ValueType: string; ValueName: ""; ValueData: "{#rcicon(RCICON_SRT)}"
-Root: HKLM; Subkey: "{#keyCl}\SubtitleEdit.srt\shell\open\command"; ValueType: string; ValueName: ""; ValueData: """{app}\SubtitleEdit.exe"" ""%1"""
-Root: HKLM; Subkey: "{#keyCl}\SubtitleEdit.srt\shell"; ValueType: string; ValueName: ""; ValueData: "open"
-Root: HKLM; Subkey: "{#keyCl}\.srt\OpenWithProgids"; ValueType: none; ValueName: "SubtitleEdit.srt"; Flags: dontcreatekey deletevalue
-Root: HKLM; Subkey: "{#keyCl}\.srt\OpenWithProgids"; ValueType: string; ValueName: "SubtitleEdit.srt"; ValueData: ""; Flags: uninsdeletevalue; OnlyBelowVersion: 6.0
-Root: HKLM; Subkey: "{#keyCl}\.srt"; ValueType: string; ValueName: "Content Type"; ValueData: "application/x-subrip"
-Root: HKLM; Subkey: "{#keyCl}\.srt"; ValueType: string; ValueName: "PerceivedType"; ValueData: "text"
-Root: HKLM; Subkey: "{#keyApps}\SubtitleEdit.exe\SupportedTypes"; ValueType: string; ValueName: ".srt"; ValueData: ""; Check: HklmKeyExists('{#keyApps}')
-Root: HKLM; Subkey: "{#keySE}\Capabilities\FileAssociations"; ValueType: string; ValueName: ".srt"; ValueData: "SubtitleEdit.srt"
-; Associate .srt file type with SE (only if requested by user)
-Root: HKLM; Subkey: "{#keyCl}\.srt"; ValueType: string; ValueName: ""; ValueData: "SubtitleEdit.srt"; Check: DoSystemAssoc('srt')
-; Add .sup to the SE-supported file types
-Root: HKLM; Subkey: "{#keyCl}\SubtitleEdit.sup"; ValueType: string; ValueName: ""; ValueData: "{#RCDESC_SUP_DEFAULT}"; Flags: deletekey uninsdeletekey
-Root: HKLM; Subkey: "{#keyCl}\SubtitleEdit.sup"; ValueType: string; ValueName: "FriendlyTypeName"; ValueData: "{#rctext(RCDESC_SUP)}"
-Root: HKLM; Subkey: "{#keyCl}\SubtitleEdit.sup"; ValueType: dword; ValueName: "EditFlags"; ValueData: $00010000
-Root: HKLM; Subkey: "{#keyCl}\SubtitleEdit.sup\DefaultIcon"; ValueType: string; ValueName: ""; ValueData: "{#rcicon(RCICON_SUP)}"
-Root: HKLM; Subkey: "{#keyCl}\SubtitleEdit.sup\shell\open\command"; ValueType: string; ValueName: ""; ValueData: """{app}\SubtitleEdit.exe"" ""%1"""
-Root: HKLM; Subkey: "{#keyCl}\SubtitleEdit.sup\shell"; ValueType: string; ValueName: ""; ValueData: "open"
-Root: HKLM; Subkey: "{#keyCl}\.sup\OpenWithProgids"; ValueType: none; ValueName: "SubtitleEdit.sup"; Flags: dontcreatekey deletevalue
-Root: HKLM; Subkey: "{#keyCl}\.sup\OpenWithProgids"; ValueType: string; ValueName: "SubtitleEdit.sup"; ValueData: ""; Flags: uninsdeletevalue; OnlyBelowVersion: 6.0
-Root: HKLM; Subkey: "{#keyApps}\SubtitleEdit.exe\SupportedTypes"; ValueType: string; ValueName: ".sup"; ValueData: ""; Check: HklmKeyExists('{#keyApps}')
-Root: HKLM; Subkey: "{#keySE}\Capabilities\FileAssociations"; ValueType: string; ValueName: ".sup"; ValueData: "SubtitleEdit.sup"
-; Add .sub to the SE-supported file types
-Root: HKLM; Subkey: "{#keyCl}\SubtitleEdit.sub"; ValueType: string; ValueName: ""; ValueData: "{#RCDESC_SUB_DEFAULT}"; Flags: deletekey uninsdeletekey
-Root: HKLM; Subkey: "{#keyCl}\SubtitleEdit.sub"; ValueType: string; ValueName: "FriendlyTypeName"; ValueData: "{#rctext(RCDESC_SUB)}"
-Root: HKLM; Subkey: "{#keyCl}\SubtitleEdit.sub"; ValueType: dword; ValueName: "EditFlags"; ValueData: $00010000
-Root: HKLM; Subkey: "{#keyCl}\SubtitleEdit.sub\DefaultIcon"; ValueType: string; ValueName: ""; ValueData: "{#rcicon(RCICON_SUB)}"
-Root: HKLM; Subkey: "{#keyCl}\SubtitleEdit.sub\shell\open\command"; ValueType: string; ValueName: ""; ValueData: """{app}\SubtitleEdit.exe"" ""%1"""
-Root: HKLM; Subkey: "{#keyCl}\SubtitleEdit.sub\shell"; ValueType: string; ValueName: ""; ValueData: "open"
-Root: HKLM; Subkey: "{#keyCl}\.sub\OpenWithProgids"; ValueType: none; ValueName: "SubtitleEdit.sub"; Flags: dontcreatekey deletevalue
-Root: HKLM; Subkey: "{#keyCl}\.sub\OpenWithProgids"; ValueType: string; ValueName: "SubtitleEdit.sub"; ValueData: ""; Flags: uninsdeletevalue; OnlyBelowVersion: 6.0
-Root: HKLM; Subkey: "{#keyApps}\SubtitleEdit.exe\SupportedTypes"; ValueType: string; ValueName: ".sub"; ValueData: ""; Check: HklmKeyExists('{#keyApps}')
-Root: HKLM; Subkey: "{#keySE}\Capabilities\FileAssociations"; ValueType: string; ValueName: ".sub"; ValueData: "SubtitleEdit.sub"
-; Add .ssa (SubStation Alpha) to the SE-supported file types
-Root: HKLM; Subkey: "{#keyApps}\SubtitleEdit.exe\SupportedTypes"; ValueType: string; ValueName: ".ssa"; ValueData: ""; Check: HklmKeyExists('{#keyApps}')
+Root: HKCU ; Subkey: "Software\Classes\{#SetupSetting('AppName')}.ass"; ValueData: "{app}\{#SetupSetting('AppExeName')}";  Flags: uninsdeletekey; ValueType: string; ValueName: ""; Check: DoSystemAssoc('ass')
+Root: HKCU ; Subkey: "Software\Classes\{#SetupSetting('AppName')}.ass\shell\open\command"; ValueData: """{app}\SubtitleEdit.exe"" ""%1""";  ValueType: string; ValueName: ""; Check: DoSystemAssoc('ass')
+Root: HKCU ; Subkey: "Software\Classes\.ass"; ValueData: "{#SetupSetting('AppName')}.ass"; Flags: uninsdeletevalue; ValueType: string; ValueName: ""; Check: DoSystemAssoc('ass')
+Root: HKCU ; Subkey: "Software\Classes\{#SetupSetting('AppName')}.ass\DefaultIcon"; ValueType: string; ValueName: ""; ValueData: "{app}\Icons\ass.ico"; Check: DoSystemAssoc('ass')
+
+Root: HKCU ; Subkey: "Software\Classes\{#SetupSetting('AppName')}.dfxp"; ValueData: "{app}\{#SetupSetting('AppExeName')}";  Flags: uninsdeletekey; ValueType: string; ValueName: ""; Check: DoSystemAssoc('dfxp')
+Root: HKCU ; Subkey: "Software\Classes\{#SetupSetting('AppName')}.dfxp\shell\open\command"; ValueData: """{app}\SubtitleEdit.exe"" ""%1""";  ValueType: string; ValueName: ""; Check: DoSystemAssoc('dfxp')
+Root: HKCU ; Subkey: "Software\Classes\.dfxp"; ValueData: "{#SetupSetting('AppName')}.dfxp"; Flags: uninsdeletevalue; ValueType: string; ValueName: ""; Check: DoSystemAssoc('dfxp')
+Root: HKCU ; Subkey: "Software\Classes\{#SetupSetting('AppName')}.dfxp\DefaultIcon"; ValueType: string; ValueName: ""; ValueData: "{app}\Icons\dfxp.ico"; Check: DoSystemAssoc('dfxp')
+
+Root: HKCU ; Subkey: "Software\Classes\{#SetupSetting('AppName')}.sbv"; ValueData: "{app}\{#SetupSetting('AppExeName')}";  Flags: uninsdeletekey; ValueType: string; ValueName: ""; Check: DoSystemAssoc('sbv')
+Root: HKCU ; Subkey: "Software\Classes\{#SetupSetting('AppName')}.sbv\shell\open\command"; ValueData: """{app}\SubtitleEdit.exe"" ""%1""";  ValueType: string; ValueName: ""; Check: DoSystemAssoc('sbv')
+Root: HKCU ; Subkey: "Software\Classes\.sbv"; ValueData: "{#SetupSetting('AppName')}.sbv"; Flags: uninsdeletevalue; ValueType: string; ValueName: ""; Check: DoSystemAssoc('sbv')
+Root: HKCU ; Subkey: "Software\Classes\{#SetupSetting('AppName')}.sbv\DefaultIcon"; ValueType: string; ValueName: ""; ValueData: "{app}\Icons\sbv.ico"; Check: DoSystemAssoc('sbv')
+
+Root: HKCU ; Subkey: "Software\Classes\{#SetupSetting('AppName')}.srt"; ValueData: "{app}\{#SetupSetting('AppExeName')}";  Flags: uninsdeletekey; ValueType: string; ValueName: ""; Check: DoSystemAssoc('srt')
+Root: HKCU ; Subkey: "Software\Classes\{#SetupSetting('AppName')}.srt\shell\open\command"; ValueData: """{app}\SubtitleEdit.exe"" ""%1""";  ValueType: string; ValueName: ""; Check: DoSystemAssoc('srt')
+Root: HKCU ; Subkey: "Software\Classes\.srt"; ValueData: "{#SetupSetting('AppName')}.srt"; Flags: uninsdeletevalue; ValueType: string; ValueName: ""; Check: DoSystemAssoc('srt')
+Root: HKCU ; Subkey: "Software\Classes\{#SetupSetting('AppName')}.srt\DefaultIcon"; ValueType: string; ValueName: ""; ValueData: "{app}\Icons\srt.ico"; Check: DoSystemAssoc('srt')
+
+Root: HKCU ; Subkey: "Software\Classes\{#SetupSetting('AppName')}.ssa"; ValueData: "{app}\{#SetupSetting('AppExeName')}";  Flags: uninsdeletekey; ValueType: string; ValueName: ""; Check: DoSystemAssoc('ssa')
+Root: HKCU ; Subkey: "Software\Classes\{#SetupSetting('AppName')}.ssa\shell\open\command"; ValueData: """{app}\SubtitleEdit.exe"" ""%1""";  ValueType: string; ValueName: ""; Check: DoSystemAssoc('ssa')
+Root: HKCU ; Subkey: "Software\Classes\.ssa"; ValueData: "{#SetupSetting('AppName')}.ssa"; Flags: uninsdeletevalue; ValueType: string; ValueName: ""; Check: DoSystemAssoc('ssa')
+Root: HKCU ; Subkey: "Software\Classes\{#SetupSetting('AppName')}.ssa\DefaultIcon"; ValueType: string; ValueName: ""; ValueData: "{app}\Icons\ssa.ico"; Check: DoSystemAssoc('ssa')
+
+Root: HKCU ; Subkey: "Software\Classes\{#SetupSetting('AppName')}.stl"; ValueData: "{app}\{#SetupSetting('AppExeName')}";  Flags: uninsdeletekey; ValueType: string; ValueName: ""; Check: DoSystemAssoc('stl')
+Root: HKCU ; Subkey: "Software\Classes\{#SetupSetting('AppName')}.stl\shell\open\command"; ValueData: """{app}\SubtitleEdit.exe"" ""%1""";  ValueType: string; ValueName: ""; Check: DoSystemAssoc('stl')
+Root: HKCU ; Subkey: "Software\Classes\.stl"; ValueData: "{#SetupSetting('AppName')}.stl"; Flags: uninsdeletevalue; ValueType: string; ValueName: ""; Check: DoSystemAssoc('stl')
+Root: HKCU ; Subkey: "Software\Classes\{#SetupSetting('AppName')}.stl\DefaultIcon"; ValueType: string; ValueName: ""; ValueData: "{app}\Icons\stl.ico"; Check: DoSystemAssoc('stl')
+
+Root: HKCU ; Subkey: "Software\Classes\{#SetupSetting('AppName')}.sub"; ValueData: "{app}\{#SetupSetting('AppExeName')}";  Flags: uninsdeletekey; ValueType: string; ValueName: ""; Check: DoSystemAssoc('sub')
+Root: HKCU ; Subkey: "Software\Classes\{#SetupSetting('AppName')}.sub\shell\open\command"; ValueData: """{app}\SubtitleEdit.exe"" ""%1""";  ValueType: string; ValueName: ""; Check: DoSystemAssoc('sub')
+Root: HKCU ; Subkey: "Software\Classes\.sub"; ValueData: "{#SetupSetting('AppName')}.sub"; Flags: uninsdeletevalue; ValueType: string; ValueName: ""; Check: DoSystemAssoc('sub')
+Root: HKCU ; Subkey: "Software\Classes\{#SetupSetting('AppName')}.sub\DefaultIcon"; ValueType: string; ValueName: ""; ValueData: "{app}\Icons\sub.ico"; Check: DoSystemAssoc('sub')
+
+Root: HKCU ; Subkey: "Software\Classes\{#SetupSetting('AppName')}.sup"; ValueData: "{app}\{#SetupSetting('AppExeName')}";  Flags: uninsdeletekey; ValueType: string; ValueName: ""; Check: DoSystemAssoc('sup')
+Root: HKCU ; Subkey: "Software\Classes\{#SetupSetting('AppName')}.sup\shell\open\command"; ValueData: """{app}\SubtitleEdit.exe"" ""%1""";  ValueType: string; ValueName: ""; Check: DoSystemAssoc('sup')
+Root: HKCU ; Subkey: "Software\Classes\.sup"; ValueData: "{#SetupSetting('AppName')}.sup"; Flags: uninsdeletevalue; ValueType: string; ValueName: ""; Check: DoSystemAssoc('sup')
+Root: HKCU ; Subkey: "Software\Classes\{#SetupSetting('AppName')}.sup\DefaultIcon"; ValueType: string; ValueName: ""; ValueData: "{app}\Icons\sup.ico"; Check: DoSystemAssoc('sup')
+
+Root: HKCU ; Subkey: "Software\Classes\{#SetupSetting('AppName')}.vtt"; ValueData: "{app}\{#SetupSetting('AppExeName')}";  Flags: uninsdeletekey; ValueType: string; ValueName: ""; Check: DoSystemAssoc('vtt')
+Root: HKCU ; Subkey: "Software\Classes\{#SetupSetting('AppName')}.vtt\shell\open\command"; ValueData: """{app}\SubtitleEdit.exe"" ""%1""";  ValueType: string; ValueName: ""; Check: DoSystemAssoc('vtt')
+Root: HKCU ; Subkey: "Software\Classes\.vtt"; ValueData: "{#SetupSetting('AppName')}.vtt"; Flags: uninsdeletevalue; ValueType: string; ValueName: ""; Check: DoSystemAssoc('vtt')
+Root: HKCU ; Subkey: "Software\Classes\{#SetupSetting('AppName')}.vtt\DefaultIcon"; ValueType: string; ValueName: ""; ValueData: "{app}\Icons\vtt.ico"; Check: DoSystemAssoc('vtt')
+
+Root: HKCU ; Subkey: "Software\Classes\{#SetupSetting('AppName')}.smi"; ValueData: "{app}\{#SetupSetting('AppExeName')}";  Flags: uninsdeletekey; ValueType: string; ValueName: ""; Check: DoSystemAssoc('smi')
+Root: HKCU ; Subkey: "Software\Classes\{#SetupSetting('AppName')}.smi\shell\open\command"; ValueData: """{app}\SubtitleEdit.exe"" ""%1""";  ValueType: string; ValueName: ""; Check: DoSystemAssoc('smi')
+Root: HKCU ; Subkey: "Software\Classes\.smi"; ValueData: "{#SetupSetting('AppName')}.smi"; Flags: uninsdeletevalue; ValueType: string; ValueName: ""; Check: DoSystemAssoc('smi')
+Root: HKCU ; Subkey: "Software\Classes\{#SetupSetting('AppName')}.smi\DefaultIcon"; ValueType: string; ValueName: ""; ValueData: "{app}\Icons\smi.ico"; Check: DoSystemAssoc('smi')
+
+Root: HKCU ; Subkey: "Software\Classes\{#SetupSetting('AppName')}.itt"; ValueData: "{app}\{#SetupSetting('AppExeName')}";  Flags: uninsdeletekey; ValueType: string; ValueName: ""; Check: DoSystemAssoc('itt')
+Root: HKCU ; Subkey: "Software\Classes\{#SetupSetting('AppName')}.itt\shell\open\command"; ValueData: """{app}\SubtitleEdit.exe"" ""%1""";  ValueType: string; ValueName: ""; Check: DoSystemAssoc('itt')
+Root: HKCU ; Subkey: "Software\Classes\.itt"; ValueData: "{#SetupSetting('AppName')}.itt"; Flags: uninsdeletevalue; ValueType: string; ValueName: ""; Check: DoSystemAssoc('itt')
+Root: HKCU ; Subkey: "Software\Classes\{#SetupSetting('AppName')}.itt\DefaultIcon"; ValueType: string; ValueName: ""; ValueData: "{app}\Icons\itt.ico"; Check: DoSystemAssoc('itt')
+
 ; Add .ass (Advanced SubStation Alpha) to the SE-supported file types
 Root: HKLM; Subkey: "{#keyApps}\SubtitleEdit.exe\SupportedTypes"; ValueType: string; ValueName: ".ass"; ValueData: ""; Check: HklmKeyExists('{#keyApps}')
+
+; Add .dfxp to the SE-supported file types
+Root: HKLM; Subkey: "{#keyApps}\SubtitleEdit.exe\SupportedTypes"; ValueType: string; ValueName: ".dfxp"; ValueData: ""; Check: HklmKeyExists('{#keyApps}')
+
+; Add .sbv to the SE-supported file types
+Root: HKLM; Subkey: "{#keyApps}\SubtitleEdit.exe\SupportedTypes"; ValueType: string; ValueName: ".sbv"; ValueData: ""; Check: HklmKeyExists('{#keyApps}')
+
+; Add .srt (SubRip) to the SE-supported file types
+Root: HKLM; Subkey: "{#keyApps}\SubtitleEdit.exe\SupportedTypes"; ValueType: string; ValueName: ".srt"; ValueData: ""; Check: HklmKeyExists('{#keyApps}')
+
+; Add .ssa (SubStation Alpha) to the SE-supported file types
+Root: HKLM; Subkey: "{#keyApps}\SubtitleEdit.exe\SupportedTypes"; ValueType: string; ValueName: ".ssa"; ValueData: ""; Check: HklmKeyExists('{#keyApps}')
+
+; Add .sub to the SE-supported file types
+Root: HKLM; Subkey: "{#keyApps}\SubtitleEdit.exe\SupportedTypes"; ValueType: string; ValueName: ".sub"; ValueData: ""; Check: HklmKeyExists('{#keyApps}')
+
+; Add .sup (Blu-ray sup) to the SE-supported file types
+Root: HKLM; Subkey: "{#keyApps}\SubtitleEdit.exe\SupportedTypes"; ValueType: string; ValueName: ".sup"; ValueData: ""; Check: HklmKeyExists('{#keyApps}')
+
+; Add .vtt (Web VTT) to the SE-supported file types
+Root: HKLM; Subkey: "{#keyApps}\SubtitleEdit.exe\SupportedTypes"; ValueType: string; ValueName: ".vtt"; ValueData: ""; Check: HklmKeyExists('{#keyApps}')
+
+
 ; Add video files to the SE-supported file types
 Root: HKLM; Subkey: "{#keyApps}\SubtitleEdit.exe\SupportedTypes"; ValueType: string; ValueName: ".m2ts"; ValueData: ""; Check: HklmKeyExists('{#keyApps}')
 Root: HKLM; Subkey: "{#keyApps}\SubtitleEdit.exe\SupportedTypes"; ValueType: string; ValueName: ".mp4";  ValueData: ""; Check: HklmKeyExists('{#keyApps}')
@@ -517,13 +587,13 @@ var
   CurrentProgId, MyProgId, KeyName: String;
 begin
   KeyName := '{#keyCl}\.' + FileType;
-  if RegQueryStringValue(HKEY_LOCAL_MACHINE, KeyName, '', CurrentProgId) then
+  if RegQueryStringValue(HKEY_CURRENT_USER, KeyName, '', CurrentProgId) then
   begin
     MyProgId := 'SubtitleEdit.' + FileType;
     if CompareText(CurrentProgId, MyProgId) = 0 then
-      RegWriteStringValue(HKEY_LOCAL_MACHINE, KeyName, '', '');
+      RegWriteStringValue(HKEY_CURRENT_USER, KeyName, '', '');
   end;
-  Result := IsTaskSelected('associate_' + FileType);
+  Result := IsTaskSelected('associate_common');
 end;
 
 
@@ -623,6 +693,19 @@ begin
   DeleteFile(ExpandConstant('{userappdata}\Subtitle Edit\Ocr\Latin.db'));
   DeleteFile(ExpandConstant('{userappdata}\Subtitle Edit\Ocr\Latin.nocr'));
   DeleteFile(ExpandConstant('{userappdata}\Subtitle Edit\preview.mkv'));
+  DeleteFile(ExpandConstant('{app}\Icons\ass.ico'));
+  DeleteFile(ExpandConstant('{app}\Icons\dfxp.ico'));
+  DeleteFile(ExpandConstant('{app}\Icons\sbv.ico'));
+  DeleteFile(ExpandConstant('{app}\Icons\srt.ico'));
+  DeleteFile(ExpandConstant('{app}\Icons\ssa.ico'));
+  DeleteFile(ExpandConstant('{app}\Icons\stl.ico'));
+  DeleteFile(ExpandConstant('{app}\Icons\sub.ico'));
+  DeleteFile(ExpandConstant('{app}\Icons\sup.ico'));
+  DeleteFile(ExpandConstant('{app}\Icons\vtt.ico'));
+  DeleteFile(ExpandConstant('{app}\Icons\smi.ico'));
+  DeleteFile(ExpandConstant('{app}\Icons\itt.ico'));
+  DelTree(ExpandConstant('{app}\Icons'), True, True, True);
+  RemoveDir(ExpandConstant('{app}\Icons'));
   DelTree(ExpandConstant('{userappdata}\Subtitle Edit\Ocr\*.*'), False, True, False);
   RemoveDir(ExpandConstant('{userappdata}\Subtitle Edit\Ocr'));
   DelTree(ExpandConstant('{userappdata}\Subtitle Edit\Plugins\*.*'), False, True, False);
@@ -680,135 +763,7 @@ begin
         DeleteFile(ExpandConstant('{userappdata}\Subtitle Edit\Settings.xml'));
       end;
 
-      // Remove tesseract
-      DeleteFile(ExpandConstant('{userappdata}\Subtitle Edit\Tesseract500.Alpha.20210506\iconv.dll'));
-      DeleteFile(ExpandConstant('{userappdata}\Subtitle Edit\Tesseract500.Alpha.20210506\icudt64.dll'));
-      DeleteFile(ExpandConstant('{userappdata}\Subtitle Edit\Tesseract500.Alpha.20210506\icuin64.dll'));
-      DeleteFile(ExpandConstant('{userappdata}\Subtitle Edit\Tesseract500.Alpha.20210506\icuuc64.dll'));
-      DeleteFile(ExpandConstant('{userappdata}\Subtitle Edit\Tesseract500.Alpha.20210506\libarchive-13.dll'));
-      DeleteFile(ExpandConstant('{userappdata}\Subtitle Edit\Tesseract500.Alpha.20210506\libbz2-1.dll'));
-      DeleteFile(ExpandConstant('{userappdata}\Subtitle Edit\Tesseract500.Alpha.20210506\libcairo-2.dll'));
-      DeleteFile(ExpandConstant('{userappdata}\Subtitle Edit\Tesseract500.Alpha.20210506\libcurl-4.dll'));
-      DeleteFile(ExpandConstant('{userappdata}\Subtitle Edit\Tesseract500.Alpha.20210506\libeay32.dll'));
-      DeleteFile(ExpandConstant('{userappdata}\Subtitle Edit\Tesseract500.Alpha.20210506\libexpat-1.dll'));
-      DeleteFile(ExpandConstant('{userappdata}\Subtitle Edit\Tesseract500.Alpha.20210506\libffi-6.dll'));
-      DeleteFile(ExpandConstant('{userappdata}\Subtitle Edit\Tesseract500.Alpha.20210506\libfontconfig-1.dll'));
-      DeleteFile(ExpandConstant('{userappdata}\Subtitle Edit\Tesseract500.Alpha.20210506\libfreetype-6.dll'));
-      DeleteFile(ExpandConstant('{userappdata}\Subtitle Edit\Tesseract500.Alpha.20210506\libgcc_s_dw2-1.dll'));
-      DeleteFile(ExpandConstant('{userappdata}\Subtitle Edit\Tesseract500.Alpha.20210506\libgcc_s_sjlj-1.dll'));
-      DeleteFile(ExpandConstant('{userappdata}\Subtitle Edit\Tesseract500.Alpha.20210506\libgif-7.dll'));
-      DeleteFile(ExpandConstant('{userappdata}\Subtitle Edit\Tesseract500.Alpha.20210506\libglib-2.0-0.dll'));
-      DeleteFile(ExpandConstant('{userappdata}\Subtitle Edit\Tesseract500.Alpha.20210506\libgobject-2.0-0.dll'));
-      DeleteFile(ExpandConstant('{userappdata}\Subtitle Edit\Tesseract500.Alpha.20210506\libgomp-1.dll'));
-      DeleteFile(ExpandConstant('{userappdata}\Subtitle Edit\Tesseract500.Alpha.20210506\libharfbuzz-0.dll'));
-      DeleteFile(ExpandConstant('{userappdata}\Subtitle Edit\Tesseract500.Alpha.20210506\libidn2-0.dll'));
-      DeleteFile(ExpandConstant('{userappdata}\Subtitle Edit\Tesseract500.Alpha.20210506\libintl-8.dll'));
-      DeleteFile(ExpandConstant('{userappdata}\Subtitle Edit\Tesseract500.Alpha.20210506\libjbig-2.dll'));
-      DeleteFile(ExpandConstant('{userappdata}\Subtitle Edit\Tesseract500.Alpha.20210506\libjpeg-8.dll'));
-      DeleteFile(ExpandConstant('{userappdata}\Subtitle Edit\Tesseract500.Alpha.20210506\liblept-5.dll'));
-      DeleteFile(ExpandConstant('{userappdata}\Subtitle Edit\Tesseract500.Alpha.20210506\liblz4-1.dll'));
-      DeleteFile(ExpandConstant('{userappdata}\Subtitle Edit\Tesseract500.Alpha.20210506\liblzma-5.dll'));
-      DeleteFile(ExpandConstant('{userappdata}\Subtitle Edit\Tesseract500.Alpha.20210506\liblzo2-2.dll'));
-      DeleteFile(ExpandConstant('{userappdata}\Subtitle Edit\Tesseract500.Alpha.20210506\libnettle-6.dll'));
-      DeleteFile(ExpandConstant('{userappdata}\Subtitle Edit\Tesseract500.Alpha.20210506\libnghttp2-14.dll'));
-      DeleteFile(ExpandConstant('{userappdata}\Subtitle Edit\Tesseract500.Alpha.20210506\libopenjp2.dll'));
-      DeleteFile(ExpandConstant('{userappdata}\Subtitle Edit\Tesseract500.Alpha.20210506\libpango-1.0-0.dll'));
-      DeleteFile(ExpandConstant('{userappdata}\Subtitle Edit\Tesseract500.Alpha.20210506\libpangocairo-1.0-0.dll'));
-      DeleteFile(ExpandConstant('{userappdata}\Subtitle Edit\Tesseract500.Alpha.20210506\libpangoft2-1.0-0.dll'));
-      DeleteFile(ExpandConstant('{userappdata}\Subtitle Edit\Tesseract500.Alpha.20210506\libpangowin32-1.0-0.dll'));
-      DeleteFile(ExpandConstant('{userappdata}\Subtitle Edit\Tesseract500.Alpha.20210506\libpcre-1.dll'));
-      DeleteFile(ExpandConstant('{userappdata}\Subtitle Edit\Tesseract500.Alpha.20210506\libpixman-1-0.dll'));
-      DeleteFile(ExpandConstant('{userappdata}\Subtitle Edit\Tesseract500.Alpha.20210506\libpng16-16.dll'));
-      DeleteFile(ExpandConstant('{userappdata}\Subtitle Edit\Tesseract500.Alpha.20210506\libssh2-1.dll'));
-      DeleteFile(ExpandConstant('{userappdata}\Subtitle Edit\Tesseract500.Alpha.20210506\libstdc++-6.dll'));
-      DeleteFile(ExpandConstant('{userappdata}\Subtitle Edit\Tesseract500.Alpha.20210506\libtesseract-5.dll'));
-      DeleteFile(ExpandConstant('{userappdata}\Subtitle Edit\Tesseract500.Alpha.20210506\libtiff-5.dll'));
-      DeleteFile(ExpandConstant('{userappdata}\Subtitle Edit\Tesseract500.Alpha.20210506\libunistring-2.dll'));
-      DeleteFile(ExpandConstant('{userappdata}\Subtitle Edit\Tesseract500.Alpha.20210506\libwebp-7.dll'));
-      DeleteFile(ExpandConstant('{userappdata}\Subtitle Edit\Tesseract500.Alpha.20210506\libwinpthread-1.dll'));
-      DeleteFile(ExpandConstant('{userappdata}\Subtitle Edit\Tesseract500.Alpha.20210506\libxml2-2.dll'));
-      DeleteFile(ExpandConstant('{userappdata}\Subtitle Edit\Tesseract500.Alpha.20210506\libzstd-1.dll'));
-      DeleteFile(ExpandConstant('{userappdata}\Subtitle Edit\Tesseract500.Alpha.20210506\ssleay32.dll'));
-      DeleteFile(ExpandConstant('{userappdata}\Subtitle Edit\Tesseract500.Alpha.20210506\tesseract.exe'));
-      DeleteFile(ExpandConstant('{userappdata}\Subtitle Edit\Tesseract500.Alpha.20210506\zlib1.dll'));
-      DeleteFile(ExpandConstant('{userappdata}\Subtitle Edit\Tesseract500.Alpha.20210506\tessdata\configs\alto'));
-      DeleteFile(ExpandConstant('{userappdata}\Subtitle Edit\Tesseract500.Alpha.20210506\tessdata\configs\ambigs.train'));
-      DeleteFile(ExpandConstant('{userappdata}\Subtitle Edit\Tesseract500.Alpha.20210506\tessdata\configs\api_config'));
-      DeleteFile(ExpandConstant('{userappdata}\Subtitle Edit\Tesseract500.Alpha.20210506\tessdata\configs\bigram'));
-      DeleteFile(ExpandConstant('{userappdata}\Subtitle Edit\Tesseract500.Alpha.20210506\tessdata\configs\box.train'));
-      DeleteFile(ExpandConstant('{userappdata}\Subtitle Edit\Tesseract500.Alpha.20210506\tessdata\configs\box.train.stderr'));
-      DeleteFile(ExpandConstant('{userappdata}\Subtitle Edit\Tesseract500.Alpha.20210506\tessdata\configs\digits'));
-      DeleteFile(ExpandConstant('{userappdata}\Subtitle Edit\Tesseract500.Alpha.20210506\tessdata\configs\get.images'));
-      DeleteFile(ExpandConstant('{userappdata}\Subtitle Edit\Tesseract500.Alpha.20210506\tessdata\configs\hocr'));
-      DeleteFile(ExpandConstant('{userappdata}\Subtitle Edit\Tesseract500.Alpha.20210506\tessdata\configs\inter'));
-      DeleteFile(ExpandConstant('{userappdata}\Subtitle Edit\Tesseract500.Alpha.20210506\tessdata\configs\kannada'));
-      DeleteFile(ExpandConstant('{userappdata}\Subtitle Edit\Tesseract500.Alpha.20210506\tessdata\configs\linebox'));
-      DeleteFile(ExpandConstant('{userappdata}\Subtitle Edit\Tesseract500.Alpha.20210506\tessdata\configs\logfile'));
-      DeleteFile(ExpandConstant('{userappdata}\Subtitle Edit\Tesseract500.Alpha.20210506\tessdata\configs\lstm.train'));
-      DeleteFile(ExpandConstant('{userappdata}\Subtitle Edit\Tesseract500.Alpha.20210506\tessdata\configs\lstmbox'));
-      DeleteFile(ExpandConstant('{userappdata}\Subtitle Edit\Tesseract500.Alpha.20210506\tessdata\configs\lstmdebug'));
-      DeleteFile(ExpandConstant('{userappdata}\Subtitle Edit\Tesseract500.Alpha.20210506\tessdata\configs\makebox'));
-      DeleteFile(ExpandConstant('{userappdata}\Subtitle Edit\Tesseract500.Alpha.20210506\tessdata\configs\pdf'));
-      DeleteFile(ExpandConstant('{userappdata}\Subtitle Edit\Tesseract500.Alpha.20210506\tessdata\configs\quiet'));
-      DeleteFile(ExpandConstant('{userappdata}\Subtitle Edit\Tesseract500.Alpha.20210506\tessdata\configs\rebox'));
-      DeleteFile(ExpandConstant('{userappdata}\Subtitle Edit\Tesseract500.Alpha.20210506\tessdata\configs\strokewidth'));
-      DeleteFile(ExpandConstant('{userappdata}\Subtitle Edit\Tesseract500.Alpha.20210506\tessdata\configs\tsv'));
-      DeleteFile(ExpandConstant('{userappdata}\Subtitle Edit\Tesseract500.Alpha.20210506\tessdata\configs\txt'));
-      DeleteFile(ExpandConstant('{userappdata}\Subtitle Edit\Tesseract500.Alpha.20210506\tessdata\configs\unlv'));
-      DeleteFile(ExpandConstant('{userappdata}\Subtitle Edit\Tesseract500.Alpha.20210506\tessdata\configs\wordstrbox'));
-      DeleteFile(ExpandConstant('{userappdata}\Subtitle Edit\Tesseract500.Alpha.20210506\tessdata\tessconfigs\batch'));
-      DeleteFile(ExpandConstant('{userappdata}\Subtitle Edit\Tesseract500.Alpha.20210506\tessdata\tessconfigs\batch.nochop'));
-      DeleteFile(ExpandConstant('{userappdata}\Subtitle Edit\Tesseract500.Alpha.20210506\tessdata\tessconfigs\matdemo'));
-      DeleteFile(ExpandConstant('{userappdata}\Subtitle Edit\Tesseract500.Alpha.20210506\tessdata\tessconfigs\msdemo'));
-      DeleteFile(ExpandConstant('{userappdata}\Subtitle Edit\Tesseract500.Alpha.20210506\tessdata\tessconfigs\nobatch'));
-      DeleteFile(ExpandConstant('{userappdata}\Subtitle Edit\Tesseract500.Alpha.20210506\tessdata\tessconfigs\segdemo'));
-      DelTree(ExpandConstant('{userappdata}\Subtitle Edit\Tesseract500.Alpha.20210506\tessdata\*.traineddata'), False, True, False);
-
-      DeleteFile(ExpandConstant('{userappdata}\Subtitle Edit\Tesseract411\tesseract.exe'));
-      DeleteFile(ExpandConstant('{userappdata}\Subtitle Edit\Tesseract411\tessdata\configs\hocr'));
-      DelTree(ExpandConstant('{userappdata}\Subtitle Edit\Tesseract411\tessdata\*.traineddata'), False, True, False);
-
-      DeleteFile(ExpandConstant('{userappdata}\Subtitle Edit\Tesseract410\tesseract.exe'));
-      DeleteFile(ExpandConstant('{userappdata}\Subtitle Edit\Tesseract410\tessdata\configs\hocr'));
-      DelTree(ExpandConstant('{userappdata}\Subtitle Edit\Tesseract410\tessdata\*.traineddata'), False, True, False);
-
-      DeleteFile(ExpandConstant('{userappdata}\Subtitle Edit\Tesseract4\tesseract.exe'));
-      DeleteFile(ExpandConstant('{userappdata}\Subtitle Edit\Tesseract4\tessdata\configs\hocr'));
-      DelTree(ExpandConstant('{userappdata}\Subtitle Edit\Tesseract4\tessdata\*.traineddata'), False, True, False);
-
-      DeleteFile(ExpandConstant('{userappdata}\Subtitle Edit\Tesseract302\msvcp90.dll'));
-      DeleteFile(ExpandConstant('{userappdata}\Subtitle Edit\Tesseract302\msvcr90.dll'));
-      DeleteFile(ExpandConstant('{userappdata}\Subtitle Edit\Tesseract302\tesseract.exe'));
-      DeleteFile(ExpandConstant('{userappdata}\Subtitle Edit\Tesseract302\tessdata\configs\hocr'));
-      DelTree(ExpandConstant('{userappdata}\Subtitle Edit\Tesseract302\tessdata\*.traineddata'), False, True, False);
-
-      // Remove possibly installed mpv
-      DeleteFile(ExpandConstant('{userappdata}\Subtitle Edit\mpv-1.dll'));
-
-      // Remove the dirs if they are empty
-      RemoveDir(ExpandConstant('{app}\Languages'));
-      RemoveDir(ExpandConstant('{app}\Spectrograms'));
-      RemoveDir(ExpandConstant('{app}\VobSub\English'));
-      RemoveDir(ExpandConstant('{app}\VobSub'));
-      RemoveDir(ExpandConstant('{app}\WaveForms'));
-      RemoveDir(ExpandConstant('{app}'));
-      RemoveDir(ExpandConstant('{userappdata}\Subtitle Edit\Spectrograms'));
-      RemoveDir(ExpandConstant('{userappdata}\Subtitle Edit\VobSub\English'));
-      RemoveDir(ExpandConstant('{userappdata}\Subtitle Edit\VobSub'));
-      RemoveDir(ExpandConstant('{userappdata}\Subtitle Edit\WaveForms'));
-      RemoveDir(ExpandConstant('{userappdata}\Subtitle Edit\Plugins'));
-      RemoveDir(ExpandConstant('{userappdata}\Subtitle Edit\Tesseract500.Alpha.20210506\tessdata\configs'));
-      RemoveDir(ExpandConstant('{userappdata}\Subtitle Edit\Tesseract500.Alpha.20210506\tessdata\tessconfigs'));
-      RemoveDir(ExpandConstant('{userappdata}\Subtitle Edit\Tesseract500.Alpha.20210506\tessdata'));
-      RemoveDir(ExpandConstant('{userappdata}\Subtitle Edit\Tesseract500.Alpha.20210506'));
-      RemoveDir(ExpandConstant('{userappdata}\Subtitle Edit\Tesseract4\tessdata\configs'));
-      RemoveDir(ExpandConstant('{userappdata}\Subtitle Edit\Tesseract4\tessdata'));
-      RemoveDir(ExpandConstant('{userappdata}\Subtitle Edit\Tesseract4'));
-      RemoveDir(ExpandConstant('{userappdata}\Subtitle Edit\Tesseract302\tessdata\configs'));
-      RemoveDir(ExpandConstant('{userappdata}\Subtitle Edit\Tesseract302\tessdata'));
-      RemoveDir(ExpandConstant('{userappdata}\Subtitle Edit\Tesseract302'));
-      RemoveDir(ExpandConstant('{userappdata}\Subtitle Edit'));
-
+      DelTree(ExpandConstant('{userappdata}\Subtitle Edit'), True, True, True);
     end;
   end;
 end;

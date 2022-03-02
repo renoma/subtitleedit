@@ -42,7 +42,7 @@ namespace Nikse.SubtitleEdit.Forms
             radioButtonSeconds.Text = LanguageSettings.Current.ImportSceneChanges.Seconds;
             radioButtonMilliseconds.Text = LanguageSettings.Current.ImportSceneChanges.Milliseconds;
             groupBoxTimeCodes.Text = LanguageSettings.Current.ImportSceneChanges.TimeCodes;
-            buttonDownloadFfmpeg.Text = LanguageSettings.Current.Settings.DownloadFFmpeg;
+            buttonDownloadFfmpeg.Text = string.Format(LanguageSettings.Current.Settings.DownloadX, "FFmpeg");
             buttonImportWithFfmpeg.Text = LanguageSettings.Current.ImportSceneChanges.GetSceneChangesWithFfmpeg;
             labelFfmpegThreshold.Text = LanguageSettings.Current.ImportSceneChanges.Sensitivity;
             labelThresholdDescription.Text = LanguageSettings.Current.ImportSceneChanges.SensitivityDescription;
@@ -68,7 +68,7 @@ namespace Nikse.SubtitleEdit.Forms
                 numericUpDownThreshold.Enabled = true;
             }
 
-            numericUpDownThreshold.Left = labelFfmpegThreshold.Left + labelFfmpegThreshold.Width + 4;
+            numericUpDownThreshold.Left = labelFfmpegThreshold.Left + labelFfmpegThreshold.Width + 4;          
         }
 
         public sealed override string Text
@@ -321,6 +321,13 @@ namespace Nikse.SubtitleEdit.Forms
 
         private void buttonImportWithFfmpeg_Click(object sender, EventArgs e)
         {
+            if (_videoFileName != null && (_videoFileName.StartsWith("http://", StringComparison.OrdinalIgnoreCase) ||
+                                           _videoFileName.StartsWith("https://", StringComparison.OrdinalIgnoreCase)))
+            {
+                MessageBox.Show(LanguageSettings.Current.General.OnlineVideoFeatureNotAvailable);
+                return;
+            }
+
             _sceneChangesGenerator = new SceneChangesGenerator();
             groupBoxImportText.Enabled = false;
             buttonOK.Enabled = false;

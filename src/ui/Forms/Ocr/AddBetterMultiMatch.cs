@@ -28,7 +28,7 @@ namespace Nikse.SubtitleEdit.Forms.Ocr
         private int _startIndex;
         int _extraCount;
 
-        internal void Initialize(int selectedIndex, List<VobSubOcr.CompareMatch> matches, List<ImageSplitterItem> splitterItems)
+        internal void Initialize(int selectedIndex, List<VobSubOcr.CompareMatch> matches, List<ImageSplitterItem> splitterItems, bool isItalic)
         {
             _startIndex = selectedIndex;
             for (var i = 0; i < selectedIndex; i++)
@@ -38,7 +38,7 @@ namespace Nikse.SubtitleEdit.Forms.Ocr
                     _extraCount += matches[i].Extra.Count - 1;
                 }
             }
-
+            checkBoxItalic.Checked = isItalic;
             _matches = matches;
             _splitterItems = splitterItems;
             var count = 0;
@@ -133,11 +133,39 @@ namespace Nikse.SubtitleEdit.Forms.Ocr
             {
                 DialogResult = DialogResult.Cancel;
             }
+            else if (e.KeyCode == Keys.Enter)
+            {
+                buttonOK_Click(sender, e);
+            }
             else if (e.Modifiers == Keys.Control && e.KeyCode == Keys.I)
             {
                 checkBoxItalic.Checked = !checkBoxItalic.Checked;
                 e.SuppressKeyPress = true;
             }
+            else if ((e.Modifiers == Keys.Control || e.Modifiers == Keys.Alt) && e.KeyCode == Keys.Up)
+            {
+                if (numericUpDownExpandCount.Value < listBoxInspectItems.Items.Count)
+                {
+                    numericUpDownExpandCount.Value++;
+                }
+            }
+            else if ((e.Modifiers == Keys.Control || e.Modifiers == Keys.Alt) && e.KeyCode == Keys.Down)
+            {
+                if (numericUpDownExpandCount.Value > 2)
+                {
+                    numericUpDownExpandCount.Value--;
+                }
+            }
+        }
+
+        private void AddBetterMultiMatch_Load(object sender, System.EventArgs e)
+        {
+            ActiveControl = textBoxText;
+        }
+
+        private void checkBoxItalic_CheckedChanged(object sender, System.EventArgs e)
+        {
+            ActiveControl = textBoxText;
         }
     }
 }

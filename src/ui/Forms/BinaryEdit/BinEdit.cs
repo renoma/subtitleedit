@@ -318,6 +318,7 @@ namespace Nikse.SubtitleEdit.Forms.BinaryEdit
                 CleanUp();
                 var log = new StringBuilder();
                 var bluRaySubtitles = BluRaySupParser.ParseBluRaySup(fileName, log);
+                FixShortDisplayTimes(bluRaySubtitles);
                 _subtitle = new Subtitle();
                 _extra = new List<Extra>();
                 bool first = true;
@@ -392,6 +393,46 @@ namespace Nikse.SubtitleEdit.Forms.BinaryEdit
                     FillListView(_subtitle);
                 }
             }
+            else if (ext == ".ttml")
+            {
+                var list = new List<string>(File.ReadAllLines(fileName, LanguageAutoDetect.GetEncodingFromFile(fileName)));
+                var f = new TimedTextBase64Image();
+                if (f.IsMine(list, fileName))
+                {
+                    var rawSub = new Subtitle();
+                    f.LoadSubtitle(rawSub, list, fileName);
+                    _binSubtitles = new List<IBinaryParagraphWithPosition>();
+                    _extra = new List<Extra>();
+                    var sub = new Subtitle();
+                    //var res = BdnXmlParagraph.GetResolution(fileName);
+                    //SetResolution(res);
+                    //SetFrameRate(BdnXmlParagraph.GetFrameRate(fileName));
+                    foreach (var p in rawSub.Paragraphs)
+                    {
+                        var x = new TimedTextBase64Image.Base64PngImage()
+                        {
+                            Text = p.Text,
+                            StartTimeCode = p.StartTime,
+                            EndTimeCode = p.EndTime,
+                        };
+                        using (var bitmap = x.GetBitmap())
+                        {
+                            var nikseBmp = new NikseBitmap(bitmap);
+                            var nonTransparentHeight = nikseBmp.GetNonTransparentHeight();
+                            if (nonTransparentHeight > 0)
+                            {
+                                sub.Paragraphs.Add(p);
+                                _binSubtitles.Add(x);
+                                _extra.Add(new Extra { IsForced = x.IsForced, X = x.GetPosition().Left, Y = x.GetPosition().Top });
+                            }
+                        }
+
+                    }
+
+                    _subtitle = new Subtitle(sub);
+                    FillListView(_subtitle);
+                }
+            }
 
             if (_subtitle != null)
             {
@@ -400,6 +441,26 @@ namespace Nikse.SubtitleEdit.Forms.BinaryEdit
 
             _lastSaveHash = GetStateHash();
             Text = Path.GetFileName(fileName) + " - " + LanguageSettings.Current.General.Title;
+        }
+
+        public static void FixShortDisplayTimes(List<BluRaySupParser.PcsData> bluRaySubtitles)
+        {
+            for (int i = 0; i < bluRaySubtitles.Count; i++)
+            {
+                var p = bluRaySubtitles[i];
+                if (p.EndTime <= p.StartTime)
+                {
+                    var newEndTime = p.StartTimeCode.TotalMilliseconds + Configuration.Settings.VobSubOcr.DefaultMillisecondsForUnknownDurations;
+                    if (i >= bluRaySubtitles.Count - 1 || bluRaySubtitles[i + 1].StartTimeCode.TotalMilliseconds < newEndTime)
+                    {
+                        p.EndTime = (long)Math.Round(newEndTime * 90.0, MidpointRounding.AwayFromZero);
+                    }
+                    else
+                    {
+                        p.EndTime = bluRaySubtitles[i + 1].StartTime + 90;
+                    }
+                }
+            }
         }
 
         private void FillListView(Subtitle subtitle)
@@ -1824,7 +1885,8 @@ $DROP=[DROPVALUE]" + Environment.NewLine + Environment.NewLine +
             openFileDialog1.Filter = LanguageSettings.Current.Main.BluRaySupFiles + "|*.sup|" +
                                      "Matroska|*.mkv;*.mks|" +
                                      "Transport stream|*.ts;*.m2ts;*.mts;*.rec;*.mpeg;*.mpg|" +
-                                     "BdnXml|*.xml";
+                                     "BdnXml|*.xml|" +
+                                     "TTML base64 inline images|*.ttml";
             if (openFileDialog1.ShowDialog(this) == DialogResult.OK)
             {
                 OpenBinSubtitle(openFileDialog1.FileName);

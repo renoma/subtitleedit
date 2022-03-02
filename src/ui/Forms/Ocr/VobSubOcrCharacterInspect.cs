@@ -595,7 +595,7 @@ namespace Nikse.SubtitleEdit.Forms.Ocr
 
         private void addBetterMultiMatchToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            using (var form = new AddBeterMultiMatch())
+            using (var form = new AddBetterMultiMatch())
             {
                 form.Initialize(listBoxInspectItems.SelectedIndex, _matches, _splitterItems, checkBoxItalic.Checked);
                 if (form.ShowDialog(this) == DialogResult.OK)

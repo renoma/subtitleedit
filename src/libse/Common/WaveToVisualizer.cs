@@ -348,19 +348,36 @@ namespace Nikse.SubtitleEdit.Core.Common
         public static string GetPeakWaveFileName(string videoFileName, int trackNumber = 0)
         {
             var dir = Configuration.WaveformsDirectory.TrimEnd(Path.DirectorySeparatorChar);
+
+            if (videoFileName != null && (videoFileName.StartsWith("http://", StringComparison.OrdinalIgnoreCase) ||
+                                          videoFileName.StartsWith("https://", StringComparison.OrdinalIgnoreCase)))
+            {
+                return Path.Combine(dir, $"{MovieHasher.GenerateHashFromString(videoFileName)}.wav");
+            }
+
             if (!Directory.Exists(dir))
             {
                 Directory.CreateDirectory(dir);
             }
 
+            var hash = MovieHasher.GenerateHash(videoFileName);
+
             string wavePeakName;
             if (trackNumber > 0)
             {
-                wavePeakName = MovieHasher.GenerateHash(videoFileName) + "-" + trackNumber + ".wav";
+                wavePeakName = $"{hash}-{trackNumber}.wav";
             }
             else
             {
-                wavePeakName = MovieHasher.GenerateHash(videoFileName) + ".wav";
+                wavePeakName = $"{hash}.wav";
+                if (!File.Exists(Path.Combine(dir, wavePeakName)))
+                {
+                    var fileNames = Directory.GetFiles(dir, hash + "-*.wav");
+                    if (fileNames.Length > 0)
+                    {
+                        return fileNames.OrderBy(p => p).First();
+                    }
+                }
             }
 
             return Path.Combine(dir, wavePeakName);

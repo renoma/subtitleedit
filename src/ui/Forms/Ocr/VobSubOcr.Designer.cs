@@ -34,6 +34,7 @@ namespace Nikse.SubtitleEdit.Forms.Ocr
             this.vobSubToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.dOSTToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.finalCutProImageToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.imageWithTimeCodeInFileNameToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparatorImageCompare = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripMenuItemInspectNOcrMatches = new System.Windows.Forms.ToolStripMenuItem();
             this.inspectImageCompareMatchesForCurrentImageToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -304,7 +305,8 @@ namespace Nikse.SubtitleEdit.Forms.Ocr
             this.bluraySupToolStripMenuItem,
             this.vobSubToolStripMenuItem,
             this.dOSTToolStripMenuItem,
-            this.finalCutProImageToolStripMenuItem});
+            this.finalCutProImageToolStripMenuItem,
+            this.imageWithTimeCodeInFileNameToolStripMenuItem});
             this.toolStripMenuItemExport.Name = "toolStripMenuItemExport";
             this.toolStripMenuItemExport.Size = new System.Drawing.Size(375, 24);
             this.toolStripMenuItemExport.Text = "Export all images as...";
@@ -343,6 +345,13 @@ namespace Nikse.SubtitleEdit.Forms.Ocr
             this.finalCutProImageToolStripMenuItem.Size = new System.Drawing.Size(253, 26);
             this.finalCutProImageToolStripMenuItem.Text = "Final Cut Pro + image...";
             this.finalCutProImageToolStripMenuItem.Click += new System.EventHandler(this.finalCutProImageToolStripMenuItem_Click);
+            // 
+            // imageWithTimeCodeInFileNameToolStripMenuItem
+            // 
+            this.imageWithTimeCodeInFileNameToolStripMenuItem.Name = "imageWithTimeCodeInFileNameToolStripMenuItem";
+            this.imageWithTimeCodeInFileNameToolStripMenuItem.Size = new System.Drawing.Size(268, 22);
+            this.imageWithTimeCodeInFileNameToolStripMenuItem.Text = "Images with time code in file name...";
+            this.imageWithTimeCodeInFileNameToolStripMenuItem.Click += new System.EventHandler(this.imageWithTimeCodeInFileNameToolStripMenuItem_Click);
             // 
             // toolStripSeparatorImageCompare
             // 
@@ -401,7 +410,7 @@ namespace Nikse.SubtitleEdit.Forms.Ocr
             // ImagePreProcessingToolStripMenuItem
             // 
             this.ImagePreProcessingToolStripMenuItem.Name = "ImagePreProcessingToolStripMenuItem";
-            this.ImagePreProcessingToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Shift)
+            this.ImagePreProcessingToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Shift) 
             | System.Windows.Forms.Keys.P)));
             this.ImagePreProcessingToolStripMenuItem.Size = new System.Drawing.Size(375, 24);
             this.ImagePreProcessingToolStripMenuItem.Text = "Image preprocessing...";
@@ -430,7 +439,7 @@ namespace Nikse.SubtitleEdit.Forms.Ocr
             // 
             // progressBar1
             // 
-            this.progressBar1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)
+            this.progressBar1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.progressBar1.Location = new System.Drawing.Point(12, 564);
             this.progressBar1.Name = "progressBar1";
@@ -1189,7 +1198,7 @@ namespace Nikse.SubtitleEdit.Forms.Ocr
             // 
             // comboBoxDictionaries
             // 
-            this.comboBoxDictionaries.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+            this.comboBoxDictionaries.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.comboBoxDictionaries.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxDictionaries.FormattingEnabled = true;
@@ -1213,8 +1222,8 @@ namespace Nikse.SubtitleEdit.Forms.Ocr
             // 
             // tabControlLogs
             // 
-            this.tabControlLogs.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-            | System.Windows.Forms.AnchorStyles.Left)
+            this.tabControlLogs.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tabControlLogs.ContextMenuStrip = this.contextMenuStripAllFixes;
             this.tabControlLogs.Controls.Add(this.tabPageUnknownWords);
@@ -1305,8 +1314,8 @@ namespace Nikse.SubtitleEdit.Forms.Ocr
             // 
             // listBoxUnknownWords
             // 
-            this.listBoxUnknownWords.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-            | System.Windows.Forms.AnchorStyles.Left)
+            this.listBoxUnknownWords.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.listBoxUnknownWords.ContextMenuStrip = this.contextMenuStripUnknownWords;
             this.listBoxUnknownWords.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -1448,7 +1457,7 @@ namespace Nikse.SubtitleEdit.Forms.Ocr
             // 
             // groupBoxImagePalette
             // 
-            this.groupBoxImagePalette.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+            this.groupBoxImagePalette.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBoxImagePalette.Controls.Add(this.checkBoxBackgroundTransparent);
             this.groupBoxImagePalette.Controls.Add(this.pictureBoxBackground);
@@ -1568,7 +1577,7 @@ namespace Nikse.SubtitleEdit.Forms.Ocr
             // 
             // groupBoxSubtitleImage
             // 
-            this.groupBoxSubtitleImage.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+            this.groupBoxSubtitleImage.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBoxSubtitleImage.Controls.Add(this.labelMinAlpha);
             this.groupBoxSubtitleImage.Controls.Add(this.numericUpDownAutoTransparentAlphaMax);
@@ -1662,8 +1671,8 @@ namespace Nikse.SubtitleEdit.Forms.Ocr
             // 
             // pictureBoxSubtitleImage
             // 
-            this.pictureBoxSubtitleImage.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-            | System.Windows.Forms.AnchorStyles.Left)
+            this.pictureBoxSubtitleImage.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBoxSubtitleImage.BackColor = System.Drawing.Color.DimGray;
             this.pictureBoxSubtitleImage.ContextMenuStrip = this.contextMenuStripImage;
@@ -1714,7 +1723,7 @@ namespace Nikse.SubtitleEdit.Forms.Ocr
             // imagePreprocessingToolStripMenuItem1
             // 
             this.imagePreprocessingToolStripMenuItem1.Name = "imagePreprocessingToolStripMenuItem1";
-            this.imagePreprocessingToolStripMenuItem1.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Shift)
+            this.imagePreprocessingToolStripMenuItem1.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Shift) 
             | System.Windows.Forms.Keys.P)));
             this.imagePreprocessingToolStripMenuItem1.Size = new System.Drawing.Size(323, 24);
             this.imagePreprocessingToolStripMenuItem1.Text = "Image preprocessing...";
@@ -1770,8 +1779,8 @@ namespace Nikse.SubtitleEdit.Forms.Ocr
             // 
             // splitContainerBottom
             // 
-            this.splitContainerBottom.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-            | System.Windows.Forms.AnchorStyles.Left)
+            this.splitContainerBottom.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.splitContainerBottom.Location = new System.Drawing.Point(15, 199);
             this.splitContainerBottom.Name = "splitContainerBottom";
@@ -1848,7 +1857,7 @@ namespace Nikse.SubtitleEdit.Forms.Ocr
             | System.Windows.Forms.AnchorStyles.Right)));
             this.textBoxCurrentText.BackColor = System.Drawing.SystemColors.WindowFrame;
             this.textBoxCurrentText.ContextMenuStrip = this.contextMenuStripTextBox;
-            this.textBoxCurrentText.CurrentLanguage = "";
+            this.textBoxCurrentText.CurrentLanguage = null;
             this.textBoxCurrentText.CurrentLineIndex = 0;
             this.textBoxCurrentText.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBoxCurrentText.HideSelection = true;
@@ -1861,12 +1870,13 @@ namespace Nikse.SubtitleEdit.Forms.Ocr
             this.textBoxCurrentText.Multiline = true;
             this.textBoxCurrentText.Name = "textBoxCurrentText";
             this.textBoxCurrentText.Padding = new System.Windows.Forms.Padding(1);
-            this.textBoxCurrentText.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.None;
+            this.textBoxCurrentText.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.Both;
             this.textBoxCurrentText.SelectedText = "";
             this.textBoxCurrentText.SelectionLength = 0;
             this.textBoxCurrentText.SelectionStart = 0;
             this.textBoxCurrentText.Size = new System.Drawing.Size(344, 77);
             this.textBoxCurrentText.TabIndex = 1;
+            this.textBoxCurrentText.TextBoxFont = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold);
             this.textBoxCurrentText.TextChanged += new System.EventHandler(this.TextBoxCurrentTextTextChanged);
             this.textBoxCurrentText.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBoxCurrentText_KeyDown);
             // 
@@ -2229,5 +2239,6 @@ namespace Nikse.SubtitleEdit.Forms.Ocr
         private System.Windows.Forms.CheckBox checkBoxSkipOCRCharacter;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.NumericUpDown numericUpDownNumberOfOcrDbAddCount;
+        private System.Windows.Forms.ToolStripMenuItem imageWithTimeCodeInFileNameToolStripMenuItem;
     }
 }

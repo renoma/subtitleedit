@@ -15,6 +15,7 @@ using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 
 namespace Nikse.SubtitleEdit.Logic.CommandLineConvert
 {
@@ -37,10 +38,12 @@ namespace Nikse.SubtitleEdit.Logic.CommandLineConvert
             RemoveFormatting,
             RemoveStyle,
             RedoCasing,
+            FixRtl, // Used by BatchConvert Form
+            FixRtlViaUnicodeChars,
+            RemoveUnicodeControlChars,
             ReverseRtlStartEnd,
             BridgeGaps,
             MultipleReplace,
-            FixRtl,
             SplitLongLines,
             BalanceLines,
             SetMinGap,
@@ -51,6 +54,7 @@ namespace Nikse.SubtitleEdit.Logic.CommandLineConvert
             ApplyDurationLimits,
             RemoveLineBreaks,
             DeleteLines,
+            AssaChangeRes,
         }
 
         internal static void ConvertOrReturn(string productIdentifier, string[] commandLineArguments)
@@ -150,10 +154,13 @@ namespace Nikse.SubtitleEdit.Logic.CommandLineConvert
                 _stdOutWriter.WriteLine("        /" + BatchAction.MergeSameTimeCodes);
                 _stdOutWriter.WriteLine("        /" + BatchAction.MergeSameTexts);
                 _stdOutWriter.WriteLine("        /" + BatchAction.MergeShortLines);
+                _stdOutWriter.WriteLine("        /" + BatchAction.FixRtlViaUnicodeChars);
+                _stdOutWriter.WriteLine("        /" + BatchAction.RemoveUnicodeControlChars);
                 _stdOutWriter.WriteLine("        /" + BatchAction.ReverseRtlStartEnd);
                 _stdOutWriter.WriteLine("        /" + BatchAction.RemoveFormatting);
                 _stdOutWriter.WriteLine("        /" + BatchAction.RemoveTextForHI);
                 _stdOutWriter.WriteLine("        /" + BatchAction.RedoCasing);
+                _stdOutWriter.WriteLine("        /" + BatchAction.BalanceLines);
                 _stdOutWriter.WriteLine();
                 _stdOutWriter.WriteLine("    Example: SubtitleEdit /convert *.srt sami");
                 _stdOutWriter.WriteLine("    Show this usage message: SubtitleEdit /help");
@@ -1337,23 +1344,35 @@ namespace Nikse.SubtitleEdit.Logic.CommandLineConvert
                         targetFormatFound = true;
                         outputFileName = FormatOutputFileNameForBatchConvert(fileName, ebu.Extension, outputFolder, overwrite);
                         _stdOutWriter?.Write($"{count}: {Path.GetFileName(fileName)} -> {outputFileName}...");
-                        if (format != null && format.GetType() == typeof(Ebu))
-                        {
-                            var ebuOriginal = new Ebu();
-                            var temp = new Subtitle();
-                            ebuOriginal.LoadSubtitle(temp, null, fileName);
-                            ebu.Save(outputFileName, sub, true, ebuOriginal.Header);
-                        }
-                        else if (!string.IsNullOrEmpty(ebuHeaderFile))
+                        if (!string.IsNullOrEmpty(ebuHeaderFile))
                         {
                             var ebuOriginal = new Ebu();
                             var temp = new Subtitle();
                             ebuOriginal.LoadSubtitle(temp, null, ebuHeaderFile);
                             ebu.Save(outputFileName, sub, true, ebuOriginal.Header);
                         }
+                        else if (format != null && format.GetType() == typeof(Ebu))
+                        {
+                            var ebuOriginal = new Ebu();
+                            var temp = new Subtitle();
+                            ebuOriginal.LoadSubtitle(temp, null, fileName);
+                            if (sub.Header != null && new Regex("^\\d\\d\\dSTL\\d\\d").IsMatch(sub.Header))
+                            {
+                                ebuOriginal.Header = Ebu.ReadHeader(Encoding.UTF8.GetBytes(sub.Header));
+                            }
+                            ebu.Save(outputFileName, sub, true, ebuOriginal.Header);
+                        }
                         else
                         {
-                            ebu.Save(outputFileName, sub, true);
+                            if (sub.Header != null && new Regex("^\\d\\d\\dSTL\\d\\d").IsMatch(sub.Header))
+                            {
+                                var header = Ebu.ReadHeader(Encoding.UTF8.GetBytes(sub.Header));
+                                ebu.Save(outputFileName, sub, true, header);
+                            }
+                            else
+                            {
+                                ebu.Save(outputFileName, sub, true);
+                            }
                         }
                         _stdOutWriter?.WriteLine(" done.");
                     }
@@ -1945,6 +1964,33 @@ namespace Nikse.SubtitleEdit.Logic.CommandLineConvert
                                 p.Text = Utilities.RemoveLineBreaks(p.Text);
                             }
 
+                            break;
+                        case BatchAction.BalanceLines:
+                            try
+                            {
+                                var l = LanguageAutoDetect.AutoDetectGoogleLanguageOrNull(sub);
+                                foreach (var p in sub.Paragraphs)
+                                {
+                                    p.Text = Utilities.AutoBreakLine(p.Text, l ?? "en");
+                                }
+                            }
+                            catch
+                            {
+                                // ignore
+                            }
+
+                            break;
+                        case BatchAction.FixRtlViaUnicodeChars:
+                            foreach (var p in sub.Paragraphs)
+                            {
+                                p.Text = Utilities.FixRtlViaUnicodeChars(p.Text);
+                            }
+                            break;
+                        case BatchAction.RemoveUnicodeControlChars:
+                            foreach (var p in sub.Paragraphs)
+                            {
+                                p.Text = Utilities.RemoveUnicodeControlChars(p.Text);
+                            }
                             break;
                     }
                 }

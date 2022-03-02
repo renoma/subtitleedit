@@ -378,7 +378,7 @@ namespace Nikse.SubtitleEdit.Core.Common
                 s = Utilities.RemoveSsaTags(s);
             }
 
-            if (!s.Contains('<'))
+            if (s.IndexOf('<') < 0)
             {
                 return s;
             }
@@ -441,6 +441,7 @@ namespace Nikse.SubtitleEdit.Core.Common
                         inside = true;
                         continue;
                     }
+
                     if (next == '/' && i < s.Length - 3)
                     {
                         var nextNextNext = s[i + 3];
@@ -455,7 +456,14 @@ namespace Nikse.SubtitleEdit.Core.Common
                             inside = true;
                             continue;
                         }
+
+                        if (nextNext == 'c' && nextNextNext == '.')
+                        {
+                            inside = true;
+                            continue;
+                        }
                     }
+
                     if (nextNext == '/' && i < s.Length - 3)
                     { // some bad end tags sometimes seen
                         var nextNextNext = s[i + 3];
@@ -471,10 +479,17 @@ namespace Nikse.SubtitleEdit.Core.Common
                             continue;
                         }
                     }
+
                     if ((next == 'f' || next == 'F') && s.Substring(i).StartsWith("<font", StringComparison.OrdinalIgnoreCase) || // <font
                         next == '/' && (nextNext == 'f' || nextNext == 'F') && s.Substring(i).StartsWith("</font>", StringComparison.OrdinalIgnoreCase) ||  // </font>                        
                         next == ' ' && nextNext == '/' && s.Substring(i).StartsWith("< /font>", StringComparison.OrdinalIgnoreCase) ||  // < /font>
                         next == '/' && nextNext == ' ' && s.Substring(i).StartsWith("</ font>", StringComparison.OrdinalIgnoreCase))  // </ font>
+                    {
+                        inside = true;
+                        continue;
+                    }
+
+                    if (next == 'c' && nextNext == '.')
                     {
                         inside = true;
                         continue;
@@ -496,7 +511,7 @@ namespace Nikse.SubtitleEdit.Core.Common
 
         public static bool IsUrl(string text)
         {
-            if (string.IsNullOrWhiteSpace(text) || text.Length < 6 || !text.Contains('.') || text.Contains(' '))
+            if (string.IsNullOrWhiteSpace(text) || text.Length < 6 || text.IndexOf('.') < 0 || text.IndexOf(' ') >= 0)
             {
                 return false;
             }
@@ -537,7 +552,7 @@ namespace Nikse.SubtitleEdit.Core.Common
 
         public static string FixUpperTags(string input)
         {
-            if (string.IsNullOrEmpty(input) || !input.Contains('<'))
+            if (string.IsNullOrEmpty(input) || input.IndexOf('<') < 0)
             {
                 return input;
             }
@@ -881,8 +896,26 @@ namespace Nikse.SubtitleEdit.Core.Common
             }
 
             text = text.Replace("<i></i>", string.Empty);
-            text = text.Replace("<i> </i>", string.Empty);
-            text = text.Replace("<i>  </i>", string.Empty);
+            text = text.Replace("</i><i>", string.Empty);
+            if (text.IndexOf('@') < 0)
+            {
+                text = text.Replace("</i> <i>", "@");
+                text = text.Replace("<i> </i>", "@");
+                text = text.Replace("<i>  </i>", "@");
+                text = text.Replace("@ ", " ");
+                text = text.Replace("@ ", " ");
+                text = text.Replace(" @", " ");
+                text = text.Replace(" @", " ");
+                text = text.Replace("@", " ");
+            }
+            else
+            {
+                text = text.Replace("</i> <i>", " ");
+                text = text.Replace("<i> </i>", " ");
+                text = text.Replace("<i>  </i>", " ");
+                text = text.Replace("  ", " ");
+                text = text.Replace("  ", " ");
+            }
 
             return preTags + text;
         }

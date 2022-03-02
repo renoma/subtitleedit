@@ -19,13 +19,18 @@ namespace Nikse.SubtitleEdit.Core.NetflixQualityCheck
                 return;
             }
 
-            var SceneChanges = SceneChangeHelper.FromDisk(controller.VideoFileName);
-            if (SceneChanges == null || SceneChanges.Count == 0)
+            var sceneChanges = SceneChangeHelper.FromDisk(controller.VideoFileName);
+            if (sceneChanges == null || sceneChanges.Count == 0)
             {
                 return;
             }
 
-            int halfSecGapInFrames = (int)Math.Round(controller.FrameRate / 2);
+            if (Configuration.Settings.General.CurrentVideoIsSmpte)
+            {
+                sceneChanges = sceneChanges.Select(sc => sc /= 1.001).ToList();
+            }
+
+            int halfSecGapInFrames = (int)Math.Round(controller.FrameRate / 2, MidpointRounding.AwayFromZero);
             double twoFramesGap = 1000.0 / controller.FrameRate * 2.0;
 
             foreach (Paragraph p in subtitle.Paragraphs)
@@ -33,11 +38,11 @@ namespace Nikse.SubtitleEdit.Core.NetflixQualityCheck
                 var fixedParagraph = new Paragraph(p, false);
                 string comment = string.Empty;
 
-                List<double> previousStartSceneChanges = SceneChanges.Where(x => SubtitleFormat.MillisecondsToFrames(x * 1000) < SubtitleFormat.MillisecondsToFrames(p.StartTime.TotalMilliseconds)).ToList();
-                List<double> nextStartSceneChanges = SceneChanges.Where(x => SubtitleFormat.MillisecondsToFrames(x * 1000) > SubtitleFormat.MillisecondsToFrames(p.StartTime.TotalMilliseconds)).ToList();
-                List<double> previousEndSceneChanges = SceneChanges.Where(x => SubtitleFormat.MillisecondsToFrames(x * 1000) < SubtitleFormat.MillisecondsToFrames(p.EndTime.TotalMilliseconds)).ToList();
-                List<double> nextEndSceneChanges = SceneChanges.Where(x => SubtitleFormat.MillisecondsToFrames(x * 1000) > SubtitleFormat.MillisecondsToFrames(p.EndTime.TotalMilliseconds)).ToList();
-                var onSceneChange = SceneChanges.Where(x => SubtitleFormat.MillisecondsToFrames(x * 1000) == SubtitleFormat.MillisecondsToFrames(p.EndTime.TotalMilliseconds)).FirstOrDefault();
+                List<double> previousStartSceneChanges = sceneChanges.Where(x => SubtitleFormat.MillisecondsToFrames(x * 1000) < SubtitleFormat.MillisecondsToFrames(p.StartTime.TotalMilliseconds)).ToList();
+                List<double> nextStartSceneChanges = sceneChanges.Where(x => SubtitleFormat.MillisecondsToFrames(x * 1000) > SubtitleFormat.MillisecondsToFrames(p.StartTime.TotalMilliseconds)).ToList();
+                List<double> previousEndSceneChanges = sceneChanges.Where(x => SubtitleFormat.MillisecondsToFrames(x * 1000) < SubtitleFormat.MillisecondsToFrames(p.EndTime.TotalMilliseconds)).ToList();
+                List<double> nextEndSceneChanges = sceneChanges.Where(x => SubtitleFormat.MillisecondsToFrames(x * 1000) > SubtitleFormat.MillisecondsToFrames(p.EndTime.TotalMilliseconds)).ToList();
+                var onSceneChange = sceneChanges.Where(x => SubtitleFormat.MillisecondsToFrames(x * 1000) == SubtitleFormat.MillisecondsToFrames(p.EndTime.TotalMilliseconds)).FirstOrDefault();
 
                 if (previousStartSceneChanges.Count > 0)
                 {
@@ -54,7 +59,7 @@ namespace Nikse.SubtitleEdit.Core.NetflixQualityCheck
                 {
                     double nearestStartNextSceneChange = nextStartSceneChanges.Aggregate((x, y) => Math.Abs(x - p.StartTime.TotalSeconds) < Math.Abs(y - p.StartTime.TotalSeconds) ? x : y);
                     var gapToSceneChange = SubtitleFormat.MillisecondsToFrames(nearestStartNextSceneChange * 1000 - p.StartTime.TotalMilliseconds);
-                    var threshold = (int)Math.Round(halfSecGapInFrames * 0.75);
+                    var threshold = (int)Math.Round(halfSecGapInFrames * 0.75, MidpointRounding.AwayFromZero);
                     if (gapToSceneChange < halfSecGapInFrames)
                     {
                         if (gapToSceneChange < threshold)
