@@ -71,12 +71,15 @@ namespace Nikse.SubtitleEdit.Forms.Ocr
 
         public bool ShrinkSelection { get; private set; }
 
+        public bool PrevSelection { get; private set; }
+
         public bool SkipImage { get; private set; }
 
         internal void Initialize(Bitmap vobSubImage, ImageSplitterItem character, Point position, bool italicChecked, bool showShrink, VobSubOcr.CompareMatch bestGuess, List<VobSubOcr.ImageCompareAddition> additions, VobSubOcr vobSubForm, ImageSplitterItem nextCharacter, bool allowExpand = true)
         {
             ShrinkSelection = false;
             ExpandSelection = false;
+            PrevSelection = false;
             SkipImage = false;
             pictureBoxNextCharacter.Visible = false;
             pictureBoxNextCharacter.Top = pictureBoxCharacter.Top;
@@ -86,6 +89,7 @@ namespace Nikse.SubtitleEdit.Forms.Ocr
             {
                 buttonGuess.Visible = false; // hm... not too useful :(
                 buttonGuess.Text = bestGuess.Text;
+                textBoxCharacters.Text = bestGuess.Text;
             }
             else
             {
@@ -173,7 +177,7 @@ namespace Nikse.SubtitleEdit.Forms.Ocr
             try
             {
                 Decimal nextImageRatio = 0;
-                if (character != nextCharacter)
+                if (character != nextCharacter && nextCharacter.NikseBitmap != null)
                 {
                     Bitmap pictureBoxNextCharacterImage = nextCharacter.NikseBitmap.GetBitmap();
                     Decimal nextImageWidth = Convert.ToDecimal(pictureBoxNextCharacterImage.Width);
@@ -202,10 +206,6 @@ namespace Nikse.SubtitleEdit.Forms.Ocr
             if (e.KeyCode == Keys.Enter)
             {
                 DialogResult = DialogResult.OK;
-            }
-            else if (e.KeyCode == Keys.Escape)
-            {
-                DialogResult = DialogResult.Cancel;
             }
             else if (e.KeyCode == Keys.Escape)
             {
@@ -343,7 +343,7 @@ namespace Nikse.SubtitleEdit.Forms.Ocr
                      (e.Modifiers == Keys.Alt && e.KeyCode == Keys.Right) ||
                      (e.Modifiers == Keys.Shift && e.KeyCode == Keys.Add) ||
                      (e.Modifiers == Keys.Alt && e.KeyCode == Keys.E) ||
-                     (e.Modifiers != Keys.LShiftKey && e.KeyCode == Keys.Space)
+                     (e.Modifiers != Keys.LShiftKey && e.Modifiers != Keys.Control && e.KeyCode == Keys.Space)
              )
             {
                 ButtonExpandSelectionClick(null, null);

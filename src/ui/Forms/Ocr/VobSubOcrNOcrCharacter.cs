@@ -54,6 +54,8 @@ namespace Nikse.SubtitleEdit.Forms.Ocr
 
         public bool ShrinkSelection { get; private set; }
 
+        public bool PrevSelection { get; private set; }
+
         public bool IsItalic => checkBoxItalic.Checked;
 
         internal void Initialize(Bitmap vobSubImage, ImageSplitterItem character, Point position, bool italicChecked, bool showExpand, bool showShrink, string text)
@@ -66,6 +68,7 @@ namespace Nikse.SubtitleEdit.Forms.Ocr
             radioButtonHot.Checked = true;
             ShrinkSelection = false;
             ExpandSelection = false;
+            PrevSelection = false;
 
             textBoxCharacters.Text = text;
             NOcrChar = new NOcrChar { MarginTop = character.Top };
@@ -411,6 +414,11 @@ namespace Nikse.SubtitleEdit.Forms.Ocr
                 _startDone = false;
                 pictureBoxCharacter.Invalidate();
             }
+            else if (e.KeyCode == Keys.Enter)
+            {
+                e.SuppressKeyPress = true;
+                buttonOK_Click(null, null);
+            }
             else if (e.Modifiers == Keys.Control && e.KeyCode == Keys.Z)
             {
                 e.SuppressKeyPress = true;
@@ -430,9 +438,9 @@ namespace Nikse.SubtitleEdit.Forms.Ocr
                 e.SuppressKeyPress = true;
                 Redo();
             }
-            if (e.Modifiers == Keys.Alt && e.KeyCode == Keys.Left && buttonShrinkSelection.Visible)
+            if (e.Modifiers == Keys.Alt && e.KeyCode == Keys.Left && buttonPrevSelection.Visible)
             {
-                buttonShrinkSelection_Click(null, null);
+                buttonPrevSelection_Click(null, null);
                 e.SuppressKeyPress = true;
             }
             else if (e.Modifiers == Keys.Alt && e.KeyCode == Keys.Right && buttonExpandSelection.Visible)
@@ -458,6 +466,11 @@ namespace Nikse.SubtitleEdit.Forms.Ocr
             else if (e.Modifiers == Keys.Control && e.KeyCode == Keys.F)
             {
                 checkBoxAutoSubmitOfFirstChar.Checked = !checkBoxAutoSubmitOfFirstChar.Checked;
+                e.SuppressKeyPress = true;
+            }
+            else if (e.Modifiers != Keys.LShiftKey && e.Modifiers != Keys.Control && e.KeyCode == Keys.Space)
+            {
+                buttonExpandSelection_Click(null, null);
                 e.SuppressKeyPress = true;
             }
         }
@@ -1007,6 +1020,12 @@ namespace Nikse.SubtitleEdit.Forms.Ocr
         private void VobSubOcrNOcrCharacter_Shown(object sender, EventArgs e)
         {
             textBoxCharacters.Focus();
+        }
+
+        private void buttonPrevSelection_Click(object sender, EventArgs e)
+        {
+            PrevSelection = true;
+            DialogResult = DialogResult.OK;
         }
     }
 }

@@ -35,6 +35,7 @@ namespace Nikse.SubtitleEdit.Forms.Ocr
 
         internal void Initialize(Bitmap bitmap, int selectedIndex, List<VobSubOcr.CompareMatch> matches, List<ImageSplitterItem> splitterItems)
         {
+            textBoxText.Focus();
             _wholeImage = new NikseBitmap(bitmap);
             _startIndex = selectedIndex;
             for (int i = 0; i < selectedIndex; i++)
@@ -137,7 +138,11 @@ namespace Nikse.SubtitleEdit.Forms.Ocr
 
         private void AddBetterMultiMatch_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.Escape)
+            if (e.KeyCode == Keys.Enter)
+            {
+                buttonOK_Click(null, null);
+            }
+            else if (e.KeyCode == Keys.Escape)
             {
                 DialogResult = DialogResult.Cancel;
             }

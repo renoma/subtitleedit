@@ -50,6 +50,11 @@ namespace Nikse.SubtitleEdit.Forms.Ocr
         {
             if (e.KeyCode == Keys.Escape)
             {
+                buttonOK_Click(null, null);
+                e.SuppressKeyPress = true;
+            }
+            else if (e.KeyCode == Keys.Escape)
+            {
                 DialogResult = DialogResult.Cancel;
             }
             else if ((e.Modifiers == Keys.Control || e.Modifiers == Keys.Control ) && e.KeyCode == Keys.I)
