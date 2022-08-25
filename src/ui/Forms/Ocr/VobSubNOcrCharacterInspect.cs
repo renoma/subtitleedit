@@ -57,9 +57,18 @@ namespace Nikse.SubtitleEdit.Forms.Ocr
             {
                 DialogResult = DialogResult.Cancel;
             }
-            else if ((e.Modifiers == Keys.Control || e.Modifiers == Keys.Control ) && e.KeyCode == Keys.I)
+            else if ((e.Modifiers == Keys.Control || e.Modifiers == Keys.Alt ) && e.KeyCode == Keys.I)
             {
                 checkBoxItalic.Checked = !checkBoxItalic.Checked;
+                e.SuppressKeyPress = true;
+            }
+            else if ((e.Modifiers == Keys.Control || e.Modifiers == Keys.Alt) && e.KeyCode == Keys.E)
+            {
+                if (listBoxInspectItems.SelectedIndex < 0)
+                {
+                    listBoxInspectItems.SelectedIndex = 0;
+                }
+                addBetterMultiMatchToolStripMenuItem_Click(null, null);
                 e.SuppressKeyPress = true;
             }
         }
@@ -107,6 +116,11 @@ namespace Nikse.SubtitleEdit.Forms.Ocr
                     }
                 }
                 index++;
+            }
+            listBoxInspectItems.Select();
+            if (listBoxInspectItems.SelectedIndex < 0)
+            {
+                listBoxInspectItems.SelectedIndex = 0;
             }
         }
 

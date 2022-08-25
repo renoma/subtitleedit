@@ -57,27 +57,31 @@
             this.groupBoxInspectItems.Controls.Add(this.labelImageInfo);
             this.groupBoxInspectItems.Controls.Add(this.pictureBoxInspectItem);
             this.groupBoxInspectItems.Controls.Add(this.listBoxInspectItems);
-            this.groupBoxInspectItems.Location = new System.Drawing.Point(12, 12);
+            this.groupBoxInspectItems.Location = new System.Drawing.Point(16, 14);
+            this.groupBoxInspectItems.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.groupBoxInspectItems.Name = "groupBoxInspectItems";
-            this.groupBoxInspectItems.Size = new System.Drawing.Size(569, 381);
+            this.groupBoxInspectItems.Padding = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.groupBoxInspectItems.Size = new System.Drawing.Size(759, 440);
             this.groupBoxInspectItems.TabIndex = 0;
             this.groupBoxInspectItems.TabStop = false;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(253, 19);
+            this.label1.Location = new System.Drawing.Point(337, 22);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(73, 13);
+            this.label1.Size = new System.Drawing.Size(99, 15);
             this.label1.TabIndex = 1;
             this.label1.Text = "Expand count";
             // 
             // checkBoxItalic
             // 
             this.checkBoxItalic.AutoSize = true;
-            this.checkBoxItalic.Location = new System.Drawing.Point(253, 130);
+            this.checkBoxItalic.Location = new System.Drawing.Point(337, 150);
+            this.checkBoxItalic.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.checkBoxItalic.Name = "checkBoxItalic";
-            this.checkBoxItalic.Size = new System.Drawing.Size(58, 17);
+            this.checkBoxItalic.Size = new System.Drawing.Size(74, 19);
             this.checkBoxItalic.TabIndex = 3;
             this.checkBoxItalic.Text = "Is &italic";
             this.checkBoxItalic.UseVisualStyleBackColor = true;
@@ -85,23 +89,26 @@
             // labelText
             // 
             this.labelText.AutoSize = true;
-            this.labelText.Location = new System.Drawing.Point(252, 86);
+            this.labelText.Location = new System.Drawing.Point(336, 99);
+            this.labelText.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelText.Name = "labelText";
-            this.labelText.Size = new System.Drawing.Size(28, 13);
+            this.labelText.Size = new System.Drawing.Size(36, 15);
             this.labelText.TabIndex = 31;
             this.labelText.Text = "Text";
             // 
             // textBoxText
             // 
             this.textBoxText.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxText.Location = new System.Drawing.Point(252, 102);
+            this.textBoxText.Location = new System.Drawing.Point(336, 118);
+            this.textBoxText.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.textBoxText.Name = "textBoxText";
-            this.textBoxText.Size = new System.Drawing.Size(100, 23);
-            this.textBoxText.TabIndex = 2;
+            this.textBoxText.Size = new System.Drawing.Size(132, 27);
+            this.textBoxText.TabIndex = 1;
             // 
             // numericUpDownExpandCount
             // 
-            this.numericUpDownExpandCount.Location = new System.Drawing.Point(252, 38);
+            this.numericUpDownExpandCount.Location = new System.Drawing.Point(336, 44);
+            this.numericUpDownExpandCount.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.numericUpDownExpandCount.Maximum = new decimal(new int[] {
             3,
             0,
@@ -113,8 +120,8 @@
             0,
             0});
             this.numericUpDownExpandCount.Name = "numericUpDownExpandCount";
-            this.numericUpDownExpandCount.Size = new System.Drawing.Size(63, 20);
-            this.numericUpDownExpandCount.TabIndex = 1;
+            this.numericUpDownExpandCount.Size = new System.Drawing.Size(84, 25);
+            this.numericUpDownExpandCount.TabIndex = 2;
             this.numericUpDownExpandCount.Value = new decimal(new int[] {
             2,
             0,
@@ -125,18 +132,20 @@
             // labelImageInfo
             // 
             this.labelImageInfo.AutoSize = true;
-            this.labelImageInfo.Location = new System.Drawing.Point(253, 168);
+            this.labelImageInfo.Location = new System.Drawing.Point(337, 194);
+            this.labelImageInfo.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelImageInfo.Name = "labelImageInfo";
-            this.labelImageInfo.Size = new System.Drawing.Size(45, 13);
+            this.labelImageInfo.Size = new System.Drawing.Size(58, 15);
             this.labelImageInfo.TabIndex = 4;
             this.labelImageInfo.Text = "Preview";
             // 
             // pictureBoxInspectItem
             // 
             this.pictureBoxInspectItem.BackColor = System.Drawing.Color.Red;
-            this.pictureBoxInspectItem.Location = new System.Drawing.Point(253, 184);
+            this.pictureBoxInspectItem.Location = new System.Drawing.Point(337, 212);
+            this.pictureBoxInspectItem.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.pictureBoxInspectItem.Name = "pictureBoxInspectItem";
-            this.pictureBoxInspectItem.Size = new System.Drawing.Size(52, 52);
+            this.pictureBoxInspectItem.Size = new System.Drawing.Size(69, 60);
             this.pictureBoxInspectItem.TabIndex = 23;
             this.pictureBoxInspectItem.TabStop = false;
             // 
@@ -147,10 +156,12 @@
             this.listBoxInspectItems.Enabled = false;
             this.listBoxInspectItems.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.listBoxInspectItems.FormattingEnabled = true;
-            this.listBoxInspectItems.Location = new System.Drawing.Point(6, 19);
+            this.listBoxInspectItems.ItemHeight = 17;
+            this.listBoxInspectItems.Location = new System.Drawing.Point(8, 22);
+            this.listBoxInspectItems.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.listBoxInspectItems.Name = "listBoxInspectItems";
             this.listBoxInspectItems.SelectionMode = System.Windows.Forms.SelectionMode.MultiSimple;
-            this.listBoxInspectItems.Size = new System.Drawing.Size(240, 342);
+            this.listBoxInspectItems.Size = new System.Drawing.Size(319, 378);
             this.listBoxInspectItems.TabIndex = 0;
             // 
             // buttonCancel
@@ -158,9 +169,10 @@
             this.buttonCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.buttonCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.buttonCancel.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.buttonCancel.Location = new System.Drawing.Point(506, 399);
+            this.buttonCancel.Location = new System.Drawing.Point(675, 460);
+            this.buttonCancel.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.buttonCancel.Name = "buttonCancel";
-            this.buttonCancel.Size = new System.Drawing.Size(75, 23);
+            this.buttonCancel.Size = new System.Drawing.Size(100, 27);
             this.buttonCancel.TabIndex = 2;
             this.buttonCancel.Text = "C&ancel";
             this.buttonCancel.UseVisualStyleBackColor = true;
@@ -171,9 +183,10 @@
             this.buttonOK.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.buttonOK.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.buttonOK.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.buttonOK.Location = new System.Drawing.Point(425, 399);
+            this.buttonOK.Location = new System.Drawing.Point(567, 460);
+            this.buttonOK.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.buttonOK.Name = "buttonOK";
-            this.buttonOK.Size = new System.Drawing.Size(75, 23);
+            this.buttonOK.Size = new System.Drawing.Size(100, 27);
             this.buttonOK.TabIndex = 1;
             this.buttonOK.Text = "&OK";
             this.buttonOK.UseVisualStyleBackColor = true;
@@ -181,13 +194,14 @@
             // 
             // AddBetterMultiMatchNOcr
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(593, 434);
+            this.ClientSize = new System.Drawing.Size(791, 501);
             this.Controls.Add(this.groupBoxInspectItems);
             this.Controls.Add(this.buttonCancel);
             this.Controls.Add(this.buttonOK);
             this.KeyPreview = true;
+            this.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "AddBetterMultiMatchNOcr";
