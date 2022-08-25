@@ -40,6 +40,7 @@ namespace Nikse.SubtitleEdit.Forms.Ocr
         public SendCharacterInspectListIndexHandler SendCharacterInspectListIndex;
         public string listIndex;
         private int _binaryOcrDbAddCount = 0;
+        private int _binaryNOcrDbAddCount = 0;
         internal class CompareItem
         {
             public ManagedBitmap Bitmap { get; }
@@ -4330,7 +4331,9 @@ namespace Nikse.SubtitleEdit.Forms.Ocr
         {
             try
             {
+                Console.WriteLine("Save N OCR:[" + _binaryNOcrDbAddCount + "]");
                 _nOcrDb.Save();
+                _binaryNOcrDbAddCount = 0;
             }
             catch (Exception exception)
             {
@@ -4432,7 +4435,10 @@ namespace Nikse.SubtitleEdit.Forms.Ocr
                             }
 
                             _nOcrDb.Add(c);
+                            _binaryNOcrDbAddCount++;
+                            /*
                             SaveNOcrWithCurrentLanguage();
+                            */
                             var text = _vobSubOcrNOcrCharacter.NOcrChar.Text;
                             matches.Add(new CompareMatch(text, _vobSubOcrNOcrCharacter.IsItalic, expandSelectionList.Count, null));
                             expandSelectionList = new List<ImageSplitterItem>();
@@ -4470,7 +4476,10 @@ namespace Nikse.SubtitleEdit.Forms.Ocr
                             else if (result == DialogResult.OK)
                             {
                                 _nOcrDb.Add(_vobSubOcrNOcrCharacter.NOcrChar);
+                                _binaryNOcrDbAddCount++;
+                                /*
                                 SaveNOcrWithCurrentLanguage();
+                                */
                                 string text = _vobSubOcrNOcrCharacter.NOcrChar.Text;
                                 matches.Add(new CompareMatch(text, _vobSubOcrNOcrCharacter.IsItalic, 0, null) { ImageSplitterItem = item });
                             }
@@ -4510,7 +4519,10 @@ namespace Nikse.SubtitleEdit.Forms.Ocr
                             else if (result == DialogResult.OK)
                             {
                                 _nOcrDb.Add(_vobSubOcrNOcrCharacter.NOcrChar);
+                                _binaryNOcrDbAddCount++;
+                                /*
                                 SaveNOcrWithCurrentLanguage();
+                                */
                                 string text = _vobSubOcrNOcrCharacter.NOcrChar.Text;
                                 matches.Add(new CompareMatch(text, _vobSubOcrNOcrCharacter.IsItalic, 0, null) { ImageSplitterItem = item });
                             }
@@ -4537,6 +4549,10 @@ namespace Nikse.SubtitleEdit.Forms.Ocr
 
                     if (_abort)
                     {
+                        if (_binaryNOcrDbAddCount > 0)
+                        {
+                            SaveNOcrWithCurrentLanguage();
+                        }
                         return MatchesToItalicStringConverter.GetStringWithItalicTags(matches);
                     }
 
@@ -4549,6 +4565,11 @@ namespace Nikse.SubtitleEdit.Forms.Ocr
                     {
                         shrinkSelection = false;
                         expandSelectionList = new List<ImageSplitterItem>();
+                    }
+
+                    if (_binaryNOcrDbAddCount > ((int)numericUpDownNumberOfOcrDbAddCount.Value))
+                    {
+                        SaveNOcrWithCurrentLanguage();
                     }
                 }
 
@@ -5160,20 +5181,38 @@ namespace Nikse.SubtitleEdit.Forms.Ocr
 
         private void ButtonOkClick(object sender, EventArgs e)
         {
-            saveBinaryOcrDb();
+            if (_binaryOcrDbAddCount > 0)
+            {
+                saveBinaryOcrDb();
+            }
+            if (_binaryNOcrDbAddCount > 0)
+            {
+                SaveNOcrWithCurrentLanguage();
+            }
             _okClicked = true; // don't ask about discard changes
             if (_dvbSubtitles != null && _transportStreamUseColor)
             {
                 MergeDvbForEachSubImage();
             }
-            String dbFileName = "Latin.db";
-            string dbSourceFile = System.IO.Path.Combine(Configuration.OcrDirectory, dbFileName);
-            string dbBackupFile = System.IO.Path.Combine(Configuration.OcrDBBackupDirectory, dbFileName);
-            string dbBackupFileByDaily = System.IO.Path.Combine(Configuration.OcrDBBackupDirectory, "Latin_" + @DateTime.Now.ToString("yyyyMMdd") + ".db");
+            String dbFileName = "Latin";
+            String dbFileExt = ".db";
+            String nOcrDbFileExt = ".nocr";
+            string dbSourceFile = System.IO.Path.Combine(Configuration.OcrDirectory, dbFileName + dbFileExt);
+            string dbBackupFile = System.IO.Path.Combine(Configuration.OcrDBBackupDirectory, dbFileName + dbFileExt);
+            string dbBackupFileByDaily = System.IO.Path.Combine(Configuration.OcrDBBackupDirectory, dbFileName + "_" + @DateTime.Now.ToString("yyyyMMdd") + dbFileExt);
             string dbGitBackupFile = System.IO.Path.Combine(Configuration.OcrDBGitBackupDirectory, dbFileName);
+
+            string nOcrDbSourceFile = System.IO.Path.Combine(Configuration.OcrDirectory, dbFileName + nOcrDbFileExt);
+            string nOcrDbBackupFile = System.IO.Path.Combine(Configuration.OcrDBBackupDirectory, dbFileName + nOcrDbFileExt);
+            string nOcrDbBackupFileByDaily = System.IO.Path.Combine(Configuration.OcrDBBackupDirectory, dbFileName + "_" + @DateTime.Now.ToString("yyyyMMdd") + nOcrDbFileExt);
+            string nOcrDbGitBackupFile = System.IO.Path.Combine(Configuration.OcrDBGitBackupDirectory, dbFileName + nOcrDbFileExt);
             System.IO.File.Copy(dbSourceFile, dbBackupFile, true);
             System.IO.File.Copy(dbSourceFile, dbBackupFileByDaily, true);
             System.IO.File.Copy(dbSourceFile, dbGitBackupFile, true);
+
+            System.IO.File.Copy(nOcrDbSourceFile, nOcrDbBackupFile, true);
+            System.IO.File.Copy(nOcrDbSourceFile, nOcrDbBackupFileByDaily, true);
+            System.IO.File.Copy(nOcrDbSourceFile, nOcrDbGitBackupFile, true);
             DialogResult = DialogResult.OK;
         }
 
@@ -5609,6 +5648,10 @@ namespace Nikse.SubtitleEdit.Forms.Ocr
                 if (_binaryOcrDbAddCount > 0)
                 {
                     saveBinaryOcrDb();
+                }
+                if (_binaryNOcrDbAddCount > 0)
+                {
+                    SaveNOcrWithCurrentLanguage();
                 }
                 SetButtonsEnabledAfterOcrDone();
                 _mainOcrRunning = false;
@@ -7015,6 +7058,10 @@ namespace Nikse.SubtitleEdit.Forms.Ocr
             {
                 saveBinaryOcrDb();
             }
+            if (_binaryNOcrDbAddCount > 0)
+            {
+                SaveNOcrWithCurrentLanguage();
+            }
             SetButtonsEnabledAfterOcrDone();
         }
 
@@ -7273,7 +7320,14 @@ namespace Nikse.SubtitleEdit.Forms.Ocr
             // Ctrl + S
             else if (e.Modifiers == Keys.Control && e.KeyCode == Keys.S)
             {
-                saveBinaryOcrDb();
+                if (_binaryOcrDbAddCount > 0)
+                {
+                    saveBinaryOcrDb();
+                }
+                if (_binaryNOcrDbAddCount > 0)
+                {
+                    SaveNOcrWithCurrentLanguage();
+                }
             }
             // Ctrl + T
             else if (e.Modifiers == Keys.Control && e.KeyCode == Keys.T)

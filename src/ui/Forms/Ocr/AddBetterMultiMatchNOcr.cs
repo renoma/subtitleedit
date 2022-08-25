@@ -138,23 +138,32 @@ namespace Nikse.SubtitleEdit.Forms.Ocr
 
         private void AddBetterMultiMatch_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.Enter)
-            {
-                buttonOK_Click(null, null);
-            }
-            else if (e.KeyCode == Keys.Escape)
+            if (e.KeyCode == Keys.Escape)
             {
                 DialogResult = DialogResult.Cancel;
             }
-            else if (e.Modifiers == Keys.Control && e.KeyCode == Keys.I)
+            else if (e.KeyCode == Keys.Enter)
+            {
+                buttonOK_Click(sender, e);
+            }
+            else if ((e.Modifiers == Keys.Control || e.Modifiers == Keys.Alt) && e.KeyCode == Keys.I)
             {
                 checkBoxItalic.Checked = !checkBoxItalic.Checked;
                 e.SuppressKeyPress = true;
             }
-            else if (e.Modifiers == Keys.Alt && e.KeyCode == Keys.I)
+            else if ((e.Modifiers == Keys.Control || e.Modifiers == Keys.Alt) && e.KeyCode == Keys.Up)
             {
-                checkBoxItalic.Checked = !checkBoxItalic.Checked;
-                e.SuppressKeyPress = true;
+                if (numericUpDownExpandCount.Value < listBoxInspectItems.Items.Count)
+                {
+                    numericUpDownExpandCount.Value++;
+                }
+            }
+            else if ((e.Modifiers == Keys.Control || e.Modifiers == Keys.Alt) && e.KeyCode == Keys.Down)
+            {
+                if (numericUpDownExpandCount.Value > 2)
+                {
+                    numericUpDownExpandCount.Value--;
+                }
             }
         }
     }
