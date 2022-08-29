@@ -448,7 +448,7 @@ namespace Nikse.SubtitleEdit.Forms.Ocr
                 buttonExpandSelection_Click(null, null);
                 e.SuppressKeyPress = true;
             }
-            else if (e.Modifiers == Keys.Shift && e.KeyCode == Keys.Subtract && buttonShrinkSelection.Visible)
+            else if (((e.Modifiers == Keys.Shift && e.KeyCode == Keys.Subtract) || (e.Modifiers == Keys.Alt && e.KeyCode == Keys.D)) && buttonShrinkSelection.Visible)
             {
                 buttonShrinkSelection_Click(null, null);
                 e.SuppressKeyPress = true;
@@ -467,6 +467,11 @@ namespace Nikse.SubtitleEdit.Forms.Ocr
             {
                 checkBoxAutoSubmitOfFirstChar.Checked = !checkBoxAutoSubmitOfFirstChar.Checked;
                 e.SuppressKeyPress = true;
+            }
+            else if (e.Modifiers == Keys.Alt && e.KeyCode == Keys.H)
+            {
+                Boolean isChecked = checkBoxShowImage.Checked;
+                checkBoxShowImage.ThreeState = !isChecked;
             }
             else if (e.Modifiers != Keys.LShiftKey && e.Modifiers != Keys.Control && e.KeyCode == Keys.Space)
             {
@@ -1026,6 +1031,12 @@ namespace Nikse.SubtitleEdit.Forms.Ocr
         {
             PrevSelection = true;
             DialogResult = DialogResult.OK;
+        }
+
+        private void checkBoxShowImage_CheckedChanged(object sender, EventArgs e)
+        {
+            pictureBoxSubtitleImage.Visible = checkBoxShowImage.Checked;
+            textBoxCharacters.Focus();
         }
     }
 }

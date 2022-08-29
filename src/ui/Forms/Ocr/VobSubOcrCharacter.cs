@@ -332,9 +332,10 @@ namespace Nikse.SubtitleEdit.Forms.Ocr
         private void VobSubOcrCharacter_KeyDown(object sender, KeyEventArgs e)
         {
             if (buttonShrinkSelection.Visible &&
-                e.Modifiers == Keys.Alt && e.KeyCode == Keys.Left ||
-                e.Modifiers == Keys.Shift && e.KeyCode == Keys.Subtract ||
-                e.Modifiers == Keys.Alt && e.KeyCode == Keys.D)
+                (e.Modifiers == Keys.Alt && e.KeyCode == Keys.Left) ||
+                (e.Modifiers == Keys.Shift && e.KeyCode == Keys.Subtract) ||
+                (e.Modifiers == Keys.Alt && e.KeyCode == Keys.D)
+                )
             {
                 ButtonShrinkSelectionClick(null, null);
                 e.SuppressKeyPress = true;

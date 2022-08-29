@@ -67,6 +67,7 @@
             this.removeForegroundToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.clearToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.buttonPrevSelection = new System.Windows.Forms.Button();
+            this.checkBoxShowImage = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCharacter)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxSubtitleImage)).BeginInit();
             this.groupBoxNewInput.SuspendLayout();
@@ -514,7 +515,7 @@
             // 
             this.buttonPrevSelection.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.buttonPrevSelection.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.buttonPrevSelection.Location = new System.Drawing.Point(356, 8);
+            this.buttonPrevSelection.Location = new System.Drawing.Point(356, 10);
             this.buttonPrevSelection.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.buttonPrevSelection.Name = "buttonPrevSelection";
             this.buttonPrevSelection.Size = new System.Drawing.Size(149, 27);
@@ -523,11 +524,24 @@
             this.buttonPrevSelection.UseVisualStyleBackColor = true;
             this.buttonPrevSelection.Click += new System.EventHandler(this.buttonPrevSelection_Click);
             // 
+            // checkBoxShowImage
+            // 
+            this.checkBoxShowImage.AutoSize = true;
+            this.checkBoxShowImage.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkBoxShowImage.Location = new System.Drawing.Point(121, 20);
+            this.checkBoxShowImage.Name = "checkBoxShowImage";
+            this.checkBoxShowImage.Size = new System.Drawing.Size(118, 21);
+            this.checkBoxShowImage.TabIndex = 35;
+            this.checkBoxShowImage.Text = "S&how Image";
+            this.checkBoxShowImage.UseVisualStyleBackColor = true;
+            this.checkBoxShowImage.CheckedChanged += new System.EventHandler(this.checkBoxShowImage_CheckedChanged);
+            // 
             // VobSubOcrNOcrCharacter
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(864, 741);
+            this.Controls.Add(this.checkBoxShowImage);
             this.Controls.Add(this.buttonPrevSelection);
             this.Controls.Add(this.groupBoxNewInput);
             this.Controls.Add(this.buttonShrinkSelection);
@@ -602,5 +616,6 @@
         private System.Windows.Forms.Button buttonGuessAgain;
         private System.Windows.Forms.ContextMenuStrip contextMenuStripLetters;
         private System.Windows.Forms.Button buttonPrevSelection;
+        private System.Windows.Forms.CheckBox checkBoxShowImage;
     }
 }
