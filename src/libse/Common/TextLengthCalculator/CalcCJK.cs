@@ -7,7 +7,7 @@ namespace Nikse.SubtitleEdit.Core.Common.TextLengthCalculator
         /// <summary>
         /// Calculate all text including space (tags are not counted).
         /// </summary>
-        public decimal CountCharacters(string text)
+        public decimal CountCharacters(string text, bool forCps)
         {
             if (string.IsNullOrEmpty(text))
             {
@@ -93,6 +93,17 @@ namespace Nikse.SubtitleEdit.Core.Common.TextLengthCalculator
                                                               @"\p{IsCJKCompatibilityForms}", RegexOptions.Compiled);
         public static bool IsCjk(char c)
         {
+            var v = (int)c;
+            if (v >= 0x3040 && v <= 0x309F) // Hiragana
+            {
+                return true;
+            }
+
+            if (v >= 0x4E00 && v <= 0x9FAF) // Common and uncommon kanji
+            {
+                return true;
+            }
+
             return CjkCharRegex.IsMatch(c.ToString());
         }
     }

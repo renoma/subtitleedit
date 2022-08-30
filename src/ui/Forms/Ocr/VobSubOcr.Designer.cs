@@ -111,6 +111,7 @@ namespace Nikse.SubtitleEdit.Forms.Ocr
             this.listBoxUnknownWords = new System.Windows.Forms.ListBox();
             this.contextMenuStripUnknownWords = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.clearToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.removeAllXToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tabPageAllFixes = new System.Windows.Forms.TabPage();
             this.listBoxLog = new System.Windows.Forms.ListBox();
             this.tabPageSuggestions = new System.Windows.Forms.TabPage();
@@ -1333,9 +1334,11 @@ namespace Nikse.SubtitleEdit.Forms.Ocr
             // 
             this.contextMenuStripUnknownWords.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.contextMenuStripUnknownWords.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.clearToolStripMenuItem});
+            this.clearToolStripMenuItem,
+            this.removeAllXToolStripMenuItem});
             this.contextMenuStripUnknownWords.Name = "contextMenuStripUnknownWords";
             this.contextMenuStripUnknownWords.Size = new System.Drawing.Size(114, 28);
+            this.contextMenuStripUnknownWords.Opening += new System.ComponentModel.CancelEventHandler(this.contextMenuStripUnknownWords_Opening);
             // 
             // clearToolStripMenuItem
             // 
@@ -1343,6 +1346,13 @@ namespace Nikse.SubtitleEdit.Forms.Ocr
             this.clearToolStripMenuItem.Size = new System.Drawing.Size(113, 24);
             this.clearToolStripMenuItem.Text = "Clear";
             this.clearToolStripMenuItem.Click += new System.EventHandler(this.clearToolStripMenuItem_Click);
+            // 
+            // removeAllXToolStripMenuItem
+            // 
+            this.removeAllXToolStripMenuItem.Name = "removeAllXToolStripMenuItem";
+            this.removeAllXToolStripMenuItem.Size = new System.Drawing.Size(138, 22);
+            this.removeAllXToolStripMenuItem.Text = "RemoveAllX";
+            this.removeAllXToolStripMenuItem.Click += new System.EventHandler(this.removeAllXToolStripMenuItem_Click);
             // 
             // tabPageAllFixes
             // 
@@ -2240,5 +2250,6 @@ namespace Nikse.SubtitleEdit.Forms.Ocr
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.NumericUpDown numericUpDownNumberOfOcrDbAddCount;
         private System.Windows.Forms.ToolStripMenuItem imageWithTimeCodeInFileNameToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem removeAllXToolStripMenuItem;
     }
 }

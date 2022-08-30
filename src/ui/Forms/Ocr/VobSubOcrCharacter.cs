@@ -111,6 +111,16 @@ namespace Nikse.SubtitleEdit.Forms.Ocr
 
             pictureBoxSubtitleImage.Image = vobSubImage;
             Bitmap pictureBoxCharacterImage = character.NikseBitmap.GetBitmap();
+            if (pictureBoxCharacterImage.Width > 100 || pictureBoxCharacterImage.Height > 50)
+            {
+                pictureBoxCharacter.SizeMode = PictureBoxSizeMode.Zoom;
+                pictureBoxCharacter.Width = 100;
+                pictureBoxCharacter.Height = 50;
+            }
+            else
+            {
+                pictureBoxCharacter.SizeMode = PictureBoxSizeMode.AutoSize;
+            }
             pictureBoxCharacter.Image = pictureBoxCharacterImage;
             Decimal imageWidth = Convert.ToDecimal(pictureBoxCharacter.Image.Width);
             Decimal imageHeight = Convert.ToDecimal(pictureBoxCharacter.Image.Height);

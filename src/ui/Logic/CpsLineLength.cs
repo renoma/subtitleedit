@@ -11,6 +11,8 @@ namespace Nikse.SubtitleEdit.Logic
         {
             switch (Code)
             {
+                case nameof(CalcNoSpaceCpsOnly):
+                    return LanguageSettings.Current.Settings.CpsLineLengthStyleCalcNoSpaceCpsOnly;
                 case nameof(CalcNoSpace):
                     return LanguageSettings.Current.Settings.CpsLineLengthStyleCalcNoSpace;
                 case nameof(CalcCjk):
@@ -21,6 +23,10 @@ namespace Nikse.SubtitleEdit.Logic
                     return LanguageSettings.Current.Settings.CpsLineLengthStyleCalcIgnoreArabicDiacritics;
                 case nameof(CalcIgnoreArabicDiacriticsNoSpace):
                     return LanguageSettings.Current.Settings.CpsLineLengthStyleCalcIgnoreArabicDiacriticsNoSpace;
+                case nameof(CalcNoSpaceOrPunctuation):
+                    return LanguageSettings.Current.Settings.CpsLineLengthStyleCalcNoSpaceOrPunctuation;
+                case nameof(CalcNoSpaceOrPunctuationCpsOnly):
+                    return LanguageSettings.Current.Settings.CpsLineLengthStyleCalcNoSpaceOrPunctuationCpsOnly;
                 default:
                     return LanguageSettings.Current.Settings.CpsLineLengthStyleCalcAll;
             }

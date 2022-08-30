@@ -721,14 +721,21 @@ namespace Nikse.SubtitleEdit.Forms
                         {
                             threadEqual.Join();
                         }
-
                         imagesSavedCount = WriteParagraph(width, sb, border, height, imagesSavedCount, vobSubWriter, binarySubtitleFile, paramEqual, i);
+                        if (!string.IsNullOrEmpty(paramEqual.Error))
+                        {
+                            errors.Add(paramEqual.Error);
+                        }
+
                         if (threadUnEqual.ThreadState == ThreadState.Running)
                         {
                             threadUnEqual.Join();
                         }
-
                         imagesSavedCount = WriteParagraph(width, sb, border, height, imagesSavedCount, vobSubWriter, binarySubtitleFile, paramUnEqual, i);
+                        if (!string.IsNullOrEmpty(paramUnEqual.Error))
+                        {
+                            errors.Add(paramUnEqual.Error);
+                        }
                     }
                     else
                     {
@@ -736,14 +743,21 @@ namespace Nikse.SubtitleEdit.Forms
                         {
                             threadUnEqual.Join();
                         }
-
                         imagesSavedCount = WriteParagraph(width, sb, border, height, imagesSavedCount, vobSubWriter, binarySubtitleFile, paramUnEqual, i);
+                        if (!string.IsNullOrEmpty(paramUnEqual.Error))
+                        {
+                            errors.Add(paramUnEqual.Error);
+                        }
+
                         if (threadEqual.ThreadState == ThreadState.Running)
                         {
                             threadEqual.Join();
                         }
-
                         imagesSavedCount = WriteParagraph(width, sb, border, height, imagesSavedCount, vobSubWriter, binarySubtitleFile, paramEqual, i);
+                        if (!string.IsNullOrEmpty(paramEqual.Error))
+                        {
+                            errors.Add(paramEqual.Error);
+                        }
                     }
                 }
 
@@ -2760,8 +2774,8 @@ $DROP=[DROPVALUE]" + Environment.NewLine + Environment.NewLine +
                 return string.Empty;
             }
 
-            var s = fontContent.Substring(idx + tag.Length).Trim(' ', '"','\"');
-            var end = s.IndexOfAny(new[] { '"', '\''});
+            var s = fontContent.Substring(idx + tag.Length).Trim(' ', '"', '\"');
+            var end = s.IndexOfAny(new[] { '"', '\'' });
             if (end < 0)
             {
                 return s;
@@ -3008,7 +3022,7 @@ $DROP=[DROPVALUE]" + Environment.NewLine + Environment.NewLine +
                 }
                 else
                 {
-                    baseLinePadding = (int)Math.Round(TextDraw.MeasureTextHeight(font, "yjK)", parameter.SubtitleFontBold) - TextDraw.MeasureTextHeight(font, "ac", parameter.SubtitleFontBold));
+                    baseLinePadding = (int)Math.Round(TextDraw.MeasureTextHeight(font, "yj[K)Ź,Ç", parameter.SubtitleFontBold) - TextDraw.MeasureTextHeight(font, "ac", parameter.SubtitleFontBold));
                     PaddingDictionary.Add(paddingKey, baseLinePadding);
                 }
 
@@ -3017,9 +3031,27 @@ $DROP=[DROPVALUE]" + Environment.NewLine + Environment.NewLine +
                 if (lines.Count > 0)
                 {
                     var lastLine = lines[lines.Count - 1];
-                    if (lastLine.Contains(new[] { 'g', 'j', 'p', 'q', 'y', ',', 'ý', 'ę', 'ç', 'Ç', '/', '(', ')', '[', ']' }))
+                    if (lastLine.Contains(new[] { 'g', 'j', 'p', 'q', 'y', ',', 'ý', 'ę', 'ç', 'Ç', '/', '(', ')', '[', ']', 'ą', 'Ę', 'Ą' }))
                     {
-                        var textNoBelow = lastLine.Replace('g', 'a').Replace('j', 'a').Replace('p', 'a').Replace('q', 'a').Replace('y', 'a').Replace(',', 'a').Replace('ý', 'a').Replace('ę', 'a').Replace('ç', 'a').Replace('Ç', 'a').Replace('/', 'a').Replace('(', 'a').Replace(')', 'a').Replace('[', 'a').Replace(']', 'a');
+                        var textNoBelow = lastLine
+                            .Replace('g', 'a')
+                            .Replace('j', 'a')
+                            .Replace('p', 'a')
+                            .Replace('q', 'a')
+                            .Replace('y', 'a')
+                            .Replace(',', 'a')
+                            .Replace('ý', 'a')
+                            .Replace('ę', 'a')
+                            .Replace('ç', 'a')
+                            .Replace('Ç', 'a')
+                            .Replace('/', 'a')
+                            .Replace('(', 'a')
+                            .Replace(')', 'a')
+                            .Replace('[', 'a')
+                            .Replace(']', 'a')
+                            .Replace('ą', 'a')
+                            .Replace('Ę', 'a')
+                            .Replace('Ą', 'a');
                         baseLinePadding -= (int)Math.Round(TextDraw.MeasureTextHeight(font, lastLine, parameter.SubtitleFontBold) - TextDraw.MeasureTextHeight(font, textNoBelow, parameter.SubtitleFontBold));
                     }
                     else
@@ -3034,7 +3066,7 @@ $DROP=[DROPVALUE]" + Environment.NewLine + Environment.NewLine +
 
                 if (lines.Count == 1 && parameter.JustifyTop) // align top
                 {
-                    baseLinePadding += (int)Math.Round(TextDraw.MeasureTextHeight(font, "yjK)", parameter.SubtitleFontBold));
+                    baseLinePadding += (int)Math.Round(TextDraw.MeasureTextHeight(font, "yj[K)Ź,Ç", parameter.SubtitleFontBold));
                 }
 
                 // TODO: Better baseline - test http://bobpowell.net/formattingtext.aspx
@@ -3681,7 +3713,7 @@ $DROP=[DROPVALUE]" + Environment.NewLine + Environment.NewLine +
                 }
                 else
                 {
-                    nbmp.CropSidesAndBottom(_boxBorderSize, parameter.BackgroundColor, true);
+                    nbmp.CropSidesAndBottom(_boxBorderSize + baseLinePadding, parameter.BackgroundColor, true);
                     nbmp.CropTop(_boxBorderSize, parameter.BackgroundColor);
                 }
 
@@ -4943,11 +4975,17 @@ $DROP=[DROPVALUE]" + Environment.NewLine + Environment.NewLine +
                     goToLine.Initialize(1, subtitleListView1.Items.Count);
                     if (goToLine.ShowDialog(this) == DialogResult.OK)
                     {
-                        subtitleListView1.Items[goToLine.LineNumber - 1].Selected = true;
-                        subtitleListView1.Items[goToLine.LineNumber - 1].EnsureVisible();
-                        subtitleListView1.Items[goToLine.LineNumber - 1].Focused = true;
+                        var idx = goToLine.LineNumber - 1;
+                        subtitleListView1.Items[idx].Selected = true;
+                        subtitleListView1.Items[idx].EnsureVisible();
+                        subtitleListView1.Items[idx].Focused = true;
                     }
                 }
+            }
+            else if (e.KeyCode == Keys.P && e.Modifiers == Keys.Control)
+            {
+                linkLabelPreview_LinkClicked(null, null);
+                e.SuppressKeyPress = true;
             }
         }
 
@@ -5724,10 +5762,32 @@ $DROP=[DROPVALUE]" + Environment.NewLine + Environment.NewLine +
                         }
                     }
 
+                    var showPrev = false;
+                    var showNext = false;
+                    var idx = -1;
                     using (var form = new ExportPngXmlPreview(bmp))
                     {
                         Cursor = Cursors.Default;
-                        form.ShowDialog(this);
+                        if (subtitleListView1.SelectedItems.Count > 0)
+                        {
+                            idx = subtitleListView1.SelectedItems[0].Index;
+                            form.AllowNext = idx < _subtitle.Paragraphs.Count - 1;
+                            form.AllowPrevious = idx > 0;
+                            form.ShowDialog(this);
+                            showPrev = form.PreviousPressed;
+                            showNext = form.NextPressed;
+                        }
+                    }
+
+                    if (showPrev || showNext)
+                    {
+                        idx = showPrev ? Math.Max(0, idx - 1) : Math.Min(subtitleListView1.Items.Count - 1, idx + 1);
+                        subtitleListView1.SelectedIndices.Clear();
+                        subtitleListView1.Items[idx].Selected = true;
+                        subtitleListView1.Items[idx].Focused = true;
+                        subtitleListView1.Items[idx].EnsureVisible();
+                        Application.DoEvents();
+                        linkLabelPreview_LinkClicked(null, null);
                     }
                 }
             }

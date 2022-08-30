@@ -729,6 +729,11 @@ namespace Nikse.SubtitleEdit.Forms
                 _ocrFixEngine?.Dispose();
                 _ocrFixEngineLanguage = threeLetterIsoLanguageName;
                 _ocrFixEngine = new OcrFixEngine(_ocrFixEngineLanguage, null, this);
+                var error = _ocrFixEngine.GetOcrFixReplaceListError();
+                if (error != null)
+                {
+                    MessageBox.Show(error);
+                }
             }
 
             var fixAction = _language.FixCommonOcrErrors;
@@ -1480,12 +1485,12 @@ namespace Nikse.SubtitleEdit.Forms
             labelTextLineTotal.ForeColor = UiUtil.ForeColor;
             buttonSplitLine.Visible = false;
             var abl = Utilities.AutoBreakLine(s, _autoDetectGoogleLanguage).SplitToLines();
-            if (abl.Count > Configuration.Settings.General.MaxNumberOfLines || abl.Any(li => li.CountCharacters() > Configuration.Settings.General.SubtitleLineMaximumLength))
+            if (abl.Count > Configuration.Settings.General.MaxNumberOfLines || abl.Any(li => li.CountCharacters(false) > Configuration.Settings.General.SubtitleLineMaximumLength))
             {
                 buttonSplitLine.Visible = true;
                 labelTextLineTotal.ForeColor = Color.Red;
             }
-            labelTextLineTotal.Text = string.Format(_languageGeneral.TotalLengthX, text.CountCharacters());
+            labelTextLineTotal.Text = string.Format(_languageGeneral.TotalLengthX, text.CountCharacters(false));
         }
 
         private void ButtonFixesSelectAllClick(object sender, EventArgs e)

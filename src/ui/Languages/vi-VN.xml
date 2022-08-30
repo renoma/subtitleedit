@@ -2,7 +2,7 @@
 <Language Name="Vietnamese">
   <General>
     <Title>Subtitle Edit</Title>
-    <Version>3.6.4</Version>
+    <Version>3.6.7</Version>
     <TranslatedBy>Ghé thăm www.nikse.dk của chủ phần mềm - Nikse
 thường xuyên để biết thêm thông tin và tải về phiên bản mới nhất.
 Rất hân hạnh chào đón các bạn :))
@@ -900,7 +900,7 @@ Vào Tùy chọn -&gt; Cài đặt -&gt; Công cụ để nhập key.</MsClientS
     <Remove>Xóa</Remove>
     <RemoveAll>Xóa tất cả</RemoveAll>
   </ImportImages>
-  <ImportSceneChanges>
+  <ImportShotChanges>
     <Title>Khởi tạo / nhập thay đổi khung cảnh</Title>
     <OpenTextFile>Mở tập tin văn bản...</OpenTextFile>
     <Generate>Khởi tạo thay đổi khung cảnh</Generate>
@@ -910,11 +910,11 @@ Vào Tùy chọn -&gt; Cài đặt -&gt; Công cụ để nhập key.</MsClientS
     <Frames>Khung</Frames>
     <Seconds>Giây</Seconds>
     <Milliseconds>Mili giây</Milliseconds>
-    <GetSceneChangesWithFfmpeg>Tạo các thay đổi khung cảnh với FFmpeg</GetSceneChangesWithFfmpeg>
+    <GetShotChangesWithFfmpeg>Tạo các thay đổi khung cảnh với FFmpeg</GetShotChangesWithFfmpeg>
     <Sensitivity>Nhạy cảm</Sensitivity>
     <SensitivityDescription>Giá trị thấp hơn mang lại nhiều thay đổi cảnh hơn</SensitivityDescription>
-    <NoSceneChangesFound>Không tìm thấy thay đổi cảnh nào.</NoSceneChangesFound>
-  </ImportSceneChanges>
+    <NoShotChangesFound>Không tìm thấy thay đổi cảnh nào.</NoShotChangesFound>
+  </ImportShotChanges>
   <ImportText>
     <Title>Nhập văn bản đơn giản</Title>
     <OneSubtitleIsOneFile>Mỗi dòng là câu</OneSubtitleIsOneFile>
@@ -1231,8 +1231,8 @@ Vào Tùy chọn -&gt; Cài đặt -&gt; Công cụ để nhập key.</MsClientS
         <GenerateVideoWithBurnedInSub>Ghép cứng phụ đề vào video</GenerateVideoWithBurnedInSub>
         <VideoAudioToText>Video/âm thanh thành văn bản...</VideoAudioToText>
         <ImportChaptersFromVideo>Nhập các chương từ video</ImportChaptersFromVideo>
-        <GenerateImportSceneChanges>Tạo/nhập các thay đổi cảnh...</GenerateImportSceneChanges>
-        <RemoveOrExportSceneChanges>Xóa/xuất các thay đổi cảnh...</RemoveOrExportSceneChanges>
+        <GenerateImportShotChanges>Tạo/nhập các thay đổi cảnh...</GenerateImportShotChanges>
+        <RemoveOrExportShotChanges>Xóa/xuất các thay đổi cảnh...</RemoveOrExportShotChanges>
         <WaveformBatchGenerate>Tạo hàng loạt các dạng sóng...</WaveformBatchGenerate>
         <ShowHideVideo>Hiển/Ẩn video</ShowHideVideo>
         <ShowHideWaveform>Hiển/Ẩn dạng sóng</ShowHideWaveform>
@@ -1682,7 +1682,7 @@ Bạn có muốn bắt đầu từ phía trên cùng của tài liệu và tiế
     <BeforeDisplaySubtitleJoin>Hiển thị trước khi kết nối phụ đề</BeforeDisplaySubtitleJoin>
     <SubtitlesJoined>Kết nối phụ đề</SubtitlesJoined>
     <StatusLog>Tình trạng đăng nhập vào</StatusLog>
-    <XSceneChangesImported>Đã nhập {0} thay đổi cảnh</XSceneChangesImported>
+    <XShotChangesImported>Đã nhập {0} thay đổi cảnh</XShotChangesImported>
     <PluginXExecuted>Trình cắm '{0}' được thực thi.</PluginXExecuted>
     <NotAValidXSubFile>Không phải là tệp XSub hợp lệ!</NotAValidXSubFile>
     <BeforeMergeLinesWithSameText>Trước khi gộp các dòng với cùng một văn bản</BeforeMergeLinesWithSameText>
@@ -1875,7 +1875,8 @@ Nếu bạn đã chỉnh sửa tập tin này với Subtitle Edit, bạn có th�
     <DurationGreaterThan>Thời lượng dài hơn</DurationGreaterThan>
     <MoreThanTwoLines>Hơn 2 dòng</MoreThanTwoLines>
     <Bookmarked>Đánh dấu</Bookmarked>
-    <BlankLines></BlankLines>
+    <BlankLines>
+    </BlankLines>
   </ModifySelection>
   <MultipleReplace>
     <Title>Thay thế nhiều</Title>
@@ -2177,7 +2178,7 @@ có thể chỉnh sửa trong cùng một tập tin phụ đề (hợp tác vớ
     <WaveformFocusMouseEnter>Đặt tiêu điểm khi nhập chuột</WaveformFocusMouseEnter>
     <WaveformListViewFocusMouseEnter>Đồng thời đặt tiêu điểm chế độ xem danh sách khi nhập chuột vào chế độ xem danh sách</WaveformListViewFocusMouseEnter>
     <WaveformSingleClickSelect>Một cú nhấp chuột để chọn phụ đề</WaveformSingleClickSelect>
-    <WaveformSnapToSceneChanges>Bám theo các thay đổi của cảnh (giữ phím Shift để ghi đè)</WaveformSnapToSceneChanges>
+    <WaveformSnapToShotChanges>Bám theo các thay đổi của cảnh (giữ phím Shift để ghi đè)</WaveformSnapToShotChanges>
     <WaveformAutoGen>Tự động tạo dạng sóng khi mở video</WaveformAutoGen>
     <WaveformBorderHitMs1>Điểm đánh dấu đường viền phải nằm trong</WaveformBorderHitMs1>
     <WaveformBorderHitMs2>mili giây</WaveformBorderHitMs2>
@@ -2319,14 +2320,14 @@ có thể chỉnh sửa trong cùng một tập tin phụ đề (hợp tác vớ
     <AdjustSetStartAndOffsetTheWholeSubtitle>Đặt start time, bù đắp toàn bộ phụ đề</AdjustSetStartAndOffsetTheWholeSubtitle>
     <AdjustSetEndAndOffsetTheRest>Đặt end time, offset phần còn lại</AdjustSetEndAndOffsetTheRest>
     <AdjustSetEndAndOffsetTheRestAndGoToNext>Đặt end time, offset phần còn lại và đến dòng sau</AdjustSetEndAndOffsetTheRestAndGoToNext>
-    <AdjustSnapStartToNextSceneChange>Nạp các dòng đã chọn thành start scence change</AdjustSnapStartToNextSceneChange>
-    <AdjustSnapStartToNextSceneChangeWithGap>Nạp các dòng đã chọn thành start scene change với gap tối thiểu</AdjustSnapStartToNextSceneChangeWithGap>
-    <AdjustSnapEndToPreviousSceneChange>Nạp các dòng đã chọn thành end scene change</AdjustSnapEndToPreviousSceneChange>
-    <AdjustSnapEndToPreviousSceneChangeWithGap>Nạp các dòng đã chọn thành cảnh trước với gap tối thiểu</AdjustSnapEndToPreviousSceneChangeWithGap>
-    <AdjustExtendToNextSceneChange>Mở rộng các dòng đã chọn đến scene change tiếp theo (hoặc dòng tiếp theo)</AdjustExtendToNextSceneChange>
-    <AdjustExtendToNextSceneChangeWithGap>Mở rộng các dòng đã chọn đếnscene change tiếp theo với gap tối thiểu (hoặc dòng tiếp theo)</AdjustExtendToNextSceneChangeWithGap>
-    <AdjustExtendToPreviousSceneChange>Mở rộng các dòng đã chọn đến scene change trước (hoặc dòng trước)</AdjustExtendToPreviousSceneChange>
-    <AdjustExtendToPreviousSceneChangeWithGap>Mở rộng các dòng đã chọn đến scene change trước với gap tối thiểu (hoặc phụ đề trước đó)</AdjustExtendToPreviousSceneChangeWithGap>
+    <AdjustSnapStartToNextShotChange>Nạp các dòng đã chọn thành start scence change</AdjustSnapStartToNextShotChange>
+    <AdjustSnapStartToNextShotChangeWithGap>Nạp các dòng đã chọn thành start scene change với gap tối thiểu</AdjustSnapStartToNextShotChangeWithGap>
+    <AdjustSnapEndToPreviousShotChange>Nạp các dòng đã chọn thành end scene change</AdjustSnapEndToPreviousShotChange>
+    <AdjustSnapEndToPreviousShotChangeWithGap>Nạp các dòng đã chọn thành cảnh trước với gap tối thiểu</AdjustSnapEndToPreviousShotChangeWithGap>
+    <AdjustExtendToNextShotChange>Mở rộng các dòng đã chọn đến scene change tiếp theo (hoặc dòng tiếp theo)</AdjustExtendToNextShotChange>
+    <AdjustExtendToNextShotChangeWithGap>Mở rộng các dòng đã chọn đếnscene change tiếp theo với gap tối thiểu (hoặc dòng tiếp theo)</AdjustExtendToNextShotChangeWithGap>
+    <AdjustExtendToPreviousShotChange>Mở rộng các dòng đã chọn đến scene change trước (hoặc dòng trước)</AdjustExtendToPreviousShotChange>
+    <AdjustExtendToPreviousShotChangeWithGap>Mở rộng các dòng đã chọn đến scene change trước với gap tối thiểu (hoặc phụ đề trước đó)</AdjustExtendToPreviousShotChangeWithGap>
     <AdjustExtendToNextSubtitle>Mở rộng các dòng đã chọn sang dòng tiếp theo</AdjustExtendToNextSubtitle>
     <AdjustExtendToPreviousSubtitle>Kéo dài các dòng đã chọn đến dòng trước</AdjustExtendToPreviousSubtitle>
     <AdjustExtendCurrentSubtitle>Kéo dài dòng hiện tại sang dòng tiếp hoặc thời lượng tối đa</AdjustExtendCurrentSubtitle>
@@ -2384,10 +2385,10 @@ có thể chỉnh sửa trong cùng một tập tin phụ đề (hợp tác vớ
     <WaveformPlayNewSelection>Chạy dòng được chọn</WaveformPlayNewSelection>
     <WaveformPlayNewSelectionEnd>Chạy cuối dòng được chọn</WaveformPlayNewSelectionEnd>
     <WaveformPlayFirstSelectedSubtitle>Phát dòng đầu tiên được chọn</WaveformPlayFirstSelectedSubtitle>
-    <WaveformGoToPreviousSceneChange>Về scene change trước</WaveformGoToPreviousSceneChange>
-    <WaveformGoToNextSceneChange>Đến scene change sau</WaveformGoToNextSceneChange>
-    <WaveformToggleSceneChange>Chuyển đổi scene change</WaveformToggleSceneChange>
-    <WaveformRemoveOrExportSceneChanges>Xóa/xuất các scene change</WaveformRemoveOrExportSceneChanges>
+    <WaveformGoToPreviousShotChange>Về scene change trước</WaveformGoToPreviousShotChange>
+    <WaveformGoToNextShotChange>Đến scene change sau</WaveformGoToNextShotChange>
+    <WaveformToggleShotChange>Chuyển đổi scene change</WaveformToggleShotChange>
+    <WaveformRemoveOrExportShotChanges>Xóa/xuất các scene change</WaveformRemoveOrExportShotChanges>
     <WaveformGuessStart>Tự động điều chỉnh Start time thông qua thay đổi âm lượng / scene change</WaveformGuessStart>
     <GoBack1Frame>Lùi một khung</GoBack1Frame>
     <GoForward1Frame>Tới một khung</GoForward1Frame>
@@ -3008,9 +3009,9 @@ Cài đặt font cho phụ đề thường được dùng cho trình phát video
     <ShowWaveformAndSpectrogram>Hiển thị dạng sóng và ảnh phổ</ShowWaveformAndSpectrogram>
     <ShowWaveformOnly>Chỉ hiển thị dạng sóng</ShowWaveformOnly>
     <ShowSpectrogramOnly>Chỉ hiển thị ảnh phổ</ShowSpectrogramOnly>
-    <AddSceneChange>Thêm scene change</AddSceneChange>
-    <RemoveSceneChange>Xóa scene change</RemoveSceneChange>
-    <RemoveSceneChangesFromSelection>Xóa các scene change khỏi lựa chọn</RemoveSceneChangesFromSelection>
+    <AddShotChange>Thêm scene change</AddShotChange>
+    <RemoveShotChange>Xóa scene change</RemoveShotChange>
+    <RemoveShotChangesFromSelection>Xóa các scene change khỏi lựa chọn</RemoveShotChangesFromSelection>
     <GuessTimeCodes>Tự tạo time...</GuessTimeCodes>
     <SeekSilence>Tìm vùng im lặng...</SeekSilence>
     <InsertSubtitleHere>Chèn phụ đề ở đây...</InsertSubtitleHere>

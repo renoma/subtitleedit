@@ -1,6 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="..\..\packages\ILRepack.2.0.18\build\ILRepack.props" Condition="Exists('..\..packages\ILRepack.2.0.18\build\ILRepack.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <AppDesignerFolder>Properties</AppDesignerFolder>
@@ -20,7 +19,7 @@
     <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">.\</SolutionDir>
     <TargetFrameworkProfile>
     </TargetFrameworkProfile>
-    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
   </PropertyGroup>
@@ -33,7 +32,7 @@
     <ErrorReport>prompt</ErrorReport>
     <GenerateSerializationAssemblies>Off</GenerateSerializationAssemblies>
     <Optimize>false</Optimize>
-    <OutputPath>C:\Program Files\Subtitle Edit\</OutputPath>
+    <OutputPath>bin\Debug\</OutputPath>
     <PlatformTarget>AnyCPU</PlatformTarget>
     <UseVSHostingProcess>true</UseVSHostingProcess>
     <WarningLevel>4</WarningLevel>
@@ -47,8 +46,8 @@
     <ErrorReport>prompt</ErrorReport>
     <GenerateSerializationAssemblies>Off</GenerateSerializationAssemblies>
     <Optimize>true</Optimize>
-    <OutputPath>C:\Program Files\Subtitle Edit\</OutputPath>
-    <PlatformTarget>x64</PlatformTarget>
+    <OutputPath>bin\Release\</OutputPath>
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <UseVSHostingProcess>true</UseVSHostingProcess>
     <WarningLevel>4</WarningLevel>
     <Prefer32Bit>false</Prefer32Bit>
@@ -71,7 +70,9 @@
     <Reference Include="NHunspell, Version=1.2.5554.16953, Culture=neutral, PublicKeyToken=1ac793ea843b4366, processorArchitecture=MSIL">
       <HintPath>..\..\packages\NHunspell.1.2.5554.16953\lib\net\NHunspell.dll</HintPath>
     </Reference>
-    <Reference Include="System" />
+    <Reference Include="System">
+      <HintPath>C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.8\System.dll</HintPath>
+    </Reference>
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.EnterpriseServices" />
@@ -87,7 +88,7 @@
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="Vosk, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Vosk.0.3.32\lib\netstandard2.0\Vosk.dll</HintPath>
+      <HintPath>..\..\packages\Vosk.0.3.38\lib\netstandard2.0\Vosk.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -181,6 +182,18 @@
     <Compile Include="Forms\Assa\TagHistory.Designer.cs">
       <DependentUpon>TagHistory.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\AudioClipsGet.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\AudioClipsGet.Designer.cs">
+      <DependentUpon>AudioClipsGet.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\AudioToTextSelectedLines.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\AudioToTextSelectedLines.Designer.cs">
+      <DependentUpon>AudioToTextSelectedLines.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\AudioToText.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -265,11 +278,23 @@
     <Compile Include="Forms\Ocr\WordSplitDictionaryGenerator.Designer.cs">
       <DependentUpon>WordSplitDictionaryGenerator.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\SceneChangesList.cs">
+    <Compile Include="Forms\Options\SettingsCustomContinuationStyle.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\SceneChangesList.Designer.cs">
-      <DependentUpon>SceneChangesList.cs</DependentUpon>
+    <Compile Include="Forms\Options\SettingsCustomContinuationStyle.Designer.cs">
+      <DependentUpon>SettingsCustomContinuationStyle.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Options\WordLists.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Options\WordLists.Designer.cs">
+      <DependentUpon>WordLists.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\ShotChangesList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\ShotChangesList.Designer.cs">
+      <DependentUpon>ShotChangesList.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\DownloadYouTubeDl.cs">
       <SubType>Form</SubType>
@@ -420,6 +445,18 @@
     </Compile>
     <Compile Include="Forms\Assa\SubStationAlphaStylesCategoriesManager.Designer.cs">
       <DependentUpon>SubStationAlphaStylesCategoriesManager.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\ShotChanges\AdjustTimingViaShotChanges.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\ShotChanges\AdjustTimingViaShotChanges.Designer.cs">
+      <DependentUpon>AdjustTimingViaShotChanges.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\SeJobs\SeJobExport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\SeJobs\SeJobExport.Designer.cs">
+      <DependentUpon>SeJobExport.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\TimedTextPropertiesItunes.cs">
       <SubType>Form</SubType>
@@ -631,11 +668,11 @@
     <Compile Include="Forms\ImportImages.Designer.cs">
       <DependentUpon>ImportImages.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\ImportSceneChanges.cs">
+    <Compile Include="Forms\ShotChanges\ImportShotChanges.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\ImportSceneChanges.Designer.cs">
-      <DependentUpon>ImportSceneChanges.cs</DependentUpon>
+    <Compile Include="Forms\ShotChanges\ImportShotChanges.Designer.cs">
+      <DependentUpon>ImportShotChanges.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\ImportUnknownFormat.cs">
       <SubType>Form</SubType>
@@ -1111,6 +1148,7 @@
     <Compile Include="Forms\Styles\TimedTextStyles.Designer.cs">
       <DependentUpon>TimedTextStyles.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Translate\SplitHelper.cs" />
     <Compile Include="Forms\Translate\TranslateBlock.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1277,13 +1315,14 @@
     <Compile Include="Logic\DarkTheme.cs" />
     <Compile Include="Logic\FileTypeAssociations.cs" />
     <Compile Include="Logic\FindReplaceDialogHelper.cs" />
+    <Compile Include="Logic\FontHelper.cs" />
     <Compile Include="Logic\Language.cs" />
     <Compile Include="Logic\LanguageDeserializer.cs" />
     <Compile Include="Logic\LanguageStructure.cs" />
     <Compile Include="Logic\Networking\SeNetworkService.cs" />
     <Compile Include="Logic\PathHelper.cs" />
     <Compile Include="Logic\ReplaceAllHelper.cs" />
-    <Compile Include="Logic\SceneChangesGenerator.cs" />
+    <Compile Include="Logic\ShotChangesGenerator.cs" />
     <Compile Include="Logic\ListViewSorter.cs" />
     <Compile Include="Logic\NativeMethods.cs" />
     <Compile Include="Logic\NikseBitmapImageSplitter.cs" />
@@ -1312,6 +1351,11 @@
     <Compile Include="Logic\Ocr\Tesseract\TesseractMultiRunner.cs" />
     <Compile Include="Logic\RtfTextConverterRichTextBox.cs" />
     <Compile Include="Logic\MainShortcuts.cs" />
+    <Compile Include="Logic\SeJob\SeJobHandler.cs" />
+    <Compile Include="Logic\SeJob\SeJobBookmark.cs" />
+    <Compile Include="Logic\SeJob\SeJobModel.cs" />
+    <Compile Include="Logic\SeJob\SeJobRules.cs" />
+    <Compile Include="Logic\SeJob\SeJobWaveform.cs" />
     <Compile Include="Logic\SetRtbHtml.cs" />
     <Compile Include="Logic\SpellCheck\Hunspell.cs" />
     <Compile Include="Logic\SpellCheck\LinuxHunspell.cs" />
@@ -1396,6 +1440,12 @@
     <EmbeddedResource Include="Forms\Assa\TagHistory.resx">
       <DependentUpon>TagHistory.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\AudioClipsGet.resx">
+      <DependentUpon>AudioClipsGet.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\AudioToTextSelectedLines.resx">
+      <DependentUpon>AudioToTextSelectedLines.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\AudioToText.resx">
       <DependentUpon>AudioToText.cs</DependentUpon>
     </EmbeddedResource>
@@ -1438,8 +1488,14 @@
     <EmbeddedResource Include="Forms\Ocr\WordSplitDictionaryGenerator.resx">
       <DependentUpon>WordSplitDictionaryGenerator.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\SceneChangesList.resx">
-      <DependentUpon>SceneChangesList.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\Options\SettingsCustomContinuationStyle.resx">
+      <DependentUpon>SettingsCustomContinuationStyle.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Options\WordLists.resx">
+      <DependentUpon>WordLists.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\ShotChangesList.resx">
+      <DependentUpon>ShotChangesList.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\DownloadYouTubeDl.resx">
       <DependentUpon>DownloadYouTubeDl.cs</DependentUpon>
@@ -1516,6 +1572,13 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Assa\SubStationAlphaStylesCategoriesManager.resx">
       <DependentUpon>SubStationAlphaStylesCategoriesManager.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\SeJobs\SeJobExport.resx">
+      <DependentUpon>SeJobExport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\ShotChanges\AdjustTimingViaShotChanges.resx">
+      <DependentUpon>AdjustTimingViaShotChanges.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\TimedTextPropertiesItunes.resx">
       <DependentUpon>TimedTextPropertiesItunes.cs</DependentUpon>
@@ -1615,8 +1678,8 @@
     <EmbeddedResource Include="Forms\ImportImages.resx">
       <DependentUpon>ImportImages.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\ImportSceneChanges.resx">
-      <DependentUpon>ImportSceneChanges.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\ShotChanges\ImportShotChanges.resx">
+      <DependentUpon>ImportShotChanges.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\ImportUnknownFormat.resx">
       <DependentUpon>ImportUnknownFormat.cs</DependentUpon>
@@ -1979,6 +2042,9 @@
     <Content Include="DLLs\Voikkox64.dll" />
     <Content Include="DLLs\Voikkox86.dll" />
     <None Include="Resources\SE2.ico" />
+    <None Include="Resources\webvtt.bmp" />
+    <None Include="Resources\webvtt.png" />
+    <None Include="Resources\itt.png" />
     <Content Include="SE2.ico" />
     <None Include="Resources\SE.ico" />
     <None Include="Hunspellx64.dll">
@@ -2260,7 +2326,7 @@
       <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
     </PropertyGroup>
     <Error Condition="!Exists('..\..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets'))" />
-    <Error Condition="!Exists('..\..\packages\Vosk.0.3.32\build\Vosk.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\..\packages\Vosk.0.3.32\build\Vosk.targets'))" />
+    <Error Condition="!Exists('..\..\packages\Vosk.0.3.38\build\Vosk.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\..\packages\Vosk.0.3.38\build\Vosk.targets'))" />
   </Target>
-  <Import Project="..\..\packages\Vosk.0.3.32\build\Vosk.targets" Condition="Exists('..\..\packages\Vosk.0.3.32\build\Vosk.targets')" />
+  <Import Project="..\..\packages\Vosk.0.3.38\build\Vosk.targets" Condition="Exists('..\..\packages\Vosk.0.3.38\build\Vosk.targets')" />
 </Project>

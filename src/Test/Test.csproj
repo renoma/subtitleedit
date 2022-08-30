@@ -11,7 +11,7 @@
     <ProjectGuid>{7BE5B8E8-9469-4C7C-89D7-E8C884DEFC0E}</ProjectGuid>
     <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <RootNamespace>Test</RootNamespace>
-    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <TargetFrameworkProfile />
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
@@ -65,6 +65,7 @@
     <Compile Include="Assa\ResamplerTest.cs" />
     <Compile Include="Dictionaries\StringWithoutSpaceSplitToWordsTest.cs" />
     <Compile Include="LanguageFiles\LanguageFileTest.cs" />
+    <Compile Include="Logic\NetflixHelperTest.cs" />
     <Compile Include="Logic\SubtitleFormats\PacTest.cs" />
     <Compile Include="Core\UUEncodingTest.cs" />
     <Compile Include="Core\CharUtilsTest.cs" />
